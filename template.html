@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{Class Title}} - PDD3 AI Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">1. Introduction</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. Core Concepts</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. AI Integration</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. Hands-on Lab</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. Summary</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+        <h1>{{Class Title}}</h1>
+        <p class="subtitle">企業內部 AI 輔助開發教育訓練系列</p>
+        
+        <div class="card" id="slide1">
+            <h2>🎯 {{Slide Title}}</h2>
+            <p>{{Your slide content goes here...}}</p>
+            <ul>
+                <li><strong>重點 1：</strong> {{Detail}}</li>
+                <li><strong>重點 2：</strong> {{Detail}}</li>
+                <li><strong>重點 3：</strong> {{Detail}}</li>
+            </ul>
+        </div>
+        
+        <!-- ========================================================== -->
+        <!-- NOTE: Slides 2-5 below are just dummy placeholders so the  -->
+        <!-- template's navigation works. When creating a real handout, -->
+        <!-- replace these with your own content and generate matching  -->
+        <!-- sidebar links for them.                                    -->
+        <!-- ========================================================== -->
+        
+        <div class="card" id="slide2">
+            <h2>🎯 2. Core Concepts</h2>
+            <p>Content for Core Concepts goes here...</p>
+        </div>
+        
+        <div class="card" id="slide3">
+            <h2>🎯 3. AI Integration</h2>
+            <p>Content for AI Integration goes here...</p>
+        </div>
+        
+        <div class="card" id="slide4">
+            <h2>🎯 4. Hands-on Lab</h2>
+            <p>Content for Hands-on Lab goes here...</p>
+        </div>
+        
+        <div class="card" id="slide5">
+            <h2>🎯 5. Summary</h2>
+            <p>Content for Summary goes here...</p>
+        </div>
+        
+        <div class="footer">
+            PDD3 AI Training Series - Wanin
+        </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+

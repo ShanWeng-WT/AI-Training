@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 10 堂：超越單次對話：Agentic Workflow 設計模式</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">一、為何需要 Agentic Workflow？</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">二、模式一：反思 (Reflection)</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">三、模式二：工具使用</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">四、模式三：規劃 (Planning)</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">五、模式四：多代理協作</span></a></li>
+            <li><a href="#slide6"><span class="dot"></span><span class="text">六、陷阱與防禦機制</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+            <h1>第 10 堂：超越單次對話</h1>
+            <p class="subtitle">Agentic Workflow 設計模式</p>
+
+            <div id="slide1" class="card slide-content">
+                <h2>一、為何需要 Agentic Workflow？</h2>
+                <ul>
+                    <li><strong>單次對話瓶頸：</strong> 容錯率極低，容易在幾百行程式碼中出錯，缺乏反覆測試驗證機制。</li>
+                    <li><strong>Agentic 精神：</strong> 讓 AI 像人類工程師一樣工作。給予反思、使用工具、拆解任務與協作的能力。</li>
+                    <li><strong>高複雜度應對：</strong> 完善的 Workflow 能讓 GPT-3.5 表現超越單次提問的 GPT-4。</li>
+                </ul>
+            </div>
+
+            <div id="slide2" class="card slide-content">
+                <h2>二、模式一：反思 (Reflection)</h2>
+                <p><strong>「讓 AI 睜開眼睛看錯誤訊息，自我修正。」</strong></p>
+                <ul>
+                    <li><strong>機制：</strong> 腳本自動擷取編譯器或靜態分析工具的報錯。</li>
+                    <li><strong>反饋：</strong> 將錯誤自動餵回給 AI，要求其反思並修復問題。</li>
+                    <li><strong>效益：</strong> 工程師最終拿到的程式碼即是「已通過編譯」的版本。</li>
+                </ul>
+            </div>
+
+            <div id="slide3" class="card slide-content">
+                <h2>三、模式二：工具使用 (Tool Use / Function Calling)</h2>
+                <p><strong>「賦予 AI 存取真實世界資料的手與眼。」</strong></p>
+                <ul>
+                    <li><strong>突破限制：</strong> AI 無法直接通靈資料庫狀態，提供 JSON 格式的 API 工具描述。</li>
+                    <li><strong>運作流程：</strong> AI 判斷需要資訊 ➔ 發送函數呼叫請求 ➔ .NET 伺服器執行真實 SQL 查詢 ➔ 結果回傳 AI ➔ 總結答案。</li>
+                    <li><strong>應用場景：</strong> 客服機器人查詢玩家裝備、AI 查詢專案特定文件內容。</li>
+                </ul>
+            </div>
+
+            <div id="slide4" class="card slide-content">
+                <h2>四、模式三：規劃 (Planning)</h2>
+                <p><strong>「先思考再行動，拒絕大雜燴式的輸出。」</strong></p>
+                <ul>
+                    <li><strong>理論基礎：</strong> Chain of Thought (CoT) 思維鏈。</li>
+                    <li><strong>拆解步驟：</strong> 面對複雜任務，要求 AI 先輸出實作藍圖（Step 1, Step 2...）。</li>
+                    <li><strong>逐一擊破：</strong> 透過腳本嚴格限制 AI 每次只執行一個 Step，降低邏輯跳躍與幻覺風險。</li>
+                </ul>
+            </div>
+
+            <div id="slide5" class="card slide-content">
+                <h2>五、模式四：多代理協作 (Multi-agent Collaboration)</h2>
+                <p><strong>「組建虛擬 AI 開發團隊，互相批判與合作。」</strong></p>
+                <ul>
+                    <li><strong>分工合作：</strong> 實例化多個具備不同 System Prompt 的 Agent（如 Coder, Tech Lead, QA）。</li>
+                    <li><strong>交互審查：</strong> Coder 產出程式碼 ➔ Tech Lead 嚴格審查效能 ➔ 發現問題退回重寫。</li>
+                    <li><strong>維持專注：</strong> 單一 Agent 只需專注於特定角色任務，避免上下文失焦。</li>
+                </ul>
+            </div>
+
+            <div id="slide6" class="card slide-content">
+                <h2>六、陷阱與防禦機制</h2>
+                <ul>
+                    <li><strong>無窮迴圈：</strong> Reflection 一直修不好。<strong>解法：</strong> 設定最大迭代次數 (Max Iterations)。</li>
+                    <li><strong>過度自信幻覺：</strong> 捏造 API 參數。<strong>解法：</strong> 強型別驗證，溫和報錯回傳讓 AI 修正。</li>
+                    <li><strong>危險工具操作：</strong> 呼叫 `DROP TABLE`。<strong>解法：</strong> 高風險操作強制啟用 Human-in-the-loop 人類確認。</li>
+                </ul>
+            </div>
+
+            <div class="footer">
+                PDD3 AI Training Series - Wanin
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+
+

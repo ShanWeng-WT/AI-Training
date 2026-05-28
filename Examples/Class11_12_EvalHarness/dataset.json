@@ -1,0 +1,14 @@
+[
+  {
+    "id": "eval-001",
+    "task": "Write a C# method to calculate the Fibonacci sequence up to N.",
+    "expected_output_keywords": ["Fibonacci", "return", "int"],
+    "unit_test_script": "TestFibonacci.cs"
+  },
+  {
+    "id": "eval-002",
+    "task": "Implement a Singleton pattern in Unity C#.",
+    "expected_output_keywords": ["public static", "Instance", "DontDestroyOnLoad"],
+    "unit_test_script": "TestSingleton.cs"
+  }
+]

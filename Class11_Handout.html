@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 11 堂：確保 AI 不退化：Harness Engineering 與評測基準</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">一、什麼是 AI 退化災難？</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">二、Harness Engineering 核心概念</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">三、兩大評測方法論</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">四、實作流程概覽</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">五、常見陷阱與防禦</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+            <h1>第 11 堂：確保 AI 不退化</h1>
+            <p class="subtitle">Harness Engineering 與評測基準</p>
+
+            <div id="slide1" class="card slide-content">
+                <h2>一、什麼是 AI 退化災難？</h2>
+                <p><strong>現象：</strong> 昨天還能寫出完美程式碼的 Prompt，今天卻產出語法錯誤或邏輯瑕疵。</p>
+                <ul>
+                    <li><strong>語法崩壞：</strong> 遺漏分號、括號，呼叫不存在的 API。</li>
+                    <li><strong>AI 幻覺 (Hallucination)：</strong> 捏造了引擎中根本沒有的類別與方法。</li>
+                    <li><strong>上下文遺忘：</strong> 在長對話中忘記了團隊的 Coding Guidelines。</li>
+                    <li><strong>效能地雷：</strong> 寫出在 `Update()` 頻繁 `GetComponent` 的 GC 災難代碼。</li>
+                </ul>
+            </div>
+
+            <div id="slide2" class="card slide-content">
+                <h2>二、Harness Engineering 核心概念</h2>
+                <p><strong>「用保護程式碼的態度保護 AI：建立 AI 的單元測試。」</strong></p>
+                <ul>
+                    <li><strong>Ground Truth (黃金標準)：</strong> 評測的客觀基準。</li>
+                    <li><strong>輸入 (Input)：</strong> 標準化的 Prompt。</li>
+                    <li><strong>預期輸出 (Expected Output)：</strong> 資深工程師寫好的正確示範。</li>
+                    <li><strong>評分標準 (Rubrics)：</strong> 明確定義及格條件 (例如必備關鍵字、不可使用的反模式)。</li>
+                </ul>
+            </div>
+
+            <div id="slide3" class="card slide-content">
+                <h2>三、兩大評測方法論</h2>
+                <ul>
+                    <li><strong>確定性評估 (Deterministic Evaluation)：</strong>
+                        <ul>
+                            <li>非黑即白：編譯測試 (dotnet build)、單元測試。</li>
+                            <li>優點：100% 客觀、快速。</li>
+                        </ul>
+                    </li>
+                    <li><strong>LLM 作為裁判 (LLM-as-a-Judge)：</strong>
+                        <ul>
+                            <li>使用強大模型 (如 GPT-4o) 審查架構、可讀性與註解風格。</li>
+                            <li>優點：接近資深工程師的 Code Review。</li>
+                            <li>缺點：具些微隨機性。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="slide4" class="card slide-content">
+                <h2>四、實作流程概覽 (JSON + Script)</h2>
+                <p>透過 JSON 定義資料集，使用腳本進行自動化計分。</p>
+                <pre><code class="language-json">[
+  {
+    "id": "unity_jump_001",
+    "prompt": "撰寫 PlayerJump.cs，使用 Rigidbody，並有 1 秒 CD。",
+    "required_keywords": ["Rigidbody", "AddForce", "Space"],
+    "anti_patterns": ["GameObject.Find"]
+  }
+]</code></pre>
+                <p><strong>執行邏輯：</strong> 先檢查關鍵字與反模式 (扣分制)，接著呼叫 LLM 裁判針對 Rubrics 進行綜合打分與給予改進建議。</p>
+            </div>
+
+            <div id="slide5" class="card slide-content">
+                <h2>五、常見陷阱與防禦</h2>
+                <ul>
+                    <li><strong>過度擬合 (Overfitting)：</strong> 資料集過於單一。<strong>防禦：</strong> 涵蓋演算法、架構、UI 多種面向。</li>
+                    <li><strong>LLM 裁判偏見 (Judge Bias)：</strong> 偏好長篇大論。<strong>防禦：</strong> 在 Prompt 中明令「只要邏輯正確、效能達標即可，不因代碼短而扣分」。</li>
+                    <li><strong>Unity 執行緒限制：</strong> <strong>防禦：</strong> 確保測試腳本中的 Unity API 呼叫僅於 Main Thread 執行。</li>
+                </ul>
+            </div>
+
+            <div class="footer">
+                PDD3 AI Training Series - Wanin
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+
+

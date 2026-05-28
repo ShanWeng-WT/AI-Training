@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 12 堂：自動化測試 AI：Evaluation Harness 與 CI/CD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">一、為何需要自動化測試 AI？</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">二、Evaluation Harness 的三大要素</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">三、CI/CD 與 Git Flow 整合</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">四、企業級 AI 開發四大守則</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">五、常見陷阱與防禦機制</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+            <h1>第 12 堂：自動化測試你的 AI</h1>
+            <p class="subtitle">實作 Evaluation Harness 與 CI/CD 整合</p>
+
+            <div id="slide1" class="card slide-content">
+                <h2>一、為何需要自動化測試 AI？</h2>
+                <p><strong>「如果沒有量化準確率，AI 永遠只是玩具，無法成為工業級工具。」</strong></p>
+                <ul>
+                    <li><strong>防範回歸 (Regression)：</strong> 修改 Prompt 或系統設定後，確保舊任務不崩壞。</li>
+                    <li><strong>量化指標：</strong> 提供明確的數據 (如 90% 成功率)，判斷 AI Skill 是否可上線。</li>
+                    <li><strong>建立信任：</strong> 透過透明報告降低團隊對 AI 黑盒子的不信任。</li>
+                </ul>
+            </div>
+
+            <div id="slide2" class="card slide-content">
+                <h2>二、Evaluation Harness 的三大要素</h2>
+                <p>批次考試系統，用來量化評估 Agent 表現。</p>
+                <ul>
+                    <li><strong>Dataset (資料集)：</strong> 預期的輸入任務與 Ground Truth。</li>
+                    <li><strong>Runner (執行器)：</strong> 批次餵給 Agent 任務並取得輸出。</li>
+                    <li><strong>Evaluator (評分器)：</strong> 比對輸出，如精確匹配 (Exact Match)、編譯測試。</li>
+                </ul>
+            </div>
+
+            <div id="slide3" class="card slide-content">
+                <h2>三、CI/CD 與 Git Flow 整合</h2>
+                <p><strong>「Agent 設定檔如同程式碼，需嚴格版控與審查。」</strong></p>
+                <ul>
+                    <li><strong>修改流程：</strong> 修改 Agent 提示詞 ➔ 發 PR ➔ 觸發 CI 跑 Evaluation Harness。</li>
+                    <li><strong>自動把關：</strong> 若準確率低於門檻 (例如 90%)，CI 回傳 Error Code 阻擋合併，並自動留言警示。</li>
+                    <li><strong>實務應用：</strong> 平時只跑核心 Smoke Test，發布版本前跑 Full Evaluation。</li>
+                </ul>
+                <pre><code class="language-yaml"># GitHub Actions 範例
+jobs:
+  evaluate:
+    steps:
+      - run: dotnet run # 執行 Harness
+      - name: Comment on PR
+        if: failure()
+        run: echo "❌ AI 準確率低於標準，阻擋合併。"</code></pre>
+            </div>
+
+            <div id="slide4" class="card slide-content">
+                <h2>四、企業級 AI 開發四大守則</h2>
+                <ol>
+                    <li><strong>AI 是編譯器，不是魔術師：</strong> 產出物必須受 Lint 與單元測試檢驗。</li>
+                    <li><strong>No CI, No AI：</strong> 沒有極高覆蓋率的自動化測試，就不要把 AI 產出大量放進專案。</li>
+                    <li><strong>Prompt 版控：</strong> 所有 System Prompt 與 Skill 檔必須進 Git 版本控制。</li>
+                    <li><strong>沙盒執行 (Sandbox Only)：</strong> AI 產出的指令在未經人類同意前，只在 Sandbox 內執行。</li>
+                </ol>
+            </div>
+
+            <div id="slide5" class="card slide-content">
+                <h2>五、常見陷阱與防禦機制</h2>
+                <ul>
+                    <li><strong>過度優化 (Overfitting)：</strong> 為了測試 100 分，Prompt 寫死參數。<strong>防禦：</strong> 建立盲測資料集。</li>
+                    <li><strong>LLM 裁判幻覺：</strong> LLM 誤判給滿分。<strong>防禦：</strong> 優先依賴「編譯器、語法樹」等確定性測試。LLM 只能做輔助審閱。</li>
+                </ul>
+            </div>
+
+            <div class="footer">
+                PDD3 AI Training Series - Wanin
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+
+

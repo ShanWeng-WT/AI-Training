@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 6 堂：Context Engineering：精準餵養與 Token 效率最佳化 - PDD3 AI Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">1. 🎯 課程目標</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 📖 Context Window</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 💡 頓悟時刻</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 🛠️ 最佳化技巧</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. ⚠️ 常見誤區</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+        <h1>第 6 堂：Context Engineering</h1>
+        <p class="subtitle">精準餵養與 Token 效率最佳化</p>
+        
+        <div id="slide1" class="card slide-content">
+            <h2>🎯 課程目標</h2>
+            <ul>
+                <li><strong>掌握 Context Window：</strong> 理解 AI 記憶力的極限。</li>
+                <li><strong>實體隔離：</strong> 學習為不同 Agent 準備專屬資料。</li>
+                <li><strong>提升命中率：</strong> 減少雜訊，提升程式碼生成的精準度。</li>
+            </ul>
+        </div>
+
+        <div id="slide2" class="card slide-content">
+            <h2>📖 什麼是 Context Window？</h2>
+            <p>AI 的「工作記憶」是有上限的（Token 限制）。</p>
+            <ul>
+                <li><strong>餵太多：</strong> AI 會「失憶」或「失焦」，忽略重要資訊（Lost in the Middle 現象）。</li>
+                <li><strong>餵太少：</strong> AI 只能靠瞎猜（產生幻覺）。</li>
+                <li><strong>關鍵：</strong> 只給<strong>剛剛好</strong>的 Context。</li>
+            </ul>
+        </div>
+        
+        <div id="slide3" class="highlight">
+            <strong>💡 頓悟時刻 (Aha Moment)</strong>
+            <p>Subagents 最大的優勢是能對 Context 進行<strong>「實體隔離」</strong>！前端 Agent 絕對不會看到後端資料，徹底避免領域資訊互相干擾。</p>
+        </div>
+
+        <div id="slide4" class="card slide-content">
+            <h2>🛠️ Token 效率最佳化技巧</h2>
+            <ul>
+                <li><strong>去蕪存菁：</strong> 不要直接丟整個專案，只給相關的介面 (Interface) 或依賴檔。</li>
+                <li><strong>結構化輸入：</strong> 使用 Markdown, JSON 或 XML 標籤讓 AI 易於解析。</li>
+                <li><strong>動態提取：</strong> 透過 RAG 或工具指令 (如 <code>grep</code>) 即時取得需要的程式碼片段。</li>
+            </ul>
+        </div>
+
+        <div id="slide5" class="card slide-content">
+            <h2>⚠️ 常見誤區</h2>
+            <ul>
+                <li><strong>一鍵梭哈 (Dump all)：</strong> 把十萬行程式碼全部塞進 Prompt。</li>
+                <li><strong>歷史包袱：</strong> 沒有定期清理對話紀錄，導致舊 Context 影響新判斷。</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            PDD3 AI Training Series - Wanin
+        </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+
+

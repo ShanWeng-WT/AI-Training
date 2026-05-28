@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 5 堂：分工協作的藝術：Subagents 在複雜任務中的應用 - PDD3 AI Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">1. 🎯 課程目標</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 📖 為什麼需要 Subagents</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 💡 頓悟時刻</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 🛠️ 分工模式</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. ⚠️ 常見誤區</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+        <h1>第 5 堂：分工協作的藝術</h1>
+        <p class="subtitle">Subagents 在複雜任務中的應用</p>
+        
+        <div id="slide1" class="card slide-content">
+            <h2>🎯 課程目標</h2>
+            <ul>
+                <li><strong>理解 Subagent 的價值：</strong> 學會將龐大任務拆解。</li>
+                <li><strong>體驗多 Agent 協同作業：</strong> 實作分工協作流。</li>
+                <li><strong>降低單一 LLM 負載：</strong> 提升準確率與執行效率。</li>
+            </ul>
+        </div>
+
+        <div id="slide2" class="card slide-content">
+            <h2>📖 為什麼我們需要 Subagents？</h2>
+            <p>單一 AI 處理複雜專案容易<strong>迷失方向</strong>或<strong>遺忘上下文</strong>。</p>
+            <ul>
+                <li><strong>單打獨鬥：</strong> 容易產生幻覺、無法兼顧架構與細節。</li>
+                <li><strong>團隊作戰：</strong> 透過 Router, Coder, Reviewer 專精分工。</li>
+            </ul>
+        </div>
+        
+        <div id="slide3" class="highlight">
+            <strong>💡 頓悟時刻 (Aha Moment)</strong>
+            <p>Subagents 就像是一間軟體公司：<strong>PM 拆解需求、工程師寫扣、QA 負責檢查。</strong>各司其職，品質才有保障！</p>
+        </div>
+
+        <div id="slide4" class="card slide-content">
+            <h2>🛠️ 常見的分工模式</h2>
+            <ul>
+                <li><strong>Router (路由分發)：</strong> 判斷意圖，將任務交給對的 Agent。</li>
+                <li><strong>Coder (程式碼撰寫)：</strong> 專注於生成特定語言的邏輯。</li>
+                <li><strong>Reviewer (審查與修正)：</strong> 檢查是否符合規範並給予建議。</li>
+            </ul>
+            <pre><code class="language-mermaid">
+graph TD
+    User --> Router
+    Router --> |前端| Frontend_Agent
+    Router --> |後端| Backend_Agent
+    Frontend_Agent --> Reviewer
+    Backend_Agent --> Reviewer
+            </code></pre>
+        </div>
+
+        <div id="slide5" class="card slide-content">
+            <h2>⚠️ 常見誤區</h2>
+            <ul>
+                <li><strong>過度拆分：</strong> 小任務殺雞用牛刀，增加延遲。</li>
+                <li><strong>溝通成本：</strong> Subagents 之間的 Context 沒傳遞清楚。</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            PDD3 AI Training Series - Wanin
+        </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+
+

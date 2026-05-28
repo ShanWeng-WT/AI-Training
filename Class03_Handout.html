@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 3 堂：AI 寫錯了怎麼辦？程式碼生成的防禦與 Hooks 攔截 - PDD3 AI Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 防禦層級解析</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 實戰演練</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
+            <li><a href="#slide6"><span class="dot"></span><span class="text">6. 常見問答</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+        <h1>第 3 堂：AI 寫錯了怎麼辦？程式碼生成的防禦與 Hooks 攔截</h1>
+        
+        <div class="card slide-content" id="slide1">
+            <h2>🎯 課程目標 (Session Goals)</h2>
+            <ul>
+                <li><strong>建立防禦思維：</strong> 從「被動接收 AI 結果」轉變為「主動防禦架構」。</li>
+                <li><strong>學習 Hooks 攔截：</strong> 利用 Post-generation Hook 自動掛載 Linter 或編譯器。</li>
+                <li><strong>打造自動反饋迴圈：</strong> 將 AI 創意與確定性的工具檢查完美結合，實現自我修正。</li>
+            </ul>
+        </div>
+
+        <div class="card slide-content" id="slide2">
+            <h2>📖 兩種防禦層級解析</h2>
+            <p>LLM 不具備編譯器功能，因此我們必須建立防禦網：</p>
+            <ul>
+                <li><strong>層級一：引導式自我修正 (Self-Correction)</strong><br> 純文字防禦，要求 AI 在產出後進行虛擬 Code Review，能擋掉約 30% 錯誤。</li>
+                <li><strong>層級二：工具鏈整合與 Hooks 攔截 (Toolchain Hooks)</strong><br> 工程層面防禦，利用 C# Compiler 等精準工具，當 AI 生成後先攔截驗證，失敗則送回給 AI 修正。</li>
+            </ul>
+        </div>
+        
+        <div class="highlight slide-content" id="slide3">
+            <strong>💡 頓悟時刻 (Aha Moment)</strong>
+            <p>不要期待 AI 能「一次做對」，真正的工程實踐是：<strong>承認 AI 是機率性的，並用確定性的工具包圍它！</strong></p>
+            <p>當 AI 與編譯器透過 Hooks 串接，就形成了一個自動反饋迴圈，創造出擁有自我修復能力的代理系統。</p>
+        </div>
+
+        <div class="card slide-content" id="slide4">
+            <h2>🛠️ 實戰演練：建立 Post-generation Hook</h2>
+            <p>將原本單向流程改造為閉環的修復迴圈：</p>
+            <p class="subtitle">Prompt → AI 生成 → <strong>[暫存]</strong> → <strong>[編譯/Linter 檢查]</strong> → (若失敗則將 Error 傳回) → 重試 → 寫入正式專案</p>
+            
+            <h3>在日常 IDE 中的落地應用 (手動模擬)</h3>
+            <ul>
+                <li><strong>❌ 錯誤做法：</strong> 人工手動去改那十幾個紅色的編譯報錯。</li>
+                <li><strong>✔️ 正確做法：</strong> 框選 Error List 的報錯訊息，貼給 AI 說：「請根據這些編譯錯誤修復程式碼」。</li>
+            </ul>
+        </div>
+
+        <div class="card slide-content" id="slide5">
+            <h2>⚠️ 常見誤區與防禦</h2>
+            <ul>
+                <li><strong>❌ 無限迴圈重試：</strong> AI 缺乏 Context，導致越改越錯。<br><strong>✔️ 防禦：</strong> 設定最大重試次數 (Max Retries) 為 3 次，超過則人工介入。</li>
+                <li><strong>❌ 以為編譯過就是好代碼：</strong> 忽略邏輯與效能問題 (如 Unity Update 中的 GC)。<br><strong>✔️ 防禦：</strong> Hooks 應掛載自訂的靜態分析工具攔截特定地雷寫法。</li>
+                <li><strong>❌ 敏感資訊外洩：</strong> 將包含 IP 或機密配置的 Error Log 丟給 AI。<br><strong>✔️ 防禦：</strong> 在 Hook 傳送前加入 Log Sanitizer 遮蔽敏感字串。</li>
+            </ul>
+        </div>
+
+        <div class="card slide-content" id="slide6">
+            <h2>❓ 常見問答 (Q&A)</h2>
+            <ul>
+                <li><strong>Q: 讓 AI 自己修，工程師會不會變笨？</strong><br>A: 你是將角色從「打字員」升級為「系統架構師」。精力應放在檢查 AI 修正後的邏輯是否符合商業需求。</li>
+                <li><strong>Q: 連續修 3 次還是失敗怎麼辦？</strong><br>A: 代表 Context 給得不夠，或任務太複雜。請停止盲目重試，拆解任務並補充關鍵介面定義。</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            PDD3 AI Training Series - Wanin
+        </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+
+

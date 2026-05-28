@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 8 堂：制定專案的大腦：Context Files (AGENTS.md) 的威力 - PDD3 AI Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">🎯 課程目標</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">📖 為什麼需要 AGENTS.md？</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">💡 頓悟時刻</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">🛠️ 實戰：靜態與動態 Context</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">⚠️ 常見誤區</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+        <h1>第 8 堂：制定專案的大腦</h1>
+        <p class="subtitle">Context Files (AGENTS.md) 的威力</p>
+        
+        <div id="slide1" class="card slide-content">
+            <h2>🎯 課程目標</h2>
+            <ul>
+                <li><strong>統一標準：</strong> 確保團隊中所有 AI 助手的行為與風格一致。</li>
+                <li><strong>建立專案大腦：</strong> 學會撰寫並維護全域上下文設定檔。</li>
+                <li><strong>區分 Context 類型：</strong> 理解靜態與動態上下文的差異。</li>
+            </ul>
+        </div>
+
+        <div id="slide2" class="card slide-content">
+            <h2>📖 為什麼需要 AGENTS.md？</h2>
+            <p>沒有全域規範的 AI 就像新來的外包人員，每次都要重新教專案架構。</p>
+            <ul>
+                <li><strong>減少重複下指令：</strong> 把架構規範、命名慣例寫死在設定檔中。</li>
+                <li><strong>自動載入：</strong> AI 啟動時會自動閱讀，成為它的<strong>預設行為準則</strong>。</li>
+            </ul>
+        </div>
+        
+        <div id="slide3" class="highlight">
+            <strong>💡 頓悟時刻 (Aha Moment)</strong>
+            <p>將開發規範寫進 <code>AGENTS.md</code>，等於把團隊的 Senior 工程師經驗<strong>「固化」</strong>並<strong>「複製」</strong>給每一個 AI Agent。你的 Agent 將比新進員工更懂專案規範！</p>
+        </div>
+
+        <div id="slide4" class="card slide-content">
+            <h2>🛠️ 實戰：靜態與動態 Context</h2>
+            <ul>
+                <li><strong>靜態 Context (<code>AGENTS.md</code>)：</strong><br>
+                不會頻繁變動的架構規範 (例：Unity 只能用 ECS，不能寫 MonoBehaviour)。</li>
+                <li><strong>動態 Context (RAG)：</strong><br>
+                隨時變動的實作細節 (例：某個 Weapon 腳本的當前狀態，讓 AI 自行去搜尋)。</li>
+            </ul>
+            <pre><code class="language-markdown">
+# AGENTS.md 範例
+## .NET Backend 規範
+1. 所有的 API 必須回傳 `ApiResponse&lt;T&gt;`。
+2. 嚴禁在 Controller 直接呼叫 DB，必須透過 Service 層。
+3. Log 一律使用 Serilog，包含 CorrelationId。
+            </code></pre>
+        </div>
+
+        <div id="slide5" class="card slide-content">
+            <h2>⚠️ 常見誤區</h2>
+            <ul>
+                <li><strong>把設定檔當垃圾桶：</strong> 把所有細節都塞進 <code>AGENTS.md</code>，導致 Token 爆滿且 AI 抓不到重點。</li>
+                <li><strong>不更新：</strong> 專案架構改了，設定檔沒改，導致 AI 一直產出舊架構的 Code。</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            PDD3 AI Training Series - Wanin
+        </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+
+

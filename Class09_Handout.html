@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 9 堂：無痛實作大架構：Spec 驅動與 Planning Mode - PDD3 AI Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">一、為何需要 Spec 驅動？</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">二、撰寫精準的 Spec</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">三、PlanMode 核心精神</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">四、HITL 架構審閱</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">五、常見陷阱與防禦</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+        <h1>第 9 堂：無痛實作大架構</h1>
+        <p class="subtitle">Spec 驅動與 Planning Mode (PlanMode)</p>
+        
+        <div id="slide1" class="card slide-content">
+            <h2>一、為何需要 Spec 驅動與 PlanMode？</h2>
+            <ul>
+                <li><strong>傳統痛點：</strong> 模糊需求會產生義大利麵條程式碼 (Spaghetti Code)，高耦合、難維護。</li>
+                <li><strong>角色轉變：</strong> 開發者不再只是「打字機」，而是<strong>「架構審閱者 (Architecture Reviewer)」</strong>。</li>
+                <li><strong>解決方案：</strong> 透過精準的 Spec 與 PlanMode 產生實作計畫，審閱後再產出程式碼。</li>
+            </ul>
+        </div>
+
+        <div id="slide2" class="card slide-content">
+            <h2>二、撰寫精準的 Spec (Specification)</h2>
+            <p>框定 AI 的邊界與限制，避免 Scope Creep。</p>
+            <ul>
+                <li><strong>Context (背景)：</strong> 痛點與現況。</li>
+                <li><strong>Goals (目標)：</strong> 預期達成的功能。</li>
+                <li><strong>Non-Goals (非目標)：</strong> <strong>明確告知「不」該做什麼！</strong></li>
+                <li><strong>Constraints (限制)：</strong> 引擎版本、相容性、套件限制。</li>
+                <li><strong>Architecture Rules (規範)：</strong> SOLID、DI、EventBus 等設計模式。</li>
+            </ul>
+            <div class="highlight">
+                <strong>💡 專家提示：</strong> 視 AI 為剛到職的資深工程師，Spec 是他的 Onboarding 說明書。
+            </div>
+        </div>
+
+        <div id="slide3" class="card slide-content">
+            <h2>三、Planning Mode (PlanMode) 核心精神</h2>
+            <p><strong>「先產出實作步驟與架構設計，別急著寫程式碼。」</strong></p>
+            <ul>
+                <li><strong>目錄結構異動：</strong> 新增、刪除或修改的檔案路徑。</li>
+                <li><strong>架構依賴：</strong> 模組互動與關聯。</li>
+                <li><strong>分步執行：</strong> 將實作拆分為 Step 1, Step 2... 逐步進行。</li>
+            </ul>
+            <pre><code class="language-markdown"># Prompt: 啟動 PlanMode
+接下來我們將進行架構重構。請進入 Planning Mode (PlanMode)。
+請根據 Spec，**不要**直接輸出程式碼，先產出一份 `ImplementationPlan.md`。
+包含：檔案異動、架構設計、執行步驟。
+當我回覆 "Approve" 後，再逐步執行。</code></pre>
+        </div>
+
+        <div id="slide4" class="card slide-content">
+            <h2>四、Human-In-The-Loop (HITL) 架構審閱</h2>
+            <p>這是工程師發揮最大價值的地方。修正 Markdown 遠比 Debug 程式碼快！</p>
+            <ul>
+                <li><strong>耦合度檢查：</strong> 是否有不合理的依賴？</li>
+                <li><strong>破壞性變更：</strong> 是否修改了公用介面 (Public APIs)？</li>
+                <li><strong>效能考量：</strong> Update 內是否有 `GetComponent`？</li>
+                <li><strong>資源管理：</strong> 離開場景時是否確保 Unsubscribe 事件？</li>
+            </ul>
+            <p><strong>防禦機制：</strong> 發現問題，請要求 AI <strong>「更新 Implementation Plan」</strong>，而不是直接動手修 Code。</p>
+        </div>
+        
+        <div id="slide5" class="card slide-content">
+            <h2>五、常見陷阱與防禦 (Common Pitfalls)</h2>
+            <ul>
+                <li><strong>盲目接受 (Blind Acceptance)：</strong> 未審閱就喊 Go。<strong>解法：</strong> 強制 AI 一次只執行一個 Step。</li>
+                <li><strong>Big Bang Approach：</strong> Spec 過於龐大導致 AI 幻覺。<strong>解法：</strong> 漸進式重構 (Strangler Fig Pattern)。</li>
+                <li><strong>忽略邊界條件：</strong> 忘記 Null 檢查與例外處理。<strong>解法：</strong> 明文規定於 Architecture Rules 中。</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            PDD3 AI Training Series - Wanin
+        </div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>
+
+
