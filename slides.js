@@ -69,4 +69,47 @@ document.addEventListener('DOMContentLoaded', () => {
             showSlide(index);
         });
     });
+
+    // Theme toggle functionality
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    const hljsTheme = document.getElementById('hljs-theme');
+
+    const setHighlightTheme = (isLight) => {
+        if (hljsTheme) {
+            hljsTheme.href = isLight 
+                ? 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css'
+                : 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css';
+        }
+    };
+
+    // Check saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-mode');
+        if (sunIcon) sunIcon.style.display = 'none';
+        if (moonIcon) moonIcon.style.display = 'block';
+        setHighlightTheme(true);
+    } else {
+        setHighlightTheme(false);
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('light-mode');
+            const isLight = document.documentElement.classList.contains('light-mode');
+            
+            if (isLight) {
+                if (sunIcon) sunIcon.style.display = 'none';
+                if (moonIcon) moonIcon.style.display = 'block';
+                localStorage.setItem('theme', 'light');
+            } else {
+                if (sunIcon) sunIcon.style.display = 'block';
+                if (moonIcon) moonIcon.style.display = 'none';
+                localStorage.setItem('theme', 'dark');
+            }
+            setHighlightTheme(isLight);
+        });
+    }
 });

@@ -277,3 +277,90 @@ pre code {
   opacity: 1;
   transform: translateX(0);
 }
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.theme-toggle:hover {
+  background: var(--primary-color);
+  color: #0d1117;
+  transform: scale(1.1);
+  border-color: var(--primary-color);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Light Mode Overrides */
+:root.light-mode {
+  --primary-color: #d97757;
+  --bg-color: #fdfcf9;
+  --text-color: #2d2b29;
+  --accent-color: #c96646;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --border-color: #e5e2db;
+}
+
+:root.light-mode pre {
+  background-color: #f4f3ee;
+}
+
+:root.light-mode .highlight {
+  background: rgba(217, 119, 87, 0.08);
+}
+
+:root.light-mode code {
+  background-color: rgba(45, 43, 41, 0.06);
+}
+
+:root.light-mode .sidebar {
+  background: rgba(253, 252, 249, 0.95);
+}
+
+:root.light-mode .nav-links a:hover,
+:root.light-mode .nav-links a.active {
+  background: rgba(217, 119, 87, 0.08);
+}
+
+:root.light-mode .theme-toggle:hover,
+:root.light-mode .nav-btn:hover {
+  color: #ffffff;
+}
+
+:root.light-mode .footer {
+  color: #8c8985;
+}
+
+:root.light-mode .nav-links .dot {
+  background-color: #8c8985;
+}
+
+:root.light-mode .slide-container {
+  box-shadow: 0 16px 48px rgba(45, 43, 41, 0.08);
+}
+
+:root.light-mode .card {
+  box-shadow: 0 8px 24px rgba(45, 43, 41, 0.06);
+}
+
+:root.light-mode .sidebar {
+  box-shadow: 4px 0 24px rgba(45, 43, 41, 0.06);
+}
