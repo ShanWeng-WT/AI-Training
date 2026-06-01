@@ -23,7 +23,7 @@
 4. **名詞統一**：請遵循計畫書中的核心概念名詞，如 Agent Skills, Subagents, Context Engineering, PlanMode, Human-In-The-Loop (HITL), Agentic Workflow 等。
 
 ## 📁 檔案命名與目錄結構規範
-- **講義與講稿**：請維持 `ClassXX_Handout.html` 與 `ClassXX_SpeakerNotes.md` 的命名慣例 (XX 為兩碼數字，如 01, 02)。
+- **講義與講稿**：請維持 `ClassXX_Handout.html` 與 `ClassXX_SpeakerNotes.md` 的命名慣例 (XX 為兩碼數字，如 01, 02)。注意：所有 Handout 的標題與大綱（如 `<title>` 或 `<h1>`）中**不要**加上「第 X 堂：」的前綴，以利後續課程順序的彈性調整。
 - **範例與挑戰**：實作範例與測試程式碼請放置於 `Examples/` 目錄下。
 - **教材獨立性**：每堂課的講義應能獨立運作，並連結至共用的 CSS/JS 資源。
 
