@@ -11,6 +11,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
 }
 
 body {
@@ -26,6 +28,25 @@ body {
   justify-content: center;
   height: 100vh;
   overflow: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
 }
 
 .slide-container {
@@ -46,7 +67,8 @@ body {
 .slide-content-wrapper {
   flex: 1;
   padding: 30px 80px 20px 80px;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -177,13 +199,12 @@ pre code {
 .slide {
   display: none;
   flex: 1;
-  flex-direction: column;
-  justify-content: center;
+  overflow-y: auto;
   animation: fadeIn 0.4s ease-out;
 }
 
 .slide.active {
-  display: flex;
+  display: block;
 }
 
 @keyframes fadeIn {
