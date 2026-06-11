@@ -1,181 +1,136 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 寫錯了怎麼辦？程式碼生成的防禦與 Hooks 攔截 - PDD3 AI Training</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- Highlight.js for Syntax Highlighting -->
-    <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI 寫錯了怎麼辦？程式碼生成的防禦與 Hooks 攔截 - PDD3 AI Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<!-- Highlight.js for Syntax Highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" id="hljs-theme" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 </head>
 <body>
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-        <ul class="nav-links">
-            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
-            <li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
-            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 防禦層級解析</span></a></li>
-            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 實戰演練</span></a></li>
-            <li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
-            <li><a href="#slide6"><span class="dot"></span><span class="text">6. 常見問答</span></a></li>
-        </ul>
-    </nav>
+<!-- Sidebar Navigation -->
+<nav class="sidebar">
+<ul class="nav-links">
+<li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
+<li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">2. 防禦層級解析</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 實戰演練</span></a></li>
+<li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
+<li><a href="#slide6"><span class="dot"></span><span class="text">6. 常見問答</span></a></li>
+</ul>
+</nav>
+<div class="slide-container">
+<div class="slide-content-wrapper">
+<div class="card" id="slide0">
+<h1>AI 寫錯了怎麼辦？程式碼生成的防禦與 Hooks 攔截</h1>
+<p class="subtitle">企業內部 AI 輔助開發教育訓練</p>
+</div>
+<div class="card top-title-layout" id="slide1">
 
-    <div class="slide-container">
-        <div class="slide-content-wrapper">
-        
-        <div class="card slide-content" id="slide0">
-            <h1>AI 寫錯了怎麼辦？<br><span>程式碼生成的防禦與 Hooks 攔截</span></h1>
-            <p class="subtitle">企業內部 AI 輔助開發教育訓練</p>
-        </div>
+<h2>🎯 課程目標 <span>Session Goals</span></h2><div class="slide-body">
 
-        <div class="card slide-content" id="slide1">
-            <div class="split-layout">
-                <div class="split-left">
-                    <h2>🎯 課程目標<br><span>Session Goals</span></h2>
-                    <p>擺脫被動接收程式碼的心態，引進 Hooks 機制建立「自我修復」的閉環系統。</p>
-                </div>
-                <div class="split-right">
-                    <p>當 AI 輸出的代碼編譯失敗時，我們不該手動修補，而是應建立防禦網絡：</p>
-                    <ul>
-                        <li><strong>主動防禦架構：</strong> 將隨機、不穩定的 AI 生成，與高度確定性的外部工具鏈緊密結合。</li>
-                        <li><strong>Hooks 攔截：</strong> 在代碼寫入專案前，自動攔截並交由編譯器或 Lint 工具進行驗證。</li>
-                        <li><strong>自動反饋迴圈：</strong> 偵測到錯誤時，自動將報錯資訊回傳給 AI 進行自我修正，實現修復閉環。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<p>擺脫被動接收程式碼的心態，引進 Hooks 機制建立「自我修復」的閉環系統。</p>
 
-        <div class="card slide-content" id="slide2">
-            <div class="split-layout">
-                <div class="split-left">
-                    <h2>📖 兩種防禦<br><span>文字 vs 工程</span></h2>
-                    <p>防禦分為文字層面的「軟引導」與工程層面的「硬攔截」，雙管齊下最為穩固。</p>
-                </div>
-                <div class="split-right">
-                    <p>我們可在不同開發階段部署這兩層防禦線：</p>
-                    <ul>
-                        <li><strong>層級一：引導式自我修正 (文字防禦)</strong>
-                            <ul>
-                                <li>在 Prompt 或 Skill 的尾端加入虛擬 Code Review 提示詞。</li>
-                                <li>例如：「生成後請自我檢查是否漏掉例外處理，若有請修正」。</li>
-                                <li><em>效果：能有效阻擋約 30% 的低級邏輯錯誤。</em></li>
-                            </ul>
-                        </li>
-                        <li><strong>層級二：工具鏈 Hooks 攔截 (工程防禦)</strong>
-                            <ul>
-                                <li>將 AI 工具與編譯器 (Compiler)、靜態檢查器 (Linter) 進行管道串接。</li>
-                                <li>一旦偵測到編譯失敗，自動攔截寫入，並將 Error Logs 送回 AI 重新嘗試。</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card slide-content" id="slide3">
-            <div class="split-layout">
-                <div class="split-left">
-                    <h2>💡 頓悟時刻<br><span>Aha Moment</span></h2>
-                    <p>擺脫「AI 必須一次寫對」的幻想，以工程的確定性來包圍 AI 的機率性。</p>
-                </div>
-                <div class="split-right">
-                    <blockquote>
+<p>當 AI 輸出的代碼編譯失敗時，我們不該手動修補，而是應建立防禦網絡：</p>
+<ul>
+<li><strong>主動防禦架構：</strong> 將隨機、不穩定的 AI 生成，與高度確定性的外部工具鏈緊密結合。</li>
+<li><strong>Hooks 攔截：</strong> 在代碼寫入專案前，自動攔截並交由編譯器或 Lint 工具進行驗證。</li>
+<li><strong>自動反饋迴圈：</strong> 偵測到錯誤時，自動將報錯資訊回傳給 AI 進行自我修正，實現修復閉環。</li>
+</ul>
+</div></div>
+<div class="card top-title-layout" id="slide2">
+
+<h2>📖 兩種防禦 <span>文字 vs 工程</span></h2><div class="slide-body">
+
+<p>防禦分為文字層面的「軟引導」與工程層面的「硬攔截」，雙管齊下最為穩固。</p>
+
+<p>我們可在不同開發階段部署這兩層防禦線：</p>
+<ul>
+<li><strong>層級一：引導式自我修正 (文字防禦)</strong>
+<ul>
+<li>在 Prompt 或 Skill 的尾端加入虛擬 Code Review 提示詞。</li>
+<li>例如：「生成後請自我檢查是否漏掉例外處理，若有請修正」。</li>
+<li><em>效果：能有效阻擋約 30% 的低級邏輯錯誤。</em></li>
+</ul>
+</li>
+<li><strong>層級二：工具鏈 Hooks 攔截 (工程防禦)</strong>
+<ul>
+<li>將 AI 工具與編譯器 (Compiler)、靜態檢查器 (Linter) 進行管道串接。</li>
+<li>一旦偵測到編譯失敗，自動攔截寫入，並將 Error Logs 送回 AI 重新嘗試。</li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div class="card top-title-layout" id="slide3">
+
+<h2>💡 頓悟時刻 <span>Aha Moment</span></h2><div class="slide-body">
+
+<p>擺脫「AI 必須一次寫對」的幻想，以工程的確定性來包圍 AI 的機率性。</p>
+
+<blockquote>
                         「承認 AI 是機率性的，並用<span>確定性</span>的工具包圍它！」
                     </blockquote>
-                    <p>這個思維的轉變是工程師轉化為 AI 架構師的起點：</p>
-                    <ul>
-                        <li><strong>容錯設計：</strong> 不期待 AI 一次到位，允許其在沙盒中失敗並自我修正。</li>
-                        <li><strong>工具包圍：</strong> 讓 LLM 負責提供創意雛形與代碼草稿，由絕對精準的編譯器把關邊界。</li>
-                        <li><strong>自我修復：</strong> 將機率（AI）與確定性（工具）串接，賦予開發工作流自我修復能力。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<p>這個思維的轉變是工程師轉化為 AI 架構師的起點：</p>
+<ul>
+<li><strong>容錯設計：</strong> 不期待 AI 一次到位，允許其在沙盒中失敗並自我修正。</li>
+<li><strong>工具包圍：</strong> 讓 LLM 負責提供創意雛形與代碼草稿，由絕對精準的編譯器把關邊界。</li>
+<li><strong>自我修復：</strong> 將機率（AI）與確定性（工具）串接，賦予開發工作流自我修復能力。</li>
+</ul>
+</div></div>
+<div class="card top-title-layout" id="slide4">
 
-        <div class="card slide-content" id="slide4">
-            <div class="split-layout">
-                <div class="split-left">
-                    <h2>🛠️ 實戰演練<br><span>閉環修復迴圈</span></h2>
-                    <p>建立 Post-generation Hook 流程，或在 IDE 中手動模擬編譯反饋的修正路徑。</p>
-                </div>
-                <div class="split-right">
-                    <p><strong>自動化 Pipeline 流程：</strong></p>
-                    <blockquote class="highlight">
+<h2>🛠️ 實戰演練 <span>閉環修復迴圈</span></h2><div class="slide-body">
+
+<p>建立 Post-generation Hook 流程，或在 IDE 中手動模擬編譯反饋的修正路徑。</p>
+
+<p><strong>自動化 Pipeline 流程：</strong></p>
+<blockquote class="highlight">
                         Prompt ➡️ AI 產生代碼 ➡️ 暫存區 Hook 攔截 ➡️ 編譯驗證 ➡️ (失敗時) 報錯回傳重試 ➡️ (成功時) 寫入專案
                     </blockquote>
-                    <p><strong>IDE 日常手動模擬策略：</strong></p>
-                    <ul>
-                        <li>當 AI 生成程式碼紅字滿天飛時，<span>絕對不要手動去改那十幾行紅字</span>！</li>
-                        <li>直接複製 IDE Error List（編譯錯誤或例外訊息），貼回給 AI 並加上指令：<br>
-                        <code>「編譯失敗，報錯如下，請重新檢視約束條件並進行修復：[Error Logs]」</code></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<p><strong>IDE 日常手動模擬策略：</strong></p>
+<ul>
+<li>當 AI 生成程式碼紅字滿天飛時，<span>絕對不要手動去改那十幾行紅字</span>！</li>
+<li>直接複製 IDE Error List（編譯錯誤或例外訊息），貼回給 AI 並加上指令：<br/>
+<code>「編譯失敗，報錯如下，請重新檢視約束條件並進行修復：[Error Logs]」</code></li>
+</ul>
+</div></div>
+<div class="card console-dashboard-layout" id="slide5">
 
-        <div class="card slide-content" id="slide5">
-            <div class="split-layout">
-                <div class="split-left">
-                    <h2>⚠️ 常見誤區與<br><span>防禦機制</span></h2>
-                    <p>在導入自動修復與攔截機制時，必須預先防範效能地雷、無限重試與敏感資訊外洩。</p>
-                </div>
-                <div class="split-right">
-                    <p>建立 Hooks 反饋迴圈時的三大安全邊界：</p>
-                    <ul>
-                        <li><strong>防範無限重試 (Infinite Loops)：</strong> 必須設定 <code>Max Retries = 3</code>。若連續 3 次無法修正編譯，代表 Context 不足或架構定義不清，必須強制終止並請求人工介入。</li>
-                        <li><strong>編譯過不等於好代碼：</strong> 除了編譯成功外，還需掛載靜態分析 (Linter) 進行效能與漏洞掃描，防止 AI 生成語法正確但有 Memory Leak 的程式。</li>
-                        <li><strong>日誌脫敏 (Log Sanitizing)：</strong> 自動回傳 Error Logs 時，應過濾或遮蔽本機絕對路徑、IP 位址、內部憑證等敏感資訊，防止洩漏給外部 LLM。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<h2>⚠️ 常見誤區與 <span>防禦機制</span></h2><p>在導入自動修復與攔截機制時，必須預先防範效能地雷、無限重試與敏感資訊外洩。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 防範無限重試 (Infinite Loops</h3><p> 必須設定 <code>Max Retries = 3</code>。若連續 3 次無法修正編譯，代表 Context 不足或架構定義不清，必須強制終止並請求人工介入。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 編譯過不等於好代碼</h3><p> 除了編譯成功外，還需掛載靜態分析 (Linter) 進行效能與漏洞掃描，防止 AI 生成語法正確但有 Memory Leak 的程式。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 日誌脫敏 (Log Sanitizing</h3><p> 自動回傳 Error Logs 時，應過濾或遮蔽本機絕對路徑、IP 位址、內部憑證等敏感資訊，防止洩漏給外部 LLM。</p></div></div></div>
+<div class="card comparison-layout" id="slide6">
 
-        <div class="card slide-content" id="slide6">
-            <div class="split-layout">
-                <div class="split-left">
-                    <h2>❓ 常見問答<br><span>Q&A</span></h2>
-                    <p>解除研發團隊對於自身定位、工作流程轉變以及工具鏈整合的疑慮。</p>
-                </div>
-                <div class="split-right">
-                    <ul>
-                        <li>
-                            <strong>Q1: 程式碼都讓 AI 自動修復，工程師會不會變笨、失去 Debug 能力？</strong>
-                            <br>
-                            <span>A1: 不會，這反而促使工程師轉型。</span>你不再扮演肉眼找漏字/漏括號的「打字員」，而是升級為「系統架構師」。你將精力專注於定義業務邏輯與架構邊界，繁雜的語法錯誤處理則由系統代勞。
-                        </li>
-                        <li>
-                            <strong>Q2: 當 AI 在 Hook 中連續修復失敗被人工退件時，最常見的根本原因是什麼？</strong>
-                            <br>
-                            <span>A2: 通常是 Scope 劃分過大或 Context 提供不足。</span>此時應停止重試，人工介入將該功能拆解為更小、單一職責的函式，再引導 AI 逐個击破。
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<h2>❓ 常見問答 <span>Q&amp;A</span></h2><p>解除研發團隊對於自身定位、工作流程轉變以及工具鏈整合的疑慮。</p><div class="comparison-grid"><div class="comparison-card"><h3>❌ Q1: 程式碼都讓 AI 自動修復，工程師會不會變笨、失去 Debug 能力？</h3><p>
 
-        <div class="footer">
+<br/>
+<span>A1: 不會，這反而促使工程師轉型。</span>你不再扮演肉眼找漏字/漏括號的「打字員」，而是升級為「系統架構師」。你將精力專注於定義業務邏輯與架構邊界，繁雜的語法錯誤處理則由系統代勞。
+                        </p></div><div class="comparison-card highlight-card"><h3>🎯 Q2: 當 AI 在 Hook 中連續修復失敗被人工退件時，最常見的根本原因是什麼？</h3><p>
+
+<br/>
+<span>A2: 通常是 Scope 劃分過大或 Context 提供不足。</span>此時應停止重試，人工介入將該功能拆解為更小、單一職責的函式，再引導 AI 逐個击破。
+                        </p></div></div></div>
+<div class="footer">
             PDD3 AI Training Series - Wanin
         </div>
-        </div>
-    </div>
-
-    <div class="slide-controls">
-        <button class="nav-btn prev" title="Previous Slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-        </button>
-        <button class="nav-btn next" title="Next Slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-        </button>
-    </div>
+</div>
+</div>
+<div class="slide-controls">
+<button class="nav-btn prev" title="Previous Slide">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<button class="nav-btn next" title="Next Slide">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</button>
+</div>
 <script src="slides.js"></script>
 </body>
 </html>

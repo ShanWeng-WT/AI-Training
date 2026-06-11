@@ -1,163 +1,129 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>從對話到行動：Agent 的本質與運作機制總結 - PDD3 AI Training</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- Highlight.js for Syntax Highlighting -->
-    <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>從對話到行動：Agent 的本質與運作機制總結 - PDD3 AI Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<!-- Highlight.js for Syntax Highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" id="hljs-theme" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 </head>
 <body>
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-        <ul class="nav-links">
-            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
-            <li><a href="#slide1"><span class="dot"></span><span class="text">1. 🎯 課程目標</span></a></li>
-            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 📖 什麼是 Agent？</span></a></li>
-            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 💡 頓悟時刻</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 🛠️ ReAct 框架</span></a></li>
-            <li><a href="#slide5"><span class="dot"></span><span class="text">5. ⚠️ 常見問題</span></a></li>
-        </ul>
-    </nav>
+<!-- Sidebar Navigation -->
+<nav class="sidebar">
+<ul class="nav-links">
+<li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
+<li><a href="#slide1"><span class="dot"></span><span class="text">1. 🎯 課程目標</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">2. 📖 什麼是 Agent？</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">3. 💡 頓悟時刻</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 🛠️ ReAct 框架</span></a></li>
+<li><a href="#slide5"><span class="dot"></span><span class="text">5. ⚠️ 常見問題</span></a></li>
+</ul>
+</nav>
+<div class="slide-container">
+<div class="slide-content-wrapper">
+<!-- Slide 0: Cover -->
+<div class="card" id="slide0">
+<h1>從對話到行動</h1>
+<p class="subtitle">Agent 的本質與運作機制總結</p>
+</div>
+<!-- Slide 1: 課程目標 -->
+<div class="card top-title-layout" id="slide1">
 
-    <div class="slide-container">
-        <div class="slide-content-wrapper">
-            <!-- Slide 0: Cover -->
-            <div id="slide0" class="card slide-content">
-                <h1>從對話到行動</h1>
-                <p class="subtitle">Agent 的本質與運作機制總結</p>
-            </div>
-            
-            <!-- Slide 1: 課程目標 -->
-            <div id="slide1" class="card slide-content">
-                <div class="split-layout">
-                    <div class="split-left">
-                        <h2>🎯 課程目標</h2>
-                        <p>我們把 ChatGPT 當作聊天機器人，但我們給開發者的工具是 Agent。兩者最大的差別在於「行動力」。</p>
-                    </div>
-                    <div class="split-right">
-                        <ul>
-                            <li><strong>看透 Agent 的底層本質：</strong> 釐清 Chatbot（只會預測文字）與 Agent（擁有自主行動力）的核心差異。</li>
-                            <li><strong>解構 ReAct 推理迴圈：</strong> 深入學習經典的「感知 - 思考 - 行動 (Reasoning & Acting)」運作邏輯。</li>
-                            <li><strong>階段性技術總結：</strong> 統整前 6 堂課的 Agent 開發心法，為邁向企業級專案大腦做準備。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<h2>🎯 課程目標</h2><div class="slide-body">
 
-            <!-- Slide 2: 什麼是 Agent -->
-            <div id="slide2" class="card slide-content">
-                <div class="split-layout">
-                    <div class="split-left">
-                        <h2>📖 什麼是 Agent？</h2>
-                        <p>Chatbot 只能說話，Agent 能夠行動。要讓一個語言模型能替人類工作，必須為它裝上「手」和「腳」。</p>
-                    </div>
-                    <div class="split-right">
-                        <ul>
-                            <li><strong>Chatbot (聊天機器人)：</strong> 接收輸入，靜態預測並輸出下一段文字，無法感知外部環境，也無法產生實際的副作用。</li>
-                            <li><strong>Agent (代理人)：</strong> 擁有明確的任務目標，能主動呼叫外部工具 (Tools)，並依據執行結果進行自我反思與修正。</li>
-                            <li><strong>Agent 的三大支柱：</strong>
-                                <ul>
-                                    <li><strong>推理大腦 (Reasoner)：</strong> LLM 本身的推理與步驟規劃能力。</li>
-                                    <li><strong>外部工具 (Tools)：</strong> 讓 Agent 具備對系統、檔案與 API 的操控權限。</li>
-                                    <li><strong>反思修正 (Reflection)：</strong> 讀取工具報錯並動態變更開發路線。</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 3: 頓悟時刻 -->
-            <div id="slide3" class="card slide-content">
-                <div class="split-layout">
-                    <div class="split-left">
-                        <h2>💡 頓悟時刻</h2>
-                        <p>Agent 不是什麼高深莫測的魔法，它本質上就是一個掛了 LLM 推理大腦的 <code>while</code> 迴圈！</p>
-                    </div>
-                    <div class="split-right">
-                        <blockquote>
-                            <strong>底層運作邏輯虛擬碼：</strong>
-                            <pre><code class="language-javascript">while (!task_completed) {
+<p>我們把 ChatGPT 當作聊天機器人，但我們給開發者的工具是 Agent。兩者最大的差別在於「行動力」。</p>
+
+<ul>
+<li><strong>看透 Agent 的底層本質：</strong> 釐清 Chatbot（只會預測文字）與 Agent（擁有自主行動力）的核心差異。</li>
+<li><strong>解構 ReAct 推理迴圈：</strong> 深入學習經典的「感知 - 思考 - 行動 (Reasoning &amp; Acting)」運作邏輯。</li>
+<li><strong>階段性技術總結：</strong> 統整前 6 堂課的 Agent 開發心法，為邁向企業級專案大腦做準備。</li>
+</ul>
+</div></div>
+<!-- Slide 2: 什麼是 Agent -->
+<div class="card top-title-layout" id="slide2">
+
+<h2>📖 什麼是 Agent？</h2><div class="slide-body">
+
+<p>Chatbot 只能說話，Agent 能夠行動。要讓一個語言模型能替人類工作，必須為它裝上「手」和「腳」。</p>
+
+<ul>
+<li><strong>Chatbot (聊天機器人)：</strong> 接收輸入，靜態預測並輸出下一段文字，無法感知外部環境，也無法產生實際的副作用。</li>
+<li><strong>Agent (代理人)：</strong> 擁有明確的任務目標，能主動呼叫外部工具 (Tools)，並依據執行結果進行自我反思與修正。</li>
+<li><strong>Agent 的三大支柱：</strong>
+<ul>
+<li><strong>推理大腦 (Reasoner)：</strong> LLM 本身的推理與步驟規劃能力。</li>
+<li><strong>外部工具 (Tools)：</strong> 讓 Agent 具備對系統、檔案與 API 的操控權限。</li>
+<li><strong>反思修正 (Reflection)：</strong> 讀取工具報錯並動態變更開發路線。</li>
+</ul>
+</li>
+</ul>
+</div></div>
+<!-- Slide 3: 頓悟時刻 -->
+<div class="card console-dashboard-layout" id="slide3">
+
+<h2>💡 頓悟時刻</h2><div class="console-split"><div class="console-info">
+
+<p>Agent 不是什麼高深莫測的魔法，它本質上就是一個掛了 LLM 推理大腦的 <code>while</code> 迴圈！</p>
+
+<blockquote>
+<strong>底層運作邏輯虛擬碼：</strong>
+
+                            這解釋了為什麼它有時候會「想很久」，因為它正在背後瘋狂呼叫工具、讀檔、報錯、自我修正。
+                        </blockquote>
+</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">example.js</span></div><div class="ide-body"><pre><code class="language-javascript">while (!task_completed) {
     let thought = think(goal, history);
     let action = select_tool(thought);
     let observation = execute(action);
     update_history(thought, action, observation);
     task_completed = evaluate(goal, history);
-}</code></pre>
-                            這解釋了為什麼它有時候會「想很久」，因為它正在背後瘋狂呼叫工具、讀檔、報錯、自我修正。
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
+}</code></pre></div></div></div></div>
+<!-- Slide 4: ReAct 框架 -->
+<div class="card console-dashboard-layout" id="slide4">
 
-            <!-- Slide 4: ReAct 框架 -->
-            <div id="slide4" class="card slide-content">
-                <div class="split-layout">
-                    <div class="split-left">
-                        <h2>🛠️ 核心機制：ReAct 框架</h2>
-                        <p>Reasoning and Acting (ReAct) 是 Agent 最著名的運行框架。學會閱讀 Agent 的隱藏 Trace Log，是開發者最重要的除錯基本功。</p>
-                    </div>
-                    <div class="split-right">
-                        <ul>
-                            <li><strong>Thought (思考)：</strong> 分析當前狀況與目標差距，推理下一步該做什麼。</li>
-                            <li><strong>Action (行動)：</strong> 決定調用的工具 (Tool) 並傳入所需的引數 (Parameters)。</li>
-                            <li><strong>Observation (觀察)：</strong> 工具執行後的實質反饋（如：檔案內容、編譯器報錯、命令執行結果）。</li>
-                        </ul>
-                        <blockquote>
-                            <strong>開發者啟示：</strong> 要讓 Agent 的表現穩定且強大，除了寫好系統 Prompt，<strong>「提供功能單一、防呆完善、回傳格式化錯誤訊息的 Tools」</strong>更是成功的關鍵。
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
+<h2>🛠️ 核心機制：ReAct 框架</h2><p>Reasoning and Acting (ReAct) 是 Agent 最著名的運行框架。學會閱讀 Agent 的隱藏 Trace Log，是開發者最重要的除錯基本功。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 Thought (思考</h3><p> 分析當前狀況與目標差距，推理下一步該做什麼。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ Action (行動</h3><p> 決定調用的工具 (Tool) 並傳入所需的引數 (Parameters)。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 Observation (觀察</h3><p> 工具執行後的實質反饋（如：檔案內容、編譯器報錯、命令執行結果）。</p></div></div></div>
+<!-- Slide 5: 常見問題 -->
+<div class="card top-title-layout" id="slide5">
 
-            <!-- Slide 5: 常見問題 -->
-            <div id="slide5" class="card slide-content">
-                <div class="split-layout">
-                    <div class="split-left">
-                        <h2>⚠️ 為什麼 Agent 會卡死？</h2>
-                        <p>當 Agent 陷入無效的重複思考或無限的 retry 迴圈時，我們必須介入並優化我們的指令與工具設計。</p>
-                    </div>
-                    <div class="split-right">
-                        <ul>
-                            <li><strong>工具不穩定與無防呆：</strong> 
-                                <ul>
-                                    <li>工具噴出未處理的 Exception 或格式混亂的錯誤訊息，AI 無法解讀，只會以同樣的方式反覆嘗試，導致陷入死鎖。</li>
-                                </ul>
-                            </li>
-                            <li><strong>目標模糊 (Goal Ambiguity)：</strong> 
-                                <ul>
-                                    <li>任務目標不夠具體（例如「幫我優化專案程式碼」），Agent 不知道什麼樣的狀態才算「完成」，因而無休止地運行下去。</li>
-                                </ul>
-                            </li>
-                            <li><strong>對策：</strong> 在提示詞中寫明任務完成的驗證條件（如「當執行 dotnet build 通過且無編譯錯誤時即代表任務完成」），並對工具加上明確的 Exception Handling。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<h2>⚠️ 為什麼 Agent 會卡死？</h2><div class="slide-body">
 
-            <div class="footer">
+<p>當 Agent 陷入無效的重複思考或無限的 retry 迴圈時，我們必須介入並優化我們的指令與工具設計。</p>
+
+<ul>
+<li><strong>工具不穩定與無防呆：</strong>
+<ul>
+<li>工具噴出未處理的 Exception 或格式混亂的錯誤訊息，AI 無法解讀，只會以同樣的方式反覆嘗試，導致陷入死鎖。</li>
+</ul>
+</li>
+<li><strong>目標模糊 (Goal Ambiguity)：</strong>
+<ul>
+<li>任務目標不夠具體（例如「幫我優化專案程式碼」），Agent 不知道什麼樣的狀態才算「完成」，因而無休止地運行下去。</li>
+</ul>
+</li>
+<li><strong>對策：</strong> 在提示詞中寫明任務完成的驗證條件（如「當執行 dotnet build 通過且無編譯錯誤時即代表任務完成」），並對工具加上明確的 Exception Handling。</li>
+</ul>
+</div></div>
+<div class="footer">
                 PDD3 AI Training Series - Wanin
             </div>
-        </div>
-    </div>
-
-    <div class="slide-controls">
-        <button class="nav-btn prev" title="Previous Slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-        </button>
-        <button class="nav-btn next" title="Next Slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-        </button>
-    </div>
-    <script src="slides.js"></script>
+</div>
+</div>
+<div class="slide-controls">
+<button class="nav-btn prev" title="Previous Slide">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<button class="nav-btn next" title="Next Slide">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</button>
+</div>
+<script src="slides.js"></script>
 </body>
 </html>

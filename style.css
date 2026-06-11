@@ -698,3 +698,93 @@ pre code {
   margin-bottom: 6px;
 }
 
+/* ==========================================================================
+   LAYOUT C: Comparison Layout (雙欄對比模組)
+   ========================================================================== */
+.comparison-layout {
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+}
+
+.comparison-layout h2 {
+  width: 100%;
+  font-size: 2.2em;
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 24px;
+  border-bottom: none;
+}
+
+.comparison-grid {
+  display: flex;
+  gap: 40px;
+  font-size: 1.25em;
+  align-items: stretch;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.comparison-card {
+  flex: 1;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.comparison-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.comparison-card h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 1.3em;
+}
+
+.comparison-card p {
+  margin-bottom: 0;
+  text-align: center;
+  color: #a0aec0;
+}
+
+/* 強調版卡片 */
+.comparison-card.highlight-card {
+  background: rgba(88, 166, 255, 0.08);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.05);
+}
+
+.comparison-card.highlight-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 255, 204, 0.15);
+}
+
+.comparison-card.highlight-card h3 {
+  color: var(--primary-color);
+}
+
+.comparison-card.highlight-card p {
+  color: var(--text-color);
+}
+
+/* Light mode 覆蓋 */
+:root.light-mode .comparison-card {
+  background: rgba(45, 43, 41, 0.02);
+}
+
+:root.light-mode .comparison-card.highlight-card {
+  background: rgba(217, 119, 87, 0.06);
+  border-color: var(--primary-color);
+}
+
+

@@ -19,6 +19,7 @@
             <li><a href="#slide1"><span class="dot"></span><span class="text">1. 經典排版範本</span></a></li>
             <li><a href="#slide2"><span class="dot"></span><span class="text">2. 主控台程式碼範本</span></a></li>
             <li><a href="#slide3"><span class="dot"></span><span class="text">3. 儀表板三欄範本</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 雙欄對比範本</span></a></li>
         </ul>
     </nav>
 
@@ -131,6 +132,33 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            
+            <!-- ==========================================================================
+                 SLIDE 4: 雙欄對照/對比模組 (Comparison Layout)
+                 - 適用場景：概念對比 (新舊觀念、優缺點、前後差異)、總結投影片。
+                 - 使用說明：在 .card 容器加上 `comparison-layout` 類別。
+                   內部使用 `.comparison-grid` 水平並排 2 個 `.comparison-card`。
+                   如有其中一個需要特別強調，可對該子卡片套用 `.highlight-card`。
+                   下方可搭配一個全寬 `blockquote` 作為總結引言。
+                 ========================================================================== -->
+            <div class="card comparison-layout" id="slide4">
+                <h2>⚔️ 觀念對決：雙欄對照排版 (以 `comparison-grid` 呈現)</h2>
+                <div class="comparison-grid">
+                    <!-- 左欄：常規卡片 -->
+                    <div class="comparison-card">
+                        <h3>❌ 舊思維 / 一般做法</h3>
+                        <p>將 AI 視為隨機回答的聊天機器人，僅依賴單次問答取得不穩定的成果。</p>
+                    </div>
+                    <!-- 右欄：強調卡片 (highlight-card) -->
+                    <div class="comparison-card highlight-card">
+                        <h3>🎯 新思維 / 系統化做法</h3>
+                        <p>將 AI 視為複雜的工程系統，透過 Context Engineering 與驗證機制穩定品質。</p>
+                    </div>
+                </div>
+                <blockquote>
+                    💡 <strong>核心啟示：</strong> 工具的本質由使用者的心智模型決定，以工程思維管理 AI 才能釋放其最大潛力。
+                </blockquote>
             </div>
             
             <div class="footer">

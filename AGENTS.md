@@ -22,10 +22,11 @@
    - 必須加上詳盡的註解，並著重於解釋「為什麼這樣做」而不僅是「這段程式碼做什麼」。
 4. **名詞統一**：請遵循計畫書中的核心概念名詞，如 Agent Skills, Subagents, Context Engineering, PlanMode, Human-In-The-Loop (HITL), Agentic Workflow 等。
 5. **模組化排版規範 (Modular Layouts)**：
-   為了維持高資訊密度與避免學員視覺疲勞，所有講義的投影片（Slide Card）必須依據內容屬性，靈活使用以下三種排版模組（具體結構請參考 [template.html](file:///D:/Projects/AI%20Training/template.html)，樣式定義於 [style.css](file:///D:/Projects/AI%20Training/style.css)）：
+   為了維持高資訊密度與避免學員視覺疲勞，所有講義的投影片（Slide Card）必須依據內容屬性，靈活使用以下四種排版模組（具體結構請參考 [template.html](file:///D:/Projects/AI%20Training/template.html)，樣式定義於 [style.css](file:///D:/Projects/AI%20Training/style.css)）：
    - **Top-Title Layout (經典上標下內文，主要骨幹)**：卡片套用 `top-title-layout` 類別。標題置於頂部並帶有底線，最適合長段文字、一般概念講解與清單列舉。
    - **Console Split (主控台雙欄，程式碼優先)**：卡片套用 `console-dashboard-layout`，內含雙欄網格 `.console-split`，右側使用 IDE 視窗樣式 `.ide-window` 展示代碼或配置檔。最適合 Unity C#、.NET 代碼或 yaml 說明的場景。
    - **Dashboard Grid (指標儀表板三欄，多維並列)**：卡片套用 `console-dashboard-layout`，內含三欄網格 `.dashboard-grid` 與 `.sub-card`。適合總結、三個概念並列（如黃金鐵三角）、常見誤區 Q&A 的投影片。
+   - **Comparison Layout (雙欄對照/對比，概念衝突)**：卡片套用 `comparison-layout`，內含雙欄網格 `.comparison-grid` 與 `.comparison-card`，可用 `.highlight-card` 為關鍵選項加上強調發光邊框，下方可搭配全寬 `blockquote` 引言。最適合新舊思維對比、優缺點分析或結論總結投影片。
 
 
 ## 📁 檔案命名與目錄結構規範
