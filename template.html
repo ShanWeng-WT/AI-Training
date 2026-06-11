@@ -16,56 +16,121 @@
     <nav class="sidebar">
         <ul class="nav-links">
             <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
-            <li><a href="#slide1"><span class="dot"></span><span class="text">1. Introduction</span></a></li>
-            <li><a href="#slide2"><span class="dot"></span><span class="text">2. Core Concepts</span></a></li>
-            <li><a href="#slide3"><span class="dot"></span><span class="text">3. AI Integration</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">4. Hands-on Lab</span></a></li>
-            <li><a href="#slide5"><span class="dot"></span><span class="text">5. Summary</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">1. 經典排版範本</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 主控台程式碼範本</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 儀表板三欄範本</span></a></li>
         </ul>
     </nav>
 
     <div class="slide-container">
         <div class="slide-content-wrapper">
+            
+            <!-- ==========================================================================
+                 SLIDE 0: 封面卡片 (Centered Cover Card)
+                 ========================================================================== -->
             <div class="card" id="slide0">
                 <h1>{{Class Title}}</h1>
-                <p style="color: var(--primary-color); font-size: 2.2em; margin-top: 20px;">企業內部 AI 輔助開發教育訓練系列</p>
+                <p class="subtitle">企業內部 AI 輔助開發教育訓練系列</p>
             </div>
             
-            <div class="card" id="slide1">
-                <h2><span>1.</span> {{Slide Title}}</h2>
-                <p>{{Your slide content goes here...}}</p>
-                <ul>
-                    <li><strong>重點 1：</strong> {{Detail}}</li>
-                    <li><strong>重點 2：</strong> {{Detail}}</li>
-                    <li><strong>重點 3：</strong> {{Detail}}</li>
-                </ul>
+            <!-- ==========================================================================
+                 SLIDE 1: 經典上標題下內文模組 (Top-Title Layout)
+                 - 適用場景：一般概念介紹、大量清單條列、詳細說明文字。
+                 - 使用說明：在 .card 容器加上 `top-title-layout` 類別，內文以 `.slide-body` 包裹。
+                 ========================================================================== -->
+            <div class="card top-title-layout" id="slide1">
+                <h2>🎯 經典上標下內文標題 (以 `top-title-layout` 作為主要骨幹)</h2>
+                <div class="slide-body">
+                    <p>這是最主要的投影片架構，讀者由上而下閱讀，視覺動線流暢：</p>
+                    <ul>
+                        <li><strong>優點一：</strong> 水平視覺延展寬廣，不容易造成偏向右側的視覺疲勞。</li>
+                        <li><strong>優點二：</strong> 寬度充足，適合長句、多層次的清單條列。</li>
+                        <li><strong>適用範圍：</strong> 90% 的常規教學投影片都可以以此為主要骨幹。</li>
+                    </ul>
+                    <blockquote>
+                        💡 <strong>小提示：</strong> 標題下方有一條全寬的漸層分割線，能清楚隔開標題與內文區域。
+                    </blockquote>
+                </div>
             </div>
             
-            <!-- ========================================================== -->
-            <!-- NOTE: Slides 2-5 below are just dummy placeholders so the  -->
-            <!-- template's navigation works. When creating a real handout, -->
-            <!-- replace these with your own content and generate matching  -->
-            <!-- sidebar links for them.                                    -->
-            <!-- ========================================================== -->
-            
-            <div class="card" id="slide2">
-                <h2><span>2.</span> Core Concepts</h2>
-                <p>Content for Core Concepts goes here...</p>
+            <!-- ==========================================================================
+                 SLIDE 2: 主控台雙欄代碼模組 (Console Split Layout)
+                 - 適用場景：代碼教學、設定檔說明 (YAML/JSON)、與專案架構對比。
+                 - 使用說明：在 .card 容器加上 `console-dashboard-layout` 類別。
+                   內部使用 `.console-split` 分成左右兩欄，右欄使用 `.ide-window` 模擬程式碼編輯器。
+                 ========================================================================== -->
+            <div class="card console-dashboard-layout" id="slide2">
+                <h2>代碼優先：主控台雙欄排版 (以 `console-split` 呈現代碼)</h2>
+                <div class="console-split">
+                    <!-- 左欄：重點說明 (約占 38%) -->
+                    <div class="console-info">
+                        <p>左側可用來放置該程式碼的痛點或架構說明，右側則能直接展示對應的程式碼：</p>
+                        <ul>
+                            <li><strong>沉浸式體驗：</strong> 帶有 macOS 風格的紅綠黃三點與半透明 IDE 邊框，極具工程質感。</li>
+                            <li><strong>訊噪比極高：</strong> 將代碼置於專屬編輯器視窗，降低了與主畫面的文字混淆。</li>
+                        </ul>
+                    </div>
+                    <!-- 右欄：模擬 IDE 視窗 (約占 62%) -->
+                    <div class="ide-window">
+                        <div class="ide-header">
+                            <div class="ide-dots">
+                                <span class="ide-dot red"></span>
+                                <span class="ide-dot yellow"></span>
+                                <span class="ide-dot green"></span>
+                            </div>
+                            <span class="ide-title">ExampleClass.cs</span>
+                        </div>
+                        <div class="ide-body">
+                            <pre><code class="language-csharp">public class ExampleClass
+{
+    // 右側最適合直接展示 C# 代碼或 YAML 配置檔
+    public void DisplayFeature()
+    {
+        Console.WriteLine("這是一個精美的 IDE 代碼展示視窗！");
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="card" id="slide3">
-                <h2><span>3.</span> AI Integration</h2>
-                <p>Content for AI Integration goes here...</p>
-            </div>
-            
-            <div class="card" id="slide4">
-                <h2><span>4.</span> Hands-on Lab</h2>
-                <p>Content for Hands-on Lab goes here...</p>
-            </div>
-            
-            <div class="card" id="slide5">
-                <h2><span>5.</span> Summary</h2>
-                <p>Content for Summary goes here...</p>
+            <!-- ==========================================================================
+                 SLIDE 3: 儀表板三欄網格模組 (Dashboard Grid Layout)
+                 - 適用場景：最後的總結 Slide、三個概念的對比或並列、核心鐵三角要點。
+                 - 使用說明：在 .card 容器加上 `console-dashboard-layout` 類別。
+                   內部使用 `.dashboard-grid` 來水平並排 3 個 `.sub-card`。
+                 ========================================================================== -->
+            <div class="card console-dashboard-layout" id="slide3">
+                <h2>總結與對比：三欄指標儀表板 (以 `dashboard-grid` 與 `sub-card` 並行)</h2>
+                <div class="dashboard-grid">
+                    <!-- 子卡片 1 -->
+                    <div class="sub-card">
+                        <h3>🤖 要點一：舊觀念</h3>
+                        <p>這是一個標準的指標卡片，卡片頂部有一條隱含的細邊線。</p>
+                        <ul>
+                            <li>不好的習慣 1</li>
+                            <li>不好的習慣 2</li>
+                        </ul>
+                    </div>
+                    <!-- 子卡片 2 (可自訂 hover 發光邊框) -->
+                    <div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
+                        <h3>⚙️ 要點二：新觀念</h3>
+                        <p>卡片在滑鼠懸浮時會向上微浮，並將頂部發光條改為主題青色。</p>
+                        <ul>
+                            <li>最佳實踐 1</li>
+                            <li>最佳實踐 2</li>
+                        </ul>
+                    </div>
+                    <!-- 子卡片 3 -->
+                    <div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
+                        <h3>💡 要點三：實踐行動</h3>
+                        <p>最適合用來當作課程總結、行動方針、或三向對比時的呈現載體。</p>
+                        <ul>
+                            <li>核心行動 1</li>
+                            <li>核心行動 2</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
             <div class="footer">
@@ -74,6 +139,7 @@
         </div>
     </div>
 
+    <!-- Navigation Controls -->
     <div class="slide-controls">
         <button class="nav-btn prev" title="Previous Slide">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

@@ -482,3 +482,219 @@ pre code {
 :root.light-mode .sidebar {
   box-shadow: 4px 0 24px rgba(45, 43, 41, 0.06);
 }
+
+/* ==========================================================================
+   LAYOUT A: Top-Title Layout (經典上標題下內文)
+   ========================================================================== */
+.top-title-layout {
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+.top-title-layout h2 {
+  width: 100%;
+  font-size: 2.2em;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.top-title-layout .slide-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.top-title-layout p {
+  font-size: 1.15em;
+  max-width: 100%;
+}
+
+.top-title-layout ul, .top-title-layout ol {
+  font-size: 1.15em;
+  margin-top: 0;
+}
+
+
+/* ==========================================================================
+   LAYOUT B: Developer Console / Dashboard Layout (開發者主控台與儀表板)
+   ========================================================================== */
+.console-dashboard-layout {
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+}
+
+/* 標題區域 */
+.console-dashboard-layout h2 {
+  width: 100%;
+  font-size: 2em;
+  color: var(--accent-color);
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.console-dashboard-layout h2::before {
+  content: ">_";
+  color: var(--primary-color);
+  font-family: 'Consolas', monospace;
+  font-weight: bold;
+}
+
+/* 樣式 A: Console Split (代碼優先主控台) */
+.console-split {
+  display: grid;
+  grid-template-columns: 38% 62%;
+  gap: 30px;
+  align-items: stretch;
+  flex: 1;
+}
+
+.console-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.console-info p {
+  font-size: 1.1em;
+  color: #a0aec0;
+}
+
+.console-info ul {
+  font-size: 1.05em;
+  margin-top: 0;
+  padding-left: 20px;
+}
+
+/* IDE 視窗樣式 */
+.ide-window {
+  background: #0b0e14;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  text-align: left;
+}
+
+.ide-header {
+  background: #161b22;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ide-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.ide-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.ide-dot.red { background: #ff5f56; }
+.ide-dot.yellow { background: #ffbd2e; }
+.ide-dot.green { background: #27c93f; }
+
+.ide-title {
+  color: #8b949e;
+  font-size: 0.85em;
+  font-family: 'Consolas', monospace;
+}
+
+.ide-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  margin: 0;
+}
+
+.ide-body pre {
+  margin-bottom: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+/* 樣式 B: Dashboard Grid (指標儀表板網格) */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  flex: 1;
+  text-align: left;
+}
+
+.sub-card {
+  background: rgba(22, 27, 34, 0.4);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sub-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--border-color);
+}
+
+.sub-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 255, 204, 0.05);
+}
+
+.sub-card:hover::before {
+  background: var(--primary-color);
+}
+
+.sub-card h3 {
+  font-size: 1.25em;
+  color: var(--accent-color);
+  margin-top: 0;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sub-card p {
+  font-size: 0.95em;
+  color: #8b949e;
+  margin-bottom: 0;
+}
+
+.sub-card ul {
+  font-size: 0.95em;
+  margin-top: 10px;
+  padding-left: 18px;
+  margin-bottom: 0;
+}
+
+.sub-card li {
+  margin-bottom: 6px;
+}
+

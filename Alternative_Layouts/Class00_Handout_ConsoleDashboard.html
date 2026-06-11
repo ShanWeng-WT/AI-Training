@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心智模型 (主控台儀表板版) - PDD3 AI Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">1. 開場與核心觀念</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 誤解一</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 誤解二</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 誤解三</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. 誤解四</span></a></li>
+            <li><a href="#slide6"><span class="dot"></span><span class="text">6. 總結</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div class="slide-content-wrapper">
+            <!-- Slide 0: Cover (Centered layout) -->
+            <div class="card" id="slide0">
+                <h1>比語言模型更重要的<br>心智模型</h1>
+                <p class="subtitle">企業內部 AI 輔助開發教育訓練 (主控台與儀表板版)</p>
+            </div>
+            
+            <!-- Slide 1: Console Split (開場與核心觀念) -->
+            <div class="card console-dashboard-layout" id="slide1">
+                <h2>開場：你如何看待當下的 AI 工具？</h2>
+                <div class="console-split">
+                    <div class="console-info">
+                        <p>許多工程師試用過 AI 後，很快又退回純手寫模式。這通常不是因為工具不夠強，而是我們將舊的心智模型套用在新世代的工具上。</p>
+                        <p><strong>🔑 核心觀念：</strong>模型能力已足夠 ➔ <strong>你的使用方式與工作流，決定產出結果的品質。</strong></p>
+                    </div>
+                    <div class="ide-window">
+                        <div class="ide-header">
+                            <div class="ide-dots">
+                                <span class="ide-dot red"></span>
+                                <span class="ide-dot yellow"></span>
+                                <span class="ide-dot green"></span>
+                            </div>
+                            <span class="ide-title">self_reflection_checklist.json</span>
+                        </div>
+                        <div class="ide-body">
+                            <pre><code class="language-json">{
+  "developer_doubts": [
+    "AI 會幻覺犯錯，所以我無法信任它",
+    "AI 輸出非確定性，結果大多靠運氣",
+    "AI 不就是聊天？我不需要額外花時間學習",
+    "想 Prompt 與反覆除錯比我自己動手還慢"
+  ],
+  "current_status": "Ready to upgrade mental model..."
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Console Split (誤解一) -->
+            <div class="card console-dashboard-layout" id="slide2">
+                <h2>誤解一：AI 會犯錯，所以還不能信任</h2>
+                <div class="console-split">
+                    <div class="console-info">
+                        <p>LLM 的底層邏輯是「統計機率的文字預測」，而非嚴謹的邏輯引擎。因此，它一定會出錯。</p>
+                        <blockquote>
+                            真正的問題從來不是「AI 會不會錯？」<br>
+                            而是「當它出錯時，你的工作流有沒有能力捕捉並更正它？」
+                        </blockquote>
+                        <p>我們日常開發早就習慣了浮點數不精準、網路斷線等異常。對待 AI，我們也需要建立相應的例外捕捉與驗證機制。</p>
+                    </div>
+                    <div class="ide-window">
+                        <div class="ide-header">
+                            <div class="ide-dots">
+                                <span class="ide-dot red"></span>
+                                <span class="ide-dot yellow"></span>
+                                <span class="ide-dot green"></span>
+                            </div>
+                            <span class="ide-title">AiVerificationWorkflow.cs</span>
+                        </div>
+                        <div class="ide-body">
+                            <pre><code class="language-csharp">// 概念化驗證防禦機制
+try 
+{
+    var generatedCode = await AI.GenerateCodeAsync(context);
+    
+    // 關鍵在於：建立對應的驗證屏障
+    CodeValidator.AssertNoHalucinatedApi(generatedCode);
+    CodeValidator.AssertFollowsProjectNamingStyle(generatedCode);
+} 
+catch (ValidationException ex) 
+{
+    Logger.LogWarning("偵測到 AI 輸出偏離規範，自動退回重新修正...");
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Console Split (誤解二) -->
+            <div class="card console-dashboard-layout" id="slide3">
+                <h2>誤解二：AI 非確定性，所以結果靠運氣</h2>
+                <div class="console-split">
+                    <div class="console-info">
+                        <p>工程師習慣「給予固定輸入，得到唯一輸出」。但 LLM 更像是一個動態的機率場，產出非唯一解，但可以被高度收斂。</p>
+                        <p>就像請三位資深工程師寫同一個功能，會有三種不同寫法。這不是失控，而是解決路徑的多樣性。</p>
+                        <p><strong>收斂機率的黃金鐵三角：</strong> 完美的 Context、明確的 Constraint 與防呆驗證。</p>
+                    </div>
+                    <div class="ide-window">
+                        <div class="ide-header">
+                            <div class="ide-dots">
+                                <span class="ide-dot red"></span>
+                                <span class="ide-dot yellow"></span>
+                                <span class="ide-dot green"></span>
+                            </div>
+                            <span class="ide-title">probability_shaping.yml</span>
+                        </div>
+                        <div class="ide-body">
+                            <pre><code class="language-yaml"># 透過 Context 與 Constraints 將機率整形 (Probability Shaping)
+probability_收斂機制:
+  context_上下文: "提供專案既有程式碼規範 + 資料庫綱要"
+  target_明確目標: "只負責生成 Repository 層，其餘禁止"
+  constraints_約束:
+    - "禁止直接使用 DbContext"
+    - "必須回傳 Task<T>"
+  validation_自我校正: "自我檢查是否使用了 API 捏造"</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Console Split (誤解三) -->
+            <div class="card console-dashboard-layout" id="slide4">
+                <h2>誤解三：AI 就是聊天，不需要學</h2>
+                <div class="console-split">
+                    <div class="console-info">
+                        <p>簡單的輸入介面隱藏了極其複雜的模型運作。許多人覺得 AI 難用，是因為他們只把它當「點餐系統」，而非「協作系統」。</p>
+                        <p><strong>差異不在模型，而在使用者。</strong></p>
+                        <p>若要發揮完全效率，我們需要跨越 Prompt 工程，進入以專案感知為中心的 <strong>Context Engineering（上下文工程）</strong>。</p>
+                    </div>
+                    <div class="ide-window">
+                        <div class="ide-header">
+                            <div class="ide-dots">
+                                <span class="ide-dot red"></span>
+                                <span class="ide-dot yellow"></span>
+                                <span class="ide-dot green"></span>
+                            </div>
+                            <span class="ide-title">context_engineering_manifesto.md</span>
+                        </div>
+                        <div class="ide-body">
+                            <pre><code class="language-markdown"># Context Engineering 核心法則
+1. **主動餵入 (Feed)**：餵入正確、相關的實體介面與程式碼片段。
+2. **剔除干擾 (Prune)**：將非必要的程式碼排除，提高訊噪比。
+3. **黃金範本 (Few-shot)**：給予 1~2 個符合企業最高標準的
+   完美程式碼範例，強制 AI 進行模式匹配。</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Console Split (誤解四) -->
+            <div class="card console-dashboard-layout" id="slide5">
+                <h2>誤解四：想 Prompt 比自己做還慢</h2>
+                <div class="console-split">
+                    <div class="console-info">
+                        <p>如果您拿 AI 來寫一行簡單的 Lambda 表達式，那確實比自己動手慢。因為您用錯了地方。</p>
+                        <p>AI 特別擅長處理：<strong>閱讀、搜尋、大量整理、重複工作與框架轉換</strong>。</p>
+                        <p>把重複性、高阻力的「體力活」交給 AI，把創造性、設計架構與關鍵決策留在您的手中。</p>
+                    </div>
+                    <div class="ide-window">
+                        <div class="ide-header">
+                            <div class="ide-dots">
+                                <span class="ide-dot red"></span>
+                                <span class="ide-dot yellow"></span>
+                                <span class="ide-dot green"></span>
+                            </div>
+                            <span class="ide-title">DeveloperVsAiWorkload.cs</span>
+                        </div>
+                        <div class="ide-body">
+                            <pre><code class="language-csharp">// 合理的工作分工
+public class TaskDistribution 
+{
+    // 人類工程師的核心職責：架構與關鍵邏輯
+    public void DesignArchitecture() => Humans.DecideDesignPatterns();
+    
+    // AI 助手的核心職責：高重複性與體力活
+    public async Task HandleTediousLaborAsync() 
+    {
+        await AI.GenerateDtoClassesAsync();
+        await AI.GenerateUnitTestingBoilerplateAsync();
+        await AI.ReadAndSummarizeThirdPartyDocsAsync();
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Dashboard Grid (總結) -->
+            <div class="card console-dashboard-layout" id="slide6">
+                <h2>總結：兩種 AI 心智模型</h2>
+                <div class="dashboard-grid">
+                    <!-- Sub-Card 1 -->
+                    <div class="sub-card">
+                        <h3>🤖 舊心智模型 (對話者)</h3>
+                        <p><strong>定義：</strong>將 AI 當作一個隨意問答的聊天機器人。</p>
+                        <ul>
+                            <li>沒有明確的工作流程與約束</li>
+                            <li>完全依賴模型本身的零星智商</li>
+                            <li>遇到幻覺或報錯，只能無腦追問</li>
+                            <li>產出價值僅限於簡答與參考</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Sub-Card 2 -->
+                    <div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
+                        <h3>⚙️ 新心智模型 (工程系統)</h3>
+                        <p><strong>定義：</strong>將 AI 當作一個需要管理與引導的軟體工程系統。</p>
+                        <ul>
+                            <li>提供精確的 Context 與約束條件</li>
+                            <li>建立穩健的 Try-Catch 自我校正</li>
+                            <li>使用黃金範本進行模式收斂</li>
+                            <li>產出高度符合企業開發規範的代碼</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Sub-Card 3 -->
+                    <div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
+                        <h3>💡 核心行動法則</h3>
+                        <p><strong>要點：</strong></p>
+                        <ul>
+                            <li><strong>不要聊天：</strong> 使用有結構的 Agent Skills 定義任務。</li>
+                            <li><strong>工具定位：</strong> 將 AI 作為您工作流中的「初級工程師」，您是架構師。</li>
+                            <li><strong>建立信心：</strong> 透過在系統中編寫防呆與驗證，建立人機協作的安全網。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">PDD3 AI Training Series - Wanin</div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev" title="Previous Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next" title="Next Slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+<script src="../slides.js"></script>
+</body>
+</html>
