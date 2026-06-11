@@ -15,7 +15,8 @@
     <!-- Sidebar Navigation -->
     <nav class="sidebar">
         <ul class="nav-links">
-            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">1. Introduction</span></a></li>
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">1. Introduction</span></a></li>
             <li><a href="#slide2"><span class="dot"></span><span class="text">2. Core Concepts</span></a></li>
             <li><a href="#slide3"><span class="dot"></span><span class="text">3. AI Integration</span></a></li>
             <li><a href="#slide4"><span class="dot"></span><span class="text">4. Hands-on Lab</span></a></li>
@@ -24,66 +25,52 @@
     </nav>
 
     <div class="slide-container">
-        <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
         <div class="slide-content-wrapper">
-        <h1>{{Class Title}}</h1>
-        <p class="subtitle">企業內部 AI 輔助開發教育訓練系列</p>
-        
-        <div class="card" id="slide1">
-            <h2>🎯 {{Slide Title}}</h2>
-            <p>{{Your slide content goes here...}}</p>
-            <ul>
-                <li><strong>重點 1：</strong> {{Detail}}</li>
-                <li><strong>重點 2：</strong> {{Detail}}</li>
-                <li><strong>重點 3：</strong> {{Detail}}</li>
-            </ul>
-        </div>
-        
-        <!-- ========================================================== -->
-        <!-- NOTE: Slides 2-5 below are just dummy placeholders so the  -->
-        <!-- template's navigation works. When creating a real handout, -->
-        <!-- replace these with your own content and generate matching  -->
-        <!-- sidebar links for them.                                    -->
-        <!-- ========================================================== -->
-        
-        <div class="card" id="slide2">
-            <h2>🎯 2. Core Concepts</h2>
-            <p>Content for Core Concepts goes here...</p>
-        </div>
-        
-        <div class="card" id="slide3">
-            <h2>🎯 3. AI Integration</h2>
-            <p>Content for AI Integration goes here...</p>
-        </div>
-        
-        <div class="card" id="slide4">
-            <h2>🎯 4. Hands-on Lab</h2>
-            <p>Content for Hands-on Lab goes here...</p>
-        </div>
-        
-        <div class="card" id="slide5">
-            <h2>🎯 5. Summary</h2>
-            <p>Content for Summary goes here...</p>
-        </div>
-        
-        <div class="footer">
-            PDD3 AI Training Series - Wanin
-        </div>
+            <div class="card" id="slide0">
+                <h1>{{Class Title}}</h1>
+                <p style="color: var(--primary-color); font-size: 2.2em; margin-top: 20px;">企業內部 AI 輔助開發教育訓練系列</p>
+            </div>
+            
+            <div class="card" id="slide1">
+                <h2><span>1.</span> {{Slide Title}}</h2>
+                <p>{{Your slide content goes here...}}</p>
+                <ul>
+                    <li><strong>重點 1：</strong> {{Detail}}</li>
+                    <li><strong>重點 2：</strong> {{Detail}}</li>
+                    <li><strong>重點 3：</strong> {{Detail}}</li>
+                </ul>
+            </div>
+            
+            <!-- ========================================================== -->
+            <!-- NOTE: Slides 2-5 below are just dummy placeholders so the  -->
+            <!-- template's navigation works. When creating a real handout, -->
+            <!-- replace these with your own content and generate matching  -->
+            <!-- sidebar links for them.                                    -->
+            <!-- ========================================================== -->
+            
+            <div class="card" id="slide2">
+                <h2><span>2.</span> Core Concepts</h2>
+                <p>Content for Core Concepts goes here...</p>
+            </div>
+            
+            <div class="card" id="slide3">
+                <h2><span>3.</span> AI Integration</h2>
+                <p>Content for AI Integration goes here...</p>
+            </div>
+            
+            <div class="card" id="slide4">
+                <h2><span>4.</span> Hands-on Lab</h2>
+                <p>Content for Hands-on Lab goes here...</p>
+            </div>
+            
+            <div class="card" id="slide5">
+                <h2><span>5.</span> Summary</h2>
+                <p>Content for Summary goes here...</p>
+            </div>
+            
+            <div class="footer">
+                PDD3 AI Training Series - Wanin
+            </div>
         </div>
     </div>
 
@@ -102,4 +89,3 @@
 <script src="slides.js"></script>
 </body>
 </html>
-
