@@ -16,94 +16,138 @@
     <nav class="sidebar">
         <ul class="nav-links">
             <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
-            <li><a href="#slide1"><span class="dot"></span><span class="text">🎯 課程目標</span></a></li>
-            <li><a href="#slide2"><span class="dot"></span><span class="text">📖 核心技巧</span></a></li>
-            <li><a href="#slide3"><span class="dot"></span><span class="text">💡 頓悟時刻</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">🛠️ 實戰演練</span></a></li>
-            <li><a href="#slide5"><span class="dot"></span><span class="text">⚠️ 常見誤區</span></a></li>
-            <li><a href="#slide6"><span class="dot"></span><span class="text">❓ 常見問答</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 核心技巧</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 實戰演練</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
+            <li><a href="#slide6"><span class="dot"></span><span class="text">6. 常見問答</span></a></li>
         </ul>
     </nav>
 
     <div class="slide-container">
-        <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
         <div class="slide-content-wrapper">
         
         <div id="slide0" class="card slide-content">
             <h1>進階 Prompt Engineering 實戰：<br><span>優化你的 AI 助手</span></h1>
+            <p class="subtitle">企業內部 AI 輔助開發教育訓練</p>
         </div>
 
         <div id="slide1" class="card slide-content">
-            <h2>🎯 課程目標：<span>精準控制 AI</span></h2>
-            <ul>
-                <li>掌握<strong>進階提示詞</strong>實戰技巧</li>
-                <li>運用<strong>結構化</strong>指令與邏輯框架</li>
-                <li>將模糊請求轉為<strong>精準約束</strong></li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>🎯 課程目標<br><span>Session Goals</span></h2>
+                    <p>將 Prompt Engineering 從「魔法」升級為工程學，精準操控 AI 的生成結果。</p>
+                </div>
+                <div class="split-right">
+                    <p>本堂課將帶領大家回歸根本，將 Prompt Engineering 視為意圖轉化指令的學問：</p>
+                    <ul>
+                        <li><strong>精準控制：</strong> 擺脫空泛詞彙，透過嚴謹的語法與格式控制 AI。</li>
+                        <li><strong>結構化指令：</strong> 運用 Markdown 的層級架構，讓 AI 清晰理解任務與邊界。</li>
+                        <li><strong>架構思維：</strong> 將模糊的業務請求，轉化為模型可高效執行的精準約束。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div id="slide2" class="card slide-content">
-            <h2>📖 三大核心：<span>意圖轉化約束</span></h2>
-            <ul>
-                <li><strong>結構化 (Structured)</strong><br>用 Markdown 標籤精準區分資訊</li>
-                <li><strong>少量樣本 (Few-Shot)</strong><br>提供完美範例，確保格式 100% 一致</li>
-                <li><strong>思維鏈 (CoT)</strong><br>要求先分析邏輯再寫程式，降低謬誤</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>📖 三大核心<br><span>意圖轉化約束</span></h2>
+                    <p>掌握三大高階技巧，構建具備工業級穩定度與高可預測性的 Prompt。</p>
+                </div>
+                <div class="split-right">
+                    <p>工業級 Prompt 的三大支柱：</p>
+                    <ul>
+                        <li><strong>結構化 (Structured)：</strong> 使用 Markdown 標籤與 YAML/JSON 格式，將「任務目標」、「上下文」、「約束條件」明確分區，拉高 AI 的解析效率。</li>
+                        <li><strong>少量樣本 (Few-Shot)：</strong> 與其用文字費力解釋複雜規範，不如直接給出 1 到 2 個完美的黃金程式碼範例，供 AI 精準依循。</li>
+                        <li><strong>思維鏈 (CoT - Chain of Thought)：</strong> 對於複雜業務邏輯，強制 AI <span>「先分析推演步驟，再輸出程式碼」</span>，顯著降低邏輯謬誤。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         
         <div id="slide3" class="card slide-content">
-            <h2>💡 頓悟時刻：<span>釐清問題</span></h2>
-            <blockquote>
-                進階的 Prompt Engineering，其實是在學習<strong>「如何向自己釐清問題」</strong>！
-            </blockquote>
-            <ul>
-                <li>寫下框架 = <strong>深度的軟體設計前置思考</strong></li>
-                <li>Prompt 越好 = <strong>架構設計越清晰</strong></li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>💡 頓悟時刻<br><span>Aha Moment</span></h2>
+                    <p>撰寫優質 Prompt 的過程，本質上就是進行深度軟體設計前置思考的過程。</p>
+                </div>
+                <div class="split-right">
+                    <blockquote>
+                        "進階的 Prompt Engineering，其實是在學習<strong>「如何向自己釐清問題」</strong>！"
+                    </blockquote>
+                    <p>當你被迫列出邊界條件、生出黃金範本、拆解思維鏈步驟時：</p>
+                    <ul>
+                        <li>你其實正在完成最核心的<strong>軟體架構設計</strong>。</li>
+                        <li>Prompt 的精準程度，直接反映了你對業務需求與技術設計的清晰度。</li>
+                        <li>透過這個過程，將軟體設計的「軟思維」轉化為「硬規則」。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div id="slide4" class="card slide-content">
-            <h2>🛠️ 實戰：<span>購物車折扣邏輯</span></h2>
-            <ul>
-                <li><strong>❌ 直覺爛 Prompt：</strong>「幫寫計算總價的 C#，VIP 8折...」 (邏輯寫死)</li>
-                <li><strong>✔️ 進階組合技：</strong>結構化 + Few-Shot + CoT</li>
-            </ul>
-            <pre><code class="language-markdown"># 任務：實作 IDiscountCalculator
-## 約束：使用 decimal、處理負數例外
-## 範例：(提供完美實作作為模仿基準)
-## 步驟：1. 分析邊界 2. 計算VIP 3. 計算滿千送百</code></pre>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>🛠️ 實戰演練<br><span>購物車折扣邏輯</span></h2>
+                    <p>重構購物車折扣邏輯，將直覺式 Prompt 升級為結構化 + Few-Shot + CoT 組合技。</p>
+                </div>
+                <div class="split-right">
+                    <p><strong>❌ 直覺型 Prompt：</strong>「幫我寫計算總價的 C#，VIP 打 8 折，滿千送百，處理一下精度。」（邏輯混亂且易遺漏精度）</p>
+                    <p><strong>✔️ 結構化 Prompt 重構：</strong></p>
+                    <pre><code class="language-markdown"># 任務：實作 IDiscountCalculator 介面
+## 約束條件：
+1. 金額計算必須使用 `decimal`，防止浮點數精度問題。
+2. 傳入負數或零時，必須拋出 `ArgumentException` 例外。
+## 少量樣本 (Few-Shot)：[在此提供 StandardCalculator 的完美實作]
+## 思考步驟 (CoT)：
+1. 分析傳入參數與折扣邊界條件。
+2. 計算 VIP 會員折扣比例。
+3. 套用滿千送百邏輯，並確保無小數點溢出。
+4. 最終生成 C# 實作代碼。</code></pre>
+                </div>
+            </div>
         </div>
 
         <div id="slide5" class="card slide-content">
-            <h2>⚠️ 常見誤區：<span>如何防禦</span></h2>
-            <ul>
-                <li><strong>❌ 貼上整份規格書</strong><br>✔️ 防禦：漸進式提示 (先產 Interface 再要實作)</li>
-                <li><strong>❌ 劣質的 Few-Shot 範例</strong><br>✔️ 防禦：範例必須是經過 Review 的「黃金標準」</li>
-                <li><strong>❌ 濫用 CoT</strong><br>✔️ 防禦：純翻譯用 Few-Shot；複雜狀態才用 CoT</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>⚠️ 常見誤區與<br><span>防禦機制</span></h2>
+                    <p>避開常見地雷，合理配置 AI 上下文，避免垃圾範本與無效算力浪費。</p>
+                </div>
+                <div class="split-right">
+                    <p>設計 Prompt 時的三大防禦策略：</p>
+                    <ul>
+                        <li><strong>避免塞入整份規格書：</strong> 資訊過載會使 AI 遺忘約束。應使用<span>漸進式提示 (Progressive Prompting)</span>，先要 Interface 與骨架，再填充實作。</li>
+                        <li><strong>杜絕劣質的 Few-Shot 範例：</strong> Few-Shot 具有極強的傳染性。範例程式碼必須是經過 Review 的「黃金標準」，若範例有 Bad Smells，AI 會全盤抄襲。</li>
+                        <li><strong>切勿濫用 CoT：</strong> 簡單任務（如格式轉換、直覺語法翻譯）開啟 CoT 只會浪費 Token 並拖慢速度；複雜業務邏輯與狀態機才需啟用 CoT。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div id="slide6" class="card slide-content">
-            <h2>❓ 常見問答：<span>未來應用</span></h2>
-            <ul>
-                <li><strong>有 Copilot 還需學 Prompt 嗎？</strong><br>Copilot 是微觀優化；結構化 Prompt 是<strong>宏觀架構設計</strong>。</li>
-                <li><strong>每次打長 Prompt 很累？</strong><br><strong>固化成 Agent Skills！</strong> 建立你的個人自動化工廠。</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>❓ 常見問答<br><span>Q&A</span></h2>
+                    <p>探討 Prompt 在未來開發工具（如 Copilot）及日常工作流中的定位與固化方式。</p>
+                </div>
+                <div class="split-right">
+                    <ul>
+                        <li>
+                            <strong>Q1: 既然有了自動完成的 Copilot，我們為什麼還要大費周章學習 Prompt Engineering？</strong>
+                            <br>
+                            <span>A1: 定位完全不同。</span>Copilot 是微觀層面的代碼補全，而進階的 Prompt Engineering 是宏觀層面的架構設計與系統邊界定義。懂 Prompt 的工程師才能主導大型模組的生成。
+                        </li>
+                        <li>
+                            <strong>Q2: 每次寫這麼長的結構化 Prompt 真的很花時間，日常開發如何提高實用性？</strong>
+                            <br>
+                            <span>A2: 固化為 Agent Skills！</span>這就是第一堂課的核心價值。將寫好的結構化 Prompt 封裝成 Skill 卡匣，日常只需傳入變數，即可一鍵調用，打造你專屬的自動化代碼工廠。
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -127,5 +171,3 @@
 <script src="slides.js"></script>
 </body>
 </html>
-
-

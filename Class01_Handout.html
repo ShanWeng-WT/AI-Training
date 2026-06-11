@@ -27,98 +27,146 @@
     </nav>
 
     <div class="slide-container">
-        <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
         <div class="slide-content-wrapper">
         
         <div class="card" id="slide0">
-            <h1>打造專屬助手：<span>Agent Skills 的定義與運用</span></h1>
+            <h1>打造專屬助手：<br><span>Agent Skills 的定義與運用</span></h1>
+            <p class="subtitle">企業內部 AI 輔助開發教育訓練</p>
         </div>
 
         <div class="card" id="slide1">
-            <h2>🎯 課程目標 <span>(Session Goals)</span></h2>
-            <ul>
-                <li><strong>建立技能：</strong> 實務操作 Agent Skills</li>
-                <li><strong>翻轉模式：</strong> 從對話轉為<span>系統化技能</span></li>
-                <li><strong>解決痛點：</strong> 降低除錯成本，<span>生產力大躍進</span></li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>🎯 課程目標<br><span>Session Goals</span></h2>
+                    <p>翻轉人機互動模式，從隨機對話升級為系統化的「自動化技能」輸出，真正解決開發痛點。</p>
+                </div>
+                <div class="split-right">
+                    <p>本堂課將帶領大家將個人的開發經驗軟體化，建立第一個專屬 Agent Skill：</p>
+                    <ul>
+                        <li><strong>建立技能：</strong> 實務操作 Agent Skills，將踩坑經驗轉化為可複用的代碼生成規則。</li>
+                        <li><strong>翻轉模式：</strong> 擺脫每次對話重新說明的困境，改以<span>系統化技能卡匣</span>來約束並引導 AI。</li>
+                        <li><strong>解決痛點：</strong> 杜絕 AI 瞎編程式碼、不符合團隊架構的亂象，<span>使開發效率與代碼品質大躍進</span>。</li>
+                    </ul>
+                    <blockquote class="highlight">
+                        目標：把一般的 LLM（百科全書）改造成能直接融入 Wanin 開發工作流的專屬助手。
+                    </blockquote>
+                </div>
+            </div>
         </div>
 
         <div class="card" id="slide2">
-            <h2>📖 背景與<span>核心痛點</span></h2>
-            <ul>
-                <li><strong>通用 AI 局限：</strong> 不懂專案架構與規範</li>
-                <li><strong>同步成本：</strong> 反覆糾錯，拖慢效率</li>
-                <li><strong>解法：</strong> Agent Skills 賦予<span>專案感知力</span></li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>📖 背景與<br><span>核心痛點</span></h2>
+                    <p>通用型 AI 缺乏專案感知，反覆溝通與糾錯的時間成本反而拖慢了開發效率。</p>
+                </div>
+                <div class="split-right">
+                    <p>當我們把 AI 當成「聰明但無記憶的大學實習生」時，會面臨以下痛點：</p>
+                    <ul>
+                        <li><strong>通用解法就是錯誤解法：</strong> AI 不懂特定的專案架構、程式庫規範與企業內部標準。</li>
+                        <li><strong>同步成本極高：</strong> 每次開啟新對話都要重述一遍專案規範，稍有不慎即產生編譯錯誤。</li>
+                        <li><strong>解決方案：</strong> 透過 <strong>Agent Skills</strong> 賦予 AI <span>專案感知力與行為邊界</span>，省下反覆 Debug 與 Code Review 的爭執時間。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card" id="slide3">
-            <h2>⚙️ Agent Skills 的<span>核心要素</span></h2>
-            <ul>
-                <li><strong>Intent：</strong> 觸發條件</li>
-                <li><strong>Context：</strong> 專案上下文</li>
-                <li><strong>Constraints：</strong> <span>絕對不能做什麼</span></li>
-                <li><strong>Few-shot：</strong> 黃金範本</li>
-                <li><strong>Next Actions：</strong> 任務後續流程</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>⚙️ Agent Skills 的<br><span>核心要素</span></h2>
+                    <p>技能卡匣的四大核心支柱，決定了 AI 生成結果的紀律與精準度。</p>
+                </div>
+                <div class="split-right">
+                    <p>一個設計良好的 Skill（技能定義檔）通常包含以下幾大區塊：</p>
+                    <ul>
+                        <li><strong>Intent (觸發條件)：</strong> 明確定義什麼時候該使用此技能（例如：看見實體類別時生成 Repository）。</li>
+                        <li><strong>Context (專案上下文)：</strong> 提供 AI 必須理解的專案環境（框架版本、特定庫或資料庫結構）。</li>
+                        <li><strong>Constraints (約束條件)：</strong> <span>最核心的部分</span>，明確列出「絕對禁止的事情」（例如：不可在 Controller 使用 DbContext）。</li>
+                        <li><strong>Few-shot (黃金範本)：</strong> 給予一到多個標準的滿分考卷範例，讓 AI 依葫蘆畫瓢。</li>
+                        <li><strong>Next Actions (後續流程)：</strong> 定義代碼生成後的下一步驗證或說明流程。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card" id="slide4">
-            <h2>💡 頓悟時刻 <span>(Aha Moment)</span></h2>
-            <blockquote>
-                Skill 不是 Prompt！它是<span>「可重複使用的自動化工作流」</span>。
-            </blockquote>
-            <ul>
-                <li>知識軟體化</li>
-                <li>經驗傳承</li>
-                <li>提升代碼品質</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>💡 頓悟時刻<br><span>Aha Moment</span></h2>
+                    <p>Skill 不是 Prompt！它是可重複使用的「知識軟體化」與「自動化工作流」。</p>
+                </div>
+                <div class="split-right">
+                    <blockquote>
+                        "Skill 不是隨機的文字對話！它是<span>「可重複使用的自動化工作流」</span>的載體。"
+                    </blockquote>
+                    <p>將個人或團隊的踩坑經驗編寫成 Skill 存檔，其帶來的核心價值包括：</p>
+                    <ul>
+                        <li><strong>知識軟體化：</strong> 把資深工程師的架構思維與開發規範，轉化為 AI 可讀的指令集。</li>
+                        <li><strong>經驗無縫傳承：</strong> 新進人員只需呼叫相同的 Skill，即可瞬間產出與團隊一致的高品質代碼。</li>
+                        <li><strong>自動化防線：</strong> 減少手動調整 Boilerplate 的時間，將精力集中在核心業務邏輯。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card" id="slide5">
-            <h2>🛠️ 實戰：<span>.NET Repository Generator</span></h2>
-            <ul>
-                <li><strong>痛點：</strong> AI 直接在 Controller 操作 DbContext</li>
-                <li><strong>解法：</strong> 1. 系統提示詞 2. 黃金範本</li>
-            </ul>
-            <pre><code class="language-markdown">
-# Constraints (約束條件):
-1. 禁止在 Controller 直接用 DbContext
-2. 建立 `I[實體]Repository` 介面
-3. 必須使用 `async Task&lt;T&gt;`
-            </code></pre>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>🛠️ 實戰：<br><span>.NET Repository Generator</span></h2>
+                    <p>展示如何透過 Constraints 與黃金範本，規範 AI 產出符合架構的 CRUD 邏輯。</p>
+                </div>
+                <div class="split-right">
+                    <p><strong>實際痛點：</strong> 直接發問會導致 AI 在 Controller 注入 DbContext 並直接操作，違反架構分層。</p>
+                    <p><strong>解決方案：</strong> 建立 Repository 產生技能，以 Markdown 明確定義規則：</p>
+                    <pre><code class="language-markdown"># Constraints (約束條件):
+1. 絕對禁止在 Controller 直接注入與使用 DbContext。
+2. 必須建立 `I[Entity]Repository` 介面，並在 `[Entity]Repository` 實作。
+3. 所有資料存取方法必須使用 `async Task&lt;T&gt;` 異步設計。
+4. 必須包含 Try-Catch 例外處理並記錄 Log。</code></pre>
+                    <p>※ 套用此技能後，AI 即可產出符合團隊分層設計與例外處理的代碼。</p>
+                </div>
+            </div>
         </div>
 
         <div class="card" id="slide6">
-            <h2>⚠️ 常見誤區與<span>防禦機制</span></h2>
-            <ul>
-                <li><strong>空泛指令</strong> → <span>具體條件</span> (如：低於 50 行)</li>
-                <li><strong>缺乏上下文</strong> → <span>限制範圍</span> (指定介面/框架)</li>
-                <li><strong>無防呆機制</strong> → <span>自我修正</span> (要求 AI 自我檢查)</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>⚠️ 常見誤區與<br><span>防禦機制</span></h2>
+                    <p>AI 不懂哲學，它只懂明確的規則。設計 Skill時應避免空泛指令，並建立自我檢視機制。</p>
+                </div>
+                <div class="split-right">
+                    <p>設計 Agent Skills 時常見的三大誤區與改進方式：</p>
+                    <ul>
+                        <li><strong>空泛指令：</strong> 避免使用「寫出好維護的程式」，改用<span>具體量化指標</span>（例如：每個方法不可超過 50 行，圈複雜度 &lt; 10）。</li>
+                        <li><strong>缺乏上下文範圍：</strong> 避免無範圍生成，應<span>精確限制範圍</span>（例如：僅限 .NET 8 / EF Core，或特定 Unity UI Toolkit 框架）。</li>
+                        <li><strong>無防呆與自我修正：</strong> <span>增加自我檢查提示詞</span>（例如：在 Skill 最後要求「生成代碼後，請對照 Constraints 自我檢查，若有違反請重新生成」），能有效濾掉 80% 的低級錯誤。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card" id="slide7">
-            <h2>❓ 常見問答 <span>(Q&A)</span></h2>
-            <ul>
-                <li><strong>拖慢進度？</strong> → <span>是投資！</span> (30分換無數除錯時間)</li>
-                <li><strong>Token 爆掉？</strong> → <span>動態上下文！</span> (限縮範圍降成本)</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>❓ 常見問答<br><span>Q&A</span></h2>
+                    <p>面對開發團隊對 Skill 的實用性、成本與維護性的常見質疑。</p>
+                </div>
+                <div class="split-right">
+                    <ul>
+                        <li>
+                            <strong>Q1: 每次寫 Skill 都要花時間，會不會反而拖慢開發進度？</strong>
+                            <br>
+                            <span>A1: 這是高投報率的長期投資。</span>花 30 分鐘寫一個 Skill，能讓整個團隊在往後的一整年裡，每次生成 Boilerplate 省下 10 分鐘，同時省去無數 Code Review 的糾錯與爭吵時間。
+                        </li>
+                        <li>
+                            <strong>Q2: 把一堆 Constraints 和範本塞進 Prompt，會不會導致 Token 爆掉或 AI 遺忘？</strong>
+                            <br>
+                            <span>A2: 應採用動態上下文與限縮範疇。</span>將 Skill 切割成單一職責（Single Responsibility），只在對應的場景載入對應的 Skill，並使用 RAG 或編輯器 context 功能來精準控制 Token 數量。
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -142,5 +190,3 @@
 <script src="slides.js"></script>
 </body>
 </html>
-
-

@@ -25,100 +25,132 @@
     </nav>
 
     <div class="slide-container">
-        <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
         <div class="slide-content-wrapper">
         
-        <div id="slide0" class="card slide-content">
-            <h1>無痛實作大架構</h1>
-            <p class="subtitle">Spec 驅動與 Planning Mode (PlanMode)</p>
-        </div>
-        
-        <div id="slide1" class="card slide-content">
-            <h2>一、為何需要 <span>Spec 驅動與 PlanMode？</span></h2>
-            <ul>
-                <li>模糊需求 = 義大利麵條程式碼</li>
-                <li>你不是打字機，你是<strong>架構審閱者</strong></li>
-                <li>先有計畫，再有程式碼</li>
-            </ul>
-            <blockquote>
-                告別高耦合，掌握主導權。
-            </blockquote>
-        </div>
+            <!-- Slide 0: Cover (Centered Layout) -->
+            <div class="card" id="slide0">
+                <h1>無痛實作大架構</h1>
+                <p class="subtitle">Spec 驅動與 Planning Mode (PlanMode)</p>
+            </div>
+            
+            <!-- Slide 1: Why Spec Driven -->
+            <div class="card" id="slide1">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>為何需要 Spec 驅動與 PlanMode？</h2>
+                        <p>當開發規模擴大，模糊的需求會導致 AI 產生高耦合、無法編譯的程式碼。我們必須從「打字機」轉變為「架構審閱者」。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>🚨 大型任務的痛點：</strong></p>
+                        <ul>
+                            <li><strong>義大利麵條程式碼：</strong> AI 容易在無規劃下產生數百行難以 Debug 的高耦合程式碼。</li>
+                            <li><strong>除錯成本高昂：</strong> 後續進行 Debug 與調整結構的時間往往比自己重寫還要多。</li>
+                            <li><strong>主導權喪失：</strong> 工程師淪為拼湊程式碼的工具，而非架構的掌控者。</li>
+                        </ul>
+                        <blockquote>
+                            🔑 核心轉變：從「程式碼撰寫者」轉變為「架構審閱者」，先規劃架構，再產出程式碼。
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
 
-        <div id="slide2" class="card slide-content">
-            <h2>二、撰寫精準的 <span>Spec</span></h2>
-            <ul>
-                <li><strong>Context：</strong> 現況與痛點</li>
-                <li><strong>Goals：</strong> 預期功能</li>
-                <li><strong>Non-Goals：</strong> 絕對<strong>不要</strong>做的事</li>
-                <li><strong>Constraints：</strong> 版本與套件限制</li>
-                <li><strong>Architecture Rules：</strong> 設計模式與規範</li>
-            </ul>
-            <blockquote>
-                把 AI 當新進資深工程師，Spec 就是他的 Onboarding 指南。
-            </blockquote>
-        </div>
+            <!-- Slide 2: Spec Writing -->
+            <div class="card" id="slide2">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>撰寫精準的 Spec</h2>
+                        <p>將 AI 視為新進的資深工程師。為其提供明確的 Onboarding 指南，劃定明確的運作邊界。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>📋 撰寫 Spec 的五大核心要素：</strong></p>
+                        <ul>
+                            <li><strong>Context (現況與痛點)：</strong> 描述目前系統的問題與背景。</li>
+                            <li><strong>Goals (預期功能)：</strong> 明確定義此重構或開發必須達到的目標。</li>
+                            <li><strong>Non-Goals (非目標)：</strong> 絕對不要做的事（如：先不要調整 UI 或資料庫），防止開發範圍失控（Scope Creep）。</li>
+                            <li><strong>Constraints (限制條件)：</strong> 套件版本、平台限制（例如 Unity 版本或 .NET 限制）。</li>
+                            <li><strong>Architecture Rules (設計模式與規範)：</strong> 規定所採用的設計模式與程式碼風格。</li>
+                        </ul>
+                        <blockquote>
+                            💡 最重要的關鍵在於「Non-Goals (非目標)」，它能幫助 AI 聚焦並避免不必要的衍生修改。
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
 
-        <div id="slide3" class="card slide-content">
-            <h2>三、PlanMode <span>核心精神</span></h2>
-            <blockquote>
-                「先產出實作步驟與架構設計，別急著寫程式碼。」
-            </blockquote>
-            <ul>
-                <li><strong>確認異動：</strong> 檔案路徑與變更</li>
-                <li><strong>釐清依賴：</strong> 模組互動關係</li>
-                <li><strong>分步執行：</strong> 拆分 Step 逐步進行</li>
-            </ul>
-            <pre><code class="language-markdown"># 啟動 PlanMode
+            <!-- Slide 3: PlanMode Core -->
+            <div class="card" id="slide3">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>PlanMode 核心精神</h2>
+                        <p>先規劃再動手。不要讓 AI 直接噴出大量程式碼，而是要求先產出詳細的「實作計畫與異動清單」。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>🛠️ PlanMode 的三大執行重點：</strong></p>
+                        <ul>
+                            <li><strong>確認異動：</strong> 明確列出哪些檔案需要新增、修改或刪除，以及其具體路徑。</li>
+                            <li><strong>釐清依賴：</strong> 描述各模組之間的依賴關係與影響範圍。</li>
+                            <li><strong>分步執行：</strong> 將實作步驟大卸八塊，分成獨立的 Step，每次僅執行一個步驟。</li>
+                        </ul>
+                        <p><strong>💬 啟動 PlanMode 提示詞範例：</strong></p>
+                        <pre><code class="language-markdown"># 啟動 PlanMode
 進入 Planning Mode。不要寫 Code。
 先產出 ImplementationPlan.md（含檔案異動、架構、步驟）。
 我回覆 Approve 後，再分步執行。</code></pre>
-        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div id="slide4" class="card slide-content">
-            <h2>四、<span>HITL</span> 架構審閱</h2>
-            <ul>
-                <li><strong>耦合檢查：</strong> 依賴是否合理？</li>
-                <li><strong>破壞變更：</strong> 影響 Public APIs？</li>
-                <li><strong>效能考量：</strong> 藏有耗能語法？</li>
-                <li><strong>資源管理：</strong> 確實解除綁定？</li>
-            </ul>
-            <blockquote>
-                修正 Markdown，遠比 Debug 程式碼快！<br>
-                發現問題，要求 AI <strong>「更新 Plan」</strong>。
-            </blockquote>
-        </div>
-        
-        <div id="slide5" class="card slide-content">
-            <h2>五、常見陷阱與<span>防禦</span></h2>
-            <ul>
-                <li><strong>盲目接受：</strong> 強制 AI 一次只跑一 Step。</li>
-                <li><strong>一口吃成胖子：</strong> Spec 拆分，漸進式重構。</li>
-                <li><strong>忽略邊界條件：</strong> 在 Spec 明文規定例外處理。</li>
-            </ul>
-        </div>
+            <!-- Slide 4: HITL Review -->
+            <div class="card" id="slide4">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>HITL 架構審閱</h2>
+                        <p>將人類工程師的經驗融入開發循環 (Human-in-the-loop)。在 AI 動工前，嚴格把關實作藍圖的合理性。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>🔍 架構審閱 Checklists：</strong></p>
+                        <ul>
+                            <li><strong>耦合度檢查：</strong> 模組之間的依賴關係是否合理？是否會引入不必要的相依性？</li>
+                            <li><strong>破壞性變更：</strong> 是否會破壞既有的 Public APIs 或導致現有系統異常？</li>
+                            <li><strong>效能地雷：</strong> 是否存在 GC 效能問題或潛在的資源洩漏？</li>
+                            <li><strong>資源與生命週期：</strong> 在 Unity 中，事件（Events）是否確實解除綁定（Unsubscribe）？</li>
+                        </ul>
+                        <blockquote>
+                            💡 發現任何不合理，要求 AI <strong>「更新 Plan」</strong> 並修正 Markdown。直到計畫完美，才回覆 <code>Approve</code> 開始施工。
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Traps & Defenses -->
+            <div class="card" id="slide5">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>常見陷阱與防禦</h2>
+                        <p>在使用 AI 處理大型架構時，需要建立防禦機制以防失控與幻覺。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>🛡️ 核心防禦三部曲：</strong></p>
+                        <ul>
+                            <li><strong>避免盲目接受：</strong> 強制 AI 一次只執行一個步驟 (Step-by-step)，完成後由人工驗證再繼續。</li>
+                            <li><strong>拆分大任務：</strong> 避免一口吃成胖子。若 Spec 過於龐大，應將其拆分成多個子 Spec，進行漸進式重構。</li>
+                            <li><strong>防範忽略邊界條件：</strong> 必須在 Spec 中明文規定例外處理機制與錯誤回傳規範，防止 AI 忽略異常情境。</li>
+                        </ul>
+                        <blockquote>
+                            🔑 記住：修改 Markdown 計畫只需幾秒鐘，但 Debug 錯亂的程式碼卻要花上數小時。
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
 
-        <div class="footer">
-            PDD3 AI Training Series - Wanin
-        </div>
+            <!-- Global Footer -->
+            <div class="footer">
+                PDD3 AI Training Series - Wanin
+            </div>
         </div>
     </div>
 
+    <!-- Navigation Controls -->
     <div class="slide-controls">
         <button class="nav-btn prev" title="Previous Slide">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -131,6 +163,6 @@
             </svg>
         </button>
     </div>
-<script src="slides.js"></script>
+    <script src="slides.js"></script>
 </body>
 </html>

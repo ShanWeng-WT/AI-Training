@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>超越單次對話：Agentic Workflow 設計模式</title>
+    <title>超越單次對話：Agentic Workflow 設計模式 - PDD3 AI Training</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Highlight.js for Syntax Highlighting -->
@@ -26,92 +26,135 @@
     </nav>
 
     <div class="slide-container">
-        <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
         <div class="slide-content-wrapper">
-            <div id="slide0" class="card slide-content">
+            
+            <!-- Slide 0: Cover (Centered Layout) -->
+            <div class="card" id="slide0">
                 <h1>超越單次對話</h1>
-                <p class="subtitle"><span>Agentic Workflow</span> 設計模式</p>
+                <p class="subtitle">Agentic Workflow 設計模式</p>
             </div>
 
-            <div id="slide1" class="card slide-content">
-                <h2>一、為何需要 <span>Agentic Workflow？</span></h2>
-                <ul>
-                    <li>單次對話<strong>容錯率極低</strong></li>
-                    <li>讓 AI 具備<strong>反思、工具、協作</strong>能力</li>
-                    <li>完善 Workflow 讓 <strong>GPT-3.5 超越 GPT-4</strong></li>
-                </ul>
+            <!-- Slide 1: Why Agentic Workflow -->
+            <div class="card" id="slide1">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>為何需要 Agentic Workflow？</h2>
+                        <p>單次對話的容錯率極低。引進 Agentic Workflow 能讓 AI 具備自我修正、工具使用與分工協作的能力，大幅提升複雜任務的成功率。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>💡 吳恩達 (Andrew Ng) 的核心論點：</strong></p>
+                        <ul>
+                            <li><strong>超越模型本身的限制：</strong> 良好的設計工作流甚至能讓 GPT-3.5 的表現超越直接進行單次對話的 GPT-4。</li>
+                            <li><strong>像人類工程師般思考：</strong> 讓 AI 具備自我 Debug、查找資料、按部就班做計畫，以及團隊分工的邏輯。</li>
+                            <li><strong>容錯率高：</strong> 透過迭代運算 (Iterative Loop)，AI 可以不斷修正自己的輸出直至達標。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide2" class="card slide-content">
-                <h2>二、模式一：<span>反思 (Reflection)</span></h2>
-                <blockquote>「讓 AI 睜開眼睛看錯誤訊息，自我修正。」</blockquote>
-                <ul>
-                    <li>自動擷取<strong>報錯訊息</strong></li>
-                    <li>餵回 AI 進行<strong>自我修復</strong></li>
-                    <li>最終產出<strong>已通過編譯</strong>的版本</li>
-                </ul>
+            <!-- Slide 2: Reflection -->
+            <div class="card" id="slide2">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>模式一：反思 (Reflection)</h2>
+                        <p>讓 AI 睜開眼睛看錯誤訊息。透過編譯與執行期的錯誤回饋，實現自動化的自我修復。</p>
+                    </div>
+                    <div class="split-right">
+                        <blockquote>「不要讓 AI 閉著眼睛寫 Code，而要建立自動化回饋機制。」</blockquote>
+                        <p><strong>🔄 反思工作流的運作步驟：</strong></p>
+                        <ul>
+                            <li><strong>執行與編譯：</strong> 寫出自動化腳本，將 AI 產出的程式碼自動進行編譯或執行。</li>
+                            <li><strong>錯誤擷取：</strong> 當編譯失敗或拋出 Exception 時，擷取完整的報錯訊息。</li>
+                            <li><strong>回饋與修復：</strong> 將錯誤訊息直接丟回給 AI，要求它分析原因並重新產出，直到通過編譯。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide3" class="card slide-content">
-                <h2>三、模式二：<span>工具使用 (Tool Use)</span></h2>
-                <blockquote>「賦予 AI 存取真實世界資料的手與眼。」</blockquote>
-                <ul>
-                    <li>提供 JSON 格式的 <strong>API 工具描述</strong></li>
-                    <li>AI 呼叫工具 ➔ 伺服器執行 ➔ 回傳結果</li>
-                    <li>突破 AI <strong>無法得知現況</strong>的限制</li>
-                </ul>
+            <!-- Slide 3: Tool Use -->
+            <div class="card" id="slide3">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>模式二：工具使用 (Tool Use)</h2>
+                        <p>賦予 AI 存取外部世界與系統資料的能力。透過 Function Calling，讓 AI 能夠調用 API 取得精確的最新狀態。</p>
+                    </div>
+                    <div class="split-right">
+                        <blockquote>「AI 不能通靈，如果你需要它處理即時資料，必須給予它手與眼。」</blockquote>
+                        <p><strong>🛠️ 運作機制 (Function Calling)：</strong></p>
+                        <ul>
+                            <li><strong>定義描述：</strong> 提供 JSON 格式的 API 工具描述與參數架構。</li>
+                            <li><strong>語意分析：</strong> AI 分析使用者意圖，判斷是否需要呼叫工具，並產出參數 JSON。</li>
+                            <li><strong>伺服器執行：</strong> 系統接收 JSON 並在後端執行 API（如：查詢玩家背包、讀取資料庫）。</li>
+                            <li><strong>結果回傳：</strong> 將 API 執行結果餵回給 AI，由其綜合成人類讀得懂的語意回答。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide4" class="card slide-content">
-                <h2>四、模式三：<span>規劃 (Planning)</span></h2>
-                <blockquote>「先思考再行動，拒絕大雜燴式的輸出。」</blockquote>
-                <ul>
-                    <li>基於 <strong>Chain of Thought (CoT)</strong></li>
-                    <li>面對複雜任務，先輸出<strong>實作藍圖</strong></li>
-                    <li>每次<strong>只執行一個步驟</strong>，降低幻覺風險</li>
-                </ul>
+            <!-- Slide 4: Planning -->
+            <div class="card" id="slide4">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>模式三：規劃 (Planning)</h2>
+                        <p>先思考再行動。將龐大的需求大卸八塊，透過分步執行降低模型的幻覺風險，保持程式架構乾淨。</p>
+                    </div>
+                    <div class="split-right">
+                        <blockquote>「面對複雜任務，拒絕大雜燴式的輸出。」</blockquote>
+                        <p><strong>📋 規劃模式核心實作：</strong></p>
+                        <ul>
+                            <li><strong>思維鏈 (Chain of Thought)：</strong> 要求 AI 寫出推導思路，而非直接給答案。</li>
+                            <li><strong>藍圖拆解：</strong> 強迫 AI 在開發前先規劃「實作藍圖」，列出所有子步驟。</li>
+                            <li><strong>單步執行與驗證：</strong> 配合自動化腳本，一次只命令 AI 執行一個步驟，完成並通過人工或單元測試後，才推進至下一步。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide5" class="card slide-content">
-                <h2>五、模式四：<span>多代理協作 (Multi-agent)</span></h2>
-                <blockquote>「組建虛擬 AI 開發團隊，互相批判與合作。」</blockquote>
-                <ul>
-                    <li>實例化多個不同角色的 <strong>Agent</strong></li>
-                    <li>Coder 產出 ➔ Tech Lead <strong>嚴格審查</strong></li>
-                    <li>維持專注，避免<strong>上下文失焦</strong></li>
-                </ul>
+            <!-- Slide 5: Multi-agent -->
+            <div class="card" id="slide5">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>模式四：多代理協作 (Multi-agent)</h2>
+                        <p>組建虛擬 AI 開發團隊。透過明確的角色定義與互相審查，克服單一模型的上下文限制與偏見。</p>
+                    </div>
+                    <div class="split-right">
+                        <blockquote>「讓不同專長的 Agent 互相合作與批判，完美複製人類開發管線。」</blockquote>
+                        <p><strong>👥 虛擬開發團隊範例：</strong></p>
+                        <ul>
+                            <li><strong>Coder Agent (編碼人員)：</strong> 專注於撰寫程式碼以實現 Spec 的功能需求。</li>
+                            <li><strong>Tech Lead Agent (技術主管)：</strong> 專注於 Code Review。審查程式碼的效能、擴充性、Unity 的 GC 地雷等，若有問題則退回給 Coder 修改。</li>
+                            <li><strong>優勢：</strong> 將複雜邏輯拆分到不同 Prompt 角色中，避免單一 Prompt 因規則過多而失焦。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide6" class="card slide-content">
-                <h2>六、陷阱與<span>防禦機制</span></h2>
-                <ul>
-                    <li><strong>無窮迴圈：</strong>設定最大迭代次數 (Max Iterations)</li>
-                    <li><strong>過度自信幻覺：</strong>強型別驗證，溫和報錯回傳</li>
-                    <li><strong>危險操作：</strong>強制 <strong>Human-in-the-loop</strong> 確認</li>
-                </ul>
+            <!-- Slide 6: Traps & Defenses -->
+            <div class="card" id="slide6">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>常見陷阱與防禦機制</h2>
+                        <p>在使用 Agentic Workflow 釋放 AI 自動化威力的同時，必須建立嚴格的防護牆以防失控與無限消耗。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>🛡️ 企業級防禦手段：</strong></p>
+                        <ul>
+                            <li><strong>無窮迴圈防禦：</strong> 當 AI 自我 Debug 一直失敗時，極易陷入死循環。必須設定 <code>Max Iterations</code> (如最多重試 3 次) 強制中斷。</li>
+                            <li><strong>過度自信幻覺：</strong> AI 可能虛構 API。需搭配「強型別驗證」與「溫和報錯回傳」，讓 API 回傳清晰的錯誤以引導其修正。</li>
+                            <li><strong>高風險操作防禦：</strong> 針對修改資料庫、刪除系統檔案等危險操作，必須加入 <code>Human-in-the-loop</code>，設計確認機制才能放行。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
+            <!-- Global Footer -->
             <div class="footer">
                 PDD3 AI Training Series - Wanin
             </div>
         </div>
     </div>
 
+    <!-- Navigation Controls -->
     <div class="slide-controls">
         <button class="nav-btn prev" title="Previous Slide">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -124,6 +167,6 @@
             </svg>
         </button>
     </div>
-<script src="slides.js"></script>
+    <script src="slides.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自動化測試 AI：Evaluation Harness 與 CI/CD</title>
+    <title>自動化測試 AI：Evaluation Harness 與 CI/CD - PDD3 AI Training</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Highlight.js for Syntax Highlighting -->
@@ -25,85 +25,119 @@
     </nav>
 
     <div class="slide-container">
-        <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
         <div class="slide-content-wrapper">
             
-            <div id="slide0" class="card slide-content">
-                <h1>自動化測試<span>你的 AI</span></h1>
+            <!-- Slide 0: Cover (Centered Layout) -->
+            <div class="card" id="slide0">
+                <h1>自動化測試你的 AI</h1>
                 <p class="subtitle">實作 Evaluation Harness 與 CI/CD 整合</p>
             </div>
 
-            <div id="slide1" class="card slide-content">
-                <h2>為何需要<span>自動化測試？</span></h2>
-                <blockquote>「沒有量化準確率，AI 永遠只是玩具。」</blockquote>
-                <ul>
-                    <li><strong>防範回歸：</strong> 確保舊任務不崩壞</li>
-                    <li><strong>量化指標：</strong> 判斷是否可上線</li>
-                    <li><strong>建立信任：</strong> 降低對黑盒子的疑慮</li>
-                </ul>
+            <!-- Slide 1: Why Auto Test -->
+            <div class="card" id="slide1">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>為何需要自動化測試？</h2>
+                        <p>當團隊規模擴大，如果不能量化 AI 的準確率，我們根本無法信任它。自動化測試是防範 AI 退化與回歸（Regression）的唯一手段。</p>
+                    </div>
+                    <div class="split-right">
+                        <blockquote>「沒有量化準確率，AI 永遠只是個不穩定的玩具。」</blockquote>
+                        <p><strong>🎯 自動化評測的核心價值：</strong></p>
+                        <ul>
+                            <li><strong>防範回歸 (Regression)：</strong> 避免 AI 出現「昨天會寫的功能，修改 Prompt 後今天突然不會了」的情況。</li>
+                            <li><strong>量化指標：</strong> 提供明確的數據（如準確率高於 90%），作為 Prompt 或 Agent 能否合併上線的客觀依據。</li>
+                            <li><strong>建立工程信任：</strong> 將不可預測的 LLM 黑盒子納入可量化、可重複測試的軟體工程規範中。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide2" class="card slide-content">
-                <h2>Harness 的<span>三大要素</span></h2>
-                <ul>
-                    <li><strong>Dataset：</strong> 輸入任務與預期結果</li>
-                    <li><strong>Runner：</strong> 批次執行任務</li>
-                    <li><strong>Evaluator：</strong> 驗證精確度與編譯結果</li>
-                </ul>
+            <!-- Slide 2: Three Elements -->
+            <div class="card" id="slide2">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>Harness 的三大要素</h2>
+                        <p>一個完整的 Evaluation Harness 就像是自動批次考試系統，由 Dataset、Runner 與 Evaluator 三者協同工作。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>⚙️ 評測架構三大元件：</strong></p>
+                        <ul>
+                            <li><strong>Dataset (資料集/考卷)：</strong> 包含多個測試案例。每個案例定義了輸入的 Prompt 以及預期的 Keyword 或程式碼結構。</li>
+                            <li><strong>Runner (執行器/監考老師)：</strong> 負責批次調用 AI 介面，在沙盒環境下執行 Prompt 並蒐集產出的 Code。</li>
+                            <li><strong>Evaluator (評分器/改考卷的)：</strong> 根據設定的規則（例如編譯通過與否、關鍵字包含等）進行自動化評估，若不達標則回傳 Error。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide3" class="card slide-content">
-                <h2>CI/CD <span>整合</span></h2>
-                <blockquote>「Agent 設定檔如同程式碼，需嚴格版控。」</blockquote>
-                <ul>
-                    <li><strong>觸發測試：</strong> 發 PR 自動執行 Harness</li>
-                    <li><strong>自動把關：</strong> 準確率過低阻擋合併</li>
-                </ul>
-                <pre><code class="language-yaml"># 阻擋低準確率 PR
+            <!-- Slide 3: CI/CD Integration -->
+            <div class="card" id="slide3">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>CI/CD 整合</h2>
+                        <p>將 Agent 參數與 Prompt 視為原始碼。透過發 PR 自動觸發 Harness 評測，防止劣質 Prompt 進入主線。</p>
+                    </div>
+                    <div class="split-right">
+                        <blockquote>「Agent 設定檔如同程式碼，需納入 Git 嚴格版控。」</blockquote>
+                        <p><strong>🤖 GitHub Actions 自動把關工作流：</strong></p>
+                        <ul>
+                            <li><strong>自動觸發測試：</strong> 每當 Prompt 變更或發送 PR 時，自動執行 Harness 測試集。</li>
+                            <li><strong>不通過則阻擋：</strong> 若整體評測準確率低於門檻，直接阻擋 PR 合併，並在 PR 自動留言警示，防止越改越笨的 AI 參數進入主線。</li>
+                        </ul>
+                        <p><strong>📄 YAML 範例片段：</strong></p>
+                        <pre><code class="language-yaml"># 阻擋低準確率 PR
 - name: Comment on PR
   if: failure()
-  run: echo "❌ AI 準確率低於標準"</code></pre>
+  run: echo "❌ AI 準確率低於標準，阻擋合併！"</code></pre>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide4" class="card slide-content">
-                <h2>企業級 AI <span>四大守則</span></h2>
-                <ul>
-                    <li><strong>受測試檢驗：</strong> AI 只是編譯器</li>
-                    <li><strong>No CI, No AI：</strong> 測試覆蓋率決定採用率</li>
-                    <li><strong>Prompt 版控：</strong> 所有 System Prompt 需進 Git</li>
-                    <li><strong>沙盒執行：</strong> 未經同意不直接執行指令</li>
-                </ul>
+            <!-- Slide 4: Four Rules -->
+            <div class="card" id="slide4">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>企業級 AI 四大守則</h2>
+                        <p>在企業環境中導入 AI，必須遵守四大黃金守則，確保安全性、可靠性與可維護性。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>🛡️ 企業級開發守則：</strong></p>
+                        <ul>
+                            <li><strong>受測試檢驗：</strong> AI 只是特殊的編譯器，產出代碼必須一律通過既有的 Linter 與 Unit Test。</li>
+                            <li><strong>No CI, No AI：</strong> 沒有自動化評測腳本與持續整合把關，切勿在專案中大量採用 AI。</li>
+                            <li><strong>Prompt 版本控制：</strong> 所有的 System Prompt 與 Agent 設定必須納入 Git 版本控制，禁止手動在網頁後台修改。</li>
+                            <li><strong>沙盒執行安全：</strong> AI 產出與測試執行必須在安全的沙盒環境進行，未經審閱不得直接在本地執行危險指令。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div id="slide5" class="card slide-content">
-                <h2>常見陷阱與<span>防禦機制</span></h2>
-                <ul>
-                    <li><strong>過度優化：</strong> 需建立盲測資料集防禦</li>
-                    <li><strong>裁判幻覺：</strong> 依賴確定性測試，LLM 僅輔助</li>
-                </ul>
+            <!-- Slide 5: Traps & Defenses -->
+            <div class="card" id="slide5">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>常見陷阱與防禦機制</h2>
+                        <p>實務執行自動化評測時，需防範過度擬合與測試成本高昂的問題，設計精準的防護機制。</p>
+                    </div>
+                    <div class="split-right">
+                        <p><strong>⚠️ 常見挑戰與解法：</strong></p>
+                        <ul>
+                            <li><strong>過度優化 (Overfitting)：</strong> AI 容易針對已知考卷背答案。必須建立「盲測資料集（Blind Test Set）」，防止 Prompt 對特定測試過度擬合。</li>
+                            <li><strong>裁判幻覺：</strong> LLM 裁判可能給出不穩定評分。建議以確定性測試（如編譯、單元測試、關鍵字匹配）為主，LLM 裁判僅作為風格風格輔助。</li>
+                            <li><strong>API 成本考量：</strong> 頻繁 PR 跑 API 可能花費不貲。實務上平常只跑 5~10 題的 Smoke Test，待 Release 前夕才跑完整的 Full Evaluation Harness。</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
+            <!-- Global Footer -->
             <div class="footer">
                 PDD3 AI Training Series - Wanin
             </div>
         </div>
     </div>
 
+    <!-- Navigation Controls -->
     <div class="slide-controls">
         <button class="nav-btn prev" title="Previous Slide">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -116,6 +150,6 @@
             </svg>
         </button>
     </div>
-<script src="slides.js"></script>
+    <script src="slides.js"></script>
 </body>
 </html>

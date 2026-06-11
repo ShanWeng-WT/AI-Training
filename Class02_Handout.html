@@ -26,81 +26,136 @@
     </nav>
 
     <div class="slide-container">
-        <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
         <div class="slide-content-wrapper">
+        
         <div class="card slide-content" id="slide0">
-            <h1>揭開 <span>LLM</span> 的黑盒子：<br>它能做什麼，<span>不能做什麼？</span></h1>
+            <h1>揭開 LLM 的黑盒子：<br><span>它能做什麼，不能做什麼？</span></h1>
+            <p class="subtitle">企業內部 AI 輔助開發教育訓練</p>
         </div>
         
         <div class="card slide-content" id="slide1">
-            <h2>🎯 <span>課程目標</span></h2>
-            <ul>
-                <li><strong>理解底層：</strong> 揭開 LLM 神秘面紗</li>
-                <li><strong>認識極限：</strong> 了解「幻覺」根本原因</li>
-                <li><strong>榨取價值：</strong> 掌握機率，收斂確定性結果</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>🎯 課程目標<br><span>Session Goals</span></h2>
+                    <p>剖析生成式大語言模型的底層極限，防範並收斂「幻覺」以獲得穩定的工程產出。</p>
+                </div>
+                <div class="split-right">
+                    <p>本堂課將帶領大家看清 LLM 的本質，轉變對 AI 輸出的預期與使用思維：</p>
+                    <ul>
+                        <li><strong>理解底層：</strong> 揭開 LLM 的運作機制，了解它並非真的懂語意，而是依賴統計機率。</li>
+                        <li><strong>認識極限：</strong> 深入理解「幻覺」發生的數學根本原因，避免盲目信任 AI 產出。</li>
+                        <li><strong>榨取價值：</strong> 掌握如何以約束和範本進行「機率引導」，將不確定性收斂至高度可預測的結果。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card slide-content" id="slide2">
-            <h2>📖 LLM <span>核心概念</span></h2>
-            <ul>
-                <li><strong>超級「文字接龍」：</strong> 不懂 C#，不懂資料庫</li>
-                <li><strong>處理單位 Token：</strong> 不是字詞，是 Token（如 <code>=&gt;</code>）</li>
-                <li><strong>沒有真實只有合理：</strong> 沒見過 = 捏造 = <strong>幻覺</strong></li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>📖 LLM<br><span>核心概念</span></h2>
+                    <p>LLM 本質上是文字接龍引擎。它沒有「真偽」的觀念，只有「合理」的機率分佈。</p>
+                </div>
+                <div class="split-right">
+                    <p>理解大語言模型的三大關鍵支撐點：</p>
+                    <ul>
+                        <li><strong>超級文字接龍：</strong> LLM 本質上不具備邏輯推理或程式碼編譯能力，它只是基於前文預測下一個最可能出現的 <span>Token</span>。</li>
+                        <li><strong>以 Token 為處理單位：</strong> AI 理解代碼的最小單位不是單字或字母，而是如 <code>=&gt;</code>、<code>public</code> 等 Token，這決定了其語義匹配特徵。</li>
+                        <li><strong>沒有真實，只有合理：</strong> 當模型缺乏特定上下文時，會硬生生捏造看似語意通順但不存在的 API。這就是<span>幻覺 (Hallucination)</span> 的物理本質。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         
         <div class="card slide-content" id="slide3">
-            <h2>💡 <span>頓悟時刻</span></h2>
-            <blockquote>Skill 的核心價值：<strong>對抗幻覺，收斂機率！</strong></blockquote>
-            <ul>
-                <li>給予<strong>約束</strong>與<strong>黃金範本</strong></li>
-                <li>執行<strong>機率整形</strong> (Probability Shaping)</li>
-                <li>壓低偏離規範的風險</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>💡 頓悟時刻<br><span>Aha Moment</span></h2>
+                    <p>Skill 的核心科學價值在於透過「機率整形」對抗並壓制 AI 的幻覺傾向。</p>
+                </div>
+                <div class="split-right">
+                    <blockquote>
+                        "Skill 的核心價值：<strong>對抗幻覺，收斂機率！</strong>"
+                    </blockquote>
+                    <p>我們在寫 Agent Skills 時，背後的數學原理是：</p>
+                    <ul>
+                        <li><strong>機率整形 (Probability Shaping)：</strong> 給予精確的約束條件與 Few-shot 範例，會大幅拉高正確代碼的概率。</li>
+                        <li><strong>阻斷發散：</strong> 藉由封閉邊界的定義，讓 LLM 在文字接龍時，產生偏離規範的 Token 機率被數學性地降到趨近於零。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card slide-content" id="slide4">
-            <h2>🛠️ 實戰：<span>對抗幻覺</span></h2>
-            <p><strong>情境：</strong> Unity 尋找最近敵人並造成傷害</p>
-            <ul>
-                <li>❌ <strong>缺乏約束：</strong> 捏造 <code>Physics.FindClosestComponent</code></li>
-                <li>✔️ <strong>加入約束：</strong> 強制使用 <code>Physics.OverlapSphere</code></li>
-            </ul>
-            <pre><code class="language-csharp">// 成功收斂機率，阻斷幻覺 API
-Collider[] hits = Physics.OverlapSphere(pos, radius);</code></pre>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>🛠️ 實戰：<br><span>對抗幻覺</span></h2>
+                    <p>以 Unity 尋找最近敵人並扣血為例，展示缺乏約束與加入約束的產出差異。</p>
+                </div>
+                <div class="split-right">
+                    <p><strong>情境：</strong> 尋找最近敵人並觸發傷害。</p>
+                    <ul>
+                        <li>❌ <strong>缺乏約束：</strong> AI 隨機接龍，捏造出不存在的 <code>Physics.FindClosestComponent</code> API。</li>
+                        <li>✔️ <strong>加入約束：</strong> 強制約束「必須使用 <code>OverlapSphere</code> 並透過 <code>IDamageable</code> 介面觸發傷害」。</li>
+                    </ul>
+                    <pre><code class="language-csharp">// 透過 Constraints 限縮機率後，AI 穩定產生正確代碼
+Collider[] hits = Physics.OverlapSphere(pos, radius);
+foreach (var hit in hits) {
+    if (hit.TryGetComponent&lt;IDamageable&gt;(out var target)) {
+        target.TakeDamage(damageAmount);
+    }
+}</code></pre>
+                </div>
+            </div>
         </div>
 
         <div class="card slide-content" id="slide5">
-            <h2>⚠️ 常見<span>誤區與防禦</span></h2>
-            <ul>
-                <li>❌ <strong>依賴 AI 複雜計算</strong><br>✔️ <strong>防禦：</strong> AI 寫架構，人工補核心邏輯</li>
-                <li>❌ <strong>輕信套件版本</strong><br>✔️ <strong>防禦：</strong> 明文指定框架 (如 .NET 8)</li>
-                <li>❌ <strong>塞入過多無關資訊</strong><br>✔️ <strong>防禦：</strong> 保持高訊噪比，只給關鍵結構</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>⚠️ 常見誤區與<br><span>防禦機制</span></h2>
+                    <p>生成式模型的創造力與幻覺是一體兩面的。防禦性開發思維是必不可少的護欄。</p>
+                </div>
+                <div class="split-right">
+                    <p>使用 LLM 開發時的三大防禦策略：</p>
+                    <ul>
+                        <li>❌ <strong>依賴 AI 進行複雜計算：</strong> AI 不擅長運算或推演複雜狀態機。
+                            <br>
+                            ✔️ <strong>防禦：</strong> 讓 AI 搭建架構或寫單元測試，核心計算交由人工補足或實體編譯驗證。
+                        </li>
+                        <li>❌ <strong>輕信預設的套件與 API 版本：</strong>
+                            <br>
+                            ✔️ <strong>防禦：</strong> 必須在 context 中明文指定框架版本與依賴限制（例如：C# 12 / .NET 8）。
+                        </li>
+                        <li>❌ <strong>塞入過多不相干的雜訊：</strong> 導致注意力分散。
+                            <br>
+                            ✔️ <strong>防禦：</strong> 保持高訊噪比，只餵給 AI 必要且精確的專案結構與文件。
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card slide-content" id="slide6">
-            <h2>❓ 常見問答 <span>(Q&A)</span></h2>
-            <ul>
-                <li><strong>AI 真的理解程式碼嗎？</strong><br>不。但「模式匹配」極強，能捕捉語法關聯。</li>
-                <li><strong>給了指令為何還有幻覺？</strong><br>「預設立場」太強。最佳解：提供 <strong>Few-shot 範例</strong>。</li>
-            </ul>
+            <div class="split-layout">
+                <div class="split-left">
+                    <h2>❓ 常見問答<br><span>Q&A</span></h2>
+                    <p>解惑開發團隊對大語言模型本質與限制的疑惑。</p>
+                </div>
+                <div class="split-right">
+                    <ul>
+                        <li>
+                            <strong>Q1: AI 真的理解它寫的程式碼嗎？未來會完全沒有幻覺嗎？</strong>
+                            <br>
+                            <span>A1: 不，它不理解。</span>它基於強大的「模式匹配」捕捉關聯。而幻覺與創造力是一體兩面的，即使到 GPT-5，幻覺也無法完全根除，因此防禦性提示詞與人工審查依然至關重要。
+                        </li>
+                        <li>
+                            <strong>Q2: 為什麼我給了 Constraints，AI 偶爾還是會犯錯（遺忘）？</strong>
+                            <br>
+                            <span>A2: 因為 AI 受到「預設立場」或上下文長度的機率權重影響。</span>最佳防禦是配合 **Few-shot (黃金範本)**，給它看正確的範例，這比十條文字約束更有用。
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -124,5 +179,3 @@ Collider[] hits = Physics.OverlapSphere(pos, radius);</code></pre>
 <script src="slides.js"></script>
 </body>
 </html>
-
-

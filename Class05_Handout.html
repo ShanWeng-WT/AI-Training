@@ -25,83 +25,124 @@
     </nav>
 
     <div class="slide-container">
-        <button class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
         <div class="slide-content-wrapper">
-        <div id="slide0" class="card slide-content">
-            <h1>分工協作的藝術</h1>
-            <p class="subtitle">Subagents 在複雜任務中的應用</p>
-        </div>
-        
-        <div id="slide1" class="card slide-content">
-            <h2>🎯 <span>課程目標</span></h2>
-            <ul>
-                <li><strong>理解 Subagent：</strong> 學會將龐大任務拆解</li>
-                <li><strong>體驗多 Agent：</strong> 實作分工協作流</li>
-                <li><strong>降低單一負載：</strong> 提升準確率與效率</li>
-            </ul>
-        </div>
+            <!-- Slide 0: Cover -->
+            <div id="slide0" class="card slide-content">
+                <h1>分工協作的藝術</h1>
+                <p class="subtitle">Subagents 在複雜任務中的應用</p>
+            </div>
+            
+            <!-- Slide 1: 課程目標 -->
+            <div id="slide1" class="card slide-content">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>🎯 課程目標</h2>
+                        <p>AI 就跟人一樣，一次塞太多工作會當機。解決方案就是：Subagents 分工協作。</p>
+                    </div>
+                    <div class="split-right">
+                        <ul>
+                            <li><strong>解決大任務問題：</strong> 學會將龐大、多步驟的任務拆解成可被單一 Agent 輕鬆搞定的子任務。</li>
+                            <li><strong>理解 Subagent 運作：</strong> 掌握將龐大任務合理拆解，各個擊破的設計心法。</li>
+                            <li><strong>實作分工協作流：</strong> 親自體驗多個 Agent 協同分工，建立系統化的協作流程。</li>
+                            <li><strong>降低單一負載：</strong> 降低 Context 迷失與推理鏈中斷問題，顯著提升代碼準確率與效率。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <div id="slide2" class="card slide-content">
-            <h2>📖 為什麼需要 <span>Subagents？</span></h2>
-            <ul>
-                <li><strong>單一 AI 盲點：</strong> 容易迷失方向或遺忘上下文</li>
-                <li><strong>單打獨鬥：</strong> 易生幻覺、無法兼顧架構與細節</li>
-                <li><strong>團隊作戰：</strong> 透過專精分工解決複雜問題</li>
-            </ul>
-        </div>
-        
-        <div id="slide3" class="card slide-content">
-            <h2>💡 <span>頓悟時刻</span></h2>
-            <blockquote>
-                Subagents 就像是一間軟體公司：<br>
-                PM 拆解需求 ➔ 工程師寫 Code ➔ QA 負責檢查<br>
-                <strong>各司其職，品質才有保障！</strong>
-            </blockquote>
-        </div>
+            <!-- Slide 2: 為什麼需要 Subagents -->
+            <div id="slide2" class="card slide-content">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>📖 為什麼需要 Subagents？</h2>
+                        <p>單一 AI 模型有 Context 限制。在面對複雜的大型任務時，單打獨鬥容易迷失方向、產生幻覺。</p>
+                    </div>
+                    <div class="split-right">
+                        <ul>
+                            <li><strong>單一 AI 的上下文盲點：</strong> 當對話過長時，AI 容易忽略部分關鍵指令，或在推理鏈中途迷失。</li>
+                            <li><strong>單打獨鬥的弊端：</strong> 單一 Agent 必須同時處理需求規劃、編碼與品質審查，容易顧此失彼，導致生成結果充滿幻覺。</li>
+                            <li><strong>團隊作戰的優勢：</strong> 透過專精分工，將各個 Agent 的注意力限制在極窄的上下文範圍中，確保每一階段的產出質量。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: 頓悟時刻 -->
+            <div id="slide3" class="card slide-content">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>💡 頓悟時刻</h2>
+                        <p>我們不是在寫一個更長、更複雜的 Prompt，而是在組建一間「虛擬軟體公司」。</p>
+                    </div>
+                    <div class="split-right">
+                        <blockquote>
+                            <strong>這是一次思維的翻轉：</strong><br>
+                            我們不再試圖用單次對話完成所有事，而是像管理團隊一樣：<br>
+                            <ul>
+                                <li><strong>PM (Router)：</strong> 拆解需求、決定工作優先順序</li>
+                                <li><strong>工程師 (Coder)：</strong> 專注於生成特定模組或語言邏輯</li>
+                                <li><strong>QA (Reviewer)：</strong> 負責檢查程式碼，回饋修改建議</li>
+                            </ul>
+                            <strong>各司其職，品質才有保障！</strong>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
 
-        <div id="slide4" class="card slide-content">
-            <h2>🛠️ 常見的 <span>分工模式</span></h2>
-            <ul>
-                <li><strong>Router (路由)：</strong> 判斷意圖並分發任務</li>
-                <li><strong>Coder (撰寫)：</strong> 專注於生成特定語言邏輯</li>
-                <li><strong>Reviewer (審查)：</strong> 檢查規範並給予建議</li>
-            </ul>
-            <pre><code class="language-mermaid">
+            <!-- Slide 4: 常見的分工模式 -->
+            <div id="slide4" class="card slide-content">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>🛠️ 常見的分工模式</h2>
+                        <p>未來我們面對複雜需求，第一步不再是無腦下 Prompt，而是先想「這需要幾個角色來完成？」。</p>
+                    </div>
+                    <div class="split-right">
+                        <ul>
+                            <li><strong>Router (路由)：</strong> 判斷使用者意圖與需求類別，並將任務分發給最適當的 Subagent。</li>
+                            <li><strong>Coder (撰寫)：</strong> 專注於特定技術堆疊（例如前端 React 或後端 .NET）的代碼生成。</li>
+                            <li><strong>Reviewer (審查)：</strong> 靜態檢查規範、語法與潛在邏輯錯誤，提供迭代修正意見。</li>
+                        </ul>
+                        <pre><code class="language-mermaid">
 graph TD
     User --> Router
-    Router --> |前端| Frontend_Agent
-    Router --> |後端| Backend_Agent
+    Router --> |前端需求| Frontend_Agent
+    Router --> |後端需求| Backend_Agent
     Frontend_Agent --> Reviewer
     Backend_Agent --> Reviewer
-            </code></pre>
-        </div>
+    Reviewer --> |合格| Output
+    Reviewer --> |不合格| Router
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
 
-        <div id="slide5" class="card slide-content">
-            <h2>⚠️ 常見 <span>誤區</span></h2>
-            <ul>
-                <li><strong>過度拆分：</strong> 小任務殺雞用牛刀，增加延遲</li>
-                <li><strong>溝通成本：</strong> 上下文未確實傳遞</li>
-            </ul>
-        </div>
+            <!-- Slide 5: 常見誤區 -->
+            <div id="slide5" class="card slide-content">
+                <div class="split-layout">
+                    <div class="split-left">
+                        <h2>⚠️ 常見誤區</h2>
+                        <p>不要為了分工而分工。Subagent 之間的資料傳遞也是成本，我們必須在結構清晰度與系統延遲之間取得平衡。</p>
+                    </div>
+                    <div class="split-right">
+                        <ul>
+                            <li><strong>過度拆分 (Over-engineering)：</strong> 
+                                <ul>
+                                    <li>小任務殺雞用牛刀（如簡單的迴圈邏輯使用三個 Subagent），反而增加延遲與系統不穩定性。</li>
+                                </ul>
+                            </li>
+                            <li><strong>溝通成本與資料遺失：</strong> 
+                                <ul>
+                                    <li>Subagent 之間若沒有確實傳遞上下文，容易遺失前置任務的關鍵資訊。下堂課的「Context Engineering」將教大家如何精準傳遞。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <div class="footer">
-            PDD3 AI Training Series - Wanin
-        </div>
+            <div class="footer">
+                PDD3 AI Training Series - Wanin
+            </div>
         </div>
     </div>
 
@@ -117,8 +158,6 @@ graph TD
             </svg>
         </button>
     </div>
-<script src="slides.js"></script>
+    <script src="slides.js"></script>
 </body>
 </html>
-
-

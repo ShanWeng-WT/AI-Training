@@ -1,9 +1,10 @@
+/* Backup of original style.css (v3) */
 :root {
   --primary-color: #00ffcc;
   --bg-color: #000000;
   --text-color: #e6edf3;
   --accent-color: #58a6ff;
-  --card-bg: rgba(9, 11, 15, 0.7);
+  --card-bg: transparent;
   --border-color: #1a202c;
 }
 
@@ -57,7 +58,7 @@ body {
   background: #090b0f;
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  box-shadow: 0 0 100px rgba(0, 255, 204, 0.15);
+  box-shadow: 0 0 100px rgba(0, 255, 204, 0.1);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -66,7 +67,7 @@ body {
 
 .slide-content-wrapper {
   flex: 1;
-  padding: 40px 80px 20px 80px;
+  padding: 40px;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
@@ -82,8 +83,8 @@ body {
 }
 
 .nav-btn {
-  background: rgba(22, 27, 34, 0.8);
-  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  border: 1px solid #333;
   color: var(--text-color);
   width: 48px;
   height: 48px;
@@ -108,27 +109,28 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 20px;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 h1 {
-  font-size: 2.5em;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 10px;
-  margin-top: 0;
+  font-size: 5em;
+  border: none;
   background: -webkit-linear-gradient(45deg, #00ffcc, #58a6ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
-  line-height: 1.2;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  margin-top: 0;
 }
 
 h2 {
-  font-size: 2em;
-  color: var(--accent-color);
-  margin-top: 0;
+  font-size: 3.2em;
+  margin-bottom: 40px;
+  border: none;
+  display: inline-block;
+  color: var(--text-color);
 }
 
 h2 span {
@@ -136,23 +138,26 @@ h2 span {
 }
 
 p {
-  font-size: 1.1em;
-  margin-bottom: 16px;
+  font-size: 1.8em;
+  max-width: 900px;
+  margin-bottom: 25px;
+  line-height: 1.5;
   color: #a0aec0;
-  line-height: 1.6;
-  max-width: 1000px;
 }
 
 ul, ol {
-  font-size: 1.1em;
-  margin-bottom: 20px;
+  display: inline-block;
+  text-align: left;
+  font-size: 1.8em;
+  line-height: 1.8;
+  color: #e2e8f0;
+  margin-top: 20px;
   padding-left: 30px;
-  line-height: 1.6;
-  color: #e6edf3;
+  margin-bottom: 20px;
 }
 
 li {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 
 .card {
@@ -160,113 +165,31 @@ li {
   display: none;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   background: transparent;
   border: none;
   border-radius: 12px;
-  padding: 30px 40px;
+  padding: 40px;
   margin: 0;
   box-shadow: none;
-  text-align: left;
-  backdrop-filter: none;
-}
-
-/* Cover Slide Special Formatting (Keep V3 center, clean styling) */
-.card#slide0, .card.cover-slide {
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-.card#slide0 h1, .card.cover-slide h1 {
-  font-size: 4.2em;
-  border: none;
-  background: -webkit-linear-gradient(45deg, #00ffcc, #58a6ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
-  line-height: 1.2;
-  display: block;
-}
-
-.card#slide0 p, .card.cover-slide p {
-  font-size: 1.8em;
-  color: var(--primary-color);
-  margin-top: 10px;
-  max-width: 100%;
-}
-
-.card#slide0 p.subtitle, .card.cover-slide p.subtitle {
-  font-size: 1.6em;
-  color: #8b949e;
-}
-
-/* Split Layout for High Information Density */
-.split-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-  flex: 1;
-  text-align: left;
-}
-
-.split-left {
-  border-right: 2px solid var(--border-color);
-  padding-right: 30px;
-}
-
-.split-left h2 {
-  font-size: 2.2em;
-  line-height: 1.3;
-  margin-top: 0;
-  border: none;
-  color: var(--primary-color);
-}
-
-.split-left p {
-  font-size: 1.3em;
-  color: var(--accent-color);
-  margin-bottom: 0;
-}
-
-.split-right {
-  font-size: 1.1em;
-}
-
-.split-right p {
-  margin-bottom: 16px;
-}
-
-.split-right li {
-  margin-bottom: 12px;
-  line-height: 1.6;
-}
-
-.split-right blockquote {
-  font-size: 1.1em;
-  margin: 15px 0;
 }
 
 .highlight, blockquote {
   background: rgba(0, 255, 204, 0.05);
-  border-left: 4px solid var(--primary-color);
-  padding: 16px 20px;
+  border-top: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
+  border-left: none;
+  padding: 40px;
   border-radius: 4px;
-  margin: 20px 0;
-  font-size: 1.1em;
+  margin: 40px auto;
+  font-size: 2em;
   color: #fff;
   max-width: 1000px;
 }
 
 blockquote {
   font-style: italic;
-  border-top: none;
-  border-bottom: none;
 }
 
 blockquote p:last-child {
@@ -282,7 +205,7 @@ code {
 }
 
 pre {
-  background-color: #0b0e14;
+  background-color: #090b0f;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 16px;
@@ -313,7 +236,6 @@ pre code {
   opacity: 0.5;
   font-size: 0.75em;
   color: #8b949e;
-  pointer-events: none;
 }
 
 .slide {
@@ -364,7 +286,7 @@ pre code {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 260px;
+  width: 260px; /* matches expanded width */
   text-align: left;
 }
 
@@ -420,65 +342,7 @@ pre code {
   transform: translateX(0);
 }
 
-/* Theme Toggle Button Styles (Hidden by default to keep V3 presentation style) */
+/* Theme Toggle Button Styles (Hidden in V3 as we only want Dark/High-contrast) */
 .theme-toggle {
   display: none;
-}
-
-/* Light Mode Overrides for compatibility & flexibility */
-:root.light-mode {
-  --primary-color: #d97757;
-  --bg-color: #fdfcf9;
-  --text-color: #2d2b29;
-  --accent-color: #c96646;
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --border-color: #e5e2db;
-}
-
-:root.light-mode pre {
-  background-color: #f4f3ee;
-}
-
-:root.light-mode .highlight,
-:root.light-mode blockquote {
-  background: rgba(217, 119, 87, 0.08);
-}
-
-:root.light-mode code {
-  background-color: rgba(45, 43, 41, 0.06);
-}
-
-:root.light-mode .sidebar {
-  background: rgba(253, 252, 249, 0.95);
-}
-
-:root.light-mode .nav-links a:hover,
-:root.light-mode .nav-links a.active {
-  background: rgba(217, 119, 87, 0.08);
-}
-
-:root.light-mode .theme-toggle:hover,
-:root.light-mode .nav-btn:hover {
-  color: #ffffff;
-}
-
-:root.light-mode .footer {
-  color: #8c8985;
-}
-
-:root.light-mode .nav-links .dot {
-  background-color: #8c8985;
-}
-
-:root.light-mode .slide-container {
-  box-shadow: 0 16px 48px rgba(45, 43, 41, 0.08);
-  background: #fdfcf9;
-}
-
-:root.light-mode .card {
-  box-shadow: 0 8px 24px rgba(45, 43, 41, 0.06);
-}
-
-:root.light-mode .sidebar {
-  box-shadow: 4px 0 24px rgba(45, 43, 41, 0.06);
 }
