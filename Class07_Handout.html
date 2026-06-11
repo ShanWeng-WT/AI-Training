@@ -15,11 +15,12 @@
     <!-- Sidebar Navigation -->
     <nav class="sidebar">
         <ul class="nav-links">
-            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">🎯 課程目標</span></a></li>
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">🎯 課程目標</span></a></li>
             <li><a href="#slide2"><span class="dot"></span><span class="text">📖 什麼是 Agent？</span></a></li>
             <li><a href="#slide3"><span class="dot"></span><span class="text">💡 頓悟時刻</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">🛠️ 核心機制：ReAct 框架</span></a></li>
-            <li><a href="#slide5"><span class="dot"></span><span class="text">⚠️ 為什麼 Agent 會卡死？</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">🛠️ ReAct 框架</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">⚠️ 常見問題</span></a></li>
         </ul>
     </nav>
 
@@ -41,50 +42,53 @@
             </svg>
         </button>
         <div class="slide-content-wrapper">
-        <h1>從對話到行動</h1>
-        <p class="subtitle">Agent 的本質與運作機制總結</p>
+        
+        <div id="slide0" class="card slide-content">
+            <h1>從對話到行動</h1>
+            <p class="subtitle">Agent 的本質與運作機制總結</p>
+        </div>
         
         <div id="slide1" class="card slide-content">
-            <h2>🎯 課程目標</h2>
+            <h2>🎯 <span>課程目標</span></h2>
             <ul>
-                <li><strong>看透本質：</strong> 了解 Agent 與單純 Chatbot 的決定性差異。</li>
-                <li><strong>掌握 ReAct 框架：</strong> 學習 Agent 的「感知 - 思考 - 行動」迴圈。</li>
-                <li><strong>階段總結：</strong> 統整前 6 堂課的技術堆疊。</li>
+                <li><strong>看透本質：</strong> Agent 與 Chatbot 的差異</li>
+                <li><strong>ReAct 框架：</strong>「感知 - 思考 - 行動」迴圈</li>
+                <li><strong>階段總結：</strong> 前 6 堂課技術堆疊</li>
             </ul>
         </div>
 
         <div id="slide2" class="card slide-content">
-            <h2>📖 什麼是 Agent？</h2>
-            <p>Chatbot 只能<strong>說話</strong>，Agent 能夠<strong>行動</strong>。</p>
+            <h2>📖 什麼是 <span>Agent</span>？</h2>
+            <blockquote>Chatbot 只能說話，Agent 能夠行動。</blockquote>
             <ul>
-                <li><strong>Chatbot：</strong> 根據你的問題，預測下一段文字。</li>
-                <li><strong>Agent (代理人)：</strong> 擁有<strong>目標</strong>、能使用<strong>工具 (Tools)</strong>、能觀察<strong>環境</strong>並自我修正。</li>
+                <li><strong>Chatbot：</strong> 預測文字</li>
+                <li><strong>Agent：</strong> 擁有目標 + 使用工具 + 自我修正</li>
             </ul>
         </div>
         
-        <div id="slide3" class="highlight">
-            <strong>💡 頓悟時刻 (Aha Moment)</strong>
-            <p>Agent 不是魔法，而是一個<strong> <code>while(true)</code> 迴圈</strong>。它不斷在：觀察 (Observation) ➔ 思考 (Thought) ➔ 行動 (Action)，直到達成目標才跳出迴圈！</p>
+        <div id="slide3" class="card slide-content">
+            <h2>💡 <span>頓悟時刻</span></h2>
+            <blockquote>Agent 不是魔法，而是一個 <code>while(true)</code> 迴圈！</blockquote>
+            <ul>
+                <li><strong>觀察</strong> (Observation)</li>
+                <li><strong>思考</strong> (Thought)</li>
+                <li><strong>行動</strong> (Action)</li>
+            </ul>
         </div>
 
         <div id="slide4" class="card slide-content">
-            <h2>🛠️ 核心機制：ReAct 框架</h2>
+            <h2>🛠️ 核心機制：<span>ReAct 框架</span></h2>
             <ul>
-                <li><strong>Reasoning (推理)：</strong> 分析當前狀況，決定下一步該怎麼做。</li>
-                <li><strong>Acting (行動)：</strong> 呼叫外部工具（例如：讀取檔案、編譯程式、搜尋網路）。</li>
+                <li><strong>Reasoning (推理)：</strong> 分析狀況，決定下一步</li>
+                <li><strong>Acting (行動)：</strong> 呼叫外部工具</li>
             </ul>
-            <p><strong>實際範例：</strong></p>
-            <p><em>思考：</em> 我需要知道這個 function 怎麼用。<br>
-            <em>行動：</em> <code>grep_search("function_name")</code><br>
-            <em>觀察：</em> 找到定義在 utils.cs 裡。<br>
-            <em>思考：</em> 知道怎麼用了，開始寫 Code。</p>
         </div>
 
         <div id="slide5" class="card slide-content">
-            <h2>⚠️ 為什麼 Agent 會卡死？</h2>
+            <h2>⚠️ 為什麼 Agent <span>會卡死</span>？</h2>
             <ul>
-                <li><strong>工具不穩定：</strong> 工具回傳了預期外的錯誤，Agent 陷入無限重試迴圈。</li>
-                <li><strong>目標模糊：</strong> 給出的指令太籠統，Agent 不知道何時算「完成」。</li>
+                <li><strong>工具不穩定：</strong> 陷入無限重試</li>
+                <li><strong>目標模糊：</strong> 不知道何時算「完成」</li>
             </ul>
         </div>
 
@@ -109,5 +113,3 @@
 <script src="slides.js"></script>
 </body>
 </html>
-
-

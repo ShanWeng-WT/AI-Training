@@ -15,12 +15,13 @@
     <!-- Sidebar Navigation -->
     <nav class="sidebar">
         <ul class="nav-links">
-            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">1. 🎯 課程目標</span></a></li>
-            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 📖 三大核心技巧</span></a></li>
-            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 💡 頓悟時刻</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 🛠️ 實戰演練</span></a></li>
-            <li><a href="#slide5"><span class="dot"></span><span class="text">5. ⚠️ 常見誤區</span></a></li>
-            <li><a href="#slide6"><span class="dot"></span><span class="text">6. ❓ 常見問答</span></a></li>
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">🎯 課程目標</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">📖 核心技巧</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">💡 頓悟時刻</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">🛠️ 實戰演練</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">⚠️ 常見誤區</span></a></li>
+            <li><a href="#slide6"><span class="dot"></span><span class="text">❓ 常見問答</span></a></li>
         </ul>
     </nav>
 
@@ -42,82 +43,66 @@
             </svg>
         </button>
         <div class="slide-content-wrapper">
-        <h1>進階 Prompt Engineering 實戰：優化你的 AI 助手</h1>
         
+        <div id="slide0" class="card slide-content">
+            <h1>進階 Prompt Engineering 實戰：<br><span>優化你的 AI 助手</span></h1>
+        </div>
+
         <div id="slide1" class="card slide-content">
-            <h2>🎯 課程目標 (Session Goals)</h2>
+            <h2>🎯 課程目標：<span>精準控制 AI</span></h2>
             <ul>
-                <li><strong>回歸根本：</strong> 掌握進階「提示詞工程 (Prompt Engineering)」實戰技巧。</li>
-                <li><strong>系統化指令：</strong> 運用結構化、Few-Shot 與 Chain of Thought 等高階技巧。</li>
-                <li><strong>提升可靠度：</strong> 將模糊請求轉化為具備邏輯深度的精準約束，從源頭提升 AI 生成品質。</li>
+                <li>掌握<strong>進階提示詞</strong>實戰技巧</li>
+                <li>運用<strong>結構化</strong>指令與邏輯框架</li>
+                <li>將模糊請求轉為<strong>精準約束</strong></li>
             </ul>
         </div>
 
         <div id="slide2" class="card slide-content">
-            <h2>📖 三大核心高階技巧</h2>
-            <p>不要把 Prompt 當成情緒勒索的魔法咒語，它是將意圖反編譯為約束條件的工程學：</p>
+            <h2>📖 三大核心：<span>意圖轉化約束</span></h2>
             <ul>
-                <li><strong>1. 結構化提示詞 (Structured Prompting)：</strong> 使用 Markdown 標籤（如 <code># 任務</code>, <code>## 約束</code>）精準區分資訊，減少 AI 混淆。</li>
-                <li><strong>2. 少量樣本提示 (Few-Shot Prompting)：</strong> 提供完美範例，透過模仿大幅提升輸出格式與架構的 100% 一致性。</li>
-                <li><strong>3. 思維鏈提示 (Chain of Thought, CoT)：</strong> 要求 AI「先一步一步分析邏輯，再給出程式碼」，大幅降低複雜邏輯推演的謬誤率。</li>
+                <li><strong>結構化 (Structured)</strong><br>用 Markdown 標籤精準區分資訊</li>
+                <li><strong>少量樣本 (Few-Shot)</strong><br>提供完美範例，確保格式 100% 一致</li>
+                <li><strong>思維鏈 (CoT)</strong><br>要求先分析邏輯再寫程式，降低謬誤</li>
             </ul>
         </div>
         
-        <div id="slide3" class="highlight slide-content">
-            <strong>💡 頓悟時刻 (Aha Moment)</strong>
-            <p>進階的 Prompt Engineering 其實是在學習<strong>「如何向自己釐清問題」</strong>！</p>
-            <p>當你被迫寫下結構框架與 CoT 步驟時，你其實是在進行深度的「軟體設計前置思考」。Prompt 寫得越好，代表你的架構設計越清晰。</p>
+        <div id="slide3" class="card slide-content">
+            <h2>💡 頓悟時刻：<span>釐清問題</span></h2>
+            <blockquote>
+                進階的 Prompt Engineering，其實是在學習<strong>「如何向自己釐清問題」</strong>！
+            </blockquote>
+            <ul>
+                <li>寫下框架 = <strong>深度的軟體設計前置思考</strong></li>
+                <li>Prompt 越好 = <strong>架構設計越清晰</strong></li>
+            </ul>
         </div>
 
         <div id="slide4" class="card slide-content">
-            <h2>🛠️ 實戰演練：重構購物車折扣邏輯</h2>
-            
-            <h3>❌ 階段一：直覺式的爛 Prompt</h3>
-            <p><code>「幫我寫個計算購物車總價的 C# 函式，VIP 打 8 折，滿千折百。」</code></p>
-            <p><em>結果：寫死邏輯、缺乏異常處理與精度控制。</em></p>
-            
-            <h3>✔️ 階段二：加入結構化、Few-Shot 與 CoT</h3>
-            <pre><code class="language-markdown">
-# 任務
-實作購物車折扣計算 `DiscountCalculator`，並實作 `IDiscountCalculator` 介面。
-
-## 約束條件
-1. 金額計算必須使用 `decimal` 型別。
-2. 處理參數為 null 或負數的例外狀況。
-
-## Few-Shot 範例
-### 範例：一般商品計算
-```csharp
-public class StandardCalculator : IDiscountCalculator {
-    public decimal Calculate(decimal amount) {
-        if (amount < 0) throw new ArgumentException("Amount cannot be negative");
-        return amount;
-    }
-}
-```
-
-## 執行步驟 (Chain of Thought)
-請嚴格按照以下步驟思考並寫下推論過程，最後才給出程式碼：
-1. 分析傳入參數邊界條件。
-2. 計算 VIP 折扣邏輯。
-3. 計算滿千送百邏輯。
-            </code></pre>
+            <h2>🛠️ 實戰：<span>購物車折扣邏輯</span></h2>
+            <ul>
+                <li><strong>❌ 直覺爛 Prompt：</strong>「幫寫計算總價的 C#，VIP 8折...」 (邏輯寫死)</li>
+                <li><strong>✔️ 進階組合技：</strong>結構化 + Few-Shot + CoT</li>
+            </ul>
+            <pre><code class="language-markdown"># 任務：實作 IDiscountCalculator
+## 約束：使用 decimal、處理負數例外
+## 範例：(提供完美實作作為模仿基準)
+## 步驟：1. 分析邊界 2. 計算VIP 3. 計算滿千送百</code></pre>
         </div>
 
         <div id="slide5" class="card slide-content">
-            <h2>⚠️ 常見誤區與防禦</h2>
+            <h2>⚠️ 常見誤區：<span>如何防禦</span></h2>
             <ul>
-                <li><strong>❌ 貼上整份規格書：</strong> 導致嚴重的 Context 稀釋。<br><strong>✔️ 防禦：</strong> 漸進式提示 (先產出 Interface，確認後再要實作)。</li>
-                <li><strong>❌ 劣質的 Few-Shot 範例：</strong> AI 會放大並複製壞味道。<br><strong>✔️ 防禦：</strong> 範例必須是經過 Code Review 的「黃金標準」。</li>
-                <li><strong>❌ 濫用 CoT：</strong> 在簡單任務上浪費 Token 與生成時間。<br><strong>✔️ 防禦：</strong> 純語法翻譯使用 Few-Shot 即可；複雜狀態轉換才開啟 CoT。</li>
+                <li><strong>❌ 貼上整份規格書</strong><br>✔️ 防禦：漸進式提示 (先產 Interface 再要實作)</li>
+                <li><strong>❌ 劣質的 Few-Shot 範例</strong><br>✔️ 防禦：範例必須是經過 Review 的「黃金標準」</li>
+                <li><strong>❌ 濫用 CoT</strong><br>✔️ 防禦：純翻譯用 Few-Shot；複雜狀態才用 CoT</li>
             </ul>
         </div>
 
         <div id="slide6" class="card slide-content">
-            <h2>❓ 常見問答 (Q&A)</h2>
+            <h2>❓ 常見問答：<span>未來應用</span></h2>
             <ul>
-                <li><strong>Q: 有 Copilot 補全，還需要學 Prompt 嗎？</strong><br>A: Copilot 是微觀優化；遇到宏觀設計與重構時，結構化 Prompt 才能讓 AI 成為你的「架構師副手」。</li>
-                <li><strong>Q: 每次打這麼長的 Prompt 很累怎麼辦？</strong><br>A: <strong>固化成 Agent Skills！</strong> 辛苦寫一次完美架構，未來只需呼叫並代入變數，建立你的個人自動化工廠。</li>
+                <li><strong>有 Copilot 還需學 Prompt 嗎？</strong><br>Copilot 是微觀優化；結構化 Prompt 是<strong>宏觀架構設計</strong>。</li>
+                <li><strong>每次打長 Prompt 很累？</strong><br><strong>固化成 Agent Skills！</strong> 建立你的個人自動化工廠。</li>
             </ul>
         </div>
 

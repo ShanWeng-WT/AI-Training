@@ -15,11 +15,12 @@
     <!-- Sidebar Navigation -->
     <nav class="sidebar">
         <ul class="nav-links">
-            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">一、什麼是 AI 退化災難？</span></a></li>
-            <li><a href="#slide2"><span class="dot"></span><span class="text">二、Harness Engineering 核心概念</span></a></li>
-            <li><a href="#slide3"><span class="dot"></span><span class="text">三、兩大評測方法論</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">四、實作流程概覽</span></a></li>
-            <li><a href="#slide5"><span class="dot"></span><span class="text">五、常見陷阱與防禦</span></a></li>
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">一、退化災難</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">二、核心概念</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">三、評測方法</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">四、實作流程</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">五、陷阱防禦</span></a></li>
         </ul>
     </nav>
 
@@ -41,44 +42,46 @@
             </svg>
         </button>
         <div class="slide-content-wrapper">
-            <h1>確保 AI 不退化</h1>
-            <p class="subtitle">Harness Engineering 與評測基準</p>
+            <div id="slide0" class="card slide-content">
+                <h1>確保 AI <span>不退化</span></h1>
+                <h2>Harness Engineering 與評測基準</h2>
+            </div>
 
             <div id="slide1" class="card slide-content">
-                <h2>一、什麼是 AI 退化災難？</h2>
-                <p><strong>現象：</strong> 昨天還能寫出完美程式碼的 Prompt，今天卻產出語法錯誤或邏輯瑕疵。</p>
+                <h2>一、什麼是 AI <span>退化災難？</span></h2>
+                <blockquote>昨天完美，今天報錯。</blockquote>
                 <ul>
-                    <li><strong>語法崩壞：</strong> 遺漏分號、括號，呼叫不存在的 API。</li>
-                    <li><strong>AI 幻覺 (Hallucination)：</strong> 捏造了引擎中根本沒有的類別與方法。</li>
-                    <li><strong>上下文遺忘：</strong> 在長對話中忘記了團隊的 Coding Guidelines。</li>
-                    <li><strong>效能地雷：</strong> 寫出在 `Update()` 頻繁 `GetComponent` 的 GC 災難代碼。</li>
+                    <li><strong>語法崩壞：</strong> 遺漏符號，呼叫幽靈 API。</li>
+                    <li><strong>幻覺發作：</strong> 憑空捏造類別與方法。</li>
+                    <li><strong>金魚腦：</strong> 忘記 Coding Guidelines。</li>
+                    <li><strong>效能地雷：</strong> 寫出 GC 災難代碼。</li>
                 </ul>
             </div>
 
             <div id="slide2" class="card slide-content">
-                <h2>二、Harness Engineering 核心概念</h2>
-                <p><strong>「用保護程式碼的態度保護 AI：建立 AI 的單元測試。」</strong></p>
+                <h2>二、Harness Engineering <span>核心概念</span></h2>
+                <blockquote>用保護程式碼的態度保護 AI：建立 AI 的單元測試。</blockquote>
                 <ul>
-                    <li><strong>Ground Truth (黃金標準)：</strong> 評測的客觀基準。</li>
-                    <li><strong>輸入 (Input)：</strong> 標準化的 Prompt。</li>
-                    <li><strong>預期輸出 (Expected Output)：</strong> 資深工程師寫好的正確示範。</li>
-                    <li><strong>評分標準 (Rubrics)：</strong> 明確定義及格條件 (例如必備關鍵字、不可使用的反模式)。</li>
+                    <li><strong>Ground Truth：</strong> 客觀的黃金基準。</li>
+                    <li><strong>Input：</strong> 標準化測試 Prompt。</li>
+                    <li><strong>Expected Output：</strong> 資深工程師的正確示範。</li>
+                    <li><strong>Rubrics：</strong> 明確及格條件與反模式。</li>
                 </ul>
             </div>
 
             <div id="slide3" class="card slide-content">
-                <h2>三、兩大評測方法論</h2>
+                <h2>三、兩大評測<span>方法論</span></h2>
                 <ul>
-                    <li><strong>確定性評估 (Deterministic Evaluation)：</strong>
+                    <li><strong>確定性評估：</strong>
                         <ul>
-                            <li>非黑即白：編譯測試 (dotnet build)、單元測試。</li>
-                            <li>優點：100% 客觀、快速。</li>
+                            <li>非黑即白：編譯與單元測試。</li>
+                            <li>優點：100% 客觀、極速。</li>
                         </ul>
                     </li>
-                    <li><strong>LLM 作為裁判 (LLM-as-a-Judge)：</strong>
+                    <li><strong>LLM 裁判：</strong>
                         <ul>
-                            <li>使用強大模型 (如 GPT-4o) 審查架構、可讀性與註解風格。</li>
-                            <li>優點：接近資深工程師的 Code Review。</li>
+                            <li>讓 GPT-4o 審查架構與風格。</li>
+                            <li>優點：宛如資深工程師 Code Review。</li>
                             <li>缺點：具些微隨機性。</li>
                         </ul>
                     </li>
@@ -86,25 +89,24 @@
             </div>
 
             <div id="slide4" class="card slide-content">
-                <h2>四、實作流程概覽 (JSON + Script)</h2>
-                <p>透過 JSON 定義資料集，使用腳本進行自動化計分。</p>
+                <h2>四、實作流程：<span>JSON + Script</span></h2>
+                <blockquote>先抓關鍵字與反模式，再請 LLM 裁判綜合評分。</blockquote>
                 <pre><code class="language-json">[
   {
     "id": "unity_jump_001",
-    "prompt": "撰寫 PlayerJump.cs，使用 Rigidbody，並有 1 秒 CD。",
-    "required_keywords": ["Rigidbody", "AddForce", "Space"],
+    "prompt": "撰寫 PlayerJump.cs，用 Rigidbody，1 秒 CD。",
+    "required_keywords": ["Rigidbody", "AddForce"],
     "anti_patterns": ["GameObject.Find"]
   }
 ]</code></pre>
-                <p><strong>執行邏輯：</strong> 先檢查關鍵字與反模式 (扣分制)，接著呼叫 LLM 裁判針對 Rubrics 進行綜合打分與給予改進建議。</p>
             </div>
 
             <div id="slide5" class="card slide-content">
-                <h2>五、常見陷阱與防禦</h2>
+                <h2>五、常見陷阱與<span>防禦</span></h2>
                 <ul>
-                    <li><strong>過度擬合 (Overfitting)：</strong> 資料集過於單一。<strong>防禦：</strong> 涵蓋演算法、架構、UI 多種面向。</li>
-                    <li><strong>LLM 裁判偏見 (Judge Bias)：</strong> 偏好長篇大論。<strong>防禦：</strong> 在 Prompt 中明令「只要邏輯正確、效能達標即可，不因代碼短而扣分」。</li>
-                    <li><strong>Unity 執行緒限制：</strong> <strong>防禦：</strong> 確保測試腳本中的 Unity API 呼叫僅於 Main Thread 執行。</li>
+                    <li><strong>過度擬合：</strong> 考題單一 👉 涵蓋演算法與 UI 多面向。</li>
+                    <li><strong>裁判偏見：</strong> 偏愛長代碼 👉 規則明訂「達標即可，短非原罪」。</li>
+                    <li><strong>執行緒限制：</strong> Unity API 報錯 👉 確保測試僅在 Main Thread 執行。</li>
                 </ul>
             </div>
 

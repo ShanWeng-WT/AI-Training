@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比語言模型更重要的 心智模型 - PDD3 AI Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+        /* 簡報模式 V3：高對比/極簡字卡 (強調視覺衝擊力) */
+        body { background-color: #000; }
+        .slide-container { background: #090b0f; border: 1px solid #1a202c; box-shadow: 0 0 100px rgba(0, 255, 204, 0.1); }
+        .slide-content-wrapper { padding: 40px; display: flex; flex-direction: column; }
+        .card { 
+            flex: 1; 
+            display: none; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            border: none; 
+            box-shadow: none; 
+            background: transparent; 
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+        .slide.active { display: flex; }
+        
+        h1 { 
+            font-size: 5em; 
+            border: none; 
+            background: -webkit-linear-gradient(45deg, #00ffcc, #58a6ff); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            margin-bottom: 20px; 
+            line-height: 1.1;
+        }
+        h2 { font-size: 3.2em; margin-bottom: 40px; border: none; display: inline-block; color: var(--text-color); }
+        h2 span { color: var(--primary-color); }
+        
+        p { font-size: 1.8em; max-width: 900px; margin-bottom: 25px; line-height: 1.5; color: #a0aec0; }
+        ul { display: inline-block; text-align: left; font-size: 1.8em; line-height: 1.8; color: #e2e8f0; margin-top: 20px; }
+        li { margin-bottom: 15px; }
+        
+        blockquote { 
+            font-size: 2em; 
+            border-left: none; 
+            border-top: 4px solid var(--primary-color); 
+            border-bottom: 4px solid var(--primary-color); 
+            padding: 40px; 
+            background: rgba(0, 255, 204, 0.05); 
+            color: #fff;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .footer { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; border: none; opacity: 0.5; }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <ul class="nav-links">
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">1. 核心觀念</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 誤解一</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 誤解二</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 誤解三</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. 誤解四</span></a></li>
+            <li><a href="#slide6"><span class="dot"></span><span class="text">6. 總結</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <!-- 隱藏 Theme Toggle 以符合極簡主題 -->
+        <div class="slide-content-wrapper">
+            <div class="card" id="slide0">
+                <h1>比語言模型更重要的<br>心智模型</h1>
+                <p style="color: var(--primary-color); font-size: 2.2em; margin-top: 20px;">企業內部 AI 輔助開發教育訓練</p>
+            </div>
+            
+            <div class="card" id="slide1">
+                <h2><span>2024</span> 年的心智模型 vs <span>2026</span> 年的工具</h2>
+                <p>AI 會幻覺？輸出靠運氣？只是聊天工具？自己做比較快？</p>
+                <div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 16px;">
+                    <p style="color: #fff; font-weight: bold; margin: 0;">過去：模型能力不足 ➔ 做不到或亂做</p>
+                    <p style="color: var(--primary-color); font-weight: bold; margin: 15px 0 0 0; font-size: 1.2em;">現在：模型能力已足夠 ➔ 使用方式決定結果</p>
+                </div>
+            </div>
+            
+            <div class="card" id="slide2">
+                <h2>誤解一：AI 會犯錯，<span>所以還不能信任</span></h2>
+                <blockquote>
+                    真正的問題不是「AI 會不會錯？」<br>
+                    <span style="color: var(--primary-color);">而是「當它錯的時候，你有沒有辦法發現？」</span>
+                </blockquote>
+                <p>我們早就習慣處理浮點數誤差、網路遺失與垃圾資料。<br>我們從未因此放棄工具。</p>
+            </div>
+            
+            <div class="card" id="slide3">
+                <h2>誤解二：AI 非確定性，<span>所以結果靠運氣</span></h2>
+                <p style="font-size: 1.5em; color: #fff;">非確定性不代表失控，只代表產出不是唯一解。</p>
+                <p>真正影響品質的不是運氣，而是：</p>
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+                    <span style="padding: 15px 30px; background: #222; border-radius: 50px; font-size: 1.2em; color: #fff; border: 1px solid #444;">資訊 Context</span>
+                    <span style="padding: 15px 30px; background: #222; border-radius: 50px; font-size: 1.2em; color: #fff; border: 1px solid #444;">目標定義</span>
+                    <span style="padding: 15px 30px; background: #222; border-radius: 50px; font-size: 1.2em; color: #fff; border: 1px solid #444;">驗證機制</span>
+                </div>
+            </div>
+            
+            <div class="card" id="slide4">
+                <h2>誤解三：AI 就是聊天，<span>不需要學</span></h2>
+                <p>同一個模型，有人效率翻倍，有人覺得沒用。</p>
+                <p style="font-size: 1.8em; color: var(--primary-color); margin-top: 40px; font-weight: bold;">差異通常不在模型，而在使用者。</p>
+            </div>
+            
+            <div class="card" id="slide5">
+                <h2>誤解四：想 Prompt <span>比自己做還慢</span></h2>
+                <p>找一個自己知道答案的問題考 AI，<br>就像找怪手來跟你比拿筷子。</p>
+                <p style="color: #fff; margin-top: 30px;">AI 擅長的是：<strong>大量閱讀、搜尋、整理、重複工作</strong>。</p>
+            </div>
+
+            <div class="card" id="slide6">
+                <h2>你把 AI 當成什麼？</h2>
+                <div style="display: flex; gap: 60px; margin-top: 20px;">
+                    <div style="text-align: center; opacity: 0.5;">
+                        <div style="font-size: 4em; margin-bottom: 20px;">🤖</div>
+                        <p style="color: #fff;">回答問題的<br><strong>聊天機器人</strong></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 4em; margin-bottom: 20px;">⚙️</div>
+                        <p style="color: var(--primary-color); font-size: 1.2em; font-weight: bold;">需要管理與引導的<br>工程系統</p>
+                    </div>
+                </div>
+                <p style="margin-top: 60px; color: #555;">接下來：學習怎麼讓 AI 穩定地幫我們完成工作。</p>
+            </div>
+            
+            <div class="footer">PDD3 AI Training Series - Wanin</div>
+        </div>
+    </div>
+
+    <div class="slide-controls">
+        <button class="nav-btn prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button class="nav-btn next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+    </div>
+<script src="slides.js"></script>
+</body>
+</html>

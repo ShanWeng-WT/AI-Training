@@ -15,8 +15,9 @@
     <!-- Sidebar Navigation -->
     <nav class="sidebar">
         <ul class="nav-links">
-            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
-            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 核心概念解析</span></a></li>
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">2. 核心概念</span></a></li>
             <li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
             <li><a href="#slide4"><span class="dot"></span><span class="text">4. 實戰演練</span></a></li>
             <li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
@@ -42,69 +43,63 @@
             </svg>
         </button>
         <div class="slide-content-wrapper">
-        <h1>揭開 LLM 的黑盒子：它能做什麼，不能做什麼？</h1>
+        <div class="card slide-content" id="slide0">
+            <h1>揭開 <span>LLM</span> 的黑盒子：<br>它能做什麼，<span>不能做什麼？</span></h1>
+        </div>
         
         <div class="card slide-content" id="slide1">
-            <h2>🎯 課程目標 (Session Goals)</h2>
+            <h2>🎯 <span>課程目標</span></h2>
             <ul>
-                <li><strong>理解底層原理：</strong> 揭開 LLM (大型語言模型) 的神秘面紗。</li>
-                <li><strong>認識物理極限：</strong> 了解 AI 產生「幻覺 (Hallucination)」的根本原因。</li>
-                <li><strong>榨取工程價值：</strong> 透過掌握「機率分佈」，在不確定的模型輸出中獲取確定性的結果。</li>
+                <li><strong>理解底層：</strong> 揭開 LLM 神秘面紗</li>
+                <li><strong>認識極限：</strong> 了解「幻覺」根本原因</li>
+                <li><strong>榨取價值：</strong> 掌握機率，收斂確定性結果</li>
             </ul>
         </div>
 
         <div class="card slide-content" id="slide2">
-            <h2>📖 LLM 核心概念解析</h2>
+            <h2>📖 LLM <span>核心概念</span></h2>
             <ul>
-                <li><strong>超級「文字接龍」引擎：</strong> LLM 核心任務是預測「機率最高」的下一個 Token，它不懂 C# 也不懂資料庫。</li>
-                <li><strong>最小單位 Token：</strong> AI 處理的不是字詞，而是 Token（如 <code>{</code>、<code>=&gt;</code> 都是獨立 Token）。</li>
-                <li><strong>沒有真實，只有合理：</strong> 遇到沒見過的情境時，AI 會捏造出「語法正確但不存在」的程式碼，這就是<strong>幻覺</strong>。</li>
+                <li><strong>超級「文字接龍」：</strong> 不懂 C#，不懂資料庫</li>
+                <li><strong>處理單位 Token：</strong> 不是字詞，是 Token（如 <code>=&gt;</code>）</li>
+                <li><strong>沒有真實只有合理：</strong> 沒見過 = 捏造 = <strong>幻覺</strong></li>
             </ul>
         </div>
         
-        <div class="highlight slide-content" id="slide3">
-            <strong>💡 頓悟時刻 (Aha Moment)</strong>
-            <p>Skill 真正的價值在於：<strong>對抗幻覺並收斂機率分佈</strong>！</p>
-            <p>我們在 Skill 中加入的「約束」與「黃金範本」，本質上是在做「機率整形 (Probability Shaping)」，大幅壓低 AI 偏離架構規範的機率。</p>
+        <div class="card slide-content" id="slide3">
+            <h2>💡 <span>頓悟時刻</span></h2>
+            <blockquote>Skill 的核心價值：<strong>對抗幻覺，收斂機率！</strong></blockquote>
+            <ul>
+                <li>給予<strong>約束</strong>與<strong>黃金範本</strong></li>
+                <li>執行<strong>機率整形</strong> (Probability Shaping)</li>
+                <li>壓低偏離規範的風險</li>
+            </ul>
         </div>
 
         <div class="card slide-content" id="slide4">
-            <h2>🛠️ 實戰演練：對抗幻覺的策略</h2>
-            <p><strong>情境：</strong> 在 Unity 中要求尋找最近的敵人並造成傷害。</p>
-            
-            <h3>❌ 缺乏約束的幻覺代碼</h3>
-            <pre><code class="language-csharp">
-// 幻覺：發明了不存在的 FindClosestComponent 與 ApplyDamage
-Enemy target = Physics.FindClosestComponent&lt;Enemy&gt;(transform.position, 10f);
-target.ApplyDamage(10); 
-            </code></pre>
-            
-            <h3>✔️ 透過 Context 限縮機率</h3>
+            <h2>🛠️ 實戰：<span>對抗幻覺</span></h2>
+            <p><strong>情境：</strong> Unity 尋找最近敵人並造成傷害</p>
             <ul>
-                <li><strong>限制條件 1：</strong> 強制使用原生的 <code>Physics.OverlapSphere</code>。</li>
-                <li><strong>限制條件 2：</strong> 強制使用 <code>IDamageable</code> 介面與 <code>TakeDamage()</code>。</li>
+                <li>❌ <strong>缺乏約束：</strong> 捏造 <code>Physics.FindClosestComponent</code></li>
+                <li>✔️ <strong>加入約束：</strong> 強制使用 <code>Physics.OverlapSphere</code></li>
             </ul>
-            <pre><code class="language-csharp">
-// 成功寫出安全代碼，阻斷發散捏造 API 的可能
-Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRadius);
-// 實作省略...
-            </code></pre>
+            <pre><code class="language-csharp">// 成功收斂機率，阻斷幻覺 API
+Collider[] hits = Physics.OverlapSphere(pos, radius);</code></pre>
         </div>
 
         <div class="card slide-content" id="slide5">
-            <h2>⚠️ 常見誤區與防禦</h2>
+            <h2>⚠️ 常見<span>誤區與防禦</span></h2>
             <ul>
-                <li><strong>❌ 依賴 AI 進行複雜計算：</strong> AI 是語言模型非計算機，邏輯推演容易出錯。 <br><strong>✔️ 防禦：</strong> 將邏輯拆解，請 AI 寫架構或虛擬碼，人工補上核心邏輯。</li>
-                <li><strong>❌ 輕信套件版本：</strong> AI 常給出過時語法。<br><strong>✔️ 防禦：</strong> 明文指定框架版本 (如 .NET 8, EF Core 8.0)。</li>
-                <li><strong>❌ 塞入過多無關資訊：</strong> 導致 AI 「迷失在中間」。<br><strong>✔️ 防禦：</strong> 保持高訊噪比，只提供相關介面與結構。</li>
+                <li>❌ <strong>依賴 AI 複雜計算</strong><br>✔️ <strong>防禦：</strong> AI 寫架構，人工補核心邏輯</li>
+                <li>❌ <strong>輕信套件版本</strong><br>✔️ <strong>防禦：</strong> 明文指定框架 (如 .NET 8)</li>
+                <li>❌ <strong>塞入過多無關資訊</strong><br>✔️ <strong>防禦：</strong> 保持高訊噪比，只給關鍵結構</li>
             </ul>
         </div>
 
         <div class="card slide-content" id="slide6">
-            <h2>❓ 常見問答 (Q&A)</h2>
+            <h2>❓ 常見問答 <span>(Q&A)</span></h2>
             <ul>
-                <li><strong>Q: AI 真的「理解」程式碼嗎？</strong><br>A: 不具備人類的理解力，但其「模式匹配」能力極強，能捕捉深層的語法與結構關聯。</li>
-                <li><strong>Q: 為什麼給了指令還是有幻覺？</strong><br>A: 因為「模型預設立場」太強！最佳對抗方式是提供 <strong>Few-shot 範例</strong>。</li>
+                <li><strong>AI 真的理解程式碼嗎？</strong><br>不。但「模式匹配」極強，能捕捉語法關聯。</li>
+                <li><strong>給了指令為何還有幻覺？</strong><br>「預設立場」太強。最佳解：提供 <strong>Few-shot 範例</strong>。</li>
             </ul>
         </div>
 

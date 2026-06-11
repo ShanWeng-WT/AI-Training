@@ -15,10 +15,11 @@
     <!-- Sidebar Navigation -->
     <nav class="sidebar">
         <ul class="nav-links">
-            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">🎯 課程目標</span></a></li>
-            <li><a href="#slide2"><span class="dot"></span><span class="text">📖 為什麼需要 AGENTS.md？</span></a></li>
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">🎯 課程目標</span></a></li>
+            <li><a href="#slide2"><span class="dot"></span><span class="text">📖 為何需要？</span></a></li>
             <li><a href="#slide3"><span class="dot"></span><span class="text">💡 頓悟時刻</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">🛠️ 實戰：靜態與動態 Context</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">🛠️ 實戰 Context</span></a></li>
             <li><a href="#slide5"><span class="dot"></span><span class="text">⚠️ 常見誤區</span></a></li>
         </ul>
     </nav>
@@ -41,54 +42,54 @@
             </svg>
         </button>
         <div class="slide-content-wrapper">
-        <h1>制定專案的大腦</h1>
-        <p class="subtitle">Context Files (AGENTS.md) 的威力</p>
+
+        <div id="slide0" class="card slide-content">
+            <h1>制定專案的大腦</h1>
+            <p class="subtitle">Context Files (AGENTS.md) 的威力</p>
+        </div>
         
         <div id="slide1" class="card slide-content">
-            <h2>🎯 課程目標</h2>
+            <h2>🎯 課程目標：<span>建立專案大腦</span></h2>
             <ul>
-                <li><strong>統一標準：</strong> 確保團隊中所有 AI 助手的行為與風格一致。</li>
-                <li><strong>建立專案大腦：</strong> 學會撰寫並維護全域上下文設定檔。</li>
-                <li><strong>區分 Context 類型：</strong> 理解靜態與動態上下文的差異。</li>
+                <li><strong>統一標準：</strong>確保 AI 行為一致</li>
+                <li><strong>全域上下文：</strong>學會撰寫設定檔</li>
+                <li><strong>區分 Context：</strong>靜態 vs. 動態</li>
             </ul>
         </div>
 
         <div id="slide2" class="card slide-content">
-            <h2>📖 為什麼需要 AGENTS.md？</h2>
-            <p>沒有全域規範的 AI 就像新來的外包人員，每次都要重新教專案架構。</p>
+            <h2>📖 為什麼需要 <span>AGENTS.md</span>？</h2>
+            <blockquote>沒有全域規範的 AI，就像新來的第一天外包人員。</blockquote>
             <ul>
-                <li><strong>減少重複下指令：</strong> 把架構規範、命名慣例寫死在設定檔中。</li>
-                <li><strong>自動載入：</strong> AI 啟動時會自動閱讀，成為它的<strong>預設行為準則</strong>。</li>
+                <li><strong>減少重複指令：</strong>固化架構規範</li>
+                <li><strong>自動載入：</strong>成為預設行為準則</li>
             </ul>
         </div>
         
-        <div id="slide3" class="highlight">
-            <strong>💡 頓悟時刻 (Aha Moment)</strong>
-            <p>將開發規範寫進 <code>AGENTS.md</code>，等於把團隊的 Senior 工程師經驗<strong>「固化」</strong>並<strong>「複製」</strong>給每一個 AI Agent。你的 Agent 將比新進員工更懂專案規範！</p>
+        <div id="slide3" class="card slide-content">
+            <h2>💡 頓悟時刻：<span>固化經驗</span></h2>
+            <blockquote>
+                將規範寫進 <code>AGENTS.md</code>，等於把 Senior 工程師經驗<strong>「複製」</strong>給每一個 AI。
+            </blockquote>
         </div>
 
         <div id="slide4" class="card slide-content">
-            <h2>🛠️ 實戰：靜態與動態 Context</h2>
+            <h2>🛠️ 實戰：<span>靜態與動態 Context</span></h2>
             <ul>
-                <li><strong>靜態 Context (<code>AGENTS.md</code>)：</strong><br>
-                不會頻繁變動的架構規範 (例：Unity 只能用 ECS，不能寫 MonoBehaviour)。</li>
-                <li><strong>動態 Context (RAG)：</strong><br>
-                隨時變動的實作細節 (例：某個 Weapon 腳本的當前狀態，讓 AI 自行去搜尋)。</li>
+                <li><strong>靜態：</strong>AGENTS.md (架構規範)</li>
+                <li><strong>動態：</strong>RAG (實作細節)</li>
             </ul>
-            <pre><code class="language-markdown">
-# AGENTS.md 範例
-## .NET Backend 規範
-1. 所有的 API 必須回傳 `ApiResponse&lt;T&gt;`。
-2. 嚴禁在 Controller 直接呼叫 DB，必須透過 Service 層。
-3. Log 一律使用 Serilog，包含 CorrelationId。
-            </code></pre>
+            <pre><code class="language-markdown"># AGENTS.md 範例
+## Backend 規範
+1. API 回傳 ApiResponse&lt;T&gt;
+2. 嚴禁 Controller 呼叫 DB</code></pre>
         </div>
 
         <div id="slide5" class="card slide-content">
-            <h2>⚠️ 常見誤區</h2>
+            <h2>⚠️ 常見誤區：<span>設定檔不是垃圾桶</span></h2>
             <ul>
-                <li><strong>把設定檔當垃圾桶：</strong> 把所有細節都塞進 <code>AGENTS.md</code>，導致 Token 爆滿且 AI 抓不到重點。</li>
-                <li><strong>不更新：</strong> 專案架構改了，設定檔沒改，導致 AI 一直產出舊架構的 Code。</li>
+                <li><strong>Token 爆滿：</strong>塞入太多細節</li>
+                <li><strong>忘記更新：</strong>產出舊架構 Code</li>
             </ul>
         </div>
 
@@ -113,5 +114,3 @@
 <script src="slides.js"></script>
 </body>
 </html>
-
-

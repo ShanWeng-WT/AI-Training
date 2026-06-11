@@ -15,7 +15,8 @@
     <!-- Sidebar Navigation -->
     <nav class="sidebar">
         <ul class="nav-links">
-            <li><a href="#slide1" class="active"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
+            <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
+            <li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
             <li><a href="#slide2"><span class="dot"></span><span class="text">2. 背景與痛點</span></a></li>
             <li><a href="#slide3"><span class="dot"></span><span class="text">3. 核心要素</span></a></li>
             <li><a href="#slide4"><span class="dot"></span><span class="text">4. 頓悟時刻</span></a></li>
@@ -43,78 +44,80 @@
             </svg>
         </button>
         <div class="slide-content-wrapper">
-        <h1>打造專屬助手：Agent Skills 的定義與運用</h1>
         
+        <div class="card" id="slide0">
+            <h1>打造專屬助手：<span>Agent Skills 的定義與運用</span></h1>
+        </div>
+
         <div class="card" id="slide1">
-            <h2>🎯 課程目標 (Session Goals)</h2>
+            <h2>🎯 課程目標 <span>(Session Goals)</span></h2>
             <ul>
-                <li><strong>從零開始建立 Agent Skills：</strong> 引導 Unity 前端與 .NET 後端開發人員實務操作。</li>
-                <li><strong>翻轉傳統 AI 互動模式：</strong> 將發散式對話轉化為<strong>系統化的 AI 技能</strong>。</li>
-                <li><strong>解決企業真實痛點：</strong> 透過具體約束與範例，降低溝通與除錯成本，實現<strong>生產力跳躍式提升</strong>。</li>
+                <li><strong>建立技能：</strong> 實務操作 Agent Skills</li>
+                <li><strong>翻轉模式：</strong> 從對話轉為<span>系統化技能</span></li>
+                <li><strong>解決痛點：</strong> 降低除錯成本，<span>生產力大躍進</span></li>
             </ul>
         </div>
 
         <div class="card" id="slide2">
-            <h2>📖 背景與核心痛點</h2>
+            <h2>📖 背景與<span>核心痛點</span></h2>
             <ul>
-                <li><strong>通用 AI 的局限性：</strong> 通用解法往往不符合專案架構（如：Unity ECS 架構、.NET Repository 規範）。</li>
-                <li><strong>反覆同步上下文的成本：</strong> 不斷糾正錯誤，降低了開發效率。</li>
-                <li><strong>解決方案：Agent Skills：</strong> 賦予 AI 特定目標與專案感知能力。</li>
+                <li><strong>通用 AI 局限：</strong> 不懂專案架構與規範</li>
+                <li><strong>同步成本：</strong> 反覆糾錯，拖慢效率</li>
+                <li><strong>解法：</strong> Agent Skills 賦予<span>專案感知力</span></li>
             </ul>
         </div>
 
         <div class="card" id="slide3">
-            <h2>⚙️ Agent Skills 的核心要素</h2>
+            <h2>⚙️ Agent Skills 的<span>核心要素</span></h2>
             <ul>
-                <li><strong>觸發條件 (Intent)：</strong> 什麼時候該使用？明確任務意圖。</li>
-                <li><strong>上下文 (Context)：</strong> 專案規範與特定套件清單。</li>
-                <li><strong>約束條件 (Constraints)：</strong> AI 的防呆機制，明確告知<strong>絕對不能做什麼</strong>。</li>
-                <li><strong>範例 (Few-shot)：</strong> 提供黃金範本，讓 AI 精準模仿。</li>
-                <li><strong>後續行動 (Next Actions)：</strong> 任務完成後的自動化流程（如執行單元測試）。</li>
+                <li><strong>Intent：</strong> 觸發條件</li>
+                <li><strong>Context：</strong> 專案上下文</li>
+                <li><strong>Constraints：</strong> <span>絕對不能做什麼</span></li>
+                <li><strong>Few-shot：</strong> 黃金範本</li>
+                <li><strong>Next Actions：</strong> 任務後續流程</li>
             </ul>
         </div>
 
-        <div class="highlight" id="slide4">
-            <strong>💡 頓悟時刻 (Aha Moment)</strong>
-            <p><strong>Skill 不是 Prompt！</strong> 它是「可重複使用的自動化工作流」。</p>
-            <p>將大腦中的<strong>領域知識 (Domain Knowledge)</strong> 軟體化，讓資深工程師的經驗能透過 AI 傳承，大幅提升團隊代碼品質！</p>
+        <div class="card" id="slide4">
+            <h2>💡 頓悟時刻 <span>(Aha Moment)</span></h2>
+            <blockquote>
+                Skill 不是 Prompt！它是<span>「可重複使用的自動化工作流」</span>。
+            </blockquote>
+            <ul>
+                <li>知識軟體化</li>
+                <li>經驗傳承</li>
+                <li>提升代碼品質</li>
+            </ul>
         </div>
 
         <div class="card" id="slide5">
-            <h2>🛠️ 實戰演練：.NET Repository Generator</h2>
-            <p><strong>痛點：</strong> AI 直接在 Controller 操作 DbContext。</p>
-            <h3>1. 定義系統提示詞 (System Prompt)</h3>
+            <h2>🛠️ 實戰：<span>.NET Repository Generator</span></h2>
+            <ul>
+                <li><strong>痛點：</strong> AI 直接在 Controller 操作 DbContext</li>
+                <li><strong>解法：</strong> 1. 系統提示詞 2. 黃金範本</li>
+            </ul>
             <pre><code class="language-markdown">
-# Skill: .NET Repository Generator
-**Constraints (約束條件):**
-1. 絕對禁止在 Controller 層直接使用 DbContext。
-2. 必須建立 `I[實體名稱]Repository` 介面。
-3. 所有方法必須使用非同步 `async Task&lt;T&gt;`。
-            </code></pre>
-            
-            <h3>2. 加入黃金範本 (Few-shot)</h3>
-            <pre><code class="language-csharp">
-// 範例：完美的 Repository 實作
-public class UserRepository : IUserRepository {
-    // 實作程式碼與例外處理...
-}
+# Constraints (約束條件):
+1. 禁止在 Controller 直接用 DbContext
+2. 建立 `I[實體]Repository` 介面
+3. 必須使用 `async Task&lt;T&gt;`
             </code></pre>
         </div>
 
         <div class="card" id="slide6">
-            <h2>⚠️ 常見誤區與防禦機制</h2>
+            <h2>⚠️ 常見誤區與<span>防禦機制</span></h2>
             <ul>
-                <li><strong>❌ 指令過於空泛：</strong> 「幫我寫好維護的程式」 → <strong>✔️ 具體條件：</strong> 「方法長度低於 50 行」。</li>
-                <li><strong>❌ 缺乏上下文：</strong> AI 發明不存在的類別 → <strong>✔️ 限制範圍：</strong> 指定要讀取的介面與專案框架。</li>
-                <li><strong>❌ 無防呆機制：</strong> AI 產出錯誤程式碼 → <strong>✔️ 自我修正：</strong> 加入「請自我檢查是否違反約束並重寫」。</li>
+                <li><strong>空泛指令</strong> → <span>具體條件</span> (如：低於 50 行)</li>
+                <li><strong>缺乏上下文</strong> → <span>限制範圍</span> (指定介面/框架)</li>
+                <li><strong>無防呆機制</strong> → <span>自我修正</span> (要求 AI 自我檢查)</li>
             </ul>
         </div>
 
         <div class="card" id="slide7">
-            <h2>❓ 常見問答 (Q&A)</h2>
+            <h2>❓ 常見問答 <span>(Q&A)</span></h2>
             <ul>
-                <li><strong>Q: 撰寫 Skill 會拖慢進度嗎？</strong><br>A: 這是一種投資！初期花 30 分鐘，未來每位成員都能省下無數次除錯與 Code Review 時間。</li>
-                <li><strong>Q: 專案太大，AI Token 會爆掉嗎？</strong><br>A: 透過動態上下文（如 <code>@Files</code>），限縮 AI 讀取的範圍，降低幻覺與成本。</li>
+                <li><strong>拖慢進度？</strong> → <span>是投資！</span> (30分換無數除錯時間)</li>
+                <li><strong>Token 爆掉？</strong> → <span>動態上下文！</span> (限縮範圍降成本)</li>
             </ul>
         </div>
 
