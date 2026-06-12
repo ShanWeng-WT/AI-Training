@@ -787,4 +787,152 @@ pre code {
   border-color: var(--primary-color);
 }
 
+/* ==========================================================================
+   RPG Skill Bar (Diablo Style)
+   ========================================================================== */
+.rpg-skill-bar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: -30px;
+  padding-top: 0;
+  gap: 30px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
 
+.orb {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  position: relative;
+  background: #111;
+  border: 6px solid #222;
+  box-shadow: 0 0 25px #000 inset, 0 0 20px rgba(0,0,0,0.8), inset 0 0 5px rgba(255,255,255,0.2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 85%;
+  border-radius: 0 0 70px 70px;
+  transition: height 0.5s ease-in-out;
+}
+
+.hp-orb .orb-fill {
+  background: radial-gradient(circle at 50% 120%, #ff1a1a, #800000, #330000);
+  box-shadow: 0 0 20px #ff1a1a inset;
+}
+
+.mp-orb .orb-fill {
+  background: radial-gradient(circle at 50% 120%, #1a8cff, #000080, #000033);
+  box-shadow: 0 0 20px #1a8cff inset;
+}
+
+.orb-glare {
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  width: 70%;
+  height: 40%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orb-label {
+  position: relative;
+  z-index: 2;
+  font-weight: 800;
+  font-size: 1.4em;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 2px 2px 4px #000, 0 0 10px rgba(0,0,0,0.8);
+  font-family: 'Times New Roman', serif;
+  letter-spacing: 1px;
+}
+
+.skill-slots {
+  display: flex;
+  gap: 12px;
+  background: rgba(15, 15, 15, 0.85);
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #2a2a2a;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,0.9);
+  margin-bottom: 15px;
+}
+
+.skill-slot {
+  width: 55px;
+  height: 55px;
+  background: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+}
+
+.skill-slot:hover {
+  border-color: #6a6a6a;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 0 12px rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.skill-slot.active {
+  border-color: var(--primary-color);
+  box-shadow: inset 0 0 20px rgba(0,255,204,0.15), 0 0 15px rgba(0,255,204,0.3);
+}
+
+.skill-icon {
+  font-size: 2em;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.9));
+  user-select: none;
+}
+
+.skill-key {
+  position: absolute;
+  bottom: -22px;
+  font-size: 0.8em;
+  font-family: 'Consolas', monospace;
+  color: #999;
+  font-weight: bold;
+  background: #111;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+
+:root.light-mode .orb {
+  background: #ccc;
+  border-color: #aaa;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+:root.light-mode .skill-slots {
+  background: rgba(220, 220, 220, 0.9);
+  border-color: #bbb;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+:root.light-mode .skill-slot {
+  background: #e0e0e0;
+  border-color: #ccc;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+:root.light-mode .skill-key {
+  background: #eee;
+  color: #555;
+  border-color: #ccc;
+}

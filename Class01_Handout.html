@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>打造專屬助手：Agent Skills 的定義與運用 - PDD3 AI Training</title>
+<title>Agent Skills 的定義與運用 - PDD3 AI Training</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
 <link href="style.css" rel="stylesheet"/>
 <!-- Highlight.js for Syntax Highlighting -->
@@ -17,56 +17,91 @@
 <nav class="sidebar">
 <ul class="nav-links">
 <li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
-<li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
-<li><a href="#slide2"><span class="dot"></span><span class="text">2. 背景與痛點</span></a></li>
-<li><a href="#slide3"><span class="dot"></span><span class="text">3. 核心要素</span></a></li>
-<li><a href="#slide4"><span class="dot"></span><span class="text">4. 頓悟時刻</span></a></li>
-<li><a href="#slide5"><span class="dot"></span><span class="text">5. 實戰演練</span></a></li>
-<li><a href="#slide6"><span class="dot"></span><span class="text">6. 常見誤區</span></a></li>
-<li><a href="#slide7"><span class="dot"></span><span class="text">7. 常見問答</span></a></li>
+<li><a href="#slide1"><span class="dot"></span><span class="text">1. Skill 是什麼？</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">2. Agent Skill 的標準</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 實戰演練</span></a></li>
+<li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
+<li><a href="#slide6"><span class="dot"></span><span class="text">6. 常見問答</span></a></li>
 </ul>
 </nav>
 <div class="slide-container">
 <div class="slide-content-wrapper">
 <div class="card" id="slide0">
-<h1>打造專屬助手：Agent Skills 的定義與運用</h1>
-<p class="subtitle">企業內部 AI 輔助開發教育訓練</p>
+<h1>Agent Skills 的定義與運用</h1>
 </div>
-<div class="card top-title-layout" id="slide1">
+<div class="card console-dashboard-layout" id="slide1">
 
-<h2>🎯 課程目標 <span>Session Goals</span></h2><div class="slide-body">
+<h2>🎯 Skill 是什麼？ <span>What is a Skill?</span></h2><p>翻轉人機互動模式，將不可控的隨機對話，升級為品質穩定的「自動化技能」輸出。</p><div class="dashboard-grid"><div class="sub-card"><h3>😰 無技能的痛點</h3><ul style="list-style: none; padding-left: 0; margin-top: 16px;"><li style="margin-bottom: 24px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">重新探索成本</strong>每次執行相同任務，AI 都需重新推演解法，耗費額外時間與 Token。</li><li style="margin-bottom: 24px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">缺乏一致的標準</strong>AI每次解法與結論可能截然不同。</li><li><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">品質難以掌握</strong>模型發散的輸出，導致難以預期與控管最終品質。</li></ul></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>💡 核心解決方案</h3><ul style="list-style: none; padding-left: 0; margin-top: 16px;"><li style="margin-bottom: 24px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">固化專案知識</strong>在 <code>SKILL.md</code> 中載明團隊固定的開發知識、指令與標準作法。</li><li style="margin-bottom: 24px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">可執行的工作流</strong>透過內建的程式腳本、明定的指令，讓 AI 按既定邏輯執行，確保產出一致。</li><li><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">賦予行為邊界</strong>不再依賴單次對話，改用系統化定義來約束 AI 行為。</li></ul></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>🎯 達成的目標</h3><ul style="list-style: none; padding-left: 0; margin-top: 16px;"><li style="margin-bottom: 24px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">穩定且精準</strong>產出結果變得可預測且高度一致。</li><li style="margin-bottom: 24px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">經驗資產化</strong>將踩坑經驗與最佳實踐轉化為隨插即用的「技能」。</li><li><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">提升效益比</strong>杜絕反覆溝通與無效試錯，節省時間及Token。</li></ul></div></div>
 
-<p>翻轉人機互動模式，從隨機對話升級為系統化的「自動化技能」輸出，真正解決開發痛點。</p>
+<!-- RPG Skill Bar (Diablo Style) -->
+<div class="rpg-skill-bar">
+    <div class="orb hp-orb">
+        <div class="orb-fill"></div>
+        <div class="orb-glare"></div>
+    </div>
+    <div class="skill-slots">
+        <div class="skill-slot">
+            <span class="skill-icon" title="Knowledge Base">🧠</span>
+            <span class="skill-key">Q</span>
+        </div>
+        <div class="skill-slot">
+            <span class="skill-icon" title="Code Generation">⚡</span>
+            <span class="skill-key">W</span>
+        </div>
+        <div class="skill-slot active">
+            <span class="skill-icon" title="Agent Skill">🛡️</span>
+            <span class="skill-key">E</span>
+        </div>
+        <div class="skill-slot">
+            <span class="skill-icon" title="Debugging">🔥</span>
+            <span class="skill-key">R</span>
+        </div>
+        <div class="skill-slot">
+            <span class="skill-icon" title="Documentation">📜</span>
+            <span class="skill-key">D</span>
+        </div>
+        <div class="skill-slot">
+            <span class="skill-icon" title="Tools">🛠️</span>
+            <span class="skill-key">F</span>
+        </div>
+        <div class="skill-slot">
+            <span class="skill-icon" title="Web Search">🌐</span>
+            <span class="skill-key">G</span>
+        </div>
+    </div>
+    <div class="orb mp-orb">
+        <div class="orb-fill"></div>
+        <div class="orb-glare"></div>
+    </div>
+</div>
 
-<p>本堂課將帶領大家將個人的開發經驗軟體化，建立第一個專屬 Agent Skill：</p>
-<ul>
-<li><strong>建立技能：</strong> 實務操作 Agent Skills，將踩坑經驗轉化為可複用的代碼生成規則。</li>
-<li><strong>翻轉模式：</strong> 擺脫每次對話重新說明的困境，改以<span>系統化技能卡匣</span>來約束並引導 AI。</li>
-<li><strong>解決痛點：</strong> 杜絕 AI 瞎編程式碼、不符合團隊架構的亂象，<span>使開發效率與代碼品質大躍進</span>。</li>
-</ul>
-<blockquote class="highlight">
-                        目標：把一般的 LLM（百科全書）改造成能直接融入 Wanin 開發工作流的專屬助手。
-                    </blockquote>
-</div></div>
+</div>
 <div class="card console-dashboard-layout" id="slide2">
 
-<h2>📖 背景與 <span>核心痛點</span></h2><p>通用型 AI 缺乏專案感知，反覆溝通與糾錯的時間成本反而拖慢了開發效率。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 通用解法就是錯誤解法</h3><p> AI 不懂特定的專案架構、程式庫規範與企業內部標準。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 同步成本極高</h3><p> 每次開啟新對話都要重述一遍專案規範，稍有不慎即產生編譯錯誤。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 解決方案</h3><p> 透過 <strong>Agent Skills</strong> 賦予 AI <span>專案感知力與行為邊界</span>，省下反覆 Debug 與 Code Review 的爭執時間。</p></div></div></div>
-<div class="card top-title-layout" id="slide3">
+<h2>⚙️ Agent Skill 的 <span>標準與結構</span></h2><div class="console-split"><div class="console-info">
 
-<h2>⚙️ Agent Skills 的 <span>核心要素</span></h2><div class="slide-body">
+<p>每一個 Skill 都必須遵循特定的目錄結構與命名規範，才能被系統正確載入並辨識。</p>
 
-<p>技能卡匣的四大核心支柱，決定了 AI 生成結果的紀律與精準度。</p>
-
-<p>一個設計良好的 Skill（技能定義檔）通常包含以下幾大區塊：</p>
 <ul>
-<li><strong>Intent (觸發條件)：</strong> 明確定義什麼時候該使用此技能（例如：看見實體類別時生成 Repository）。</li>
-<li><strong>Context (專案上下文)：</strong> 提供 AI 必須理解的專案環境（框架版本、特定庫或資料庫結構）。</li>
-<li><strong>Constraints (約束條件)：</strong> <span>最核心的部分</span>，明確列出「絕對禁止的事情」（例如：不可在 Controller 使用 DbContext）。</li>
-<li><strong>Few-shot (黃金範本)：</strong> 給予一到多個標準的滿分考卷範例，讓 AI 依葫蘆畫瓢。</li>
-<li><strong>Next Actions (後續流程)：</strong> 定義代碼生成後的下一步驗證或說明流程。</li>
+<li><strong>命名規範：</strong>目錄名稱與 <code>name</code> 屬性必須完全一致，建議使用 <strong>kebab-case</strong> (小寫與連字號，如 <code>my-skill</code>)。</li>
+<li><strong>SKILL.md (必填)：</strong>技能的核心定義檔，上方必須包含 <strong>YAML Frontmatter</strong> 宣告。</li>
+<li><strong>其他目錄 (選填)：</strong>如 <code>scripts/</code> 放置腳本、<code>references/</code> 放置參考文件、<code>assets/</code> 放置模板檔案。</li>
 </ul>
-</div></div>
-<div class="card top-title-layout" id="slide4">
+
+</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">Directory &amp; SKILL.md</span></div><div class="ide-body"><pre><code class="language-markdown">your-skill-name/ 
+├── SKILL.md        # Required - main skill file 
+├── scripts/        # Optional - executable code 
+├── references/     # Optional - documentation 
+└── assets/         # Optional - templates, etc.
+
+# SKILL.md 檔案內容開頭必須包含：
+---
+name: your-skill-name
+description: What it does. Use when user asks to [specific phrases].
+---
+</code></pre></div></div></div></div>
+<div class="card top-title-layout" id="slide3">
 
 <h2>💡 頓悟時刻 <span>Aha Moment</span></h2><div class="slide-body">
 
@@ -82,7 +117,7 @@
 <li><strong>自動化防線：</strong> 減少手動調整 Boilerplate 的時間，將精力集中在核心業務邏輯。</li>
 </ul>
 </div></div>
-<div class="card console-dashboard-layout" id="slide5">
+<div class="card console-dashboard-layout" id="slide4">
 
 <h2>🛠️ 實戰： <span>.NET Repository Generator</span></h2><div class="console-split"><div class="console-info">
 
@@ -97,10 +132,10 @@
 2. 必須建立 `I[Entity]Repository` 介面，並在 `[Entity]Repository` 實作。
 3. 所有資料存取方法必須使用 `async Task&lt;T&gt;` 異步設計。
 4. 必須包含 Try-Catch 例外處理並記錄 Log。</code></pre></div></div></div></div>
-<div class="card console-dashboard-layout" id="slide6">
+<div class="card console-dashboard-layout" id="slide5">
 
 <h2>⚠️ 常見誤區與 <span>防禦機制</span></h2><p>AI 不懂哲學，它只懂明確的規則。設計 Skill時應避免空泛指令，並建立自我檢視機制。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 空泛指令</h3><p> 避免使用「寫出好維護的程式」，改用<span>具體量化指標</span>（例如：每個方法不可超過 50 行，圈複雜度 &lt; 10）。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 缺乏上下文範圍</h3><p> 避免無範圍生成，應<span>精確限制範圍</span>（例如：僅限 .NET 8 / EF Core，或特定 Unity UI Toolkit 框架）。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 無防呆與自我修正</h3><p> <span>增加自我檢查提示詞</span>（例如：在 Skill 最後要求「生成代碼後，請對照 Constraints 自我檢查，若有違反請重新生成」），能有效濾掉 80% 的低級錯誤。</p></div></div></div>
-<div class="card comparison-layout" id="slide7">
+<div class="card comparison-layout" id="slide6">
 
 <h2>❓ 常見問答 <span>Q&amp;A</span></h2><p>面對開發團隊對 Skill 的實用性、成本與維護性的常見質疑。</p><div class="comparison-grid"><div class="comparison-card"><h3>❌ Q1: 每次寫 Skill 都要花時間，會不會反而拖慢開發進度？</h3><p>
 
