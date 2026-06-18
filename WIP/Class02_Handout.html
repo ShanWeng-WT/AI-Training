@@ -17,11 +17,12 @@
 <nav class="sidebar">
 <ul class="nav-links">
 <li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
-<li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
-<li><a href="#slide2"><span class="dot"></span><span class="text">2. 什麼是 Agent？</span></a></li>
-<li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
-<li><a href="#slide4"><span class="dot"></span><span class="text">4. ReAct 框架</span></a></li>
-<li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見問題</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">1. 什麼是 Agent？</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">2. Agent 運作架構</span></a></li>
+<li><a href="#slide3-5"><span class="dot"></span><span class="text">2.5 生動範例</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
+<li><a href="#slide5"><span class="dot"></span><span class="text">4. ReAct 框架</span></a></li>
+<li><a href="#slide6"><span class="dot"></span><span class="text">5. 常見問題</span></a></li>
 </ul>
 </nav>
 <div class="slide-container">
@@ -31,40 +32,91 @@
 <h1>從對話到行動</h1>
 <p class="subtitle">Agent 的本質與運作機制總結</p>
 </div>
-<!-- Slide 1: 課程目標 -->
-<div class="card top-title-layout" id="slide1">
 
-<h2>🎯 課程目標</h2><div class="slide-body">
-
-<p>我們把 ChatGPT 當作聊天機器人，但我們給開發者的工具是 Agent。兩者最大的差別在於「行動力」。</p>
-
-<ul>
-<li><strong>看透 Agent 的底層本質：</strong> 釐清 Chatbot（只會預測文字）與 Agent（擁有自主行動力）的核心差異。</li>
-<li><strong>解構 ReAct 推理迴圈：</strong> 深入學習經典的「感知 - 思考 - 行動 (Reasoning &amp; Acting)」運作邏輯。</li>
-<li><strong>自主行動力：</strong> 了解如何為 LLM 裝上「手與腳」，讓它能夠利用外部工具解決複雜任務。</li>
-</ul>
-</div></div>
 <!-- Slide 2: 什麼是 Agent -->
-<div class="card top-title-layout" id="slide2">
+<div class="card console-dashboard-layout" id="slide2">
 
 <h2>📖 什麼是 Agent？</h2><div class="slide-body">
 
-<p>Chatbot 只能說話，Agent 能夠行動。要讓一個語言模型能替人類工作，必須為它裝上「手」和「腳」。</p>
+<p><strong>LLM 本身只是大腦，無法做任何事。Agent 就是給 LLM 賦予身體，在思考能力之上再加入感知與行動能力。</strong></p>
+
+<div style="background: rgba(255,255,255,0.05); border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+    <p style="margin-top: 0; color: #58a6ff; font-weight: bold;">🤔 想一想，下列哪些算是 Agent 呢？</p>
+    <ul style="margin-bottom: 0;">
+        <li><strong>案例1：</strong>給AI一篇文章，叫他總結文章重點。 <em>(單純文字生成，不是 Agent)</em></li>
+        <li><strong>案例 2：</strong>在IDE裡使用代理人模式讓他直接讀寫程式碼。 <em>(能呼叫系統工具，是基礎 Agent)</em></li>
+        <li><strong>案例 3：</strong>AI實作完自己執行Build與Test，自己發現錯誤並修正 <em>(能在環境中感知與行動，是 Agent)</em></li>
+        <li><strong>案例 4：</strong>給予目標後，能自主規劃、建專案、寫程式碼、測試，不斷循環直到目標達成。 <em>(具備規劃與反思修正能力，是高度自主的 Agent)</em></li>
+    </ul>
+</div>
 
 <ul>
 <li><strong>Chatbot (聊天機器人)：</strong> 接收輸入，靜態預測並輸出下一段文字，無法感知外部環境，也無法產生實際的副作用。</li>
 <li><strong>Agent (代理人)：</strong> 擁有明確的任務目標，能主動呼叫外部工具 (Tools)，並依據執行結果進行自我反思與修正。</li>
-<li><strong>Agent 的三大支柱：</strong>
+</ul>
+
+<h3 style="margin-top: 1rem;">Agent 的三大支柱</h3>
+</div>
+<div class="dashboard-grid">
+<div class="sub-card">
+<h3>🧠 推理大腦 (Reasoner)</h3>
+<p>LLM 本身的推理與步驟規劃能力。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
+<h3>🛠️ 外部工具 (Tools)</h3>
+<p>讓 Agent 具備對系統、檔案與 API 的操控權限。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
+<h3>💡 反思修正 (Reflection)</h3>
+<p>讀取工具報錯並動態變更開發路線。</p>
+</div>
+</div>
+</div>
+
+<!-- Slide 3: Agent 架構大圖 -->
+<div class="card" id="slide3">
+<div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+<img src="../Resources/Images/WhatIsAgent.jpg" alt="What is Agent" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px;">
+</div>
+</div>
+
+<!-- Slide 3.5: 生動的例子 -->
+<div class="card console-dashboard-layout" id="slide3-5">
+<h2>🎮 生動範例：指派 Junior 工程師修 Bug</h2>
+<div class="console-split">
+<div class="console-info">
+<p>把 Agent 想像成一位你剛帶的 Junior 工程師。你只要給他一個<strong>高階目標</strong>（例如：修復登入失敗的問題），他就會自主跑起一個解決問題的迴圈：</p>
 <ul>
-<li><strong>推理大腦 (Reasoner)：</strong> LLM 本身的推理與步驟規劃能力。</li>
-<li><strong>外部工具 (Tools)：</strong> 讓 Agent 具備對系統、檔案與 API 的操控權限。</li>
-<li><strong>反思修正 (Reflection)：</strong> 讀取工具報錯並動態變更開發路線。</li>
+<li><strong>👀 觀察 (Observation)：</strong>看 Log 尋找報錯。</li>
+<li><strong>🧠 思考 (Thought)：</strong>推理錯誤原因，決定下一步。</li>
+<li><strong>🛠️ 行動 (Action)：</strong>呼叫工具（讀取檔案、修改代碼、執行指令）。</li>
 </ul>
-</li>
-</ul>
-</div></div>
-<!-- Slide 3: 頓悟時刻 -->
-<div class="card console-dashboard-layout" id="slide3">
+<p>這與傳統寫死規則的腳本完全不同，Agent 具備隨機應變的「容錯與反思」能力。</p>
+</div>
+<div class="ide-window">
+<div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">Agent_Trace_Log.txt</span></div>
+<div class="ide-body">
+<pre><code class="language-plaintext">[User Prompt] 修復 Login 失敗的 Bug
+
+[Action] 讀取 server.log
+[Observation] 發現錯誤：Connection Timeout
+[Thought] 這是資料庫連線超時，我該檢查 DB 設定檔。
+
+[Action] 讀取 config.json
+[Observation] 發現 DB_HOST 是 127.0.0.1
+[Thought] 正式環境不該是 local IP，我來改成正確的環境變數。
+
+[Action] 修改 config.json 並重啟 Server
+[Observation] Server 成功啟動，登入正常。
+
+[Thought] 任務完成，回報給主管！
+[Action] 結束迴圈並回覆結果</code></pre>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 4: 頓悟時刻 -->
+<div class="card console-dashboard-layout" id="slide4">
 
 <h2>💡 頓悟時刻</h2><div class="console-split"><div class="console-info">
 
@@ -82,12 +134,12 @@
     update_history(thought, action, observation);
     task_completed = evaluate(goal, history);
 }</code></pre></div></div></div></div>
-<!-- Slide 4: ReAct 框架 -->
-<div class="card console-dashboard-layout" id="slide4">
+<!-- Slide 5: ReAct 框架 -->
+<div class="card console-dashboard-layout" id="slide5">
 
 <h2>🛠️ 核心機制：ReAct 框架</h2><p>Reasoning and Acting (ReAct) 是 Agent 最著名的運行框架。學會閱讀 Agent 的隱藏 Trace Log，是開發者最重要的除錯基本功。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 Thought (思考</h3><p> 分析當前狀況與目標差距，推理下一步該做什麼。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ Action (行動</h3><p> 決定調用的工具 (Tool) 並傳入所需的引數 (Parameters)。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 Observation (觀察</h3><p> 工具執行後的實質反饋（如：檔案內容、編譯器報錯、命令執行結果）。</p></div></div></div>
-<!-- Slide 5: 常見問題 -->
-<div class="card top-title-layout" id="slide5">
+<!-- Slide 6: 常見問題 -->
+<div class="card top-title-layout" id="slide6">
 
 <h2>⚠️ 為什麼 Agent 會卡死？</h2><div class="slide-body">
 
