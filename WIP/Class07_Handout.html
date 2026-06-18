@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>從對話到行動：Agent 的本質與運作機制總結 - PDD3 AI Training</title>
+<title>揭開 LLM 的黑盒子：它能做什麼，不能做什麼？ - PDD3 AI Training</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
 <link href="Scripts/style.css" rel="stylesheet"/>
 <!-- Highlight.js for Syntax Highlighting -->
@@ -17,99 +17,96 @@
 <nav class="sidebar">
 <ul class="nav-links">
 <li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
-<li><a href="#slide1"><span class="dot"></span><span class="text">1. 🎯 課程目標</span></a></li>
-<li><a href="#slide2"><span class="dot"></span><span class="text">2. 📖 什麼是 Agent？</span></a></li>
-<li><a href="#slide3"><span class="dot"></span><span class="text">3. 💡 頓悟時刻</span></a></li>
-<li><a href="#slide4"><span class="dot"></span><span class="text">4. 🛠️ ReAct 框架</span></a></li>
-<li><a href="#slide5"><span class="dot"></span><span class="text">5. ⚠️ 常見問題</span></a></li>
+<li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">2. 核心概念</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 實戰演練</span></a></li>
+<li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
+<li><a href="#slide6"><span class="dot"></span><span class="text">6. 常見問答</span></a></li>
 </ul>
 </nav>
 <div class="slide-container">
 <div class="slide-content-wrapper">
-<!-- Slide 0: Cover -->
 <div class="card" id="slide0">
-<h1>從對話到行動</h1>
-<p class="subtitle">Agent 的本質與運作機制總結</p>
+<h1>揭開 LLM 的黑盒子：它能做什麼，不能做什麼？</h1>
+<p class="subtitle">企業內部 AI 輔助開發教育訓練</p>
 </div>
-<!-- Slide 1: 課程目標 -->
 <div class="card top-title-layout" id="slide1">
 
-<h2>🎯 課程目標</h2><div class="slide-body">
+<h2>🎯 課程目標 <span>Session Goals</span></h2><div class="slide-body">
 
-<p>我們把 ChatGPT 當作聊天機器人，但我們給開發者的工具是 Agent。兩者最大的差別在於「行動力」。</p>
+<p>剖析生成式大語言模型的底層極限，防範並收斂「幻覺」以獲得穩定的工程產出。</p>
 
+<p>本堂課將帶領大家看清 LLM 的本質，轉變對 AI 輸出的預期與使用思維：</p>
 <ul>
-<li><strong>看透 Agent 的底層本質：</strong> 釐清 Chatbot（只會預測文字）與 Agent（擁有自主行動力）的核心差異。</li>
-<li><strong>解構 ReAct 推理迴圈：</strong> 深入學習經典的「感知 - 思考 - 行動 (Reasoning &amp; Acting)」運作邏輯。</li>
-<li><strong>階段性技術總結：</strong> 統整前 6 堂課的 Agent 開發心法，為邁向企業級專案大腦做準備。</li>
+<li><strong>理解底層：</strong> 揭開 LLM 的運作機制，了解它並非真的懂語意，而是依賴統計機率。</li>
+<li><strong>認識極限：</strong> 深入理解「幻覺」發生的數學根本原因，避免盲目信任 AI 產出。</li>
+<li><strong>榨取價值：</strong> 掌握如何以約束 and 範本進行「機率引導」，將不確定性收斂至高度可預測的結果。</li>
 </ul>
 </div></div>
-<!-- Slide 2: 什麼是 Agent -->
-<div class="card top-title-layout" id="slide2">
+<div class="card console-dashboard-layout" id="slide2">
 
-<h2>📖 什麼是 Agent？</h2><div class="slide-body">
+<h2>📖 LLM <span>核心概念</span></h2><p>LLM 本質上是文字接龍引擎。它沒有「真偽」的觀念，只有「合理」的機率分佈。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 超級文字接龍</h3><p> LLM 本質上不具備邏輯推理或程式碼編譯能力，它只是基於前文預測下一個最可能出現的 <span>Token</span>。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 以 Token 為處理單位</h3><p> AI 理解代碼的最小單位不是單字或字母，而是如 <code>=&gt;</code>、<code>public</code> 等 Token，這決定了其語義匹配特徵。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 沒有真實，只有合理</h3><p> 當模型缺乏特定上下文時，會硬生生捏造看似語意通順但不存在的 API。這就是<span>幻覺 (Hallucination)</span> 的物理本質。</p></div></div></div>
+<div class="card top-title-layout" id="slide3">
 
-<p>Chatbot 只能說話，Agent 能夠行動。要讓一個語言模型能替人類工作，必須為它裝上「手」和「腳」。</p>
+<h2>💡 頓悟時刻 <span>Aha Moment</span></h2><div class="slide-body">
 
-<ul>
-<li><strong>Chatbot (聊天機器人)：</strong> 接收輸入，靜態預測並輸出下一段文字，無法感知外部環境，也無法產生實際的副作用。</li>
-<li><strong>Agent (代理人)：</strong> 擁有明確的任務目標，能主動呼叫外部工具 (Tools)，並依據執行結果進行自我反思與修正。</li>
-<li><strong>Agent 的三大支柱：</strong>
-<ul>
-<li><strong>推理大腦 (Reasoner)：</strong> LLM 本身的推理與步驟規劃能力。</li>
-<li><strong>外部工具 (Tools)：</strong> 讓 Agent 具備對系統、檔案與 API 的操控權限。</li>
-<li><strong>反思修正 (Reflection)：</strong> 讀取工具報錯並動態變更開發路線。</li>
-</ul>
-</li>
-</ul>
-</div></div>
-<!-- Slide 3: 頓悟時刻 -->
-<div class="card console-dashboard-layout" id="slide3">
-
-<h2>💡 頓悟時刻</h2><div class="console-split"><div class="console-info">
-
-<p>Agent 不是什麼高深莫測的魔法，它本質上就是一個掛了 LLM 推理大腦的 <code>while</code> 迴圈！</p>
+<p>Skill 的核心科學價值在於透過「機率整形」對抗並壓制 AI 的幻覺傾向。</p>
 
 <blockquote>
-<strong>底層運作邏輯虛擬碼：</strong>
-
-                            這解釋了為什麼它有時候會「想很久」，因為它正在背後瘋狂呼叫工具、讀檔、報錯、自我修正。
-                        </blockquote>
-</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">example.js</span></div><div class="ide-body"><pre><code class="language-javascript">while (!task_completed) {
-    let thought = think(goal, history);
-    let action = select_tool(thought);
-    let observation = execute(action);
-    update_history(thought, action, observation);
-    task_completed = evaluate(goal, history);
-}</code></pre></div></div></div></div>
-<!-- Slide 4: ReAct 框架 -->
-<div class="card console-dashboard-layout" id="slide4">
-
-<h2>🛠️ 核心機制：ReAct 框架</h2><p>Reasoning and Acting (ReAct) 是 Agent 最著名的運行框架。學會閱讀 Agent 的隱藏 Trace Log，是開發者最重要的除錯基本功。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 Thought (思考</h3><p> 分析當前狀況與目標差距，推理下一步該做什麼。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ Action (行動</h3><p> 決定調用的工具 (Tool) 並傳入所需的引數 (Parameters)。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 Observation (觀察</h3><p> 工具執行後的實質反饋（如：檔案內容、編譯器報錯、命令執行結果）。</p></div></div></div>
-<!-- Slide 5: 常見問題 -->
-<div class="card top-title-layout" id="slide5">
-
-<h2>⚠️ 為什麼 Agent 會卡死？</h2><div class="slide-body">
-
-<p>當 Agent 陷入無效的重複思考或無限的 retry 迴圈時，我們必須介入並優化我們的指令與工具設計。</p>
-
+                        "Skill 的核心價值：<strong>對抗幻覺，收斂機率！</strong>"
+                    </blockquote>
+<p>我們在寫 Agent Skills 時，背後的數學原理是：</p>
 <ul>
-<li><strong>工具不穩定與無防呆：</strong>
-<ul>
-<li>工具噴出未處理的 Exception 或格式混亂的錯誤訊息，AI 無法解讀，只會以同樣的方式反覆嘗試，導致陷入死鎖。</li>
-</ul>
-</li>
-<li><strong>目標模糊 (Goal Ambiguity)：</strong>
-<ul>
-<li>任務目標不夠具體（例如「幫我優化專案程式碼」），Agent 不知道什麼樣的狀態才算「完成」，因而無休止地運行下去。</li>
-</ul>
-</li>
-<li><strong>對策：</strong> 在提示詞中寫明任務完成的驗證條件（如「當執行 dotnet build 通過且無編譯錯誤時即代表任務完成」），並對工具加上明確的 Exception Handling。</li>
+<li><strong>機率整形 (Probability Shaping)：</strong> 給予精確的約束條件與 Few-shot 範例，會大幅拉高正確代碼的概率。</li>
+<li><strong>阻斷發散：</strong> 藉由封閉邊界的定義，讓 LLM 在文字接龍時，產生偏離規範的 Token 機率被數學性地降到趨近於零。</li>
 </ul>
 </div></div>
+<div class="card console-dashboard-layout" id="slide4">
+
+<h2>🛠️ 實戰： <span>對抗幻覺</span></h2><div class="console-split"><div class="console-info">
+
+<p>以 Unity 尋找最近敵人並扣血為例，展示缺乏約束與加入約束的產出差異。</p>
+
+<p><strong>情境：</strong> 尋找最近敵人並觸發傷害。</p>
+<ul>
+<li>❌ <strong>缺乏約束：</strong> AI 隨機接龍，捏造出不存在的 <code>Physics.FindClosestComponent</code> API。</li>
+<li>✔️ <strong>加入約束：</strong> 強制約束「必須使用 <code>OverlapSphere</code> 並透過 <code>IDamageable</code> 介面觸發傷害」。</li>
+</ul>
+
+</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">example.cs</span></div><div class="ide-body"><pre><code class="language-csharp">// 透過 Constraints 限縮機率後，AI 穩定產生正確代碼
+Collider[] hits = Physics.OverlapSphere(pos, radius);
+foreach (var hit in hits) {
+    if (hit.TryGetComponent&lt;IDamageable&gt;(out var target)) {
+        target.TakeDamage(damageAmount);
+    }
+}</code></pre></div></div></div></div>
+<div class="card console-dashboard-layout" id="slide5">
+
+<h2>⚠️ 常見誤區與 <span>防禦機制</span></h2><p>生成式模型的創造力與幻覺是一體兩面的。防禦性開發思維是必不可少的護欄。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 依賴 AI 進行複雜計算</h3><p>❌  AI 不擅長運算或推演複雜狀態機。
+                            <br/>
+                            ✔️ <strong>防禦：</strong> 讓 AI 搭建架構或寫單元測試，核心計算交由人工補足或實體編譯驗證。
+                        </p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 輕信預設的套件與 API 版本</h3><p>❌ 
+<br/>
+                            ✔️ <strong>防禦：</strong> 必須在 context 中明文指定框架版本與依賴限制（例如：C# 12 / .NET 8）。
+                        </p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 塞入過多不相干的雜訊</h3><p>❌  導致注意力分散。
+                            <br/>
+                            ✔️ <strong>防禦：</strong> 保持高訊噪比，只餵給 AI 必要且精確的專案結構與文件。
+                        </p></div></div></div>
+<div class="card comparison-layout" id="slide6">
+
+<h2>❓ 常見問答 <span>Q&amp;A</span></h2><p>解惑開發團隊對大語言模型本質與限制的疑惑。</p><div class="comparison-grid"><div class="comparison-card"><h3>❌ Q1: AI 真的理解它寫的程式碼嗎？未來會完全沒有幻覺嗎？</h3><p>
+
+<br/>
+<span>A1: 不，它不理解。</span>它基於強大的「模式匹配」捕捉關聯。而幻覺與創造力是一體兩面的，即使到 GPT-5，幻覺也無法完全根除，因此防禦性提示詞與人工審查依然至關重要。
+                        </p></div><div class="comparison-card highlight-card"><h3>🎯 Q2: 為什麼我給了 Constraints，AI 偶爾還是會犯錯（遺忘）？</h3><p>
+
+<br/>
+<span>A2: 因為 AI 受到「預設立場」或上下文長度的機率權重影響。</span>最佳防禦是配合 **Few-shot (黃金範本)**，給它看正確的範例，這比十條文字約束更有用。
+                        </p></div></div></div>
 <div class="footer">
-                PDD3 AI Training Series - Wanin
-            </div>
+            PDD3 AI Training Series - Wanin
+        </div>
 </div>
 </div>
 <div class="slide-controls">
