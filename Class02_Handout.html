@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>從對話到行動：Agent 的本質與運作機制總結 - PDD3 AI Training</title>
+<title>從對話到行動：Agent 的本質與日常工作環境 - PDD3 AI Training</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
-<link href="../Scripts/style.css" rel="stylesheet"/>
+<link href="Scripts/style.css" rel="stylesheet"/>
 <!-- Highlight.js for Syntax Highlighting -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" id="hljs-theme" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -22,7 +22,9 @@
 <li><a href="#slide3-5"><span class="dot"></span><span class="text">2.5 生動範例</span></a></li>
 <li><a href="#slide4"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
 <li><a href="#slide5"><span class="dot"></span><span class="text">4. ReAct 框架</span></a></li>
-<li><a href="#slide6"><span class="dot"></span><span class="text">5. 常見問題</span></a></li>
+<li><a href="#slide5-5"><span class="dot"></span><span class="text">5. 工作環境</span></a></li>
+<li><a href="#slide5-8"><span class="dot"></span><span class="text">6. 日常閉環</span></a></li>
+<li><a href="#slide6"><span class="dot"></span><span class="text">7. 常見問題</span></a></li>
 </ul>
 </nav>
 <div class="slide-container">
@@ -30,7 +32,7 @@
 <!-- Slide 0: Cover -->
 <div class="card" id="slide0">
 <h1>從對話到行動</h1>
-<p class="subtitle">Agent 的本質與運作機制總結</p>
+<p class="subtitle">Agent 的本質、運作機制與日常工作環境</p>
 </div>
 
 <!-- Slide 2: 什麼是 Agent -->
@@ -43,15 +45,15 @@
 <div style="background: rgba(255,255,255,0.05); border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
     <p style="margin-top: 0; color: #58a6ff; font-weight: bold;">🤔 想一想，下列哪些算是 Agent 呢？</p>
     <ul style="margin-bottom: 0;">
-        <li><strong>案例1：</strong>給AI一篇文章，叫他總結文章重點。 <em>(單純文字生成，不是 Agent)</em></li>
-        <li><strong>案例 2：</strong>在IDE裡使用代理人模式讓他直接讀寫程式碼。 <em>(能呼叫系統工具，是基礎 Agent)</em></li>
-        <li><strong>案例 3：</strong>AI實作完自己執行Build與Test，自己發現錯誤並修正 <em>(能在環境中感知與行動，是 Agent)</em></li>
-        <li><strong>案例 4：</strong>給予目標後，能自主規劃、建專案、寫程式碼、測試，不斷循環直到目標達成。 <em>(具備規劃與反思修正能力，是高度自主的 Agent)</em></li>
+        <li><strong>案例 1：</strong>給AI一篇文章，叫他總結文章重點。</li>
+        <li><strong>案例 2：</strong>在IDE裡使用代理人模式讓他直接讀寫程式碼。</li>
+        <li><strong>案例 3：</strong>AI實作完自己執行Build與Test，自己發現錯誤並修正</li>
+        <li><strong>案例 4：</strong>給予目標後，能自主規劃、建專案、寫程式碼、測試，不斷循環直到目標達成。</li>
     </ul>
 </div>
 
 <ul>
-<li><strong>Chatbot (聊天機器人)：</strong> 接收輸入，靜態預測並輸出下一段文字，無法感知外部環境，也無法產生實際的副作用。</li>
+<li><strong>Chatbot (聊天機器人)：</strong> 接收輸入後，LLM預測並輸出下一段文字；無法感知也無法影響外部環境。</li>
 <li><strong>Agent (代理人)：</strong> 擁有明確的任務目標，能主動呼叫外部工具 (Tools)，並依據執行結果進行自我反思與修正。</li>
 </ul>
 
@@ -76,7 +78,7 @@
 <!-- Slide 3: Agent 架構大圖 -->
 <div class="card" id="slide3">
 <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
-<img src="../Resources/Images/WhatIsAgent.jpg" alt="What is Agent" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px;">
+<img src="Resources/Images/WhatIsAgent.jpg" alt="What is Agent" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px;">
 </div>
 </div>
 
@@ -137,7 +139,44 @@
 <!-- Slide 5: ReAct 框架 -->
 <div class="card console-dashboard-layout" id="slide5">
 
-<h2>🛠️ 核心機制：ReAct 框架</h2><p>Reasoning and Acting (ReAct) 是 Agent 最著名的運行框架。學會閱讀 Agent 的隱藏 Trace Log，是開發者最重要的除錯基本功。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 Thought (思考</h3><p> 分析當前狀況與目標差距，推理下一步該做什麼。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ Action (行動</h3><p> 決定調用的工具 (Tool) 並傳入所需的引數 (Parameters)。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 Observation (觀察</h3><p> 工具執行後的實質反饋（如：檔案內容、編譯器報錯、命令執行結果）。</p></div></div></div>
+<h2>🛠️ 核心機制：ReAct 框架</h2><p>Reasoning and Acting (ReAct) 是 Agent 最著名的運行框架。學會閱讀 Agent 的隱藏 Trace Log，是開發者最重要的除錯基本功。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 Thought (思考)</h3><p> 分析當前狀況與目標差距，推理下一步該做什麼。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ Action (行動)</h3><p> 決定調用的工具 (Tool) 並傳入所需的引數 (Parameters)。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 Observation (觀察)</h3><p> 工具執行後的實質反饋（如：檔案內容、編譯器報錯、命令執行結果）。</p></div></div></div>
+<!-- Slide 5.5: 工作環境 -->
+<div class="card console-dashboard-layout" id="slide5-5">
+<h2>🧭 單一 Agent 的工作環境</h2>
+<p>Agent 的品質不是只由模型決定，而是由「工作目標、可見 Context、可用 Tools、授權邊界」共同決定。</p>
+<div class="dashboard-grid">
+<div class="sub-card">
+<h3>📁 Project Folder</h3>
+<p>Agent 只會在被授權的專案範圍內讀寫檔案。專案根目錄、AGENTS.md、Scripts 與 Resources 會一起塑造它的預設行為。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
+<h3>🛠️ Tools</h3>
+<p>讀檔、搜尋、修改、執行測試、瀏覽網頁等工具，決定 Agent 能否把「文字推理」轉成「實際行動」。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
+<h3>🧑‍⚖️ Approval Boundary</h3>
+<p>Auto Accept Edits、命令批准與網路權限是 HITL 的控制點。權限越大，越需要清楚的驗證條件與回滾策略。</p>
+</div>
+</div>
+</div>
+
+<!-- Slide 5.8: 日常工作閉環 -->
+<div class="card comparison-layout" id="slide5-8">
+<h2>🔁 日常工作閉環：先規劃，再授權</h2>
+<div class="comparison-grid">
+<div class="comparison-card">
+<h3>❌ 直接丟大需求</h3>
+<p>「幫我把這個模組重構好」會讓 Agent 同時猜需求、猜架構、猜完成標準。這會放大幻覺與誤改風險。</p>
+</div>
+<div class="comparison-card highlight-card">
+<h3>🎯 PlanMode + 驗證條件</h3>
+<p>先要求 Agent 探索程式碼並提出計畫，再由人審閱範圍、風險與測試方式；確認後才允許修改與執行命令。</p>
+</div>
+</div>
+<blockquote>
+<strong>建議流程：</strong> 定義目標 → 讓 Agent 探索 → 審閱 Plan → 授權修改 → 執行 Build/Test → 根據 Observation 收斂結果。
+</blockquote>
+</div>
 <!-- Slide 6: 常見問題 -->
 <div class="card top-title-layout" id="slide6">
 
@@ -176,6 +215,6 @@
 </svg>
 </button>
 </div>
-<script src="../Scripts/slides.js"></script>
+<script src="Scripts/slides.js"></script>
 </body>
 </html>

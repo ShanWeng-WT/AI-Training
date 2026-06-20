@@ -279,6 +279,10 @@
             return typeof course === 'string' ? course : course.id;
         }
 
+        function isCourseWip(course) {
+            return typeof course === 'object' && !!course.wip;
+        }
+
         function normalizeCourseTitle(rawTitle, fallbackTitle) {
             if (!rawTitle) return fallbackTitle;
             return rawTitle.replace(/\s*-\s*PDD3 AI Training\s*$/i, '').trim() || fallbackTitle;
@@ -348,6 +352,18 @@
             });
         }
 
+        function markCourseAsWip(container, courseId, titleElement) {
+            titleElement.textContent = '製作中...';
+            const actionElement = container.querySelector(`[data-course-action="${courseId}"]`);
+            if (actionElement) actionElement.style.display = 'none';
+            const linkElement = container.querySelector(`[data-course-link="${courseId}"]`);
+            if (linkElement) {
+                linkElement.removeAttribute('href');
+                linkElement.style.pointerEvents = 'none';
+                linkElement.style.cursor = 'default';
+            }
+        }
+
         async function loadCourseTitle(filename, fallbackTitle) {
             try {
                 return await readTitleByFetch(filename, fallbackTitle);
@@ -409,18 +425,15 @@
 
                 if (!titleElement) return;
 
+                if (isCourseWip(course)) {
+                    markCourseAsWip(container, courseId, titleElement);
+                    return;
+                }
+
                 loadCourseTitle(handoutFilename, `Class ${courseId}`)
                     .then(({ found, title }) => {
                         if (!found) {
-                            titleElement.textContent = '製作中...';
-                            const actionElement = container.querySelector(`[data-course-action="${courseId}"]`);
-                            if (actionElement) actionElement.style.display = 'none';
-                            const linkElement = container.querySelector(`[data-course-link="${courseId}"]`);
-                            if (linkElement) {
-                                linkElement.removeAttribute('href');
-                                linkElement.style.pointerEvents = 'none';
-                                linkElement.style.cursor = 'default';
-                            }
+                            markCourseAsWip(container, courseId, titleElement);
                             return;
                         }
                         titleElement.textContent = title;

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Context Engineering：精準餵養與 Token 效率最佳化 - PDD3 AI Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="Scripts/style.css" rel="stylesheet"/>
+<!-- Highlight.js for Syntax Highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" id="hljs-theme" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<!-- Sidebar Navigation -->
+<nav class="sidebar">
+<ul class="nav-links">
+<li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
+<li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">2. Context Window</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 最佳化技巧</span></a></li>
+<li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
+</ul>
+</nav>
+<div class="slide-container">
+<div class="slide-content-wrapper">
+<!-- Slide 0: Cover -->
+<div class="card" id="slide0">
+<h1>Context Engineering</h1>
+<p class="subtitle">精準餵養與 Token 效率最佳化</p>
+</div>
+<!-- Slide 1: 課程目標 -->
+<div class="card top-title-layout" id="slide1">
+
+<h2>🎯 課程目標</h2><div class="slide-body">
+
+<p>這不是教你怎麼寫出漂亮的 Prompt，而是教你如何像工程師設計記憶體一樣，精準控制餵給 AI 的資料。</p>
+
+<ul>
+<li><strong>掌控 Context 物理限制：</strong> 了解 Context Window 與 token 限制，量化並管理 LLM 的工作記憶。</li>
+<li><strong>實施 Context 實體隔離：</strong> 針對不同職掌的 Subagent 提供專屬的上下文，排除非必要雜訊。</li>
+<li><strong>去蕪存菁的高效餵食：</strong> 學習如何以最低的 token 消耗，精準傳遞最關鍵的邏輯脈絡，提升生成成功率。</li>
+</ul>
+</div></div>
+<!-- Slide 2: Context Window -->
+<div class="card top-title-layout" id="slide2">
+
+<h2>📖 什麼是 Context Window？</h2><div class="slide-body">
+
+<p>LLM 讀文章跟人類很像，通常只記得最前面與最後面，中間的內容最容易被遺忘，這在學術上被稱為 Lost in the Middle 現象。</p>
+
+<ul>
+<li><strong>工作記憶的侷限：</strong> 當 Context 超載時，AI 不僅容易遺忘規則，推理性能與指令遵循率也會跟著大幅滑落。</li>
+<li><strong>Lost in the Middle (中間遺忘) 效應：</strong>
+<ul>
+<li>大模型對 Prompt 開頭與結尾的注意力最集中，中間的內容容易失焦。</li>
+<li><strong>排版秘訣：</strong> 應將最關鍵的系統規則、生成限制與格式輸出要求放在 prompt 的最尾端。</li>
+</ul>
+</li>
+<li><strong>少即是多原則：</strong> 僅提供當前任務「剛剛好」的 Context。</li>
+</ul>
+</div></div>
+<!-- Slide 3: 頓悟時刻 -->
+<div class="card top-title-layout" id="slide3">
+
+<h2>💡 頓悟時刻</h2><div class="slide-body">
+
+<p>解決 Context 超載的終極手段不是寫更好的 Prompt，而是直接對 Context 進行「物理隔離」。</p>
+
+<blockquote>
+<strong>實體隔離（Physical Isolation）最安全：</strong><br/>
+                            配合 Subagent 機制，前端 Agent 的 Context 裡「絕對不會」出現後端的程式碼；反之亦然。<br/><br/>
+<ul>
+<li><strong>物理隔離的好處：</strong>
+<ul>
+<li><strong>避免領域干擾：</strong> 刪除與當前任務無關的程式碼，AI 就不會無故改動不相干的邏輯。</li>
+<li><strong>縮小搜索空間：</strong> 讓模型 100% 聚焦在目前要解決的單一功能模組上，最大程度消除幻覺。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</div></div>
+<!-- Slide 4: 最佳化技巧 -->
+<div class="card top-title-layout" id="slide4">
+
+<h2>🛠️ Token 效率最佳化技巧</h2><div class="slide-body">
+
+<p>不要給它整份實作，給它介面 (Interface)。這不僅省 Token 幫公司省錢，更能大幅提高 AI 生成的準確度。</p>
+
+<ul>
+<li><strong>Interface over Implementation (介面優先)：</strong>
+<ul>
+<li><strong>實戰範例：</strong> 貼上整份 2000 行的 class 原始碼，不如只貼上 50 行的介面 (Interface) 定義與公開 API 簽章。AI 只要知道怎麼調用，不需要知道裡面怎麼實作。</li>
+</ul>
+</li>
+<li><strong>結構化輸入 (Structured Input)：</strong> 使用 Markdown 階層 (如 `#` 標題、三個反單引號包覆的代碼區塊) 與 XML tags 劃分變數邊界，減少語意解析模糊。</li>
+<li><strong>動態提取 Context：</strong> 結合 RAG（檢索增強生成）或開發工具，即時檢索與調用相關的程式片段，避免靜態塞入整份文件。</li>
+</ul>
+</div></div>
+<!-- Slide 5: 常見誤區 -->
+<div class="card console-dashboard-layout" id="slide5">
+
+<h2>⚠️ 常見誤區</h2><p>定期清理對話是工程開發中的好習慣。貪多嚼不爛，在 Context Engineering 中，「乾淨的對話」重於一切。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 一鍵梭哈的陷阱</h3><p>
+<ul>
+<li>將數百個檔案或上萬行程式碼直接貼進對話視窗。這樣做只會超出 Context 窗口，或導致嚴重的 "Lost in the Middle" 使得 AI 忽略你的特定指令。</li>
+</ul>
+</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 忽視歷史包袱</h3><p>
+<ul>
+<li>在一個對話中進行了數十次程式碼修改卻不重啟，舊的錯誤代碼與除錯脈絡仍在 Context 中持續干擾 AI 的新判斷。</li>
+</ul>
+</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 解決方法</h3><p> 開發好一個小模組後，請主動開啟新對話 (New Chat)，只把該模組的最終產出與介面作為新對話的背景輸入。</p></div></div></div>
+<div class="footer">
+                PDD3 AI Training Series - Wanin
+            </div>
+</div>
+</div>
+<div class="slide-controls">
+<button class="nav-btn prev" title="Previous Slide">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<button class="nav-btn next" title="Next Slide">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</button>
+</div>
+<script src="Scripts/slides.js"></script>
+</body>
+</html>
