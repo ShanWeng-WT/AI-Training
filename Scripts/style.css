@@ -555,6 +555,17 @@ pre code {
   flex: 1;
 }
 
+.console-split.console-centered {
+  grid-template-columns: 1fr;
+  justify-content: center;
+}
+
+.console-split.console-centered .ide-window {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .console-info {
   display: flex;
   flex-direction: column;
