@@ -9,7 +9,7 @@
 const COURSE_LIST = [
     { id: "00" },
     { id: "01" },
-    { id: "02" },
+    { id: "02", wip: true },
     { id: "03", wip: true },
     { id: "04", wip: true },
     { id: "05", wip: true },
