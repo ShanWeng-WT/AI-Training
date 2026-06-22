@@ -198,12 +198,17 @@
             max-width: 1200px; /* 對齊到外部背景卡片 (.index-container) 的邊界 */
             position: relative;
         }
-        .floating-link {
-            pointer-events: auto;
+        .floating-group {
             position: absolute;
-            right: 10px; /* 貼著邊界 */
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            pointer-events: auto;
+        }
+        .floating-link {
             background: rgba(22, 27, 34, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(88, 166, 255, 0.3);
@@ -220,7 +225,7 @@
             gap: 12px;
         }
         .floating-link:hover {
-            transform: translateY(-50%) translateX(-5px);
+            transform: translateX(-5px);
             border-color: rgba(0, 255, 204, 0.6);
             color: #fff;
             box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
@@ -239,12 +244,17 @@
             font-size: 1.1rem;
         }
         @media (max-width: 768px) {
-            .floating-link {
+            .floating-group {
                 position: fixed;
                 top: auto;
                 bottom: 20px;
                 right: 20px;
                 transform: none;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 10px;
+            }
+            .floating-link {
                 flex-direction: row;
                 padding: 10px 20px;
                 border-radius: 30px;
@@ -448,12 +458,22 @@
     <!-- 浮動連結區塊 (對齊時間軸右側) -->
     <div class="fixed-overlay">
         <div class="fixed-timeline-wrapper">
-            <a href="https://ai-dict.gh.miniasp.com/?fbclid=IwdGRjcARj5wpjbGNrBGPlS2V4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHjrVlksauGpgZuBddlhIKV_U3shjLRmiGHMehuy8bGJo8IP29LynqoOpggy0_aem_4A7X2BZBdEXx1XkDkxQ1lA" target="_blank" class="floating-link" title="AI 字典">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-                </svg>
-                <span class="floating-text">術語辭典</span>
-            </a>
+            <div class="floating-group">
+                <a href="Additional_Learning_Resources.html" class="floating-link" title="額外學習資源">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                        <path d="M2 12h20"></path>
+                    </svg>
+                    <span class="floating-text">學習資源</span>
+                </a>
+                <a href="https://ai-dict.gh.miniasp.com/?fbclid=IwdGRjcARj5wpjbGNrBGPlS2V4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHjrVlksauGpgZuBddlhIKV_U3shjLRmiGHMehuy8bGJo8IP29LynqoOpggy0_aem_4A7X2BZBdEXx1XkDkxQ1lA" target="_blank" class="floating-link" title="AI 字典">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                    </svg>
+                    <span class="floating-text">術語辭典</span>
+                </a>
+            </div>
         </div>
     </div>
 </body>
