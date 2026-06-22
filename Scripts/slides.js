@@ -1,3 +1,12 @@
+if (window.parent !== window) {
+    window.parent.postMessage({
+        source: 'pdd3-course-handout',
+        type: 'course-title',
+        title: document.title,
+        href: window.location.href
+    }, '*');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-links a');
     const slides = [];

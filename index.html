@@ -118,6 +118,7 @@
         .glass-card:hover .course-action svg { transform: translateX(6px); }
         .course-title {
             margin-top: 0;
+            margin-bottom: 12px;
             font-size: 1.3rem;
             line-height: 1.4;
             color: #e6edf3;
@@ -126,7 +127,6 @@
             font-weight: 800;
         }
         .glass-card:hover .course-title { color: #fff; }
-
         /* ================= Layout: Timeline ================= */
         .layout-timeline {
             position: relative;
@@ -198,12 +198,17 @@
             max-width: 1200px; /* 對齊到外部背景卡片 (.index-container) 的邊界 */
             position: relative;
         }
-        .floating-link {
-            pointer-events: auto;
+        .floating-group {
             position: absolute;
-            right: 10px; /* 貼著邊界 */
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            pointer-events: auto;
+        }
+        .floating-link {
             background: rgba(22, 27, 34, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(88, 166, 255, 0.3);
@@ -220,7 +225,7 @@
             gap: 12px;
         }
         .floating-link:hover {
-            transform: translateY(-50%) translateX(-5px);
+            transform: translateX(-5px);
             border-color: rgba(0, 255, 204, 0.6);
             color: #fff;
             box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
@@ -239,12 +244,17 @@
             font-size: 1.1rem;
         }
         @media (max-width: 768px) {
-            .floating-link {
+            .floating-group {
                 position: fixed;
                 top: auto;
                 bottom: 20px;
                 right: 20px;
                 transform: none;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 10px;
+            }
+            .floating-link {
                 flex-direction: row;
                 padding: 10px 20px;
                 border-radius: 30px;
@@ -275,6 +285,103 @@
 
     <script src="Scripts/courses.js"></script>
     <script>
+        function getCourseId(course) {
+            return typeof course === 'string' ? course : course.id;
+        }
+
+        function isCourseWip(course) {
+            return typeof course === 'object' && !!course.wip;
+        }
+
+        function normalizeCourseTitle(rawTitle, fallbackTitle) {
+            if (!rawTitle) return fallbackTitle;
+            return rawTitle.replace(/\s*-\s*PDD3 AI Training\s*$/i, '').trim() || fallbackTitle;
+        }
+
+        const pendingTitleLoads = new Map();
+
+        window.addEventListener('message', (event) => {
+            const data = event.data;
+
+            if (!data || data.source !== 'pdd3-course-handout' || data.type !== 'course-title') {
+                return;
+            }
+
+            const request = pendingTitleLoads.get(data.href);
+            if (!request) return;
+
+            window.clearTimeout(request.timer);
+            request.iframe.remove();
+            pendingTitleLoads.delete(data.href);
+            request.resolve({ found: true, title: normalizeCourseTitle(data.title, request.fallbackTitle) });
+        });
+
+        async function readTitleByFetch(filename, fallbackTitle) {
+            const response = await fetch(filename);
+            if (!response.ok) return { found: false, title: fallbackTitle };
+
+            const html = await response.text();
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            return { found: true, title: normalizeCourseTitle(doc.querySelector('title')?.textContent, fallbackTitle) };
+        }
+
+        function readTitleByFrame(filename, fallbackTitle) {
+            return new Promise((resolve) => {
+                const iframe = document.createElement('iframe');
+                const iframeUrl = new URL(filename, window.location.href).href;
+                const timer = window.setTimeout(() => {
+                    iframe.remove();
+                    pendingTitleLoads.delete(iframeUrl);
+                    resolve({ found: false, title: fallbackTitle });
+                }, 1200);
+
+                pendingTitleLoads.set(iframeUrl, {
+                    fallbackTitle,
+                    iframe,
+                    resolve,
+                    timer
+                });
+
+                iframe.onerror = () => {
+                    window.clearTimeout(timer);
+                    iframe.remove();
+                    pendingTitleLoads.delete(iframeUrl);
+                    resolve({ found: false, title: fallbackTitle });
+                };
+
+                iframe.title = '';
+                iframe.setAttribute('aria-hidden', 'true');
+                iframe.style.position = 'absolute';
+                iframe.style.width = '0';
+                iframe.style.height = '0';
+                iframe.style.border = '0';
+                iframe.style.visibility = 'hidden';
+                iframe.style.pointerEvents = 'none';
+                iframe.src = filename;
+                document.body.appendChild(iframe);
+            });
+        }
+
+        function markCourseAsWip(container, courseId, titleElement) {
+            titleElement.textContent = '製作中...';
+            const actionElement = container.querySelector(`[data-course-action="${courseId}"]`);
+            if (actionElement) actionElement.style.display = 'none';
+            const linkElement = container.querySelector(`[data-course-link="${courseId}"]`);
+            if (linkElement) {
+                linkElement.removeAttribute('href');
+                linkElement.style.pointerEvents = 'none';
+                linkElement.style.cursor = 'default';
+            }
+        }
+
+        async function loadCourseTitle(filename, fallbackTitle) {
+            try {
+                return await readTitleByFetch(filename, fallbackTitle);
+            } catch (error) {
+                return readTitleByFrame(filename, fallbackTitle);
+            }
+        }
+
         function renderCourses() {
             const container = document.getElementById('course-container');
             
@@ -292,18 +399,20 @@
             container.innerHTML = '';
 
             COURSE_LIST.forEach((course, index) => {
-                const handoutFilename = `Class${course.id}_Handout.html`;
+                const courseId = getCourseId(course);
+                const handoutFilename = `Class${courseId}_Handout.html`;
+                const fallbackTitle = `Class ${courseId}`;
                 
                 const cardHtml = `
                     <div class="timeline-item">
                         <div class="timeline-node"></div>
                         <div class="timeline-item-content">
-                            <a href="${handoutFilename}" class="course-link">
+                            <a href="${handoutFilename}" class="course-link" data-course-link="${courseId}">
                                 <div class="glass-card">
-                                    <div class="status-badge">Class ${course.id}</div>
-                                    <h3 class="course-title">${course.title}</h3>
-                                    
-                                    <div class="course-action">
+                                    <div class="status-badge">Class ${courseId}</div>
+                                    <h3 class="course-title" data-course-title="${courseId}">${fallbackTitle}</h3>
+
+                                    <div class="course-action" data-course-action="${courseId}">
                                         進入講義
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -318,6 +427,28 @@
                 
                 container.insertAdjacentHTML('beforeend', cardHtml);
             });
+
+            COURSE_LIST.forEach((course) => {
+                const courseId = getCourseId(course);
+                const handoutFilename = `Class${courseId}_Handout.html`;
+                const titleElement = container.querySelector(`[data-course-title="${courseId}"]`);
+
+                if (!titleElement) return;
+
+                if (isCourseWip(course)) {
+                    markCourseAsWip(container, courseId, titleElement);
+                    return;
+                }
+
+                loadCourseTitle(handoutFilename, `Class ${courseId}`)
+                    .then(({ found, title }) => {
+                        if (!found) {
+                            markCourseAsWip(container, courseId, titleElement);
+                            return;
+                        }
+                        titleElement.textContent = title;
+                    });
+            });
         }
 
         // 初始化
@@ -327,12 +458,22 @@
     <!-- 浮動連結區塊 (對齊時間軸右側) -->
     <div class="fixed-overlay">
         <div class="fixed-timeline-wrapper">
-            <a href="https://ai-dict.gh.miniasp.com/?fbclid=IwdGRjcARj5wpjbGNrBGPlS2V4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHjrVlksauGpgZuBddlhIKV_U3shjLRmiGHMehuy8bGJo8IP29LynqoOpggy0_aem_4A7X2BZBdEXx1XkDkxQ1lA" target="_blank" class="floating-link" title="AI 字典">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-                </svg>
-                <span class="floating-text">術語辭典</span>
-            </a>
+            <div class="floating-group">
+                <a href="Additional_Learning_Resources.html" class="floating-link" title="額外學習資源">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                        <path d="M2 12h20"></path>
+                    </svg>
+                    <span class="floating-text">學習資源</span>
+                </a>
+                <a href="https://ai-dict.gh.miniasp.com/?fbclid=IwdGRjcARj5wpjbGNrBGPlS2V4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHjrVlksauGpgZuBddlhIKV_U3shjLRmiGHMehuy8bGJo8IP29LynqoOpggy0_aem_4A7X2BZBdEXx1XkDkxQ1lA" target="_blank" class="floating-link" title="AI 字典">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                    </svg>
+                    <span class="floating-text">術語辭典</span>
+                </a>
+            </div>
         </div>
     </div>
 </body>

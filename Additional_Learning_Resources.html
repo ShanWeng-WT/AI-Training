@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>額外學習資源 | AI 輔助開發教育訓練</title>
+    <!-- 引入 Google Fonts，確保字體質感現代且專業 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 載入專屬的樣式表 -->
+    <link rel="stylesheet" href="Scripts/learning_resources.css">
+</head>
+<body>
+    <!-- 背景裝飾效果 -->
+    <div class="bg-mesh-1"></div>
+    <div class="bg-mesh-2"></div>
+
+    <div class="page-container">
+        <header class="hero-header">
+            <div class="hero-bg-glow"></div>
+            <h1>額外學習資源</h1>
+            <p>探索更多 AI 代理、Unity 與 .NET 的延伸學習素材與實用工具，幫助您深入理解並實作 Agentic Workflow。</p>
+        </header>
+
+        <main id="resources-container">
+            <!-- 內容將由 JavaScript 動態載入 -->
+        </main>
+    </div>
+
+    <!-- 載入設定檔與資料 -->
+    <script src="Scripts/learning_resources_data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('resources-container');
+            
+            // 確保資料存在
+            if (typeof learningResourcesData === 'undefined') {
+                console.error("無法載入資源資料。請確認 learning_resources_data.js 已正確載入。");
+                return;
+            }
+
+            // 迭代每個分類
+            learningResourcesData.forEach(section => {
+                // 建立分類容器
+                const sectionEl = document.createElement('section');
+                sectionEl.className = 'resource-section';
+                
+                // 建立分類標題
+                const titleEl = document.createElement('h2');
+                titleEl.className = 'category-title';
+                titleEl.textContent = section.category;
+                sectionEl.appendChild(titleEl);
+                
+                // 建立卡片網格
+                const gridEl = document.createElement('div');
+                gridEl.className = 'resource-grid';
+                
+                // 迭代分類中的每個資源
+                section.resources.forEach(res => {
+                    // 建立超連結卡片
+                    const cardEl = document.createElement('a');
+                    cardEl.className = 'resource-card';
+                    cardEl.href = res.url;
+                    cardEl.target = '_blank';
+                    cardEl.rel = 'noopener noreferrer';
+                    
+                    // 滑鼠追蹤發光效果的容器
+                    const cardGlow = document.createElement('div');
+                    cardGlow.className = 'card-glow';
+                    cardEl.appendChild(cardGlow);
+
+                    // 滑鼠移動事件，更新 CSS 變數以實現動態光暈
+                    cardEl.addEventListener('mousemove', (e) => {
+                        const rect = cardEl.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        cardEl.style.setProperty('--mouse-x', `${x}px`);
+                        cardEl.style.setProperty('--mouse-y', `${y}px`);
+                    });
+
+                    // 內容區塊
+                    const cardContent = document.createElement('div');
+                    cardContent.className = 'card-content';
+                    
+                    const cardTitle = document.createElement('h3');
+                    cardTitle.textContent = res.title;
+                    
+                    const cardDesc = document.createElement('p');
+                    cardDesc.textContent = res.description;
+                    
+                    // 右上角圖標 (外連箭頭)
+                    const cardIcon = document.createElement('div');
+                    cardIcon.className = 'card-icon';
+                    cardIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`;
+
+                    cardContent.appendChild(cardTitle);
+                    cardContent.appendChild(cardDesc);
+                    
+                    cardEl.appendChild(cardContent);
+                    cardEl.appendChild(cardIcon);
+                    
+                    gridEl.appendChild(cardEl);
+                });
+                
+                sectionEl.appendChild(gridEl);
+                container.appendChild(sectionEl);
+            });
+        });
+    </script>
+</body>
+</html>
