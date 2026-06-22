@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>從對話到行動：Agent 的本質與日常工作環境 - PDD3 AI Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="Scripts/style.css" rel="stylesheet"/>
+<!-- Highlight.js for Syntax Highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" id="hljs-theme" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<!-- Sidebar Navigation -->
+<nav class="sidebar">
+<ul class="nav-links">
+<li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
+<li><a href="#slide1"><span class="dot"></span><span class="text">1. 什麼是 Agent？</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">2. ReAct運作架構</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">3. 能力範圍與邊界</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 範例</span></a></li>
+<li><a href="#slide5"><span class="dot"></span><span class="text">5. Agent vs 純 LLM</span></a></li>
+<li><a href="#slide6"><span class="dot"></span><span class="text">6. 常見問題</span></a></li>
+</ul>
+</nav>
+<div class="slide-container">
+<div class="slide-content-wrapper">
+<!-- Slide 0: Cover -->
+<div class="card" id="slide0">
+<h1>從對話到行動</h1>
+<p class="subtitle">Agent 的本質、運作機制與日常工作環境</p>
+</div>
+
+<!-- Slide 1: 什麼是 Agent -->
+<div class="card console-dashboard-layout" id="slide1">
+
+<h2>📖 什麼是 Agent？</h2><div class="slide-body">
+
+<p><strong>LLM 本身只是大腦，無法做任何事。Agent 就是給 LLM 賦予身體，在思考能力之上再加入感知與行動能力。</strong></p>
+
+<div style="background: rgba(255,255,255,0.05); border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+    <p style="margin-top: 0; color: #58a6ff; font-weight: bold;">🤔 想一想，下列哪些算是 Agent 呢？</p>
+    <ul style="margin-bottom: 0;">
+        <li><strong>案例 1：</strong>給AI一篇文章，叫他總結文章重點。</li>
+        <li><strong>案例 2：</strong>在IDE裡使用代理人模式讓他直接讀寫程式碼。</li>
+        <li><strong>案例 3：</strong>AI實作完自己執行Build與Test，自己發現錯誤並修正</li>
+        <li><strong>案例 4：</strong>給予目標後，能自主規劃、建專案、寫程式碼、測試，不斷循環直到目標達成。</li>
+    </ul>
+</div>
+
+<ul>
+<li><strong>Chatbot (聊天機器人)：</strong> 接收輸入後，LLM預測並輸出下一段文字；無法感知也無法影響外部環境。</li>
+<li><strong>Agent (代理人)：</strong> 擁有明確的任務目標，能主動呼叫外部工具 (Tools)，並依據執行結果進行自我反思與修正。</li>
+</ul>
+
+<!-- # 實際上區分什麼是Agent什麼是Chatbot對開發來說並不重要，重要的是了解目前使用的工具或服務具備什麼能力，談論時也會偏向圍繞在這個行為有多Agentic。
+舉例: 如今主流IDE或AI服務網頁版當中的聊天模式，已逐漸導入Agentic行為，純Chatbot可能只有在其他自行開發的產品上會看到(ex.捷運客服) -->
+
+<h3 style="margin-top: 1rem;">Agent 的三大支柱</h3>
+</div>
+<div class="dashboard-grid">
+<div class="sub-card">
+<h3>🧠 推理大腦 (Reasoner)</h3>
+<p>LLM 本身的推理與步驟規劃能力。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
+<h3>🛠️ 外部工具 (Tools)</h3>
+<p>讓 Agent 具備對系統、檔案與 API 的操控權限。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
+<h3>💡 反思修正 (Reflection)</h3>
+<p>讀取工具報錯並動態變更開發路線。</p>
+</div>
+</div>
+</div>
+
+<!-- Slide 2: Agent 運作架構：ReAct 框架 -->
+<div class="card console-dashboard-layout" id="slide2">
+<h2>🛠️ Agent 運作架構：ReAct 框架</h2>
+<p>Reasoning and Acting (ReAct) 是 Agent 最著名的運行框架。學會閱讀 Agent 的隱藏 Trace Log，是開發者最重要的除錯基本功。</p>
+<div class="dashboard-grid">
+<div class="sub-card">
+<h3>🤖 Thought (思考)</h3>
+<p>分析當前狀況與目標差距，推理下一步該做什麼。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
+<h3>⚙️ Action (行動)</h3>
+<p>決定調用的工具 (Tool) 並傳入所需的引數 (Parameters)。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
+<h3>💡 Observation (觀察)</h3>
+<p>工具執行後的實質反饋（如：檔案內容、編譯器報錯、命令執行結果）。</p>
+</div>
+</div>
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+<img src="Resources/Images/ReAct.png" alt="ReAct Framework" style="max-width: 75%; max-height: 200px; object-fit: contain; border-radius: 8px; background: #fff; padding: 10px;">
+</div>
+</div>
+
+<!-- Slide 3: Agent 的特徵與工作環境 -->
+<div class="card console-dashboard-layout" id="slide3">
+<h2>🤖 Agent 的能力範圍與邊界</h2>
+<p>Agent 是<strong>嵌入在一個指定環境 (Environment) 中運作的個體</strong>：它透過 ReAct 的 <code>Observation</code> 感知、<code>Action</code> 行動與環境互動。也因此，它的能力上限不只取決於模型，更取決於：</p>
+<div class="dashboard-grid">
+<div class="sub-card">
+<h3>🧠 Context（可見脈絡）</h3>
+<p>包含對話歷史、System Prompt、AGENTS.md與工具回傳的Result(Observation與Action的結果)。看不到的資訊，它就無從判斷，僅能依賴訓練資料。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
+<h3>🛠️ Tools（可用工具）</h3>
+<p>讀檔、搜尋、修改、執行測試、瀏覽網頁等工具。沒有對應工具，Agent就無法對環境做觀察(Observation)與行動(Action)，僅能依賴訓練資料。</p>
+</div>
+<div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
+<h3>🧑‍⚖️ 範圍與授權</h3>
+<p>界定Agent作用的<strong>範圍</strong>；權限決定工具是否能對環境執行Observation與Action。</p>
+</div>
+</div>
+</div>
+
+<!-- Slide 4: 範例 -->
+<div class="card console-dashboard-layout" id="slide4">
+<h2>🎮 範例：台北今天適合跑步嗎？</h2>
+<div class="console-split console-centered">
+<div class="ide-window">
+<div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">Agent_Trace_Log.txt</span></div>
+<div class="ide-body" style="max-height: 220px;">
+<pre><code class="language-plaintext">[User Prompt] 台北今天適合跑步嗎？
+
+[Thought] 要回答這個問題，我需要知道今天是哪天，目前是在Windows環境，我可以使用echo %date%指令取得今天的日期。
+[Action] 呼叫指令echo %date%
+[Observation] 指令回覆「202-06-22」。
+
+[Thought] 光是知道今天是哪天還不足以判斷是否適合跑步，我還需要知道台北的天氣，我可以使用天氣工具取得資訊。
+[Action] 呼叫天氣工具，帶入參數「Taipei」,「2026-06-22」。
+[Observation] 工具回覆「30 度，多雲，有午後雷陣雨」。+
+
+[Thought] 今天可能會有雷陣雨，所以不適合戶外跑步，已確認可以回答使用者的問題了。
+[Final Answer] 今天不建議在台北跑步，因為可能會下雨。</code></pre>
+</div>
+</div>
+</div>
+<div style="background: rgba(255,255,255,0.05); border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin-top: 0; color: #58a6ff; font-weight: bold;">🤔 延伸思考</p>
+<ul style="margin-bottom: 0;">
+<li>如果 User Prompt 改成「今天適合跑步嗎？」會變成怎麼樣？</li>
+<li>如果 Agent 沒有天氣工具可以用會怎麼樣？</li>
+<li>Agent最終的回答是不是真的能夠滿足使用者的需求？說不定他是想在清晨跑步；又或者今天不會下雨，但是他要去的田徑場今天不開放</li>
+</ul>
+</div>
+</div>
+
+<!-- Slide 5: Agent vs 純 LLM -->
+<div class="card comparison-layout" id="slide5">
+<h2>⚖️ Agent vs 純 LLM：同一個問題，兩種做法</h2>
+<div class="comparison-grid">
+<div class="comparison-card">
+<h3>💬 純 LLM</h3>
+<p>僅憑訓練資料回答，受限於Knowledge cutoff，不可能知道「今天」台北的即時天氣，容易產生幻覺；優點是不需呼叫外部工具，回應快、成本低。</p>
+</div>
+<div class="comparison-card highlight-card">
+<h3>🤖 Agent (ReAct)</h3>
+<p>能呼叫天氣工具取得即時觀測值，可信度更高；代價是需要額外的工具整合與授權，且內部多輪的循環也使得回應時間與Token成本大幅增加。</p>
+</div>
+</div>
+<blockquote>
+<strong>沒有絕對的優劣之分，只有適用情境的不同</strong>
+</blockquote>
+</div>
+<!-- Slide 6: 常見問題 -->
+<div class="card top-title-layout" id="slide6">
+
+<h2>⚠️ 為什麼 Agent 會卡死？</h2><div class="slide-body">
+
+<p>當 Agent 陷入無效的重複思考或無限的 retry 迴圈時，我們必須介入並優化我們的指令與工具設計。</p>
+
+<ul>
+<li><strong>工具不穩定與無防呆：</strong>
+<ul>
+<li>工具噴出未處理的 Exception 或格式混亂的錯誤訊息，AI 無法解讀，只會以同樣的方式反覆嘗試，導致陷入死鎖。</li>
+</ul>
+</li>
+<li><strong>目標模糊 (Goal Ambiguity)：</strong>
+<ul>
+<li>任務目標不夠具體（例如「幫我優化專案程式碼」），Agent 不知道什麼樣的狀態才算「完成」，因而無休止地運行下去。</li>
+</ul>
+</li>
+<li><strong>對策：</strong> 在提示詞中寫明任務完成的驗證條件（如「當執行 dotnet build 通過且無編譯錯誤時即代表任務完成」），並對工具加上明確的 Exception Handling。</li>
+</ul>
+</div></div>
+<div class="footer">
+                PDD3 AI Training Series - Wanin
+            </div>
+</div>
+</div>
+<div class="slide-controls">
+<button class="nav-btn prev" title="Previous Slide">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<button class="nav-btn next" title="Next Slide">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</button>
+</div>
+<script src="Scripts/slides.js"></script>
+</body>
+</html>
