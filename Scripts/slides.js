@@ -25,8 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let currentIndex = 0;
+    let currentSteps = [];
+    let currentStepIndex = -1;
 
-    function showSlide(index) {
+    function showSlide(index, showAllSteps = false) {
         if (slides.length === 0) return;
         
         if (index < 0) index = 0;
@@ -39,6 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // Show current slide
         slides[currentIndex].classList.add('active');
+
+        // Setup progressive steps for current slide
+        currentSteps = Array.from(slides[currentIndex].querySelectorAll('.step'));
+        
+        if (showAllSteps) {
+            currentStepIndex = currentSteps.length - 1;
+            currentSteps.forEach(step => step.classList.add('active'));
+        } else {
+            currentStepIndex = -1;
+            currentSteps.forEach(step => step.classList.remove('active'));
+        }
 
         // Update active state on nav links
         navLinks.forEach((link, i) => {
@@ -55,21 +68,89 @@ document.addEventListener('DOMContentLoaded', () => {
         showSlide(0);
     }
 
+    function nextAction() {
+        if (currentSteps.length > 0 && currentStepIndex < currentSteps.length - 1) {
+            currentStepIndex++;
+            currentSteps[currentStepIndex].classList.add('active');
+        } else {
+            if (currentIndex < slides.length - 1) {
+                showSlide(currentIndex + 1, false);
+            }
+        }
+    }
+
+    function prevAction() {
+        if (currentSteps.length > 0 && currentStepIndex >= 0) {
+            currentSteps[currentStepIndex].classList.remove('active');
+            currentStepIndex--;
+        } else {
+            if (currentIndex > 0) {
+                showSlide(currentIndex - 1, true);
+            }
+        }
+    }
+
     // Bind Previous and Next buttons
     const prevBtn = document.querySelector('.nav-btn.prev');
     const nextBtn = document.querySelector('.nav-btn.next');
 
     if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            showSlide(currentIndex - 1);
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevAction();
         });
     }
 
     if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            showSlide(currentIndex + 1);
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextAction();
         });
     }
+
+    // Global click for next action (presentation style)
+    document.addEventListener('click', (e) => {
+        // Ignore clicks on sidebar, nav links, buttons
+        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.sidebar')) {
+            return;
+        }
+
+        // Ignore clicks if the user has selected text
+        const selection = window.getSelection();
+        if (selection && selection.toString().trim().length > 0) {
+            return;
+        }
+
+        // Left click advances
+        if (e.button === 0) {
+            nextAction();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            nextAction();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            prevAction();
+        }
+    });
+
+    // Hover detection for bottom controls
+    document.addEventListener('mousemove', (e) => {
+        const controls = document.querySelector('.slide-controls');
+        if (controls) {
+            if (window.innerHeight - e.clientY < 100) {
+                controls.style.opacity = '1';
+                controls.style.pointerEvents = 'auto';
+            } else {
+                controls.style.opacity = '0';
+                controls.style.pointerEvents = 'none';
+            }
+        }
+    });
 
     // Bind clicks on sidebar navigation links
     navLinks.forEach((link, index) => {

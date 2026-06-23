@@ -77,25 +77,27 @@
 </div>
 
 <!-- Slide 2: Agent 運作架構：ReAct 框架 -->
-<div class="card console-dashboard-layout" id="slide2">
+<div class="card process-layout" id="slide2">
 <h2>🛠️ Agent 運作架構：ReAct 框架</h2>
 <p>Reasoning and Acting (ReAct) 是 Agent 最著名的運行框架。學會閱讀 Agent 的隱藏 Trace Log，是開發者最重要的除錯基本功。</p>
-<div class="dashboard-grid">
-<div class="sub-card">
+<div class="process-container">
+<div class="process-step">
+<div class="process-step-number">1</div>
 <h3>🤖 Thought (思考)</h3>
-<p>分析當前狀況與目標差距，推理下一步該做什麼。</p>
+<p style="font-size: 0.95em; color: #a0aec0;">分析當前狀況與目標差距，推理下一步該做什麼。</p>
 </div>
-<div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
-<h3>⚙️ Action (行動)</h3>
-<p>決定調用的工具 (Tool) 並傳入所需的引數 (Parameters)。</p>
+<div class="process-arrow">➔</div>
+<div class="process-step" style="border-color: rgba(0, 255, 204, 0.4);">
+<div class="process-step-number" style="background: rgba(0, 255, 204, 0.8);">2</div>
+<h3 style="color: rgba(0, 255, 204, 0.8);">⚙️ Action (行動)</h3>
+<p style="font-size: 0.95em; color: #a0aec0;">決定調用的工具 (Tool) 並傳入所需的引數。</p>
 </div>
-<div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
-<h3>💡 Observation (觀察)</h3>
-<p>工具執行後的實質反饋（如：檔案內容、編譯器報錯、命令執行結果）。</p>
+<div class="process-arrow">➔</div>
+<div class="process-step" style="border-color: rgba(88, 166, 255, 0.4);">
+<div class="process-step-number" style="background: rgba(88, 166, 255, 0.8);">3</div>
+<h3 style="color: rgba(88, 166, 255, 0.8);">💡 Observation (觀察)</h3>
+<p style="font-size: 0.95em; color: #a0aec0;">工具執行後的實質反饋。</p>
 </div>
-</div>
-<div style="display: flex; justify-content: center; margin-top: 20px;">
-<img src="Resources/Images/ReAct.png" alt="ReAct Framework" style="max-width: 75%; max-height: 200px; object-fit: contain; border-radius: 8px; background: #fff; padding: 10px;">
 </div>
 </div>
 

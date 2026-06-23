@@ -20,6 +20,9 @@
             <li><a href="#slide2"><span class="dot"></span><span class="text">2. 主控台程式碼範本</span></a></li>
             <li><a href="#slide3"><span class="dot"></span><span class="text">3. 儀表板三欄範本</span></a></li>
             <li><a href="#slide4"><span class="dot"></span><span class="text">4. 雙欄對比範本</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. 圖文焦點範本</span></a></li>
+            <li><a href="#slide6"><span class="dot"></span><span class="text">6. 流程步驟範本</span></a></li>
+            <li><a href="#slide7"><span class="dot"></span><span class="text">7. 重點引言範本</span></a></li>
         </ul>
     </nav>
 
@@ -44,11 +47,11 @@
                 <div class="slide-body">
                     <p>這是最主要的投影片架構，讀者由上而下閱讀，視覺動線流暢：</p>
                     <ul>
-                        <li><strong>優點一：</strong> 水平視覺延展寬廣，不容易造成偏向右側的視覺疲勞。</li>
-                        <li><strong>優點二：</strong> 寬度充足，適合長句、多層次的清單條列。</li>
-                        <li><strong>適用範圍：</strong> 90% 的常規教學投影片都可以以此為主要骨幹。</li>
+                        <li class="step"><strong>優點一：</strong> 水平視覺延展寬廣，不容易造成偏向右側的視覺疲勞。</li>
+                        <li class="step"><strong>優點二：</strong> 寬度充足，適合長句、多層次的清單條列。</li>
+                        <li class="step"><strong>適用範圍：</strong> 90% 的常規教學投影片都可以以此為主要骨幹。</li>
                     </ul>
-                    <blockquote>
+                    <blockquote class="step">
                         💡 <strong>小提示：</strong> 標題下方有一條全寬的漸層分割線，能清楚隔開標題與內文區域。
                     </blockquote>
                 </div>
@@ -161,6 +164,75 @@
                 </blockquote>
             </div>
             
+            <!-- ==========================================================================
+                 SLIDE 5: 圖文焦點模組 (Image Focus Layout)
+                 - 適用場景：以圖表為主、文字為輔的說明頁面，如架構圖、流程圖等。
+                 - 使用說明：套用 `image-focus-layout`，並使用 `image-focus-grid` 切分圖文。
+                 ========================================================================== -->
+            <div class="card image-focus-layout" id="slide5">
+                <h2>🖼️ 看圖說故事：圖文焦點範本 (`image-focus-layout`)</h2>
+                <div class="image-focus-grid">
+                    <div class="image-focus-content">
+                        <p>左側或右側可用來放置重點說明文字，適合搭配大型系統架構圖或是複雜的圖表：</p>
+                        <ul>
+                            <li><strong>視覺主導：</strong> 給予圖片較大的寬幅，讓細節清晰可見。</li>
+                            <li><strong>輔助說明：</strong> 旁邊的重點條列能幫助引導學員的視線。</li>
+                        </ul>
+                    </div>
+                    <div class="image-focus-media">
+                        <!-- 可以直接放圖片，或加上說明文字 -->
+                        <div style="color: #8b949e; text-align: center;">
+                            <div>圖片放置區</div>
+                            <div style="font-size: 0.8em; margin-top: 10px;">(建議比例 16:9 或 4:3)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================================================
+                 SLIDE 6: 流程/步驟模組 (Process Step Layout)
+                 - 適用場景：步驟教學、工作流說明、演進過程。
+                 - 使用說明：套用 `process-layout`，並以 `process-container` 包裹多個 `process-step`。
+                 ========================================================================== -->
+            <div class="card process-layout" id="slide6">
+                <h2>🔄 按部就班：流程步驟範本 (`process-layout`)</h2>
+                <div class="process-container">
+                    <div class="process-step">
+                        <div class="process-step-number">1</div>
+                        <h3>步驟一：理解目標</h3>
+                        <p style="font-size: 0.95em; color: #a0aec0;">釐清問題本質與限制條件。</p>
+                    </div>
+                    <div class="process-arrow">➔</div>
+                    <div class="process-step">
+                        <div class="process-step-number">2</div>
+                        <h3>步驟二：分析與設計</h3>
+                        <p style="font-size: 0.95em; color: #a0aec0;">拆解任務並決定技術方案。</p>
+                    </div>
+                    <div class="process-arrow">➔</div>
+                    <div class="process-step" style="border-color: var(--primary-color);">
+                        <div class="process-step-number" style="background: #fff;">3</div>
+                        <h3 style="color: var(--primary-color);">步驟三：實作與驗證</h3>
+                        <p style="font-size: 0.95em; color: #a0aec0;">進入開發與循環測試階段。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================================================
+                 SLIDE 7: 重點引言模組 (Callout / Quote Focus Layout)
+                 - 適用場景：破題發問、金句引言、觀念震撼教育。
+                 - 使用說明：套用 `callout-focus-layout`，並以 `callout-container` 與 `callout-card` 包裝內容。
+                 ========================================================================== -->
+            <div class="card callout-focus-layout" id="slide7">
+                <div class="callout-container">
+                    <p class="callout-title">"AI 的價值不在於它能一次答對，<br>而在於它能不知疲倦地與你一起試錯。"</p>
+                    <div class="callout-grid">
+                        <div class="callout-card" style="font-size: 1.5em; padding: 20px 40px;">中場反思</div>
+                        <div class="callout-connector">/</div>
+                        <div class="callout-card" style="font-size: 1.5em; padding: 20px 40px;">重點結語</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="footer">
                 PDD3 AI Training Series - Wanin
             </div>
@@ -169,12 +241,12 @@
 
     <!-- Navigation Controls -->
     <div class="slide-controls">
-        <button class="nav-btn prev" title="Previous Slide">
+        <button class="nav-btn prev" title="上一動 / 上一頁">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
         </button>
-        <button class="nav-btn next" title="Next Slide">
+        <button class="nav-btn next" title="下一動 / 下一頁">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
