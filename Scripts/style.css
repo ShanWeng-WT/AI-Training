@@ -50,9 +50,9 @@ body {
 }
 
 .slide-container {
-  width: 90vw;
-  max-width: calc(90vh * 16 / 9);
-  max-height: 90vh;
+  width: 96vw;
+  max-width: calc(96vh * 16 / 9);
+  max-height: 96vh;
   aspect-ratio: 16 / 9;
   background: #090b0f;
   border: 1px solid var(--border-color);
@@ -74,11 +74,31 @@ body {
 }
 
 .slide-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   gap: 16px;
-  z-index: 10;
-  margin-top: 24px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Progressive Disclosure Steps */
+.step {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.step.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .nav-btn {
