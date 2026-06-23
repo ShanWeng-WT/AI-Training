@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>揭開 LLM 的黑盒子：它能做什麼，不能做什麼？ - PDD3 AI Training</title>
+<title>進階 Prompt Engineering 實戰：優化你的 AI 助手 - PDD3 AI Training</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
 <link href="Scripts/style.css" rel="stylesheet"/>
 <!-- Highlight.js for Syntax Highlighting -->
@@ -18,7 +18,7 @@
 <ul class="nav-links">
 <li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
 <li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
-<li><a href="#slide2"><span class="dot"></span><span class="text">2. 核心概念</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">2. 核心技巧</span></a></li>
 <li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
 <li><a href="#slide4"><span class="dot"></span><span class="text">4. 實戰演練</span></a></li>
 <li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
@@ -28,81 +28,73 @@
 <div class="slide-container">
 <div class="slide-content-wrapper">
 <div class="card" id="slide0">
-<h1>揭開 LLM 的黑盒子：它能做什麼，不能做什麼？</h1>
+<h1>進階 Prompt Engineering 實戰：優化你的 AI 助手</h1>
 <p class="subtitle">企業內部 AI 輔助開發教育訓練</p>
 </div>
 <div class="card top-title-layout" id="slide1">
 
 <h2>🎯 課程目標 <span>Session Goals</span></h2><div class="slide-body">
 
-<p>剖析生成式大語言模型的底層極限，防範並收斂「幻覺」以獲得穩定的工程產出。</p>
+<p>將 Prompt Engineering 從「魔法」升級為工程學，精準操控 AI 的生成結果。</p>
 
-<p>本堂課將帶領大家看清 LLM 的本質，轉變對 AI 輸出的預期與使用思維：</p>
+<p>本堂課將帶領大家回歸根本，將 Prompt Engineering 視為意圖轉化指令的學問：</p>
 <ul>
-<li><strong>理解底層：</strong> 揭開 LLM 的運作機制，了解它並非真的懂語意，而是依賴統計機率。</li>
-<li><strong>認識極限：</strong> 深入理解「幻覺」發生的數學根本原因，避免盲目信任 AI 產出。</li>
-<li><strong>榨取價值：</strong> 掌握如何以約束 and 範本進行「機率引導」，將不確定性收斂至高度可預測的結果。</li>
+<li><strong>精準控制：</strong> 擺脫空泛詞彙，透過嚴謹的語法與格式控制 AI。</li>
+<li><strong>結構化指令：</strong> 運用 Markdown 的層級架構，讓 AI 清晰理解任務與邊界。</li>
+<li><strong>架構思維：</strong> 將模糊的業務請求，轉化為模型可高效執行的精準約束。</li>
 </ul>
 </div></div>
 <div class="card console-dashboard-layout" id="slide2">
 
-<h2>📖 LLM <span>核心概念</span></h2><p>LLM 本質上是文字接龍引擎。它沒有「真偽」的觀念，只有「合理」的機率分佈。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 超級文字接龍</h3><p> LLM 本質上不具備邏輯推理或程式碼編譯能力，它只是基於前文預測下一個最可能出現的 <span>Token</span>。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 以 Token 為處理單位</h3><p> AI 理解代碼的最小單位不是單字或字母，而是如 <code>=&gt;</code>、<code>public</code> 等 Token，這決定了其語義匹配特徵。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 沒有真實，只有合理</h3><p> 當模型缺乏特定上下文時，會硬生生捏造看似語意通順但不存在的 API。這就是<span>幻覺 (Hallucination)</span> 的物理本質。</p></div></div></div>
+<h2>📖 三大核心 <span>意圖轉化約束</span></h2><p>掌握三大高階技巧，構建具備工業級穩定度與高可預測性的 Prompt。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 結構化 (Structured</h3><p> 使用 Markdown 標籤與 YAML/JSON 格式，將「任務目標」、「上下文」、「約束條件」明確分區，拉高 AI 的解析效率。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 少量樣本 (Few-Shot</h3><p> 與其用文字費力解釋複雜規範，不如直接給出 1 到 2 個完美的黃金程式碼範例，供 AI 精準依循。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 思維鏈 (CoT - Chain of Thought</h3><p> 對於複雜業務邏輯，強制 AI <span>「先分析推演步驟，再輸出程式碼」</span>，顯著降低邏輯謬誤。</p></div></div></div>
 <div class="card top-title-layout" id="slide3">
 
 <h2>💡 頓悟時刻 <span>Aha Moment</span></h2><div class="slide-body">
 
-<p>Skill 的核心科學價值在於透過「機率整形」對抗並壓制 AI 的幻覺傾向。</p>
+<p>撰寫優質 Prompt 的過程，本質上就是進行深度軟體設計前置思考的過程。</p>
 
 <blockquote>
-                        "Skill 的核心價值：<strong>對抗幻覺，收斂機率！</strong>"
+                        "進階的 Prompt Engineering，其實是在學習<strong>「如何向自己釐清問題」</strong>！"
                     </blockquote>
-<p>我們在寫 Agent Skills 時，背後的數學原理是：</p>
+<p>當你被迫列出邊界條件、生出黃金範本、拆解思維鏈步驟時：</p>
 <ul>
-<li><strong>機率整形 (Probability Shaping)：</strong> 給予精確的約束條件與 Few-shot 範例，會大幅拉高正確代碼的概率。</li>
-<li><strong>阻斷發散：</strong> 藉由封閉邊界的定義，讓 LLM 在文字接龍時，產生偏離規範的 Token 機率被數學性地降到趨近於零。</li>
+<li>你其實正在完成最核心的<strong>軟體架構設計</strong>。</li>
+<li>Prompt 的精準程度，直接反映了你對業務需求與技術設計的清晰度。</li>
+<li>透過這個過程，將軟體設計的「軟思維」轉化為「硬規則」。</li>
 </ul>
 </div></div>
 <div class="card console-dashboard-layout" id="slide4">
 
-<h2>🛠️ 實戰： <span>對抗幻覺</span></h2><div class="console-split"><div class="console-info">
+<h2>🛠️ 實戰演練 <span>購物車折扣邏輯</span></h2><div class="console-split"><div class="console-info">
 
-<p>以 Unity 尋找最近敵人並扣血為例，展示缺乏約束與加入約束的產出差異。</p>
+<p>重構購物車折扣邏輯，將直覺式 Prompt 升級為結構化 + Few-Shot + CoT 組合技。</p>
 
-<p><strong>情境：</strong> 尋找最近敵人並觸發傷害。</p>
-<ul>
-<li>❌ <strong>缺乏約束：</strong> AI 隨機接龍，捏造出不存在的 <code>Physics.FindClosestComponent</code> API。</li>
-<li>✔️ <strong>加入約束：</strong> 強制約束「必須使用 <code>OverlapSphere</code> 並透過 <code>IDamageable</code> 介面觸發傷害」。</li>
-</ul>
+<p><strong>❌ 直覺型 Prompt：</strong>「幫我寫計算總價的 C#，VIP 打 8 折，滿千送百，處理一下精度。」（邏輯混亂且易遺漏精度）</p>
+<p><strong>✔️ 結構化 Prompt 重構：</strong></p>
 
-</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">example.cs</span></div><div class="ide-body"><pre><code class="language-csharp">// 透過 Constraints 限縮機率後，AI 穩定產生正確代碼
-Collider[] hits = Physics.OverlapSphere(pos, radius);
-foreach (var hit in hits) {
-    if (hit.TryGetComponent&lt;IDamageable&gt;(out var target)) {
-        target.TakeDamage(damageAmount);
-    }
-}</code></pre></div></div></div></div>
+</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">example.md</span></div><div class="ide-body"><pre><code class="language-markdown"># 任務：實作 IDiscountCalculator 介面
+## 約束條件：
+1. 金額計算必須使用 `decimal`，防止浮點數精度問題。
+2. 傳入負數或零時，必須拋出 `ArgumentException` 例外。
+## 少量樣本 (Few-Shot)：[在此提供 StandardCalculator 的完美實作]
+## 思考步驟 (CoT)：
+1. 分析傳入參數與折扣邊界條件。
+2. 計算 VIP 會員折扣比例。
+3. 套用滿千送百邏輯，並確保無小數點溢出。
+4. 最終生成 C# 實作代碼。</code></pre></div></div></div></div>
 <div class="card console-dashboard-layout" id="slide5">
 
-<h2>⚠️ 常見誤區與 <span>防禦機制</span></h2><p>生成式模型的創造力與幻覺是一體兩面的。防禦性開發思維是必不可少的護欄。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 依賴 AI 進行複雜計算</h3><p>❌  AI 不擅長運算或推演複雜狀態機。
-                            <br/>
-                            ✔️ <strong>防禦：</strong> 讓 AI 搭建架構或寫單元測試，核心計算交由人工補足或實體編譯驗證。
-                        </p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 輕信預設的套件與 API 版本</h3><p>❌ 
-<br/>
-                            ✔️ <strong>防禦：</strong> 必須在 context 中明文指定框架版本與依賴限制（例如：C# 12 / .NET 8）。
-                        </p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 塞入過多不相干的雜訊</h3><p>❌  導致注意力分散。
-                            <br/>
-                            ✔️ <strong>防禦：</strong> 保持高訊噪比，只餵給 AI 必要且精確的專案結構與文件。
-                        </p></div></div></div>
+<h2>⚠️ 常見誤區與 <span>防禦機制</span></h2><p>避開常見地雷，合理配置 AI 上下文，避免垃圾範本與無效算力浪費。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 避免塞入整份規格書</h3><p> 資訊過載會使 AI 遺忘約束。應使用<span>漸進式提示 (Progressive Prompting)</span>，先要 Interface 與骨架，再填充實作。</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 杜絕劣質的 Few-Shot 範例</h3><p> Few-Shot 具有極強的傳染性。範例程式碼必須是經過 Review 的「黃金標準」，若範例有 Bad Smells，AI 會全盤抄襲。</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 切勿濫用 CoT</h3><p> 簡單任務（如格式轉換、直覺語法翻譯）開啟 CoT 只會浪費 Token 並拖慢速度；複雜業務邏輯與狀態機才需啟用 CoT。</p></div></div></div>
 <div class="card comparison-layout" id="slide6">
 
-<h2>❓ 常見問答 <span>Q&amp;A</span></h2><p>解惑開發團隊對大語言模型本質與限制的疑惑。</p><div class="comparison-grid"><div class="comparison-card"><h3>❌ Q1: AI 真的理解它寫的程式碼嗎？未來會完全沒有幻覺嗎？</h3><p>
+<h2>❓ 常見問答 <span>Q&amp;A</span></h2><p>探討 Prompt 在未來開發工具（如 Copilot）及日常工作流中的定位與固化方式。</p><div class="comparison-grid"><div class="comparison-card"><h3>❌ Q1: 既然有了自動完成的 Copilot，我們為什麼還要大費周章學習 Prompt Engineering？</h3><p>
 
 <br/>
-<span>A1: 不，它不理解。</span>它基於強大的「模式匹配」捕捉關聯。而幻覺與創造力是一體兩面的，即使到 GPT-5，幻覺也無法完全根除，因此防禦性提示詞與人工審查依然至關重要。
-                        </p></div><div class="comparison-card highlight-card"><h3>🎯 Q2: 為什麼我給了 Constraints，AI 偶爾還是會犯錯（遺忘）？</h3><p>
+<span>A1: 定位完全不同。</span>Copilot 是微觀層面的代碼補全，而進階的 Prompt Engineering 是宏觀層面的架構設計與系統邊界定義。懂 Prompt 的工程師才能主導大型模組的生成。
+                        </p></div><div class="comparison-card highlight-card"><h3>🎯 Q2: 每次寫這麼長的結構化 Prompt 真的很花時間，日常開發如何提高實用性？</h3><p>
 
 <br/>
-<span>A2: 因為 AI 受到「預設立場」或上下文長度的機率權重影響。</span>最佳防禦是配合 **Few-shot (黃金範本)**，給它看正確的範例，這比十條文字約束更有用。
+<span>A2: 固化為 Agent Skills！</span>這就是第一堂課的核心價值。將寫好的結構化 Prompt 封裝成 Skill 卡匣，日常只需傳入變數，即可一鍵調用，打造你專屬的自動化代碼工廠。
                         </p></div></div></div>
 <div class="footer">
             PDD3 AI Training Series - Wanin

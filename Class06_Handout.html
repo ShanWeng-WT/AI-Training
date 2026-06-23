@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Context Engineering：精準餵養與 Token 效率最佳化 - PDD3 AI Training</title>
+<title>分工協作的藝術：Subagents 在複雜任務中的應用 - PDD3 AI Training</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
 <link href="Scripts/style.css" rel="stylesheet"/>
 <!-- Highlight.js for Syntax Highlighting -->
@@ -18,9 +18,9 @@
 <ul class="nav-links">
 <li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
 <li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
-<li><a href="#slide2"><span class="dot"></span><span class="text">2. Context Window</span></a></li>
+<li><a href="#slide2"><span class="dot"></span><span class="text">2. 為什麼需要 Subagents</span></a></li>
 <li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
-<li><a href="#slide4"><span class="dot"></span><span class="text">4. 最佳化技巧</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 分工模式</span></a></li>
 <li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
 </ul>
 </nav>
@@ -28,38 +28,34 @@
 <div class="slide-content-wrapper">
 <!-- Slide 0: Cover -->
 <div class="card" id="slide0">
-<h1>Context Engineering</h1>
-<p class="subtitle">精準餵養與 Token 效率最佳化</p>
+<h1>分工協作的藝術</h1>
+<p class="subtitle">Subagents 在複雜任務中的應用</p>
 </div>
 <!-- Slide 1: 課程目標 -->
 <div class="card top-title-layout" id="slide1">
 
 <h2>🎯 課程目標</h2><div class="slide-body">
 
-<p>這不是教你怎麼寫出漂亮的 Prompt，而是教你如何像工程師設計記憶體一樣，精準控制餵給 AI 的資料。</p>
+<p>AI 就跟人一樣，一次塞太多工作會當機。解決方案就是：Subagents 分工協作。</p>
 
 <ul>
-<li><strong>掌控 Context 物理限制：</strong> 了解 Context Window 與 token 限制，量化並管理 LLM 的工作記憶。</li>
-<li><strong>實施 Context 實體隔離：</strong> 針對不同職掌的 Subagent 提供專屬的上下文，排除非必要雜訊。</li>
-<li><strong>去蕪存菁的高效餵食：</strong> 學習如何以最低的 token 消耗，精準傳遞最關鍵的邏輯脈絡，提升生成成功率。</li>
+<li><strong>解決大任務問題：</strong> 學會將龐大、多步驟的任務拆解成可被單一 Agent 輕鬆搞定的子任務。</li>
+<li><strong>理解 Subagent 運作：</strong> 掌握將龐大任務合理拆解，各個擊破的設計心法。</li>
+<li><strong>實作分工協作流：</strong> 親自體驗多個 Agent 協同分工，建立系統化的協作流程。</li>
+<li><strong>降低單一負載：</strong> 降低 Context 迷失與推理鏈中斷問題，顯著提升代碼準確率與效率。</li>
 </ul>
 </div></div>
-<!-- Slide 2: Context Window -->
+<!-- Slide 2: 為什麼需要 Subagents -->
 <div class="card top-title-layout" id="slide2">
 
-<h2>📖 什麼是 Context Window？</h2><div class="slide-body">
+<h2>📖 為什麼需要 Subagents？</h2><div class="slide-body">
 
-<p>LLM 讀文章跟人類很像，通常只記得最前面與最後面，中間的內容最容易被遺忘，這在學術上被稱為 Lost in the Middle 現象。</p>
+<p>單一 AI 模型有 Context 限制。在面對複雜的大型任務時，單打獨鬥容易迷失方向、產生幻覺。</p>
 
 <ul>
-<li><strong>工作記憶的侷限：</strong> 當 Context 超載時，AI 不僅容易遺忘規則，推理性能與指令遵循率也會跟著大幅滑落。</li>
-<li><strong>Lost in the Middle (中間遺忘) 效應：</strong>
-<ul>
-<li>大模型對 Prompt 開頭與結尾的注意力最集中，中間的內容容易失焦。</li>
-<li><strong>排版秘訣：</strong> 應將最關鍵的系統規則、生成限制與格式輸出要求放在 prompt 的最尾端。</li>
-</ul>
-</li>
-<li><strong>少即是多原則：</strong> 僅提供當前任務「剛剛好」的 Context。</li>
+<li><strong>單一 AI 的上下文盲點：</strong> 當對話過長時，AI 容易忽略部分關鍵指令，或在推理鏈中途迷失。</li>
+<li><strong>單打獨鬥的弊端：</strong> 單一 Agent 必須同時處理需求規劃、編碼與品質審查，容易顧此失彼，導致生成結果充滿幻覺。</li>
+<li><strong>團隊作戰的優勢：</strong> 透過專精分工，將各個 Agent 的注意力限制在極窄的上下文範圍中，確保每一階段的產出質量。</li>
 </ul>
 </div></div>
 <!-- Slide 3: 頓悟時刻 -->
@@ -67,50 +63,62 @@
 
 <h2>💡 頓悟時刻</h2><div class="slide-body">
 
-<p>解決 Context 超載的終極手段不是寫更好的 Prompt，而是直接對 Context 進行「物理隔離」。</p>
+<p>我們不是在寫一個更長、更複雜的 Prompt，而是在組建一間「虛擬軟體公司」。</p>
 
 <blockquote>
-<strong>實體隔離（Physical Isolation）最安全：</strong><br/>
-                            配合 Subagent 機制，前端 Agent 的 Context 裡「絕對不會」出現後端的程式碼；反之亦然。<br/><br/>
+<strong>這是一次思維的翻轉：</strong><br/>
+                            我們不再試圖用單次對話完成所有事，而是像管理團隊一樣：<br/>
 <ul>
-<li><strong>物理隔離的好處：</strong>
-<ul>
-<li><strong>避免領域干擾：</strong> 刪除與當前任務無關的程式碼，AI 就不會無故改動不相干的邏輯。</li>
-<li><strong>縮小搜索空間：</strong> 讓模型 100% 聚焦在目前要解決的單一功能模組上，最大程度消除幻覺。</li>
+<li><strong>PM (Router)：</strong> 拆解需求、決定工作優先順序</li>
+<li><strong>工程師 (Coder)：</strong> 專注於生成特定模組或語言邏輯</li>
+<li><strong>QA (Reviewer)：</strong> 負責檢查程式碼，回饋修改建議</li>
 </ul>
-</li>
-</ul>
+<strong>各司其職，品質才有保障！</strong>
 </blockquote>
 </div></div>
-<!-- Slide 4: 最佳化技巧 -->
-<div class="card top-title-layout" id="slide4">
+<!-- Slide 4: 常見的分工模式 -->
+<div class="card console-dashboard-layout" id="slide4">
 
-<h2>🛠️ Token 效率最佳化技巧</h2><div class="slide-body">
+<h2>🛠️ 常見的分工模式</h2><div class="console-split"><div class="console-info">
 
-<p>不要給它整份實作，給它介面 (Interface)。這不僅省 Token 幫公司省錢，更能大幅提高 AI 生成的準確度。</p>
+<p>未來我們面對複雜需求，第一步不再是無腦下 Prompt，而是先想「這需要幾個角色來完成？」。</p>
 
 <ul>
-<li><strong>Interface over Implementation (介面優先)：</strong>
+<li><strong>Router (路由)：</strong> 判斷使用者意圖與需求類別，並將任務分發給最適當的 Subagent。</li>
+<li><strong>Coder (撰寫)：</strong> 專注於特定技術堆疊（例如前端 React 或後端 .NET）的代碼生成。</li>
+<li><strong>Reviewer (審查)：</strong> 靜態檢查規範、語法與潛在邏輯錯誤，提供迭代修正意見。</li>
+</ul>
+
+</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">example.mermaid</span></div><div class="ide-body"><pre><code class="language-mermaid">
+graph TD
+    User --&gt; Router
+    Router --&gt; |前端需求| Frontend_Agent
+    Router --&gt; |後端需求| Backend_Agent
+    Frontend_Agent --&gt; Reviewer
+    Backend_Agent --&gt; Reviewer
+    Reviewer --&gt; |合格| Output
+    Reviewer --&gt; |不合格| Router
+                        </code></pre></div></div></div></div>
+<!-- Slide 5: 常見誤區 -->
+<div class="card top-title-layout" id="slide5">
+
+<h2>⚠️ 常見誤區</h2><div class="slide-body">
+
+<p>不要為了分工而分工。Subagent 之間的資料傳遞也是成本，我們必須在結構清晰度與系統延遲之間取得平衡。</p>
+
 <ul>
-<li><strong>實戰範例：</strong> 貼上整份 2000 行的 class 原始碼，不如只貼上 50 行的介面 (Interface) 定義與公開 API 簽章。AI 只要知道怎麼調用，不需要知道裡面怎麼實作。</li>
+<li><strong>過度拆分 (Over-engineering)：</strong>
+<ul>
+<li>小任務殺雞用牛刀（如簡單的迴圈邏輯使用三個 Subagent），反而增加延遲與系統不穩定性。</li>
 </ul>
 </li>
-<li><strong>結構化輸入 (Structured Input)：</strong> 使用 Markdown 階層 (如 `#` 標題、三個反單引號包覆的代碼區塊) 與 XML tags 劃分變數邊界，減少語意解析模糊。</li>
-<li><strong>動態提取 Context：</strong> 結合 RAG（檢索增強生成）或開發工具，即時檢索與調用相關的程式片段，避免靜態塞入整份文件。</li>
+<li><strong>溝通成本與資料遺失：</strong>
+<ul>
+<li>Subagent 之間若沒有確實傳遞上下文，容易遺失前置任務的關鍵資訊。上一堂的「Context Engineering」教過的精準傳遞與物理隔離技巧，正好能補足這個溝通成本問題。</li>
+</ul>
+</li>
 </ul>
 </div></div>
-<!-- Slide 5: 常見誤區 -->
-<div class="card console-dashboard-layout" id="slide5">
-
-<h2>⚠️ 常見誤區</h2><p>定期清理對話是工程開發中的好習慣。貪多嚼不爛，在 Context Engineering 中，「乾淨的對話」重於一切。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 一鍵梭哈的陷阱</h3><p>
-<ul>
-<li>將數百個檔案或上萬行程式碼直接貼進對話視窗。這樣做只會超出 Context 窗口，或導致嚴重的 "Lost in the Middle" 使得 AI 忽略你的特定指令。</li>
-</ul>
-</p></div><div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);"><h3>⚙️ 忽視歷史包袱</h3><p>
-<ul>
-<li>在一個對話中進行了數十次程式碼修改卻不重啟，舊的錯誤代碼與除錯脈絡仍在 Context 中持續干擾 AI 的新判斷。</li>
-</ul>
-</p></div><div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);"><h3>💡 解決方法</h3><p> 開發好一個小模組後，請主動開啟新對話 (New Chat)，只把該模組的最終產出與介面作為新對話的背景輸入。</p></div></div></div>
 <div class="footer">
                 PDD3 AI Training Series - Wanin
             </div>

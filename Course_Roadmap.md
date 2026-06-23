@@ -16,28 +16,25 @@
 | --- | --- | --- | --- |
 | 00 | 概念 | 比語言模型更重要的 心智模型 | 先建立使用 AI 的角色定位與協作心法。 |
 | 01 | 實作 | Agent Skills 的定義與運用 | 讓學員立即取得可用功能，理解經驗資產化的價值。 |
-| 02 | 混合 | 從對話到行動：Agent 的本質與日常工作環境 | 回答「上一堂用的 Agent 到底是什麼」，並導入 Project Folder、Tools、PlanMode、Auto Accept Edits 與 HITL。 |
-| 03 | 概念 | 揭開 LLM 的黑盒子：它能做什麼，不能做什麼？ | 解釋 Skill、Constraints、Context 為何能改善品質，讓學員理解幻覺不是道德問題，而是機率問題。 |
-| 04 | 實作 | AI 寫錯了怎麼辦？程式碼生成的防禦與 Hooks 攔截 | 將「LLM 不穩定」轉成工程護欄，用 Hooks、Build、Test 建立閉環。 |
-| 05 | 實作 | 分工協作的藝術：Subagents 在複雜任務中的應用 | 學會拆分大型任務，避免單一 Agent 負擔過多角色與上下文。 |
-| 06 | 概念 | Context Engineering：精準餵養與 Token 效率最佳化 | 承接 Subagents 的上下文切分問題，建立管理 LLM 工作記憶的方法。 |
+| 02 | 混合 | 從對話到行動：Agent 的本質與日常工作環境 | 回答「上一堂用的 Agent 到底是什麼」，並導入 Project Folder、Tools、Auto Accept Edits 與 HITL。 |
+| 03 | 概念 | 揭開 LLM 的黑盒子：它能做什麼，不能做什麼？ | 解釋幻覺不是道德問題而是機率問題；並帶入手動驗證/審查手段（讀 diff、Build/Test、用 Git 審 AI commit），讓這一堂聚焦在幫學員與 LLM 培養熟悉度與信任。 |
+| 04 | 實作 | 選對大腦：模型分級、Thinking Budget 與 Plan Mode | 聚焦「送出 User Prompt 之前的所有抉擇」：我該選哪個模型？Thinking Budget 用多少？該用哪個模式？課末作業讓學員用不同模型執行相同任務、觀察差異。 |
+| 05 | 混合 | Context Engineering：Context Window、Lost in the Middle 與工作記憶管理 | 承接「為何要選模型」自然帶到「為何要管理上下文」，建立管理 LLM 工作記憶與 Token 效率的方法。 |
+| 06 | 實作 | 分工協作的藝術：Subagents 在複雜任務中的應用 | 學會拆分大型任務、用多 Agent 切分上下文，落地 Class 05 的概念。 |
 | 07 | 實作 | 進階 Prompt Engineering 實戰：優化你的 AI 助手 | 把模型機制與 Context 管理落地成結構化 Prompt、Few-Shot 與可驗證約束。 |
 | 08 | 實作 | 制定專案的大腦：Context Files (AGENTS.md) 的威力 | 將團隊規範固化成專案級 Context，減少重複提示與風格漂移。 |
-| 09 | 實作 | 無痛實作大架構：Spec 驅動與 Planning Mode | 針對大型變更建立 Spec、PlanMode 與 Human-In-The-Loop 審閱流程。 |
-| 10 | 概念 | 超越單次對話：Agentic Workflow 設計模式 | 統整 Reflection、Tool Use、Planning、Multi-agent 等 Agentic Workflow 模式。 |
+| 09 | 實作 | 無痛實作大架構：Spec 驅動開發 (SDD) | 針對大型變更建立 Spec 與 Human-In-The-Loop 審閱流程（純 SDD，不再重講 Plan Mode）。 |
+| 10 | 混合 | 超越單次對話：Agentic Workflow 設計模式與 Hooks 自動化護欄 | 統整 Reflection、Tool Use、Planning、Multi-agent 等模式，並用 Hooks 把前面手動的驗證流程自動化成閉環。 |
 | 11 | 概念 | 確保 AI 不退化：Harness Engineering 與評測基準 | 讓學員理解 AI 品質需要基準線，而不是只靠主觀感受。 |
 | 12 | 實作 | 自動化測試你的 AI：Evaluation Harness 與 CI/CD | 把評測基準接進 CI/CD，形成長期可維護的品質防線。 |
 
-## 關於 Class 02 與 Class 03 的取捨
+## 備忘錄：可融入現有課程的延伸主題
 
-建議保留 Class 02 作為「Agent 的本質與工作環境」課，而不是直接替換成 LLM 黑盒子。原因是 Class 01 已經讓學員使用 Agent Skills，下一堂最自然的問題會是：
+下列主題暫不獨立成課，先記錄在此；實際製作對應課程時再決定要放進哪一堂、放多深。
 
-- 這個 Agent 和一般 Chatbot 差在哪裡？
-- Tools 為什麼會改變 AI 的能力邊界？
-- 為什麼 Agent 會自己讀檔、改檔、跑測試？
-- PlanMode、Auto Accept Edits 與人工批准到底在控管什麼風險？
-
-這些問題先處理完，Class 03 再講 LLM 黑盒子會更有力量。因為學員已經知道 Agent 會行動，接著才會真正關心：這個行動背後的推理大腦有什麼限制、為什麼會幻覺、為什麼需要 Constraints 與驗證。
+- **Unity / 遊戲專案的特殊挑戰**：AI 看不到 Scene / Prefab / Inspector（二進位序列化）、如何用文字與 .meta 補足、重構 MonoBehaviour 為何容易出錯。→ 可融入 Class 02 或 Class 08（AGENTS.md 實例）。這是最值得補的遊戲開發專屬痛點。
+- **AI 與既有大型 codebase 探索**：如何讓 Agent 安全探索陌生專案、避免亂改全域。→ 可融入 Class 05（Context）或 Class 06（Subagents）。
+- **資安與機敏資料護欄**：哪些資料不能貼給 AI、企業內部規範。→ 可融入 Class 02 或 Class 08。
 
 ## 目前落地方式
 

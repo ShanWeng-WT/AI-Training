@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-
 <html lang="zh-TW">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>超越單次對話：Agentic Workflow 設計模式 - PDD3 AI Training</title>
+<title>超越單次對話：Agentic Workflow 設計模式與 Hooks 自動化護欄 - PDD3 AI Training</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
 <link href="Scripts/style.css" rel="stylesheet"/>
-<!-- Highlight.js for Syntax Highlighting -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" id="hljs-theme" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 </head>
 <body>
-<!-- Sidebar Navigation -->
 <nav class="sidebar">
 <ul class="nav-links">
 <li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
@@ -22,23 +19,19 @@
 <li><a href="#slide3"><span class="dot"></span><span class="text">三、模式二：工具使用</span></a></li>
 <li><a href="#slide4"><span class="dot"></span><span class="text">四、模式三：規劃</span></a></li>
 <li><a href="#slide5"><span class="dot"></span><span class="text">五、模式四：多代理協作</span></a></li>
-<li><a href="#slide6"><span class="dot"></span><span class="text">六、陷阱與防禦機制</span></a></li>
+<li><a href="#slide6"><span class="dot"></span><span class="text">六、Hooks 自動化護欄</span></a></li>
+<li><a href="#slide7"><span class="dot"></span><span class="text">七、陷阱與防禦機制</span></a></li>
 </ul>
 </nav>
 <div class="slide-container">
 <div class="slide-content-wrapper">
-<!-- Slide 0: Cover (Centered Layout) -->
 <div class="card" id="slide0">
 <h1>超越單次對話</h1>
-<p class="subtitle">Agentic Workflow 設計模式</p>
+<p class="subtitle">Agentic Workflow 設計模式與 Hooks 自動化護欄</p>
 </div>
-<!-- Slide 1: Why Agentic Workflow -->
 <div class="card top-title-layout" id="slide1">
-
 <h2>為何需要 Agentic Workflow？</h2><div class="slide-body">
-
 <p>單次對話的容錯率極低。引進 Agentic Workflow 能讓 AI 具備自我修正、工具使用與分工協作的能力，大幅提升複雜任務的成功率。</p>
-
 <p><strong>💡 吳恩達 (Andrew Ng) 的核心論點：</strong></p>
 <ul>
 <li><strong>超越模型本身的限制：</strong> 良好的設計工作流甚至能讓 GPT-3.5 的表現超越直接進行單次對話的 GPT-4。</li>
@@ -46,13 +39,9 @@
 <li><strong>容錯率高：</strong> 透過迭代運算 (Iterative Loop)，AI 可以不斷修正自己的輸出直至達標。</li>
 </ul>
 </div></div>
-<!-- Slide 2: Reflection -->
 <div class="card top-title-layout" id="slide2">
-
 <h2>模式一：反思 (Reflection)</h2><div class="slide-body">
-
 <p>讓 AI 睜開眼睛看錯誤訊息。透過編譯與執行期的錯誤回饋，實現自動化的自我修復。</p>
-
 <blockquote>「不要讓 AI 閉著眼睛寫 Code，而要建立自動化回饋機制。」</blockquote>
 <p><strong>🔄 反思工作流的運作步驟：</strong></p>
 <ul>
@@ -61,13 +50,9 @@
 <li><strong>回饋與修復：</strong> 將錯誤訊息直接丟回給 AI，要求它分析原因並重新產出，直到通過編譯。</li>
 </ul>
 </div></div>
-<!-- Slide 3: Tool Use -->
 <div class="card top-title-layout" id="slide3">
-
 <h2>模式二：工具使用 (Tool Use)</h2><div class="slide-body">
-
 <p>賦予 AI 存取外部世界與系統資料的能力。透過 Function Calling，讓 AI 能夠調用 API 取得精確的最新狀態。</p>
-
 <blockquote>「AI 不能通靈，如果你需要它處理即時資料，必須給予它手與眼。」</blockquote>
 <p><strong>🛠️ 運作機制 (Function Calling)：</strong></p>
 <ul>
@@ -77,13 +62,9 @@
 <li><strong>結果回傳：</strong> 將 API 執行結果餵回給 AI，由其綜合成人類讀得懂的語意回答。</li>
 </ul>
 </div></div>
-<!-- Slide 4: Planning -->
 <div class="card top-title-layout" id="slide4">
-
 <h2>模式三：規劃 (Planning)</h2><div class="slide-body">
-
 <p>先思考再行動。將龐大的需求大卸八塊，透過分步執行降低模型的幻覺風險，保持程式架構乾淨。</p>
-
 <blockquote>「面對複雜任務，拒絕大雜燴式的輸出。」</blockquote>
 <p><strong>📋 規劃模式核心實作：</strong></p>
 <ul>
@@ -92,13 +73,9 @@
 <li><strong>單步執行與驗證：</strong> 配合自動化腳本，一次只命令 AI 執行一個步驟，完成並通過人工或單元測試後，才推進至下一步。</li>
 </ul>
 </div></div>
-<!-- Slide 5: Multi-agent -->
 <div class="card top-title-layout" id="slide5">
-
 <h2>模式四：多代理協作 (Multi-agent)</h2><div class="slide-body">
-
 <p>組建虛擬 AI 開發團隊。透過明確的角色定義與互相審查，克服單一模型的上下文限制與偏見。</p>
-
 <blockquote>「讓不同專長的 Agent 互相合作與批判，完美複製人類開發管線。」</blockquote>
 <p><strong>👥 虛擬開發團隊範例：</strong></p>
 <ul>
@@ -107,27 +84,67 @@
 <li><strong>優勢：</strong> 將複雜邏輯拆分到不同 Prompt 角色中，避免單一 Prompt 因規則過多而失焦。</li>
 </ul>
 </div></div>
-<!-- Slide 6: Traps & Defenses -->
-<div class="card top-title-layout" id="slide6">
-
+<div class="card console-dashboard-layout" id="slide6">
+<h2>Hooks 自動化護欄：把驗證變成自我修復的閉環</h2>
+<div class="console-split">
+<div class="console-info">
+<p>前面幾堂課的驗證多半是「手動」的：人工讀 diff、手動跑 Build 與 Test。Hooks 的價值，就是把這些手動驗證 (尤其是 Reflection 模式的錯誤回饋) 自動化成一個<strong>自我修復的閉環</strong>——在 AI 寫入程式碼前/後自動觸發編譯器、Linter 與測試，失敗就把報錯自動回傳給 AI 重試，成功才放行。</p>
+<p><strong>🛡️ 兩層防禦：</strong></p>
+<ul>
+<li><strong>層級一・引導式自我修正 (文字防禦)：</strong> 在 Prompt / Skill 尾端加上虛擬 Code Review 提示，要求 AI 自行複查，是成本最低的第一道防線。</li>
+<li><strong>層級二・工具鏈 Hooks 攔截 (工程防禦)：</strong> 將 AI 工具與編譯器 / Linter 管道串接，偵測到失敗時自動攔截寫入，並把 Error Logs 送回 AI 重試。</li>
+</ul>
+<blockquote class="highlight">Prompt ➡️ AI 產生代碼 ➡️ Hook 攔截 ➡️ 編譯/測試驗證 ➡️ (失敗) 報錯回傳重試 ➡️ (成功) 寫入專案</blockquote>
+<blockquote>「承認 AI 是機率性的，並用確定性的工具 (Hooks) 包圍它！」</blockquote>
+</div>
+<div class="ide-window">
+<div class="ide-header">
+<div class="ide-dots">
+<span class="ide-dot red"></span>
+<span class="ide-dot yellow"></span>
+<span class="ide-dot green"></span>
+</div>
+<span class="ide-title">hooks.config.yaml</span>
+</div>
+<div class="ide-body">
+<pre><code class="language-yaml"># PostToolUse Hook：AI 寫檔後自動驗證
+hooks:
+  - event: post_write           # 攔截「寫入程式碼」這個動作
+    matcher: "*.cs"             # 僅針對 C# 檔案觸發
+    pipeline:
+      - run: dotnet build        # 1. 編譯驗證
+      - run: dotnet test         # 2. 單元測試
+      - run: dotnet format --verify  # 3. Linter / 風格掃描
+    on_failure:
+      action: return_to_agent    # 失敗：把 Error Logs 回傳給 AI
+      max_retries: 3             # 避免無限重試 (機率性 → 確定性收斂)
+      redact:                    # 日誌脫敏：回傳前遮蔽敏感資訊
+        - absolute_paths
+        - ip_addresses
+        - credentials
+    on_success:
+      action: commit             # 成功：才放行寫入專案</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="card top-title-layout" id="slide7">
 <h2>常見陷阱與防禦機制</h2><div class="slide-body">
-
-<p>在使用 Agentic Workflow 釋放 AI 自動化威力的同時，必須建立嚴格的防護牆以防失控與無限消耗。</p>
-
+<p>在使用 Agentic Workflow 與 Hooks 釋放 AI 自動化威力的同時，必須建立嚴格的防護牆以防失控與無限消耗。</p>
 <p><strong>🛡️ 企業級防禦手段：</strong></p>
 <ul>
-<li><strong>無窮迴圈防禦：</strong> 當 AI 自我 Debug 一直失敗時，極易陷入死循環。必須設定 <code>Max Iterations</code> (如最多重試 3 次) 強制中斷。</li>
+<li><strong>無窮迴圈防禦：</strong> 當 AI 自我 Debug 一直失敗時，極易陷入死循環。Hooks 必須設定 <code>Max Retries = 3</code> 強制中斷，避免無限重試燒掉 Token 與時間。</li>
+<li><strong>編譯過 ≠ 好代碼：</strong> 通過編譯只代表語法正確，不代表品質達標。需在 Hook 管道掛上 <code>Linter</code> 做效能與漏洞掃描，攔截 Unity GC 地雷或安全弱點。</li>
+<li><strong>日誌脫敏 (Log Redaction)：</strong> 把 Error Logs 回傳給 AI 前，務必遮蔽絕對路徑、IP、憑證等敏感資訊，避免內部機密外洩給雲端模型。</li>
 <li><strong>過度自信幻覺：</strong> AI 可能虛構 API。需搭配「強型別驗證」與「溫和報錯回傳」，讓 API 回傳清晰的錯誤以引導其修正。</li>
 <li><strong>高風險操作防禦：</strong> 針對修改資料庫、刪除系統檔案等危險操作，必須加入 <code>Human-in-the-loop</code>，設計確認機制才能放行。</li>
 </ul>
 </div></div>
-<!-- Global Footer -->
 <div class="footer">
                 PDD3 AI Training Series - Wanin
             </div>
 </div>
 </div>
-<!-- Navigation Controls -->
 <div class="slide-controls">
 <button class="nav-btn prev" title="Previous Slide">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
