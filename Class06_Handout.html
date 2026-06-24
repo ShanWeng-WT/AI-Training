@@ -19,9 +19,8 @@
 <li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
 <li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
 <li><a href="#slide2"><span class="dot"></span><span class="text">2. 為什麼需要 Subagents</span></a></li>
-<li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
-<li><a href="#slide4"><span class="dot"></span><span class="text">4. 分工模式</span></a></li>
-<li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">3. 分工模式</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 常見誤區</span></a></li>
 </ul>
 </nav>
 <div class="slide-container">
@@ -33,11 +32,8 @@
 </div>
 <!-- Slide 1: 課程目標 -->
 <div class="card top-title-layout" id="slide1">
-
 <h2>🎯 課程目標</h2><div class="slide-body">
-
 <p>AI 就跟人一樣，一次塞太多工作會當機。解決方案就是：Subagents 分工協作。</p>
-
 <ul>
 <li><strong>解決大任務問題：</strong> 學會將龐大、多步驟的任務拆解成可被單一 Agent 輕鬆搞定的子任務。</li>
 <li><strong>理解 Subagent 運作：</strong> 掌握將龐大任務合理拆解，各個擊破的設計心法。</li>
@@ -47,48 +43,24 @@
 </div></div>
 <!-- Slide 2: 為什麼需要 Subagents -->
 <div class="card top-title-layout" id="slide2">
-
 <h2>📖 為什麼需要 Subagents？</h2><div class="slide-body">
-
 <p>單一 AI 模型有 Context 限制。在面對複雜的大型任務時，單打獨鬥容易迷失方向、產生幻覺。</p>
-
 <ul>
 <li><strong>單一 AI 的上下文盲點：</strong> 當對話過長時，AI 容易忽略部分關鍵指令，或在推理鏈中途迷失。</li>
 <li><strong>單打獨鬥的弊端：</strong> 單一 Agent 必須同時處理需求規劃、編碼與品質審查，容易顧此失彼，導致生成結果充滿幻覺。</li>
 <li><strong>團隊作戰的優勢：</strong> 透過專精分工，將各個 Agent 的注意力限制在極窄的上下文範圍中，確保每一階段的產出質量。</li>
 </ul>
 </div></div>
-<!-- Slide 3: 頓悟時刻 -->
-<div class="card top-title-layout" id="slide3">
 
-<h2>💡 頓悟時刻</h2><div class="slide-body">
-
-<p>我們不是在寫一個更長、更複雜的 Prompt，而是在組建一間「虛擬軟體公司」。</p>
-
-<blockquote>
-<strong>這是一次思維的翻轉：</strong><br/>
-                            我們不再試圖用單次對話完成所有事，而是像管理團隊一樣：<br/>
-<ul>
-<li><strong>PM (Router)：</strong> 拆解需求、決定工作優先順序</li>
-<li><strong>工程師 (Coder)：</strong> 專注於生成特定模組或語言邏輯</li>
-<li><strong>QA (Reviewer)：</strong> 負責檢查程式碼，回饋修改建議</li>
-</ul>
-<strong>各司其職，品質才有保障！</strong>
-</blockquote>
-</div></div>
 <!-- Slide 4: 常見的分工模式 -->
-<div class="card console-dashboard-layout" id="slide4">
-
+<div class="card console-dashboard-layout" id="slide3">
 <h2>🛠️ 常見的分工模式</h2><div class="console-split"><div class="console-info">
-
 <p>未來我們面對複雜需求，第一步不再是無腦下 Prompt，而是先想「這需要幾個角色來完成？」。</p>
-
 <ul>
 <li><strong>Router (路由)：</strong> 判斷使用者意圖與需求類別，並將任務分發給最適當的 Subagent。</li>
 <li><strong>Coder (撰寫)：</strong> 專注於特定技術堆疊（例如前端 React 或後端 .NET）的代碼生成。</li>
 <li><strong>Reviewer (審查)：</strong> 靜態檢查規範、語法與潛在邏輯錯誤，提供迭代修正意見。</li>
 </ul>
-
 </div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">example.mermaid</span></div><div class="ide-body"><pre><code class="language-mermaid">
 graph TD
     User --&gt; Router
@@ -100,12 +72,9 @@ graph TD
     Reviewer --&gt; |不合格| Router
                         </code></pre></div></div></div></div>
 <!-- Slide 5: 常見誤區 -->
-<div class="card top-title-layout" id="slide5">
-
+<div class="card top-title-layout" id="slide4">
 <h2>⚠️ 常見誤區</h2><div class="slide-body">
-
 <p>不要為了分工而分工。Subagent 之間的資料傳遞也是成本，我們必須在結構清晰度與系統延遲之間取得平衡。</p>
-
 <ul>
 <li><strong>過度拆分 (Over-engineering)：</strong>
 <ul>

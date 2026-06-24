@@ -19,9 +19,8 @@
 <li><a class="active" href="#slide0"><span class="dot"></span><span class="text">封面</span></a></li>
 <li><a href="#slide1"><span class="dot"></span><span class="text">1. 課程目標</span></a></li>
 <li><a href="#slide2"><span class="dot"></span><span class="text">2. Context Window</span></a></li>
-<li><a href="#slide3"><span class="dot"></span><span class="text">3. 頓悟時刻</span></a></li>
-<li><a href="#slide4"><span class="dot"></span><span class="text">4. 最佳化技巧</span></a></li>
-<li><a href="#slide5"><span class="dot"></span><span class="text">5. 常見誤區</span></a></li>
+<li><a href="#slide3"><span class="dot"></span><span class="text">3. 最佳化技巧</span></a></li>
+<li><a href="#slide4"><span class="dot"></span><span class="text">4. 常見誤區</span></a></li>
 </ul>
 </nav>
 <div class="slide-container">
@@ -33,11 +32,8 @@
 </div>
 <!-- Slide 1: 課程目標 -->
 <div class="card top-title-layout" id="slide1">
-
 <h2>🎯 課程目標</h2><div class="slide-body">
-
 <p>承接上一堂「為何要選對模型」，這一堂自然帶到「為何要管理上下文」。這不是教你怎麼寫出漂亮的 Prompt，而是教你如何像工程師管理記憶體一樣，精準控制餵給 AI 的工作記憶。</p>
-
 <ul>
 <li><strong>掌控 Context 物理限制：</strong> 了解 Context Window 與 token 限制，量化並管理 LLM 的工作記憶。</li>
 <li><strong>對抗 Lost in the Middle：</strong> 理解中間遺忘效應，學會把關鍵規則放在模型注意力最集中的位置。</li>
@@ -46,11 +42,8 @@
 </div></div>
 <!-- Slide 2: Context Window -->
 <div class="card top-title-layout" id="slide2">
-
 <h2>📖 什麼是 Context Window？</h2><div class="slide-body">
-
 <p>LLM 讀文章跟人類很像，通常只記得最前面與最後面，中間的內容最容易被遺忘，這在學術上被稱為 Lost in the Middle 現象。</p>
-
 <ul>
 <li><strong>工作記憶的侷限：</strong> 當 Context 超載時，AI 不僅容易遺忘規則，推理性能與指令遵循率也會跟著大幅滑落。</li>
 <li><strong>Lost in the Middle (中間遺忘) 效應：</strong>
@@ -62,33 +55,11 @@
 <li><strong>少即是多原則：</strong> 僅提供當前任務「剛剛好」的 Context。</li>
 </ul>
 </div></div>
-<!-- Slide 3: 頓悟時刻 -->
-<div class="card top-title-layout" id="slide3">
 
-<h2>💡 頓悟時刻</h2><div class="slide-body">
-
-<p>解決 Context 超載的終極手段不是寫更好的 Prompt，而是直接對 Context 進行「物理隔離」。</p>
-
-<blockquote>
-<strong>實體隔離（Physical Isolation）最安全：</strong><br/>
-                            配合下一堂將深入的 Subagent 機制，前端 Agent 的 Context 裡「絕對不會」出現後端的程式碼；反之亦然。<br/><br/>
-<ul>
-<li><strong>物理隔離的好處：</strong>
-<ul>
-<li><strong>避免領域干擾：</strong> 刪除與當前任務無關的程式碼，AI 就不會無故改動不相干的邏輯。</li>
-<li><strong>縮小搜索空間：</strong> 讓模型 100% 聚焦在目前要解決的單一功能模組上，最大程度消除幻覺。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</div></div>
 <!-- Slide 4: 最佳化技巧 -->
-<div class="card top-title-layout" id="slide4">
-
+<div class="card top-title-layout" id="slide3">
 <h2>🛠️ Token 效率最佳化技巧</h2><div class="slide-body">
-
 <p>不要給它整份實作，給它介面 (Interface)。這不僅省 Token 幫公司省錢，更能大幅提高 AI 生成的準確度。</p>
-
 <ul>
 <li><strong>Interface over Implementation (介面優先)：</strong>
 <ul>
@@ -100,8 +71,7 @@
 </ul>
 </div></div>
 <!-- Slide 5: 常見誤區 -->
-<div class="card console-dashboard-layout" id="slide5">
-
+<div class="card console-dashboard-layout" id="slide4">
 <h2>⚠️ 常見誤區</h2><p>定期清理對話是工程開發中的好習慣。貪多嚼不爛，在 Context Engineering 中，「乾淨的對話」重於一切。</p><div class="dashboard-grid"><div class="sub-card"><h3>🤖 一鍵梭哈的陷阱</h3><p>
 <ul>
 <li>將數百個檔案或上萬行程式碼直接貼進對話視窗。這樣做只會超出 Context 窗口，或導致嚴重的 "Lost in the Middle" 使得 AI 忽略你的特定指令。</li>
