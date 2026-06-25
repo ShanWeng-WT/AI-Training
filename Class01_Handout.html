@@ -34,63 +34,65 @@
 <div class="card top-title-layout" id="slide1">
 
 <h2>Skill 是什麼？</h2>
-<p>將不可控的隨機對話，升級為品質穩定的套裝「技能」輸出。</p>
+<p><strong>Skill 就是給Agent的SOP</strong>，能將不可控的隨機對話，升級為品質穩定的套裝「技能」輸出。</p>
 
 <div class="slide-body">
-    <div style="display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 16px; align-items: stretch; width: 100%; margin-top: 10px;">
-        <!-- Headers -->
-        <div style="text-align: center; color: var(--text-color); font-size: 1.1em; font-weight: bold; padding: 10px; background: rgba(22, 27, 34, 0.4); border-radius: 8px;">😰 無技能的痛點</div>
-        <div></div>
-        <div style="text-align: center; color: rgba(0, 255, 204, 1); font-size: 1.1em; font-weight: bold; padding: 10px; background: rgba(0, 255, 204, 0.1); border-radius: 8px; border: 1px solid rgba(0, 255, 204, 0.3);">💡 核心解決方案</div>
-        <div></div>
-        <div style="text-align: center; color: rgba(88, 166, 255, 1); font-size: 1.1em; font-weight: bold; padding: 10px; background: rgba(88, 166, 255, 0.1); border-radius: 8px; border: 1px solid rgba(88, 166, 255, 0.3);">🎯 達成的目標</div>
-
-        <!-- Row 1 -->
-        <div class="bento-item" style="margin: 0; padding: 16px;">
-            <strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">重新探索成本</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">每次執行相同任務，AI 都需重新推演解法，耗費額外時間與 Token。</span>
-        </div>
-        <div style="display: flex; align-items: center; color: var(--border-color); font-size: 1.5em;">➔</div>
-        <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(0, 255, 204, 0.4); background: rgba(0, 255, 204, 0.05);">
-            <strong style="color: var(--primary-color); display: block; margin-bottom: 6px; font-size: 1.05em;">固化專案知識</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">在 <code>SKILL.md</code> 中載明團隊固定的開發知識、指令與標準作法。</span>
-        </div>
-        <div style="display: flex; align-items: center; color: var(--border-color); font-size: 1.5em;">➔</div>
-        <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(88, 166, 255, 0.4); background: rgba(88, 166, 255, 0.05);">
-            <strong style="color: var(--accent-color); display: block; margin-bottom: 6px; font-size: 1.05em;">提升效益比</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">杜絕反覆溝通與無效試錯，節省時間及 Token。</span>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: stretch; width: 100%; margin-top: 10px;">
+        <!-- Column 1: 痛點 -->
+        <div class="step" style="display: grid; grid-template-rows: auto 1fr 1fr 1fr; gap: 16px;">
+            <div style="text-align: center; color: var(--text-color); font-size: 1.1em; font-weight: bold; padding: 10px; background: rgba(22, 27, 34, 0.4); border-radius: 8px;">😰 無技能的痛點</div>
+            <div class="bento-item" style="margin: 0; padding: 16px;">
+                <strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">重新探索成本</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">每次執行相同任務，使用者都必須重新描述需求，AI 也要重新推演解法，耗費時間與 Token。</span>
+            </div>
+            <div class="bento-item" style="margin: 0; padding: 16px;">
+                <strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">缺乏一致的標準</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">AI 每次解法與結論可能截然不同。</span>
+            </div>
+            <div class="bento-item" style="margin: 0; padding: 16px;">
+                <strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">品質難以掌握</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">模型發散的輸出，導致難以預期與控管最終品質。</span>
+            </div>
         </div>
 
-        <!-- Row 2 -->
-        <div class="bento-item" style="margin: 0; padding: 16px;">
-            <strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">缺乏一致的標準</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">AI 每次解法與結論可能截然不同。</span>
-        </div>
-        <div style="display: flex; align-items: center; color: var(--border-color); font-size: 1.5em;">➔</div>
-        <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(0, 255, 204, 0.4); background: rgba(0, 255, 204, 0.05);">
-            <strong style="color: var(--primary-color); display: block; margin-bottom: 6px; font-size: 1.05em;">可執行的工作流</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">透過內建的程式腳本、明定的指令，讓 AI 按既定邏輯執行，確保產出一致。</span>
-        </div>
-        <div style="display: flex; align-items: center; color: var(--border-color); font-size: 1.5em;">➔</div>
-        <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(88, 166, 255, 0.4); background: rgba(88, 166, 255, 0.05);">
-            <strong style="color: var(--accent-color); display: block; margin-bottom: 6px; font-size: 1.05em;">穩定且精準</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">產出結果變得可預測且高度一致。</span>
+        <!-- Column 2: 解決方案 -->
+        <div class="step" style="display: grid; grid-template-rows: auto 1fr 1fr 1fr; gap: 16px;">
+            <div style="text-align: center; color: rgba(0, 255, 204, 1); font-size: 1.1em; font-weight: bold; padding: 10px; background: rgba(0, 255, 204, 0.1); border-radius: 8px; border: 1px solid rgba(0, 255, 204, 0.3);">💡 核心解決方案</div>
+            <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(0, 255, 204, 0.4); background: rgba(0, 255, 204, 0.05); position: relative;">
+                <div style="position: absolute; left: -28px; top: 50%; transform: translateY(-50%); font-size: 1.5em; color: var(--border-color);">➔</div>
+                <strong style="color: var(--primary-color); display: block; margin-bottom: 6px; font-size: 1.05em;">固化知識與作法</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">在 <code>SKILL.md</code> 中載明專案固定的開發知識、指令與標準作法。</span>
+            </div>
+            <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(0, 255, 204, 0.4); background: rgba(0, 255, 204, 0.05); position: relative;">
+                <div style="position: absolute; left: -28px; top: 50%; transform: translateY(-50%); font-size: 1.5em; color: var(--border-color);">➔</div>
+                <strong style="color: var(--primary-color); display: block; margin-bottom: 6px; font-size: 1.05em;">可執行的工作流</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">透過內建的程式腳本、明定的指令，讓 AI 按既定邏輯執行，確保產出一致。</span>
+            </div>
+            <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(0, 255, 204, 0.4); background: rgba(0, 255, 204, 0.05); position: relative;">
+                <div style="position: absolute; left: -28px; top: 50%; transform: translateY(-50%); font-size: 1.5em; color: var(--border-color);">➔</div>
+                <strong style="color: var(--primary-color); display: block; margin-bottom: 6px; font-size: 1.05em;">賦予行為邊界</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">不再依賴單次對話，改用系統化定義來約束 AI 行為。</span>
+            </div>
         </div>
 
-        <!-- Row 3 -->
-        <div class="bento-item" style="margin: 0; padding: 16px;">
-            <strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">品質難以掌握</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">模型發散的輸出，導致難以預期與控管最終品質。</span>
-        </div>
-        <div style="display: flex; align-items: center; color: var(--border-color); font-size: 1.5em;">➔</div>
-        <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(0, 255, 204, 0.4); background: rgba(0, 255, 204, 0.05);">
-            <strong style="color: var(--primary-color); display: block; margin-bottom: 6px; font-size: 1.05em;">賦予行為邊界</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">不再依賴單次對話，改用系統化定義來約束 AI 行為。</span>
-        </div>
-        <div style="display: flex; align-items: center; color: var(--border-color); font-size: 1.5em;">➔</div>
-        <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(88, 166, 255, 0.4); background: rgba(88, 166, 255, 0.05);">
-            <strong style="color: var(--accent-color); display: block; margin-bottom: 6px; font-size: 1.05em;">經驗資產化</strong>
-            <span style="font-size: 0.9em; color: #a0aec0;">將踩坑經驗與最佳實踐轉化為隨插即用的「技能」。</span>
+        <!-- Column 3: 目標 -->
+        <div class="step" style="display: grid; grid-template-rows: auto 1fr 1fr 1fr; gap: 16px;">
+            <div style="text-align: center; color: rgba(88, 166, 255, 1); font-size: 1.1em; font-weight: bold; padding: 10px; background: rgba(88, 166, 255, 0.1); border-radius: 8px; border: 1px solid rgba(88, 166, 255, 0.3);">🎯 達成的目標</div>
+            <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(88, 166, 255, 0.4); background: rgba(88, 166, 255, 0.05); position: relative;">
+                <div style="position: absolute; left: -28px; top: 50%; transform: translateY(-50%); font-size: 1.5em; color: var(--border-color);">➔</div>
+                <strong style="color: var(--accent-color); display: block; margin-bottom: 6px; font-size: 1.05em;">提升效益比</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">杜絕反覆溝通與無效試錯，節省時間及 Token。</span>
+            </div>
+            <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(88, 166, 255, 0.4); background: rgba(88, 166, 255, 0.05); position: relative;">
+                <div style="position: absolute; left: -28px; top: 50%; transform: translateY(-50%); font-size: 1.5em; color: var(--border-color);">➔</div>
+                <strong style="color: var(--accent-color); display: block; margin-bottom: 6px; font-size: 1.05em;">穩定且精準</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">產出結果變得可預測且高度一致。</span>
+            </div>
+            <div class="bento-item" style="margin: 0; padding: 16px; border-color: rgba(88, 166, 255, 0.4); background: rgba(88, 166, 255, 0.05); position: relative;">
+                <div style="position: absolute; left: -28px; top: 50%; transform: translateY(-50%); font-size: 1.5em; color: var(--border-color);">➔</div>
+                <strong style="color: var(--accent-color); display: block; margin-bottom: 6px; font-size: 1.05em;">經驗資產化</strong>
+                <span style="font-size: 0.9em; color: #a0aec0;">將踩坑經驗與最佳實踐轉化為隨插即用的「技能」。</span>
+            </div>
         </div>
     </div>
 </div>
@@ -145,9 +147,9 @@
 <p>每一個 Skill 都必須遵循特定的目錄結構與命名規範，才能被系統正確載入並辨識。</p>
 
 <ul style="list-style: none; padding-left: 0; margin-top: 16px;">
+    <li class="step" style="margin-bottom: 20px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">📄 SKILL.md (必填)：</strong>技能的核心定義檔，上方必須包含 <strong>YAML Frontmatter</strong> 宣告。</li>
 <li class="step" style="margin-bottom: 20px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">📁 上層目錄：</strong>Skill 的根目錄視工具而異。最常見為 <code>.agents/skills/</code>，也有<code>.claude/skills</code>或<code>.github/skills</code> 。</li>
 <li class="step" style="margin-bottom: 20px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">🏷️ 命名規範：</strong>目錄名稱與 <code>name</code> 屬性必須完全一致，建議使用 <strong>kebab-case</strong> (小寫與連字號，如 <code>my-skill</code>)。</li>
-<li class="step" style="margin-bottom: 20px;"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">📄 SKILL.md (必填)：</strong>技能的核心定義檔，上方必須包含 <strong>YAML Frontmatter</strong> 宣告。</li>
 <li class="step"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">📂 其他目錄 (選填)：</strong>如 <code>scripts/</code> 放置腳本、<code>references/</code> 放置參考文件、<code>assets/</code> 放置模板檔案。</li>
 </ul>
 
@@ -177,7 +179,23 @@ description: What it does. Use when user asks to [specific phrases].
 <li class="step"><strong style="color: var(--text-color); display: block; margin-bottom: 6px; font-size: 1.05em;">👣 執行步驟 (Steps)</strong>將複雜任務拆解為可逐步驗證的工作流，引導 AI 按部就班執行。</li>
 </ul>
 
-</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">SKILL.md 節錄</span></div><div class="ide-body"><pre><code class="language-markdown"># Data Usage Analysis (Server / Client / Unity Editor)
+</div><div class="ide-window"><div class="ide-header"><div class="ide-dots"><span class="ide-dot red"></span><span class="ide-dot yellow"></span><span class="ide-dot green"></span></div><span class="ide-title">SKILL.md 節錄</span></div><div class="ide-body"><pre><code class="language-markdown">---
+name: fish-data-usage-analysis
+description: >-
+  Analyzes a Fish/OSX game workspace to determine, for every exported data table
+  (the files under the server CustomData deploy folder and the client Unity Data
+  folder), whether each one is actually used by the Server runtime, the Client
+  runtime, and/or only by Unity Editor tooling. Produces the Server / Client /
+  Unity Editor (O / X / - / ?) usage table. Use this skill whenever the user asks
+  which data is used by server vs client, wants a data usage / reference audit,
+  asks "is this data file still used", wants to find dead/unused CustomData,
+  wants to know if a table is server-only or client-only, or mentions auditing
+  CustomData / Deploy data / Game data references across server (Modules) and
+  client (Model.Unity) code. Works across projects in the series even though the
+  Game<N> folder number and FishHunter<N> module number differ.
+---
+
+# Data Usage Analysis (Server / Client / Unity Editor)
 
 ## What this produces
 A markdown table classifying every exported data table by where it is actually **referenced at runtime**...

@@ -573,6 +573,7 @@ pre code {
   gap: 30px;
   align-items: stretch;
   flex: 1;
+  min-height: 0;
 }
 
 .console-split.console-centered {
@@ -591,6 +592,8 @@ pre code {
   flex-direction: column;
   justify-content: center;
   gap: 16px;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
 .console-info p {
@@ -614,6 +617,7 @@ pre code {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   overflow: hidden;
   text-align: left;
+  min-height: 0;
 }
 
 .ide-header {
