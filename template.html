@@ -18,11 +18,14 @@
             <li><a href="#slide0" class="active"><span class="dot"></span><span class="text">封面</span></a></li>
             <li><a href="#slide1"><span class="dot"></span><span class="text">1. 經典排版範本</span></a></li>
             <li><a href="#slide2"><span class="dot"></span><span class="text">2. 主控台程式碼範本</span></a></li>
-            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 儀表板三欄範本</span></a></li>
-            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 雙欄對比範本</span></a></li>
-            <li><a href="#slide5"><span class="dot"></span><span class="text">5. 圖文焦點範本</span></a></li>
-            <li><a href="#slide6"><span class="dot"></span><span class="text">6. 流程步驟範本</span></a></li>
-            <li><a href="#slide7"><span class="dot"></span><span class="text">7. 重點引言範本</span></a></li>
+            <li><a href="#slide3"><span class="dot"></span><span class="text">3. 雙欄對比範本</span></a></li>
+            <li><a href="#slide4"><span class="dot"></span><span class="text">4. 圖文焦點範本</span></a></li>
+            <li><a href="#slide5"><span class="dot"></span><span class="text">5. 流程步驟範本</span></a></li>
+            <li><a href="#slide6"><span class="dot"></span><span class="text">6. 重點引言範本</span></a></li>
+            <li><a href="#slide7"><span class="dot"></span><span class="text">7. 便當盒排版範本</span></a></li>
+            <li><a href="#slide8"><span class="dot"></span><span class="text">8. 情境對話排版</span></a></li>
+            <li><a href="#slide9"><span class="dot"></span><span class="text">9. 時間軸排版範本</span></a></li>
+            <li><a href="#slide10"><span class="dot"></span><span class="text">10. 極簡單點字卡</span></a></li>
         </ul>
     </nav>
 
@@ -99,53 +102,14 @@
             </div>
             
             <!-- ==========================================================================
-                 SLIDE 3: 儀表板三欄網格模組 (Dashboard Grid Layout)
-                 - 適用場景：最後的總結 Slide、三個概念的對比或並列、核心鐵三角要點。
-                 - 使用說明：在 .card 容器加上 `console-dashboard-layout` 類別。
-                   內部使用 `.dashboard-grid` 來水平並排 3 個 `.sub-card`。
-                 ========================================================================== -->
-            <div class="card console-dashboard-layout" id="slide3">
-                <h2>總結與對比：三欄指標儀表板 (以 `dashboard-grid` 與 `sub-card` 並行)</h2>
-                <div class="dashboard-grid">
-                    <!-- 子卡片 1 -->
-                    <div class="sub-card">
-                        <h3>🤖 要點一：舊觀念</h3>
-                        <p>這是一個標準的指標卡片，卡片頂部有一條隱含的細邊線。</p>
-                        <ul>
-                            <li>不好的習慣 1</li>
-                            <li>不好的習慣 2</li>
-                        </ul>
-                    </div>
-                    <!-- 子卡片 2 (可自訂 hover 發光邊框) -->
-                    <div class="sub-card" style="border-color: rgba(0, 255, 204, 0.4);">
-                        <h3>⚙️ 要點二：新觀念</h3>
-                        <p>卡片在滑鼠懸浮時會向上微浮，並將頂部發光條改為主題青色。</p>
-                        <ul>
-                            <li>最佳實踐 1</li>
-                            <li>最佳實踐 2</li>
-                        </ul>
-                    </div>
-                    <!-- 子卡片 3 -->
-                    <div class="sub-card" style="border-color: rgba(88, 166, 255, 0.4);">
-                        <h3>💡 要點三：實踐行動</h3>
-                        <p>最適合用來當作課程總結、行動方針、或三向對比時的呈現載體。</p>
-                        <ul>
-                            <li>核心行動 1</li>
-                            <li>核心行動 2</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ==========================================================================
-                 SLIDE 4: 雙欄對照/對比模組 (Comparison Layout)
+                 SLIDE 3: 雙欄對照/對比模組 (Comparison Layout)
                  - 適用場景：概念對比 (新舊觀念、優缺點、前後差異)、總結投影片。
                  - 使用說明：在 .card 容器加上 `comparison-layout` 類別。
                    內部使用 `.comparison-grid` 水平並排 2 個 `.comparison-card`。
                    如有其中一個需要特別強調，可對該子卡片套用 `.highlight-card`。
                    下方可搭配一個全寬 `blockquote` 作為總結引言。
                  ========================================================================== -->
-            <div class="card comparison-layout" id="slide4">
+            <div class="card comparison-layout" id="slide3">
                 <h2>⚔️ 觀念對決：雙欄對照排版 (以 `comparison-grid` 呈現)</h2>
                 <div class="comparison-grid">
                     <!-- 左欄：常規卡片 -->
@@ -165,11 +129,11 @@
             </div>
             
             <!-- ==========================================================================
-                 SLIDE 5: 圖文焦點模組 (Image Focus Layout)
+                 SLIDE 4: 圖文焦點模組 (Image Focus Layout)
                  - 適用場景：以圖表為主、文字為輔的說明頁面，如架構圖、流程圖等。
                  - 使用說明：套用 `image-focus-layout`，並使用 `image-focus-grid` 切分圖文。
                  ========================================================================== -->
-            <div class="card image-focus-layout" id="slide5">
+            <div class="card image-focus-layout" id="slide4">
                 <h2>🖼️ 看圖說故事：圖文焦點範本 (`image-focus-layout`)</h2>
                 <div class="image-focus-grid">
                     <div class="image-focus-content">
@@ -190,11 +154,11 @@
             </div>
 
             <!-- ==========================================================================
-                 SLIDE 6: 流程/步驟模組 (Process Step Layout)
+                 SLIDE 5: 流程/步驟模組 (Process Step Layout)
                  - 適用場景：步驟教學、工作流說明、演進過程。
                  - 使用說明：套用 `process-layout`，並以 `process-container` 包裹多個 `process-step`。
                  ========================================================================== -->
-            <div class="card process-layout" id="slide6">
+            <div class="card process-layout" id="slide5">
                 <h2>🔄 按部就班：流程步驟範本 (`process-layout`)</h2>
                 <div class="process-container">
                     <div class="process-step">
@@ -218,11 +182,11 @@
             </div>
 
             <!-- ==========================================================================
-                 SLIDE 7: 重點引言模組 (Callout / Quote Focus Layout)
+                 SLIDE 6: 重點引言模組 (Callout / Quote Focus Layout)
                  - 適用場景：破題發問、金句引言、觀念震撼教育。
                  - 使用說明：套用 `callout-focus-layout`，並以 `callout-container` 與 `callout-card` 包裝內容。
                  ========================================================================== -->
-            <div class="card callout-focus-layout" id="slide7">
+            <div class="card callout-focus-layout" id="slide6">
                 <div class="callout-container">
                     <p class="callout-title">"AI 的價值不在於它能一次答對，<br>而在於它能不知疲倦地與你一起試錯。"</p>
                     <div class="callout-grid">
@@ -230,6 +194,112 @@
                         <div class="callout-connector">/</div>
                         <div class="callout-card" style="font-size: 1.5em; padding: 20px 40px;">重點結語</div>
                     </div>
+                </div>
+            </div>
+
+            <!-- ==========================================================================
+                 SLIDE 7: 便當盒模組 (Bento Box Layout)
+                 - 適用場景：總結多個不同維度的重點、亮點展示。視覺不枯燥。
+                 - 使用說明：套用 `bento-layout`，並以 `bento-grid` 包含多個 `bento-item`。
+                   可使用 `bento-span-2`, `bento-span-3`, `bento-row-2` 等 class 跨欄/列。
+                 ========================================================================== -->
+            <div class="card bento-layout" id="slide7">
+                <h2>🍱 靈活呈現：便當盒排版 (`bento-layout`)</h2>
+                <div class="bento-grid">
+                    <div class="bento-item bento-span-2 bento-row-2" style="background: rgba(0,255,204,0.05); border-color: var(--primary-color);">
+                        <h3>🌟 核心概念</h3>
+                        <p>佔據大面積的主卡片，適合放最重要的結論、核心圖片或大段文字說明。便當盒排版能打破網格的單調。</p>
+                    </div>
+                    <div class="bento-item bento-span-2">
+                        <h3>📊 關鍵數據</h3>
+                        <p>效能提升 <strong style="color: var(--primary-color); font-size: 1.5em;">300%</strong></p>
+                    </div>
+                    <div class="bento-item">
+                        <h3>⚡ 亮點 A</h3>
+                        <p>模組化設計</p>
+                    </div>
+                    <div class="bento-item">
+                        <h3>🔒 亮點 B</h3>
+                        <p>極高穩定性</p>
+                    </div>
+                    <div class="bento-item bento-span-4" style="align-items: center; text-align: center;">
+                        <h3 style="margin-bottom: 0;">一目了然的資訊層級，讓重點更突出</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================================================
+                 SLIDE 8: 情境對話模組 (Chat Bubble Layout)
+                 - 適用場景：常見誤區 Q&A、問答環節、情境帶入。
+                 - 使用說明：套用 `chat-layout`，並以 `chat-container` 包裝 `chat-bubble`。
+                   使用 `chat-left` (提問/反方) 與 `chat-right` (解答/正方)。
+                 ========================================================================== -->
+            <div class="card chat-layout" id="slide8">
+                <h2>💬 破除迷思：情境對話排版 (`chat-layout`)</h2>
+                <div class="chat-container">
+                    <div class="chat-bubble chat-left step">
+                        <div class="avatar">🤷‍♂️ 新手開發者</div>
+                        「如果我只是要改一行 Code，為什麼還要寫這麼多 Context 跟 Agent 規則？直接叫 AI 改不是比較快嗎？」
+                    </div>
+                    <div class="chat-bubble chat-right step">
+                        <div class="avatar">💡 資深架構師</div>
+                        「單次修改的確快，但系統化做法能確保 AI 在未來 100 次修改中都不會破壞現有架構。這是在建立『防護網』而不是單純的問答。」
+                    </div>
+                    <div class="chat-bubble chat-left step">
+                        <div class="avatar">🤷‍♂️ 新手開發者</div>
+                        「原來如此！把知識固化到 Context 中，才是 Agentic Workflow 的精神。」
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================================================
+                 SLIDE 9: 時間軸模組 (Timeline Layout)
+                 - 適用場景：課程大綱、歷史演進、學習計畫、多階段任務。
+                 - 使用說明：套用 `timeline-layout`，並以 `timeline-container` 包含 `timeline-item`。
+                 ========================================================================== -->
+            <div class="card timeline-layout" id="slide9">
+                <h2>⏳ 發展脈絡：時間軸排版 (`timeline-layout`)</h2>
+                <div class="timeline-container">
+                    <div class="timeline-item step">
+                        <div class="timeline-dot" style="border-color: #8b949e;"></div>
+                        <div class="timeline-content">
+                            <h3 style="color: #8b949e;">階段一</h3>
+                            <p>單次指令生成<br>(Prompting)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item step">
+                        <div class="timeline-dot" style="border-color: #58a6ff;"></div>
+                        <div class="timeline-content">
+                            <h3 style="color: #58a6ff;">階段二</h3>
+                            <p>加入外部知識<br>(RAG)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item step">
+                        <div class="timeline-dot" style="border-color: var(--primary-color);"></div>
+                        <div class="timeline-content">
+                            <h3 style="color: var(--primary-color);">階段三</h3>
+                            <p>自主任務規劃<br>(Agentic Workflow)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item step">
+                        <div class="timeline-dot" style="border-color: #ffbd2e;"></div>
+                        <div class="timeline-content">
+                            <h3 style="color: #ffbd2e;">未來展望</h3>
+                            <p>多智能體協作<br>(Multi-Agent)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================================================
+                 SLIDE 10: 極簡單點字卡 (Flashcard Layout)
+                 - 適用場景：過場、帶出下一個單元、震撼教育、大腦重置。
+                 - 使用說明：套用 `flashcard-layout`，內容置中於 `flashcard-content` 內。
+                 ========================================================================== -->
+            <div class="card flashcard-layout" id="slide10">
+                <div class="flashcard-content">
+                    <span class="flashcard-icon">🧠</span>
+                    <h2>停止把 AI 當作工具，<br>開始把它當作 <span class="highlight-text">共事夥伴</span>。</h2>
                 </div>
             </div>
 
