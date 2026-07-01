@@ -71,7 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function nextAction() {
         if (currentSteps.length > 0 && currentStepIndex < currentSteps.length - 1) {
             currentStepIndex++;
-            currentSteps[currentStepIndex].classList.add('active');
+            const activeStep = currentSteps[currentStepIndex];
+            activeStep.classList.add('active');
+            
+            // Auto scroll step into view for progressive disclosure
+            setTimeout(() => {
+                activeStep.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }, 100);
         } else {
             if (currentIndex < slides.length - 1) {
                 showSlide(currentIndex + 1, false);

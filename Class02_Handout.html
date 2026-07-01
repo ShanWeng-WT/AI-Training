@@ -23,8 +23,10 @@
 <li><a href="#slide4"><span class="dot"></span><span class="text">4. ReAct 運作架構</span></a></li>
 <li><a href="#slide5"><span class="dot"></span><span class="text">5. Trace Log 範例</span></a></li>
 <li><a href="#slide6"><span class="dot"></span><span class="text">6. 能力範圍與邊界</span></a></li>
-<li><a href="#slide7"><span class="dot"></span><span class="text">7. 為什麼會卡死？</span></a></li>
+<li><a href="#slide7"><span class="dot"></span><span class="text">7. 常見問題</span></a></li>
 <li><a href="#slide8"><span class="dot"></span><span class="text">8. Agent vs 純 LLM</span></a></li>
+<li><a href="#slide9"><span class="dot"></span><span class="text">9. MCP 基礎架構</span></a></li>
+<li><a href="#slide10"><span class="dot"></span><span class="text">10. MCP 解決了什麼痛點？</span></a></li>
 </ul>
 </nav>
 <div class="slide-container">
@@ -75,11 +77,11 @@
 
 <div>
     <div>
-        <p><strong>LLM 本身只是大腦，無法做任何事。<br>Agent 就是給 LLM 賦予身體，在思考能力之上再加入感知與行動能力。</strong></p>
+        <p>LLM 本身只是大腦，無法做任何事。<br><strong>Agent 就是給 LLM 賦予身體</strong>，在思考能力之上再加入感知與行動能力。</p>
     </div>
     <div id="slide1-img-wrap">
         <div id="slide1-img1">
-            <img src="Resources/Images/WhatIsAgent.jpg" alt="What is Agent 示意圖">
+            <img src="Resources/Images/Gemini_Generated_Agent.png" alt="What is Agent 示意圖">
             <span class="img-label">Agent 的核心能力組成</span>
         </div>
         <div class="step" id="slide1-img2">
@@ -148,14 +150,21 @@
   .flow-node.n3 { background: rgba(88,166,255,0.15); color: var(--primary-color); }
   .flow-sep { padding: 0 8px; color: #555; font-size: 1.1em; }
   .flow-label { font-size: 0.75em; color: #555; }
+  @keyframes popOutFast {
+    0% { transform: scale(0.3); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
   #slide2-think-q { display: block; }
-  #slide2:has(.step.active) #slide2-think-q { display: none; }
+  #slide2:has(.ans-step.active) #slide2-think-q { display: none; }
   #slide2-think-a { display: none; }
-  #slide2:has(.step.active) #slide2-think-a { display: block !important; }
+  #slide2:has(.ans-step.active) #slide2-think-a { 
+    display: block !important; 
+    animation: popOutFast 0.25s cubic-bezier(0.34, 2, 0.64, 1) forwards;
+  }
 </style>
 <h2>🔍 LLM、Chatbot、Agent 有何不同？</h2>
 <div class="triple-compare">
-  <div class="triple-card llm-card">
+  <div class="triple-card llm-card step">
     <h3>🧠 LLM</h3>
     <span class="role-tag">The Brain — 核心引擎</span>
     <ul>
@@ -165,7 +174,7 @@
       <li>例：GPT-5、Claude、Gemini</li>
     </ul>
   </div>
-  <div class="triple-card chat-card">
+  <div class="triple-card chat-card step">
     <h3>💬 Chatbot</h3>
     <span class="role-tag">The Interface — 對話介面</span>
     <ul>
@@ -175,7 +184,7 @@
       <li>例：ChatGPT 網頁聊天介面</li>
     </ul>
   </div>
-  <div class="triple-card agent-card">
+  <div class="triple-card agent-card step">
     <h3>🤖 Agent</h3>
     <span class="role-tag">The Doer — 行動執行者</span>
     <ul>
@@ -186,15 +195,14 @@
     </ul>
   </div>
 </div>
-<div class="step" style="display: none;"></div>
-<div class="flow-arrow">
+<div class="flow-arrow step">
   <span class="flow-node n1">LLM（核心）</span>
   <span class="flow-sep">→ <span class="flow-label">驅動</span> →</span>
   <span class="flow-node n2">Chatbot（包裝對話）</span>
   <span class="flow-sep">→ <span class="flow-label">擴充工具與行動</span> →</span>
   <span class="flow-node n3">Agent（能感知並執行）</span>
 </div>
-<div style="background: rgba(255,255,255,0.05); border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 36px 0; border-radius: 4px;">
+<div class="step" style="background: rgba(255,255,255,0.05); border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 36px 0; border-radius: 4px;">
     <div id="slide2-think-q">
         <p style="margin: 0; color: #58a6ff; font-weight: bold;">🤔 想一想，下列哪些算是 Agent 呢？</p>
         <ul style="margin-bottom: 0; margin-top: 16px;">
@@ -204,10 +212,12 @@
             <li><strong>案例 4：</strong>給予目標後，能自主規劃、建專案、寫程式碼、測試，不斷循環直到目標達成。</li>
         </ul>
     </div>
-    <div id="slide2-think-a" style="display: none; font-size: 2em; font-weight: 800; color: #58a6ff; text-align: center; line-height: 1.4; padding: 10px 0;">
-        會不會分辨不是重點<br>釐清自己的需求該用什麼手段達成才是關鍵
+    <div id="slide2-think-a" style="display: none; font-size: 2em; font-weight: 800; color: var(--text-color); text-align: center; line-height: 1.4; padding: 10px 0;">
+        會不會分辨不是重點<br>
+        釐清 <span style="color: var(--primary-color);">自己的需求 </span>該用什麼 <span style="color: #58a6ff;">手段達成</span> 才是關鍵
     </div>
 </div>
+<div class="step ans-step" style="display: none;"></div>
 </div>
 
 <!-- Slide 3: 什麼是 Tool Use -->
@@ -217,22 +227,27 @@
     <!-- 核心概念 -->
     <div class="bento-item" style="grid-column: span 3; background: rgba(0, 255, 204, 0.08); border-color: var(--primary-color); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);">
       <h3 style="color: var(--primary-color);">🌟 核心概念</h3>
-      <p style="color: var(--text-color);">Tool Use（又稱 <strong>Function Calling</strong>）是指讓 LLM 不再只能單純回覆文字，而是能根據使用者需求，<strong>決定何時呼叫、以及傳入什麼參數</strong>給外部提供的函式或 API。</p>
+      <p style="color: var(--text-color);">讓 LLM 能根據使用者需求，<strong>呼叫額外的函式或 API</strong>，突破只能文字生成的限制。</p><br>
+      <p>通常除了Harness會內建通用工具以外(如:檔案讀/寫/搜尋，Web Fetch等)，其他工具皆需要使用者透過Skill, Plugin, MCP 或自行製作以提供給Agent使用</p>
     </div>
     
     <!-- Unity 範例 -->
-    <div class="bento-item" style="grid-column: span 3;">
-      <h3>🎮 互動流程 (Unity 應用範例)</h3>
+    <div class="bento-item step" style="grid-column: span 3;">
+      <h3>🎮 互動流程 (遊戲開發範例)</h3>
       <p>Agent 無法直接「看見」遊戲場景，必須透過工具與環境一來一往互動：</p>
       <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-top: 8px; font-family: 'Consolas', monospace; font-size: 0.95em; line-height: 1.6;">
+        <span style="color: #e82f5d;">User:</span> 幫我在玩家角色面前新增一個敵人的物件<br>
         <span style="color: #58a6ff;">Agent:</span> 決定呼叫工具 <code>GetPosition("Player")</code><br>
         <span style="color: #ffbd2e;">Tool :</span> 執行後回傳結果 <code>Position(10, 0, 5)</code><br>
-        <span style="color: #27c93f;">Agent:</span> 將結果餵回給 LLM，以此座標為基準決定生成敵人的位置
+        <span style="color: #27c93f;">Agent:</span> 以回傳結果判斷新生成敵人的位置，決定呼叫工具<code>SpawnObject("Enemy")</code><br>
+        <span style="color: #ffbd2e;">Tool :</span> 執行後回傳結果 <code>SpawnResult(Success, "Enemy")</code><br>
+        <span style="color: #27c93f;">Agent :</span> 確認工具執行成功，回報使用者結果</code>
       </div>
+      <p><br><strong>延伸思考:</strong> 叫Agent執行工具，和直接寫一個Editor Script來執行有什麼差?</p>
     </div>
 
     <!-- 三大類型 -->
-    <div class="bento-item" style="grid-column: span 2;">
+    <div class="bento-item step" style="grid-column: span 2;">
       <h3>🔍 資訊檢索型</h3>
       <p>取得最新或特定領域資訊。</p>
       <ul style="padding-left: 20px;">
@@ -241,7 +256,7 @@
         <li>取得天氣、股價 API</li>
       </ul>
     </div>
-    <div class="bento-item" style="grid-column: span 2;">
+    <div class="bento-item step" style="grid-column: span 2;">
       <h3>⚙️ 系統操作型</h3>
       <p>改變環境狀態或執行運算。</p>
       <ul style="padding-left: 20px;">
@@ -250,7 +265,7 @@
         <li>發送 Email 或 Slack 訊息</li>
       </ul>
     </div>
-    <div class="bento-item" style="grid-column: span 2;">
+    <div class="bento-item step" style="grid-column: span 2;">
       <h3>🧠 邏輯運算與專業工具</h3>
       <p>彌補 LLM 在計算上的不足或特定功能。</p>
       <ul style="padding-left: 20px;">
@@ -271,15 +286,15 @@
       <img src="Resources/Images/ReAct.gif" alt="ReAct Loop" style="max-height: 280px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
       
       <div style="display: flex; justify-content: space-between; width: 100%; gap: 16px; margin-top: 16px;">
-          <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 8px; border-top: 3px solid #ffbd2e;">
+          <div class="step" style="flex: 1; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 8px; border-top: 3px solid #ffbd2e;">
               <h3 style="margin-top: 0; color: #ffbd2e;">🧠 Thought (思考)</h3>
               <p style="font-size: 0.95em; color: #a0aec0; margin-bottom: 0;">分析當前狀況與目標差距，推理下一步該做什麼。</p>
           </div>
-          <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 8px; border-top: 3px solid #00ffcc;">
+          <div class="step" style="flex: 1; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 8px; border-top: 3px solid #00ffcc;">
               <h3 style="margin-top: 0; color: #00ffcc;">⚙️ Action (行動)</h3>
               <p style="font-size: 0.95em; color: #a0aec0; margin-bottom: 0;">決定調用哪一個外部工具 (Tool) 並傳入對應的參數。</p>
           </div>
-          <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 8px; border-top: 3px solid #58a6ff;">
+          <div class="step" style="flex: 1; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 8px; border-top: 3px solid #58a6ff;">
               <h3 style="margin-top: 0; color: #58a6ff;">💡 Observation (觀察)</h3>
               <p style="font-size: 0.95em; color: #a0aec0; margin-bottom: 0;">工具執行後傳回的實質反饋，作為下一輪思考的輸入。</p>
           </div>
@@ -309,12 +324,12 @@
 </div>
 </div>
 </div>
-<div style="background: rgba(255,255,255,0.05); border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<div class="step" style="background: rgba(255,255,255,0.05); border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
 <p style="margin-top: 0; color: #58a6ff; font-weight: bold;">🤔 延伸思考</p>
 <ul style="margin-bottom: 0;">
-<li>如果 User Prompt 改成「今天適合跑步嗎？」會變成怎麼樣？</li>
+<li>如果 User Prompt 移除「台北」會變成怎麼樣？</li>
 <li>如果 Agent 沒有天氣工具可以用會怎麼樣？</li>
-<li>Agent最終的回答是不是真的能夠滿足使用者的需求？說不定他是想在清晨跑步；又或者今天不會下雨，但是他要去的田徑場今天不開放</li>
+<li>Agent 最終的回答是不是真的能夠滿足使用者的需求？說不定他是想在清晨跑步；又或者今天不會下雨，但是他要去的田徑場今天不開放?</li>
 </ul>
 </div>
 </div>
@@ -323,17 +338,17 @@
 <div class="card top-title-layout" id="slide6">
 <h2>🤖 Agent 的能力範圍與邊界</h2>
 <div class="slide-body">
-    <p>如同前一頁範例所示，Agent 是<strong>嵌入在一個指定環境 (Environment) 中運作的個體</strong>：它透過 ReAct 的 <code>Observation</code> 感知、<code>Action</code> 行動與環境互動。也因此，它的能力上限不只取決於模型，更取決於三個環境要素：</p>
+    <p>Agent 是<strong>嵌入在一個指定環境 (Environment) 中運作的個體</strong>：它透過 ReAct 的 <code>Observation</code> 感知、<code>Action</code> 行動與環境互動。也因此，它的能力上限不只取決於模型，更取決於三個環境要素：</p>
     <ul style="display: flex; flex-direction: column; gap: 24px; padding-left: 0; list-style: none; margin-top: 32px;">
-        <li style="padding-left: 20px; border-left: 4px solid #58a6ff;">
+        <li class="step" style="padding-left: 20px; border-left: 4px solid #58a6ff;">
             <strong style="color: var(--text-color); font-size: 1.2em; display: block; margin-bottom: 8px;">🧠 Context（可見脈絡）</strong>
             <div style="color: #a0aec0; font-size: 1.05em; line-height: 1.6;">包含對話歷史、System Prompt、專案架構文件與工具回傳的結果。<strong style="color: #ff5f56;">看不到的資訊，它就無從判斷</strong>，僅能瞎猜或依賴訓練資料。</div>
         </li>
-        <li style="padding-left: 20px; border-left: 4px solid var(--primary-color);">
+        <li class="step" style="padding-left: 20px; border-left: 4px solid var(--primary-color);">
             <strong style="color: var(--text-color); font-size: 1.2em; display: block; margin-bottom: 8px;">🛠️ Tools（可用工具）</strong>
             <div style="color: #a0aec0; font-size: 1.05em; line-height: 1.6;">讀檔、搜尋、修改、執行測試、瀏覽網頁等能力。<strong style="color: #ff5f56;">沒有對應工具，Agent 就無法觀察或行動</strong>，空有聰明大腦也無能為力。</div>
         </li>
-        <li style="padding-left: 20px; border-left: 4px solid #ffbd2e;">
+        <li class="step" style="padding-left: 20px; border-left: 4px solid #ffbd2e;">
             <strong style="color: var(--text-color); font-size: 1.2em; display: block; margin-bottom: 8px;">🧑‍⚖️ Scope & Auth（範圍與授權）</strong>
             <div style="color: #a0aec0; font-size: 1.05em; line-height: 1.6;">界定 Agent 作用的<strong>環境邊界</strong>。即使有工具，權限的開關也決定了它是否能真正對環境造成改變。</div>
         </li>
@@ -341,26 +356,54 @@
 </div>
 </div>
 
-<!-- Slide 7: 為什麼會卡死 -->
+<!-- Slide 7: 使用 Agent 的常見問題 -->
 <div class="card chat-layout" id="slide7">
-  <h2>⚠️ 為什麼 Agent 會卡死？</h2>
-  <div class="chat-container" style="max-width: 900px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+  <h2>⚠️ 使用 Agent 的常見問題</h2>
+  <div class="chat-container" style="margin: 0 auto; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; overflow-y: auto; padding: 20px 10px;">
+    <!-- Q1 -->
     <div class="chat-bubble chat-right step" style="margin-bottom: 24px;">
-      <div style="font-weight: bold; margin-bottom: 8px; color: #ffbd2e;">🧑‍💻 開發者日常：</div>
-      奇怪，我的 Agent 怎麼一直陷入無限 retry 的 ReAct 迴圈，任務都做不完？
+      <div style="font-weight: bold; margin-bottom: 8px; color: #ffbd2e;">🧑‍💻 開發者</div>
+      我的Agent一直在無限 retry ，任務都做不完？
     </div>
     <div class="chat-bubble chat-left step" style="margin-bottom: 24px;">
-      <div style="font-weight: bold; margin-bottom: 8px; color: #58a6ff;">🤖 AI 助教：</div>
-      這通常是因為 Agent 無法從環境中得到有效的 <code>Observation</code>！常見的雷區有兩個：<br><br>
-      <strong>1. 工具不穩定與無防呆 (Tools Issue)：</strong><br>
-      如果工具噴出未處理的 Exception 或亂碼，AI 看不懂，只會以同樣的方式反覆瞎猜。<br>
-      <span style="color: var(--primary-color);">💡 解法：開發 Tool 時，務必加上明確的 Exception Handling 與易懂的錯誤訊息。</span>
-    </div>
-    <div class="chat-bubble chat-left step">
-      <div style="font-weight: bold; margin-bottom: 8px; color: #58a6ff;">🤖 AI 助教：</div>
-      <strong>2. 目標模糊 (Context Issue)：</strong><br>
+      <div style="font-weight: bold; margin-bottom: 8px; color: #58a6ff;">🤖 AI</div>
+      <strong>如果你不想燒光Token或讓Context髒掉的話，就趕快讓他停下！</strong><br>
+      這通常是因為 Agent 無法從環境中得到有效的 <code>Observation</code>！常見的雷區有：<br><br>
+      <strong>1. 目標模糊：</strong><br>
       任務如果不夠具體（例如只說「幫我優化程式碼」），Agent 就不知道什麼狀態才算「完成」。<br>
-      <span style="color: var(--primary-color);">💡 解法：在指令寫明驗證條件（例如「當 dotnet build 通過即代表完成」）。</span>
+      <span style="color: var(--primary-color);">💡 解法：說清楚要優化什麼，或在指令寫明驗證條件（例如「當 dotnet build 通過即代表完成」）。</span><br><br>
+      <strong>2. 缺乏脈絡、資訊不對稱 (雞同鴨講)：</strong><br>
+      開發者給錯方向，或Agent所在的環境或工具限制了他的能力邊界，導致他找不到有效資訊而整個歪樓，注意力分散。<br>
+      <span style="color: var(--primary-color);">💡 解法：開發者需要確保Agent能取得必要脈絡 (Context Engineering)，引導他正確方向。</span><br><br>
+      <strong>3. 工具問題：</strong><br>
+      沒有合適的工具，或者工具噴出無用的Log、模糊的Error Message，甚至是沒有回應，會讓Agent一直做無用的嘗試。<br>
+      <span style="color: var(--primary-color);">💡 解法：開發 Tool 時，務必設計好 Error Handling 與易懂的錯誤訊息。</span><br><br>
+    </div>
+
+    <!-- Q2 -->
+    <div class="chat-bubble chat-right step" style="margin-bottom: 24px;">
+      <div style="font-weight: bold; margin-bottom: 8px; color: #ffbd2e;">🧑‍💻 開發者</div>
+      我怎麼知道我的 Agent 有哪些工具可用？如果沒有適合的工具怎麼辦？
+    </div>
+    <div class="chat-bubble chat-left step" style="margin-bottom: 24px;">
+      <div style="font-weight: bold; margin-bottom: 8px; color: #58a6ff;">🤖 AI</div>
+      在你使用的Harness的介面或官方文件中尋找相關的說明，或直接在對話中詢問 Agent：「請列出你目前支援的所有工具及功能說明」。<br><br>
+      如果發現沒有合適的工具：<br>
+      <span style="color: var(--primary-color);">💡 1. 檢查是否因為權限不足 (Scope & Auth) 而導致工具未開放。</span><br>
+      <span style="color: var(--primary-color);">💡 2. 自己實作對應的 Tool 介面，擴充 Agent 的能力！</span>
+    </div>
+
+    <!-- Q3 -->
+    <div class="chat-bubble chat-right step" style="margin-bottom: 24px;">
+      <div style="font-weight: bold; margin-bottom: 8px; color: #ffbd2e;">🧑‍💻 開發者</div>
+      如果我的 Agent 執行了危險操作，把專案改壞了怎麼辦？
+    </div>
+    <div class="chat-bubble chat-left step" style="margin-bottom: 24px;">
+      <div style="font-weight: bold; margin-bottom: 8px; color: #58a6ff;">🤖 AI</div>
+      這就是為什麼我們需要護欄 (Guardrails)！我們不該讓 Agent 在無保護的環境下裸奔。<br><br>
+      <span style="color: var(--primary-color);">💡 防線 1 - 版本控制 (VCS)：</span>讓 Agent 在獨立分支工作，就算改壞了也能還原。<br>
+      <span style="color: var(--primary-color);">💡 防線 2 - Human-in-the-loop (HITL)：</span>對於高風險行為，強制 Agent 發出請求，獲得人類許可 (Approve) 才能執行。<br>
+      <span style="color: var(--primary-color);">💡 防線 3 - 使用沙盒 (Sandbox)：</span>讓 Agent 在分離環境中執行，直接讓他摸不著也看不見。<br>
     </div>
   </div>
 </div>
@@ -368,19 +411,224 @@
 <!-- Slide 8: Agent vs 純 LLM -->
 <div class="card comparison-layout" id="slide8">
 <h2>⚖️ Agent vs 純 LLM：同一個問題，兩種做法</h2>
-<div class="comparison-grid">
-<div class="comparison-card">
+<div class="comparison-grid" style="margin-top: auto; margin-bottom: auto;">
+<div class="comparison-card step">
 <h3>💬 純 LLM</h3>
 <p>僅憑訓練資料回答，受限於Knowledge cutoff，不可能知道「今天」的即時天氣，容易產生幻覺；優點是不需呼叫外部工具，回應快、成本低。</p>
 </div>
-<div class="comparison-card highlight-card">
+<div class="comparison-card highlight-card step">
 <h3>🤖 Agent (ReAct)</h3>
 <p>能呼叫外部工具取得即時觀測值，可信度更高且能實際執行任務；代價是需要額外的工具整合與授權，且內部多輪的循環也使得回應時間與 Token 成本大幅增加。</p>
 </div>
 </div>
-<blockquote style="margin-top: 32px;">
-<strong>沒有絕對的優劣之分，只有適用情境的不同</strong>
-</blockquote>
+</div>
+
+<!-- Slide 9: MCP 基礎架構介紹 -->
+<div class="card top-title-layout" id="slide9">
+  <h2 style="margin-bottom: 0;">🔌 MCP (Model Context Protocol) 基礎介紹</h2>
+  
+  <div class="slide-body" style="display: flex; justify-content: center; align-items: center; position: relative; height: 100%; margin-top: 24px;">
+    <style>
+      #slide9-img1 {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+      #slide9-img2 {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      #slide9:has(.step.active) #slide9-img1 {
+        opacity: 0;
+      }
+      #slide9:has(.step.active) #slide9-img2 {
+        opacity: 1;
+      }
+    </style>
+    <img src="Resources/Images/MCP.webp" id="slide9-img1" alt="MCP Architecture WebP" style="max-width: 95%; max-height: 100%; position: absolute; object-fit: contain;">
+    <img src="Resources/Images/MCP.png" id="slide9-img2" alt="MCP Architecture PNG" style="max-width: 95%; max-height: 100%; position: absolute; object-fit: contain;">
+    <div class="step" style="display: none;"></div>
+  </div>
+</div>
+
+<!-- Slide 10: 為什麼需要 MCP？ -->
+<div class="card top-title-layout" id="slide10">
+  <style>
+    #slide10 .info-box {
+      background: linear-gradient(135deg, rgba(88, 166, 255, 0.08) 0%, rgba(88, 166, 255, 0.01) 100%);
+      border: 1px solid rgba(88, 166, 255, 0.15);
+      border-left: 5px solid #58a6ff;
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    #slide10 .info-box p {
+      margin: 0;
+      color: #e6edf3;
+      font-size: 1.05em;
+      line-height: 1.6;
+    }
+
+    #slide10 .question-box {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-left: 5px solid #ff7b72;
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    #slide10 .question-box p {
+      margin: 0;
+      color: #e6edf3;
+      font-size: 1.05em;
+      line-height: 1.6;
+    }
+
+    #slide10 .mcp-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      flex: 1;
+    }
+    
+    #slide10 .feature-card {
+      background: rgba(13, 17, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #slide10 .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    #slide10 .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+    }
+    
+    #slide10 .card-1::before { background: linear-gradient(90deg, #58a6ff, #3182ce); }
+    #slide10 .card-1:hover { box-shadow: 0 10px 30px rgba(88, 166, 255, 0.15); border-color: rgba(88, 166, 255, 0.3); }
+    
+    #slide10 .card-2::before { background: linear-gradient(90deg, #00ffcc, #00b386); }
+    #slide10 .card-2:hover { box-shadow: 0 10px 30px rgba(0, 255, 204, 0.15); border-color: rgba(0, 255, 204, 0.3); }
+    
+    #slide10 .card-3::before { background: linear-gradient(90deg, #ffbd2e, #e3a008); }
+    #slide10 .card-3:hover { box-shadow: 0 10px 30px rgba(255, 189, 46, 0.15); border-color: rgba(255, 189, 46, 0.3); }
+    
+    #slide10 .feature-icon {
+      font-size: 1.6em;
+      margin-right: 12px;
+      display: inline-block;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    }
+    
+    #slide10 .feature-title {
+      font-size: 1.25em;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+    }
+    
+    #slide10 .feature-subtitle {
+      font-size: 0.85em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    #slide10 .card-1 .feature-subtitle { color: #58a6ff; }
+    #slide10 .card-2 .feature-subtitle { color: #00ffcc; }
+    #slide10 .card-3 .feature-subtitle { color: #ffbd2e; }
+    
+    #slide10 .feature-desc {
+      color: #a0aec0;
+      font-size: 0.95em;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    #slide10 .highlight-text {
+      color: #fff;
+      font-weight: 600;
+    }
+    
+    #slide10 .code-inline {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Consolas', monospace;
+      font-size: 0.9em;
+      color: #ff7b72;
+    }
+  </style>
+
+  <h2>🤔 為什麼要使用 MCP ？</h2>
+  
+  <div class="slide-body" style="display: flex; flex-direction: column;">
+    <p>
+      因為許多軟體的核心 API 都不對外開放或無法輕易呼叫(如Unity)。<br>
+      因此我們必須在目標環境中安置一個<strong>「接口」</strong>提供給 Agent，也就是 <strong>MCP Server</strong>。<br>
+    </p>
+
+    <div class="question-box step">
+      <p>
+        <strong style="color: #ff7b72;">🤔 開發者疑問：</strong>我們大可在 Unity 裡面寫一個簡單的 REST API（例如開在 <code>localhost:8080</code>），然後在 Agent 那端寫一個 Tool給Agent發GET請求就好了。<br>
+        <span class="highlight-text">自己刻 API 及 Tool 就能動，那遵守 MCP 協議的用意在哪？</span>
+      </p>
+    </div>
+    
+    <div class="mcp-features">
+      <!-- Feature 1 -->
+      <div class="feature-card card-1 step">
+        <h3 class="feature-title"><span class="feature-icon">🔌</span>自動發現與註冊</h3>
+        <div class="feature-subtitle">Plug-and-Play</div>
+        <p class="feature-desc">
+          Agent 只要連上 MCP Server，會自動發送一個 <span class="code-inline">ListTools</span> 的標準指令。<br><br>
+          伺服器回傳：<span style="font-style: italic;">「我有 GetHierarchy 和 SpawnCube 這兩個工具，參數分別是...」</span><br><br>
+          Agent 瞬間學會新技能，<span class="highlight-text">完全不需要在 Agent 端寫任何一行對接的綁定程式碼</span>。
+        </p>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="feature-card card-2 step">
+        <h3 class="feature-title"><span class="feature-icon">🧱</span>標準化的三大積木</h3>
+        <div class="feature-subtitle">Resources / Tools / Prompts</div>
+        <div class="feature-desc">
+          MCP 嚴格定義了 Server 只能提供三種東西：
+          <ul style="padding-left: 20px; margin-top: 12px; margin-bottom: 0;">
+            <li style="margin-bottom: 8px;"><strong>Resources (資源)：</strong> 提供 Context。例如: 「當前 Unity 打開的 Scene 檔案內容」。</li>
+            <li style="margin-bottom: 8px;"><strong>Tools (工具)：</strong> 提供 Action。例如: 「在 Unity 內創建一個物件」。</li>
+            <li><strong>Prompts (提示詞)：</strong> 提供預設指令。例如: 「幫我檢查 Unity 效能的 Prompt 範本」。</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="feature-card card-3 step">
+        <h3 class="feature-title"><span class="feature-icon">🌐</span>無縫跨環境協作</h3>
+        <div class="feature-subtitle">Any Client ↔ Any Server</div>
+        <p class="feature-desc">
+          因為大家都遵守 MCP 標準，同一個 Agent (例如 Claude Desktop) 可以<span class="highlight-text">「同時」插上 Gmail 和 Unity 的 MCP Server</span>。<br><br>
+          Agent 可以讀取 Gmail 裡的企劃書 (Resource)，直接呼叫 Unity 的工具 (Tool) 來建立對應場景，中間毫無阻礙。
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="footer">
                 PDD3 AI Training Series - Wanin
