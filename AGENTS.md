@@ -1,4 +1,4 @@
-# PDD3 AI Training - 專案與 Agent 上下文配置 (AGENTS.md)
+# 專案與 Agent 上下文配置 (AGENTS.md)
 
 這是一個用於指導 AI Agent在操作本儲存庫時的行為指南，同時也作為本系列課程中關於 Context Files 相關教學的實作範例。
 
@@ -22,7 +22,8 @@
    - 必須加上詳盡的註解，並著重於解釋「為什麼這樣做」而不僅是「這段程式碼做什麼」。
 4. **名詞統一**：請遵循計畫書中的核心概念名詞，如 Agent Skills, Subagents, Context Engineering, PlanMode, Human-In-The-Loop (HITL), Agentic Workflow 等。
 5. **模組化排版規範 (Modular Layouts)**：
-   為了維持高資訊密度與避免學員視覺疲勞，所有講義的投影片（Slide Card）必須依據內容屬性，靈活使用以下七種排版模組（具體結構請參考 [template.html](file:///D:/Projects/AI%20Training/template.html)，樣式定義於 [Scripts/style.css](file:///D:/Projects/AI%20Training/Scripts/style.css)）：
+   **【⚠️ 核心排版原則：先分析內容，再決定版面】**
+   `template.html` 內提供了許多優質的排版模組，這些版面**必須在「內容適合」的前提下使用，絕對不要盲目套用預設版面**。在生成或修改每一張投影片（Slide Card）時，你必須先**分析該張 Slide 的教學目的與內容屬性**，如果下方排版模組中有適合的就可以直接拿來使用，沒有的話就額外設計一個新的。務必在高資訊密度與視覺疲勞之間控制好平衡（樣式定義於 `Scripts/style.css`）：
    - **Top-Title Layout (經典上標下內文，主要骨幹)**：卡片套用 `top-title-layout` 類別。標題置於頂部並帶有底線，最適合長段文字、一般概念講解與清單列舉。
    - **Console Split (主控台雙欄，程式碼優先)**：卡片套用 `console-dashboard-layout`，內含雙欄網格 `.console-split`，右側使用 IDE 視窗樣式 `.ide-window` 展示代碼或配置檔。最適合 Unity C#、.NET 代碼或 yaml 說明的場景。
    - **Comparison Layout (雙欄對照/對比，概念衝突)**：卡片套用 `comparison-layout`，內含雙欄網格 `.comparison-grid` 與 `.comparison-card`，可用 `.highlight-card` 為關鍵選項加上強調發光邊框，下方可搭配全寬 `blockquote` 引言。最適合新舊思維對比、優缺點分析或結論總結投影片。
@@ -38,6 +39,3 @@
 - **備用排版**：其他版面配置範本與測試檔案請置於 `Alternative_Layouts/` 目錄下。
 - **範例與挑戰**：實作範例、測試程式碼與相關圖片等資源請放置於 `Resources/` 目錄下。
 - **教材獨立性**：每堂課的講義應能獨立運作，並正確連結至共用的 CSS/JS 資源。
-
----
-*提示：此檔案 (`AGENTS.md`) 會被 AI Agent在讀取專案時自動解析，作為全局的上下文與護欄 (Guardrails)，確保 AI Agent的產出符合團隊規範。*
